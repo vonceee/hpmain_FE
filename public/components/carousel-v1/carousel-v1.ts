@@ -12,7 +12,7 @@ export interface CarouselItem {
   standalone: true,
   imports: [CommonModule],
   templateUrl: './carousel-v1.html',
-  styleUrl: './carousel-v1.scss',
+  styleUrl: './carousel-v1.css',
 })
 export class CarouselV1 {
   items: CarouselItem[] = [

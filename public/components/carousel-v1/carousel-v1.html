@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="button button-prev" (click)="prev()">
+    <img src="assets/images/solutions/industrial/our-services/button_arrow.svg" alt="Prev">
+  </div>
+
+  <div class="carousel-track">
+    <div
+      *ngFor="let item of items; let i = index"
+      [ngClass]="getItemClass(i)">
+
+      <img [src]="item.image" [alt]="item.title">
+      <h1>{{ item.title }}</h1>
+      <p>{{ item.description }}</p>
+    </div>
+  </div>
+
+  <div class="button button-next" (click)="next()">
+    <img src="assets/images/solutions/industrial/our-services/button_arrow.svg" alt="Next">
+  </div>
+</div>

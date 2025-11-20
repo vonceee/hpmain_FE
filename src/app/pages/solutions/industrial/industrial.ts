@@ -6,7 +6,7 @@ import { MainHeader } from 'src/app/components/main-header/main-header';
   selector: 'industrial',
   imports: [MainHeader, CarouselV1],
   templateUrl: './industrial.html',
-  styleUrl: './industrial.css',
+  styleUrl: './industrial.scss',
 })
 export class Industrial {
 }

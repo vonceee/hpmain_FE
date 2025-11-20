@@ -6,7 +6,7 @@ import { Industrial } from './pages/solutions/industrial/industrial';
   selector: 'app-root',
   imports: [RouterOutlet, Industrial],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.scss'
 })
 export class App {
   protected readonly title = signal('hytec_fe');

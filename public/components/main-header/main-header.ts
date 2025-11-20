@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
   selector: 'main-header',
   imports: [RouterModule, CommonModule],
   templateUrl: './main-header.html',
-  styleUrl: './main-header.scss',
+  styleUrl: './main-header.css',
 })
 export class MainHeader {
 
