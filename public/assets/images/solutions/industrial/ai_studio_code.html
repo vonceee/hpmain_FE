@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services Sliding Carousel</title>
+    <style>
+        /* --- CSS RESET & FONTS --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Oswald', sans-serif;
+            background: linear-gradient(180deg, #5e0a0a 0%, #2b0505 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+        }
+
+        /* --- HEADER STYLES --- */
+        .header-container {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 10;
+        }
+
+        h1 {
+            font-size: 3rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: inline-block;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+
+        h1 .highlight {
+            background-color: #cc1f1f;
+            padding: 0 10px;
+            margin-right: 5px;
+            border-radius: 4px;
+            box-shadow: 0 0 15px rgba(204, 31, 31, 0.6);
+        }
+
+        /* --- CAROUSEL CONTAINER --- */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 1400px; /* Wide container to allow side items */
+            height: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Hide items sliding off screen */
+        }
+
+        /* --- NAVIGATION BUTTONS --- */
+        .nav-btn {
+            position: absolute;
+            top: 45%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.5);
+            border: 2px solid rgba(255,255,255,0.2);
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 100;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-btn:hover {
+            background: #cc1f1f;
+            border-color: #cc1f1f;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .nav-btn.prev { left: 30px; }
+        .nav-btn.next { right: 30px; }
+
+        /* --- SLIDES --- */
+        .track {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide {
+            position: absolute;
+            width: 600px;
+            top: 50%;
+            /* Centering logic handled by specific class states below */
+            transform: translate(-50%, -50%); 
+            transition: all 0.5s cubic-bezier(0.4, 0.0, 0.2, 1); /* Smooth linear-feeling ease */
+            opacity: 0; 
+            pointer-events: none;
+        }
+
+        /* IMAGE STYLING */
+        .image-box {
+            width: 100%;
+            height: 350px;
+            border-radius: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            transition: all 0.5s ease;
+        }
+
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Brightness filter to dim inactive slides */
+            filter: brightness(0.5); 
+            transition: filter 0.5s ease;
+        }
+
+        /* CONTENT TEXT */
+        .content {
+            text-align: center;
+            margin-top: 20px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+
+        .content h2 {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            text-shadow: 1px 1px 5px black;
+        }
+
+        .content p {
+            font-size: 0.9rem;
+            color: #ccc;
+            line-height: 1.4;
+            max-width: 90%;
+            margin: 0 auto;
+        }
+
+        /* --- ANIMATION STATES --- */
+
+        /* 1. ACTIVE (Center) */
+        .slide.active {
+            left: 50%;
+            opacity: 1;
+            z-index: 10;
+            pointer-events: auto;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        .slide.active .image-box {
+            border-color: #cc1f1f;
+            box-shadow: 0 10px 40px rgba(204, 31, 31, 0.4);
+        }
+        .slide.active .image-box img {
+            filter: brightness(1);
+        }
+        .slide.active .content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 2. PREV (Left visible) */
+        .slide.prev {
+            left: 15%; /* Position to the left */
+            opacity: 1;
+            z-index: 5;
+            transform: translate(-50%, -50%) scale(0.85); /* Slightly smaller */
+        }
+        /* Show title on sides but maybe not description? Matches reference better */
+        .slide.prev .content { opacity: 1; } 
+        .slide.prev .content p { opacity: 0; }
+
+        /* 3. NEXT (Right visible) */
+        .slide.next {
+            left: 85%; /* Position to the right */
+            opacity: 1;
+            z-index: 5;
+            transform: translate(-50%, -50%) scale(0.85);
+        }
+        .slide.next .content { opacity: 1; }
+        .slide.next .content p { opacity: 0; }
+
+        /* 4. HIDDEN LEFT (Waiting to enter from left) */
+        .slide.off-left {
+            left: -20%;
+            opacity: 0;
+            z-index: 1;
+            transform: translate(-50%, -50%) scale(0.7);
+        }
+
+        /* 5. HIDDEN RIGHT (Waiting to enter from right) */
+        .slide.off-right {
+            left: 120%;
+            opacity: 0;
+            z-index: 1;
+            transform: translate(-50%, -50%) scale(0.7);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .slide { width: 450px; }
+            .image-box { height: 280px; }
+            .slide.prev { left: 10%; }
+            .slide.next { left: 90%; }
+        }
+
+        @media (max-width: 768px) {
+            .slide { width: 85vw; }
+            .slide.prev, .slide.next, .slide.off-left, .slide.off-right {
+                opacity: 0; /* Hide sides on mobile for cleaner look */
+                pointer-events: none;
+            }
+            .slide.active { left: 50%; }
+        }
+    </style>
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="header-container">
+        <h1><span class="highlight">OUR</span>SERVICES</h1>
+    </div>
+
+    <div class="carousel-container">
+        <button class="nav-btn prev" id="prevBtn">&#10094;</button>
+        <button class="nav-btn next" id="nextBtn">&#10095;</button>
+
+        <div class="track" id="track">
+            <!-- Slides injected via JS -->
+        </div>
+    </div>
+
+    <script>
+        // Placeholder Image
+        const imgUrl = "https://cdn.mos.cms.futurecdn.net/Z7t7AD6Xtni6T9r2YiNuK.jpg";
+
+        // 6 Carousel Items
+        const slidesData = [
+            {
+                title: "OPTIMIZATION SURVEY SERVICES",
+                desc: "Our Field Application Engineers and Executives provide a one stop solution to your problems."
+            },
+            {
+                title: "AFTER SALES SUPPORT",
+                desc: "On-site seminar and actual demonstration exclusive to your plant maintenance team."
+            },
+            {
+                title: "BOLTING & RENTAL SOLUTIONS",
+                desc: "Offering full bolting tool service, repair, and maintenance wherever you need it."
+            },
+            {
+                title: "TORQUE CALIBRATION",
+                desc: "State-of-the-art calibration services ensuring your tools operate at maximum precision."
+            },
+            {
+                title: "HEAVY MACHINERY TRAINING",
+                desc: "Certified training programs for safety and efficiency in industrial environments."
+            },
+            {
+                title: "PLANT MAINTENANCE AUDITS",
+                desc: "Comprehensive audits to identify bottlenecks and improve output efficiency."
+            }
+        ];
+
+        const track = document.getElementById('track');
+        let currentIndex = 0;
+
+        function initCarousel() {
+            // Clear track
+            track.innerHTML = '';
+
+            // Create Elements
+            slidesData.forEach((data, index) => {
+                const slide = document.createElement('div');
+                slide.classList.add('slide');
+                // Initial state: everyone off to the right effectively, updateCarousel handles positioning
+                slide.classList.add('off-right'); 
+                
+                slide.innerHTML = `
+                    <div class="image-box">
+                        <img src="${imgUrl}" alt="${data.title}">
+                    </div>
+                    <div class="content">
+                        <h2>${data.title}</h2>
+                        <p>${data.desc}</p>
+                    </div>
+                `;
+                track.appendChild(slide);
+            });
+
+            updateCarousel();
+        }
+
+        function updateCarousel() {
+            const slides = document.querySelectorAll('.slide');
+            const total = slides.length;
+
+            slides.forEach((slide, index) => {
+                // Remove all positioning classes
+                slide.classList.remove('active', 'prev', 'next', 'off-left', 'off-right');
+
+                // Determine position relative to current index (handling wrap-around)
+                let relIndex = (index - currentIndex);
+                
+                // Fix Wrap-around logic for logic distance
+                // If we are at index 0, the item at index 5 should be "prev" (-1)
+                if (relIndex < -2) relIndex += total;
+                if (relIndex > 2) relIndex -= total;
+
+                // Assign Classes based on relative index
+                if (relIndex === 0) {
+                    slide.classList.add('active');
+                } else if (relIndex === -1) {
+                    slide.classList.add('prev');
+                } else if (relIndex === 1) {
+                    slide.classList.add('next');
+                } else if (relIndex < -1) {
+                    slide.classList.add('off-left');
+                } else {
+                    slide.classList.add('off-right');
+                }
+            });
+        }
+
+        // Button Listeners
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % slidesData.length;
+            updateCarousel();
+        });
+
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + slidesData.length) % slidesData.length;
+            updateCarousel();
+        });
+
+        // Start
+        initCarousel();
+
+    </script>
+</body>
+</html>

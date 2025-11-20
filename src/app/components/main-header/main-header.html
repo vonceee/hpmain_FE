@@ -1,14 +1,14 @@
 <header>
-  <img src="assets/icons/main-header/hytec-logo.svg">
+  <img src="assets/icons/main-header/hytec-logo.svg" class="header-image">
 
   <nav>
     <ul>
       <li class="nav-item">
-        <a routerLink="/home" routerLinkActive="active-link">HOME</a>
+        <a routerLink="/home" routerLinkActive="active-link" class="anchor">HOME</a>
       </li>
 
       <li class="nav-item  has-dropdown">
-        <a routerLink="/solutions">
+        <a routerLink="/solutions" class="anchor">
           SOLUTIONS
           <span class="dropdown-arrow">&#9662;</span>
         </a>
@@ -35,15 +35,15 @@
       </li>
 
       <li class="nav-item">
-        <a routerLink="/news-and-updates">NEWS & UPDATES</a>
+        <a routerLink="/news-and-updates" class="anchor">NEWS & UPDATES</a>
       </li>
 
       <li class="nav-item">
-        <a routerLink="/trainings-and-events">TRAININGS & EVENTS</a>
+        <a routerLink="/trainings-and-events" class="anchor">TRAININGS & EVENTS</a>
       </li>
 
       <li class="nav-item has-dropdown">
-        <a routerLink="/company">
+        <a routerLink="/company" class="anchor">
           COMPANY
           <span class="dropdown-arrow">&#9662;</span>
         </a>
@@ -91,6 +91,8 @@
 
   <div class="search-bar">
     <input type="text" placeholder="Search here...">
-    <div class="search-button"><img src="assets/icons/main-header/magnifying-glass.svg"></div>
+    <div class="search-button">
+      <img src="assets/icons/main-header/magnifying-glass.svg">
+    </div>
   </div>
 </header>
