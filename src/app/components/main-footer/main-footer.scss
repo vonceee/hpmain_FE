@@ -33,6 +33,12 @@
 .footer-section {
     display: flex;
     flex-direction: column;
+    width: max-content;
+
+    img{
+      width: auto;
+      height: 40%;
+    }
 }
 
 .footer-section h3 {

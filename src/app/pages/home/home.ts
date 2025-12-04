@@ -1,10 +1,10 @@
 import { Component, signal, Renderer2, Inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faFacebookF, faInstagram, faYoutube, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
-import { MainFooter } from 'D:/Documents/GitHub/hytec_fe/src/app/components/main-footer/main-footer';
-import { MainHeader } from 'D:/Documents/GitHub/hytec_fe/src/app/components/main-header/main-header';
 import { DOCUMENT, CommonModule } from '@angular/common';
+import { MainFooter } from 'src/app/components/main-footer/main-footer';
+import { MainHeader } from 'src/app/components/main-header/main-header';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 interface Testimonial {
   logo: string;
@@ -15,7 +15,7 @@ interface Testimonial {
 
 @Component({
   selector: 'app-home',
-  imports: [RouterOutlet, FontAwesomeModule, MainFooter, MainHeader, CommonModule],
+  imports: [RouterOutlet, CommonModule, MainFooter, MainHeader, FontAwesomeModule],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
@@ -25,6 +25,44 @@ protected readonly title = signal('hytec_fe');
   faInstagram = faInstagram;
   faYoutube = faYoutube;
   faLinkedinIn = faLinkedinIn;
+
+
+  achievementList = [
+    { value: '30+',  label: 'Years of Excellence' },
+    { value: '150+', label: 'Industrial Partners' },
+    { value: '150+', label: 'Academe Partners' },
+    { value: '100%', label: 'Commitment to service' }
+  ];
+
+
+  featuredNews = {
+      title: 'Philippine VEX Robotics National Championship Representative - QCU',
+      date: 'May 26, 2025',
+      description: 'Lorem ipsum dolor sit amet consectetur. Congue quis sagittis leo odio molestie pellentesque in. Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit amet consectetur. Congue quis sagittis leo odio molestie pellentesque in. Lorem ipsum dolor sit amet consectetur.',
+      image: 'assets/images/home/Updates.png'
+    };
+
+    // 2. Data for the List on the Right
+    latestNewsList = [
+      {
+        title: 'HPI Launch The Humanoid Robot: Pepper',
+        date: 'May 26, 2025',
+        description: 'Lorem ipsum dolor sit amet consectetur. Congue quis sagittis leo odio molestie pellentesque in. Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit amet consectetur. Congue quis sagittis leo odio molestie pellentesque in. Lorem ipsum dolor sit amet consectetur.',
+        image: 'assets/images/home/News.png'
+      },
+      {
+        title: 'New AI Features Announced',
+        date: 'June 10, 2025',
+        description: 'Lorem ipsum dolor sit amet consectetur. Congue quis sagittis leo odio molestie pellentesque in. Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit amet consectetur. Congue quis sagittis leo odio molestie pellentesque in. Lorem ipsum dolor sit amet consectetur.',
+        image: 'assets/images/home/News.png'
+      },
+      {
+        title: 'Robotics Workshop 2025',
+        date: 'July 15, 2025',
+        description: 'Lorem ipsum dolor sit amet consectetur. Congue quis sagittis leo odio molestie pellentesque in. Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit amet consectetur. Congue quis sagittis leo odio molestie pellentesque in. Lorem ipsum dolor sit amet consectetur.',
+        image: 'assets/images/home/News.png'
+      }
+    ];
 
 
      cardData: Testimonial[] = [
