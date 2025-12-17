@@ -3,62 +3,121 @@
     <img class="footerImage" src="assets/images/home/overfooter.png" alt="Footer Overlay">
 
     <div class="footer-content">
+        <!-- LOGO SECTION -->
         <div class="footer-section logo-section">
             <img src="assets/images/home/HytecLogo.png" alt="Hytec Logo">
             <div class="social-icons">
-                <a href="#" aria-label="Facebook">
+                <a href="https://www.facebook.com/hytecpowerincorporated/" target="_blank" rel="noopener noreferrer"
+                    aria-label="Facebook">
                     <fa-icon [icon]="faFacebookF"></fa-icon>
                 </a>
-                <a href="#" aria-label="Instagram">
+                <a href="https://www.instagram.com/hytecpowerinc_official/?hl=en" target="_blank"
+                    rel="noopener noreferrer" aria-label="Instagram">
                     <fa-icon [icon]="faInstagram"></fa-icon>
                 </a>
-                <a href="#" aria-label="YouTube">
+                <a href="https://www.youtube.com/@hytecpowerinc/videos" target="_blank" rel="noopener noreferrer"
+                    aria-label="YouTube">
                     <fa-icon [icon]="faYoutube"></fa-icon>
                 </a>
-                <a href="#" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/company/hytec-power/?originalSubdomain=ph" target="_blank"
+                    rel="noopener noreferrer" aria-label="LinkedIn">
                     <fa-icon [icon]="faLinkedinIn"></fa-icon>
                 </a>
             </div>
         </div>
 
+        <!-- SOLUTIONS SECTION -->
         <div class="footer-section">
-            <h3 class="sdisplay">Solutions</h3>
-            <ul>
-                <li class="mediumEmphasizedTitle"><a href="#">Educational Solutions</a></li>
-                <li class="mediumEmphasizedTitle"><a href="#">Industrial Solutions</a></li>
+            <h3 
+                [class.expanded]="isSectionExpanded('solutions')"
+                (click)="toggleSection('solutions')">
+                Solutions
+            </h3>
+            <ul [class.expanded]="isSectionExpanded('solutions')">
+                <li class="mediumEmphasizedTitle">
+                    <a routerLink="/solutions/educational">Educational Solutions</a>
+                </li>
+                <li class="mediumEmphasizedTitle">
+                    <a routerLink="/solutions/industrial">Industrial Solutions</a>
+                </li>
             </ul>
         </div>
 
+        <!-- NEWS & UPDATES SECTION -->
         <div class="footer-section">
-            <h3 class="sdisplay">News & Updates</h3>
-            <ul>
-                <li class="mediumEmphasizedTitle"><a href="#">Featured News & Solutions</a></li>
-                <li class="mediumEmphasizedTitle"><a href="#">Announcements</a></li>
-                <li class="mediumEmphasizedTitle"><a href="#">Educational News</a></li>
-                <li class="mediumEmphasizedTitle"><a href="#">Industrial News</a></li>
-                <li class="mediumEmphasizedTitle"><a href="#">E-Magazines</a></li>
+            <h3 
+                [class.expanded]="isSectionExpanded('news')"
+                (click)="toggleSection('news')">
+                News & Updates
+            </h3>
+            <ul [class.expanded]="isSectionExpanded('news')">
+                <li class="mediumEmphasizedTitle">
+                    <a routerLink="/news-and-updates">Featured News & Solutions</a>
+                </li>
+                <li class="mediumEmphasizedTitle">
+                    <a routerLink="/news-and-updates">Announcements</a>
+                </li>
+                <li class="mediumEmphasizedTitle">
+                    <a routerLink="/news-and-updates">Educational News</a>
+                </li>
+                <li class="mediumEmphasizedTitle">
+                    <a routerLink="/news-and-updates">Industrial News</a>
+                </li>
+                <li class="mediumEmphasizedTitle">
+                    <a routerLink="/news-and-updates">E-Magazines</a>
+                </li>
             </ul>
         </div>
 
+        <!-- TRAININGS & EVENTS SECTION -->
         <div class="footer-section">
-            <h3 class="sdisplay">Trainings & Events</h3>
-            <ul>
-                <li class="mediumEmphasizedTitle"><a href="#">Featured Trainings & Events</a></li>
-                <li class="mediumEmphasizedTitle"><a href="#">Latest Educational Trainings</a></li>
-                <li class="mediumEmphasizedTitle"><a href="#">Latest Industrial Trainings</a></li>
-                <li class="mediumEmphasizedTitle"><a href="#">Hytec Events</a></li>
+            <h3 
+                [class.expanded]="isSectionExpanded('trainings')"
+                (click)="toggleSection('trainings')">
+                Trainings & Events
+            </h3>
+            <ul [class.expanded]="isSectionExpanded('trainings')">
+                <li class="mediumEmphasizedTitle">
+                    <a routerLink="/trainings-and-events">Featured Trainings & Events</a>
+                </li>
+                <li class="mediumEmphasizedTitle">
+                    <a routerLink="/trainings-and-events">Latest Educational Trainings</a>
+                </li>
+                <li class="mediumEmphasizedTitle">
+                    <a routerLink="/trainings-and-events">Latest Industrial Trainings</a>
+                </li>
+                <li class="mediumEmphasizedTitle">
+                    <a routerLink="/trainings-and-events">Hytec Events</a>
+                </li>
             </ul>
         </div>
 
+        <!-- COMPANY SECTION -->
         <div class="footer-section">
-            <h3 class="sdisplay">Our Company</h3>
-            <ul>
-                <li class="mediumEmphasizedTitle"><a href="#">About Us</a></li>
-                <li class="mediumEmphasizedTitle"><a href="#">Testimonials</a></li>
-                <li class="mediumEmphasizedTitle"><a href="#">Careers</a></li>
-                <li class="mediumEmphasizedTitle"><a href="#">Team</a></li>
-                <li class="mediumEmphasizedTitle"><a href="#">Projects & Case Studies</a></li>
-                <li class="mediumEmphasizedTitle"><a href="#">Our Contacts</a></li>
+            <h3 
+                [class.expanded]="isSectionExpanded('company')"
+                (click)="toggleSection('company')">
+                Our Company
+            </h3>
+            <ul [class.expanded]="isSectionExpanded('company')">
+                <li class="mediumEmphasizedTitle">
+                    <a routerLink="/about-us">About Us</a>
+                </li>
+                <li class="mediumEmphasizedTitle">
+                    <a routerLink="/about-us">Testimonials</a>
+                </li>
+                <li class="mediumEmphasizedTitle">
+                    <a routerLink="/company/careers">Careers</a>
+                </li>
+                <li class="mediumEmphasizedTitle">
+                    <a routerLink="/company/team">Team</a>
+                </li>
+                <li class="mediumEmphasizedTitle">
+                    <a routerLink="/company/project-and-case-studies">Projects & Case Studies</a>
+                </li>
+                <li class="mediumEmphasizedTitle">
+                    <a routerLink="/company/our-contacts">Our Contacts</a>
+                </li>
             </ul>
         </div>
     </div>
@@ -67,4 +126,4 @@
         <img src="assets/images/home/overcredit.png" alt="Footer Credit Background">
         <p class="mediumTitle">© 2025 HYTEC POWER INCORPORATED. ALL RIGHTS RESERVED.</p>
     </div>
-  </footer>
+</footer>
