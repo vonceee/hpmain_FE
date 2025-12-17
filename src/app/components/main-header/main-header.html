@@ -1,13 +1,19 @@
 <header>
-  <img src="assets/icons/main-header/hytec-logo.svg" class="header-image">
+  <img src="assets/icons/main-header/hytec-logo.svg" class="header-image" alt="Hytec Power Inc">
 
-  <nav>
+  <nav [class.mobile-menu-open]="isMobileMenuOpen">
     <ul>
       <li class="nav-item">
-        <a routerLink="/home" routerLinkActive="active-link" class="anchor">HOME</a>
+        <a 
+          routerLink="/home" 
+          routerLinkActive="active-link" 
+          class="anchor"
+          (click)="onNavLinkClick()">
+          HOME
+        </a>
       </li>
 
-      <li class="nav-item  has-dropdown">
+      <li class="nav-item has-dropdown">
         <a routerLink="/solutions" class="anchor">
           SOLUTIONS
           <span class="dropdown-arrow">&#9662;</span>
@@ -15,31 +21,43 @@
 
         <ul class="dropdown-menu">
           <li class="dropdown-item">
-            <a routerLink="/solutions/educational">
-              <img src="assets/icons/main-header/educational-solutions.svg">
-              <h1>EDUCATIONAL SOLUTIONS</h1>
-              <span></span>
-              <p>Tie your education to employment.</p>
+            <a routerLink="/solutions/educational" (click)="onNavLinkClick()">
+              <img src="assets/icons/main-header/educational-solutions.svg" alt="Educational Solutions">
+              <div class="text-group">
+                <h1>EDUCATIONAL SOLUTIONS</h1>
+                <p>Tie your education to employment.</p>
+              </div>
             </a>
           </li>
 
           <li class="dropdown-item">
-            <a routerLink="/solutions/industrial">
-              <img src="assets/icons/main-header/industrial-solutions.svg">
-              <h1>INDUSTRIAL SOLUTIONS</h1>
-              <span></span>
-              <p>Provides skills-based industrial solutions.</p>
+            <a routerLink="/solutions/industrial" (click)="onNavLinkClick()">
+              <img src="assets/icons/main-header/industrial-solutions.svg" alt="Industrial Solutions">
+              <div class="text-group">
+                <h1>INDUSTRIAL SOLUTIONS</h1>
+                <p>Provides skills-based industrial solutions.</p>
+              </div>
             </a>
           </li>
         </ul>
       </li>
 
       <li class="nav-item">
-        <a routerLink="/news-and-updates" class="anchor">NEWS & UPDATES</a>
+        <a 
+          routerLink="/news-and-updates" 
+          class="anchor"
+          (click)="onNavLinkClick()">
+          NEWS & UPDATES
+        </a>
       </li>
 
       <li class="nav-item">
-        <a routerLink="/trainings-and-events" class="anchor">TRAININGS & EVENTS</a>
+        <a 
+          routerLink="/trainings-and-events" 
+          class="anchor"
+          (click)="onNavLinkClick()">
+          TRAININGS & EVENTS
+        </a>
       </li>
 
       <li class="nav-item has-dropdown">
@@ -50,38 +68,45 @@
 
         <ul class="dropdown-menu">
           <li class="dropdown-item">
-            <a routerLink="/about-us">
-              ABOUT US
+            <a routerLink="/about-us" (click)="onNavLinkClick()">
+              <div class="text-group">
+                <h1>ABOUT US</h1>
+              </div>
             </a>
           </li>
-
           <li class="dropdown-item">
-            <a routerLink="/company/sponsorship">
-              SPONSORSHIP
+            <a routerLink="/company/sponsorship" (click)="onNavLinkClick()">
+              <div class="text-group">
+                <h1>SPONSORSHIP</h1>
+              </div>
             </a>
           </li>
-
           <li class="dropdown-item">
-            <a routerLink="/company/careers">
-              CAREERS
+            <a routerLink="/company/careers" (click)="onNavLinkClick()">
+              <div class="text-group">
+                <h1>CAREERS</h1>
+              </div>
             </a>
           </li>
-
           <li class="dropdown-item">
-            <a routerLink="/company/team">
-              TEAM
+            <a routerLink="/company/team" (click)="onNavLinkClick()">
+              <div class="text-group">
+                <h1>TEAM</h1>
+              </div>
             </a>
           </li>
-
           <li class="dropdown-item">
-            <a routerLink="/company/project-and-case-studies">
-              PROJECT & CASE STUDIES
+            <a routerLink="/company/project-and-case-studies" (click)="onNavLinkClick()">
+              <div class="text-group">
+                <h1>PROJECT AND CASE STUDIES</h1>
+              </div>
             </a>
           </li>
-
           <li class="dropdown-item">
-            <a routerLink="/company/our-contacts">
-              OUR CONTACTS
+            <a routerLink="/company/our-contacts" (click)="onNavLinkClick()">
+              <div class="text-group">
+                <h1>OUR CONTACTS</h1>
+              </div>
             </a>
           </li>
         </ul>
@@ -90,9 +115,20 @@
   </nav>
 
   <div class="search-bar">
-    <input type="text" placeholder="Search here...">
-    <div class="search-button">
-      <img src="assets/icons/main-header/magnifying-glass.svg">
-    </div>
+    <input type="text" placeholder="Search here..." aria-label="Search">
+    <button class="search-button" aria-label="Search">
+      <img src="assets/icons/main-header/magnifying-glass.svg" alt="">
+    </button>
   </div>
+
+  <button 
+    class="hamburger-menu" 
+    [class.active]="isMobileMenuOpen"
+    (click)="toggleMobileMenu()"
+    attr.aria-label="{{ isMobileMenuOpen ? 'Close menu' : 'Open menu' }}"
+    aria-expanded="{{ isMobileMenuOpen }}">
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+  </button>
 </header>
