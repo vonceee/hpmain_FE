@@ -5,6 +5,7 @@ import { DOCUMENT, CommonModule } from '@angular/common';
 import { MainFooter } from 'src/app/components/main-footer/main-footer';
 import { MainHeader } from 'src/app/components/main-header/main-header';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ButtonComponent } from 'src/app/components/button/button.component';
 
 interface Testimonial {
   logo: string;
@@ -15,7 +16,7 @@ interface Testimonial {
 
 @Component({
   selector: 'app-home',
-  imports: [RouterOutlet, CommonModule, MainFooter, MainHeader, FontAwesomeModule],
+  imports: [RouterOutlet, CommonModule, MainFooter, MainHeader, FontAwesomeModule, ButtonComponent],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
