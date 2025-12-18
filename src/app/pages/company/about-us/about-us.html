@@ -1,15 +1,19 @@
 <main-header></main-header>
 <div style="width:100%; position:relative;">
   <img style="width:100%; height:auto; z-index:-1;" src="assets/images/aboutus/aboutusBG.png" draggable="false" alt="">
-  <img style="opacity:23%; width:60vw; position: absolute; top:-35vh; left:-20vw; z-index:0;" src="assets/images/aboutus/spot2.png" draggable="false" alt="">
-  <img style="opacity:13%; width:50vw; position: absolute; top:1vh; right:8vw; z-index:0;" src="assets/images/aboutus/spot2.png" draggable="false" alt="">
-  <div style="gap:3vh; position:absolute; color:white; left:50%; top:50%; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center;">
+  <img style="opacity:23%; width:60vw; position: absolute; top:-35vh; left:-20vw; z-index:0;"
+    src="assets/images/aboutus/spot2.png" draggable="false" alt="">
+  <img style="opacity:13%; width:50vw; position: absolute; top:1vh; right:8vw; z-index:0;"
+    src="assets/images/aboutus/spot2.png" draggable="false" alt="">
+  <div
+    style="gap:3vh; position:absolute; color:white; left:50%; top:50%; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center;">
     <div class="since">
       <p class="largeBody">Since 1994</p>
     </div>
     <div class="headline" style="display: flex; flex-direction: column; align-items: center; z-index: 100;">
       <p class="xxldisplay hero-title" style="margin:0 0 2vh 0; text-wrap:inherit;">HYTEC POWER INCORPORATED</p>
-      <p class="largeEmphasizedTitle"  style="margin:0;">Empowering Industrial and Educational Solutions for Over 30 years</p>
+      <p class="largeEmphasizedTitle" style="margin:0;">Empowering Industrial and Educational Solutions for Over 30
+        years</p>
     </div>
   </div>
 </div>
@@ -17,255 +21,238 @@
 <div class="aboutus-content">
   <div class="about-main">
     <div class="body-nav">
-      <button
-        class="journey-btn"
-        [class.active]="tab() == 0"
-        (click)="tab.set(0)">
+      <button class="journey-btn" [class.active]="tab() == 0" (click)="tab.set(0)">
         <img src="assets/images/aboutus/journey-icon.svg" alt="">
         <span class="mediumEmphasizedTitle">Our Journey</span>
       </button>
-      <button
-        class="award-btn"
-        [class.active]="tab() == 1"
-        (click)="tab.set(1)">
+      <button class="award-btn" [class.active]="tab() == 1" (click)="tab.set(1)">
         <img src="assets/images/aboutus/award-icon.svg" alt="">
         <span class="mediumEmphasizedTitle">Awards and Achievements</span>
       </button>
-      <button
-        class="ceo-btn"
-        [class.active]="tab() == 2"
-        (click)="tab.set(2)">
+      <button class="ceo-btn" [class.active]="tab() == 2" (click)="tab.set(2)">
         <img src="assets/images/aboutus/ceo-icon.svg" alt="">
         <span class="mediumEmphasizedTitle">President & CEO</span>
       </button>
-      <button
-        class="program-btn"
-        [class.active]="tab() == 3"
-        (click)="tab.set(3)">
+      <button class="program-btn" [class.active]="tab() == 3" (click)="tab.set(3)">
         <img src="assets/images/aboutus/program-icon.svg" alt="">
         <span class="mediumEmphasizedTitle">Programs</span>
       </button>
-      <button
-        class="partner-btn"
-        [class.active]="tab() == 4"
-        (click)="tab.set(4)">
+      <button class="partner-btn" [class.active]="tab() == 4" (click)="tab.set(4)">
         <img src="assets/images/aboutus/partner-icon.svg" alt="">
         <span class="mediumEmphasizedTitle">Partnerships</span>
       </button>
-      <button
-        class="mission-btn"
-        [class.active]="tab() == 5"
-        (click)="tab.set(5)">
+      <button class="mission-btn" [class.active]="tab() == 5" (click)="tab.set(5)">
         <img src="assets/images/aboutus/mission-icon.svg" alt="">
         <span class="mediumEmphasizedTitle">Mission and Vision</span>
       </button>
     </div>
     <div class="journey-content">
       @if (tab() == 0) {
-        <div class="title-badge ldisplay">
-          <p class="ldisplay">our journey</p>
-          <div class="red-bar"></div>
-        </div>
-        <p class="mediumTitle white">From humble beginnings to becoming the Philippines' leading provider of industrial and educational solutions</p>
-        <div class="timeline-container">
-          <div class="timeline-line"></div>
+      <title-badge title="our journey"></title-badge>
+      <p class="mediumTitle white">From humble beginnings to becoming the Philippines' leading provider of industrial
+        and educational solutions</p>
+      <div class="timeline-container">
+        <div class="timeline-line"></div>
 
-          <div class="timeline-events">
-            <div
-              *ngFor="let event of events; let i = index"
-              class="timeline-item"
-              [ngClass]="event.position">
+        <div class="timeline-events">
+          <div *ngFor="let event of events; let i = index" class="timeline-item" [ngClass]="event.position">
 
-              <div class="timeline-content">
-                <div class="mediumTitle year">{{ event.year }}</div>
-                <div class="smallHeadline title">{{ event.title }}</div>
-                <div class="largeBody description">{{ event.description }}</div>
-              </div>
-
-              <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="mediumTitle year">{{ event.year }}</div>
+              <div class="smallHeadline title">{{ event.title }}</div>
+              <div class="largeBody description">{{ event.description }}</div>
             </div>
+
+            <div class="timeline-dot"></div>
           </div>
         </div>
-        <div class="distributorship">
-          <p class="smallHeadline">Gain Exclusive Distributorship</p>
-          <p class="largeBody">Continuing to shape the future of technical education with cutting-edge technology and strategic partnerships.</p>
-          <div class="distributorship-logos">
-            <div class="column1">
-              <img src="assets/images/aboutus/distributionship/amatrol.png" alt="">
-              <img src="assets/images/aboutus/distributionship/milwaukee.png" alt="">
-              <img src="assets/images/aboutus/distributionship/snapon.png" alt="">
-            </div>
-            <div class="column2">
-              <img src="assets/images/aboutus/distributionship/tag.png" alt="">
-              <img src="assets/images/aboutus/distributionship/chester.png" alt="">
-              <img src="assets/images/aboutus/distributionship/unison.png" alt="">
-              <img src="assets/images/aboutus/distributionship/laerdal.png" alt="">
-            </div>
-            <div class="column3">
-              <img src="assets/images/aboutus/distributionship/nordlock.png" alt="">
-              <img src="assets/images/aboutus/distributionship/dorian.png" alt="">
-              <img src="assets/images/aboutus/distributionship/simlog.png" alt="">
-              <img src="assets/images/aboutus/distributionship/soldamatic.png" alt="">
-            </div>
-            <div class="column4">
-              <img src="assets/images/aboutus/distributionship/norbar.png" alt="">
-              <img src="assets/images/aboutus/distributionship/geobit.png" alt="">
-              <img src="assets/images/aboutus/distributionship/amos.png" alt="">
-              <img src="assets/images/aboutus/distributionship/american.png" alt="">
-            </div>
-            <div class="column5">
-              <img src="assets/images/aboutus/distributionship/chicago.png" alt="">
-              <img src="assets/images/aboutus/distributionship/abb.png" alt="">
-              <img src="assets/images/aboutus/distributionship/utest.png" alt="">
-              <img src="assets/images/aboutus/distributionship/hypertherm.png" alt="">
-            </div>
-            <div class="column6">
-              <img src="assets/images/aboutus/distributionship/aamc.png" alt="">
-              <img src="assets/images/aboutus/distributionship/wartsila.png" alt="">
-              <img src="assets/images/aboutus/distributionship/anylogic.png" alt="">
-              <img src="assets/images/aboutus/distributionship/ewm.png"alt="">
-            </div>
+      </div>
+      <div class="distributorship">
+        <p class="smallHeadline">Gain Exclusive Distributorship</p>
+        <p class="largeBody">Continuing to shape the future of technical education with cutting-edge technology and
+          strategic partnerships.</p>
+        <div class="distributorship-logos">
+          <div class="column1">
+            <img src="assets/images/aboutus/distributionship/amatrol.png" alt="">
+            <img src="assets/images/aboutus/distributionship/milwaukee.png" alt="">
+            <img src="assets/images/aboutus/distributionship/snapon.png" alt="">
+          </div>
+          <div class="column2">
+            <img src="assets/images/aboutus/distributionship/tag.png" alt="">
+            <img src="assets/images/aboutus/distributionship/chester.png" alt="">
+            <img src="assets/images/aboutus/distributionship/unison.png" alt="">
+            <img src="assets/images/aboutus/distributionship/laerdal.png" alt="">
+          </div>
+          <div class="column3">
+            <img src="assets/images/aboutus/distributionship/nordlock.png" alt="">
+            <img src="assets/images/aboutus/distributionship/dorian.png" alt="">
+            <img src="assets/images/aboutus/distributionship/simlog.png" alt="">
+            <img src="assets/images/aboutus/distributionship/soldamatic.png" alt="">
+          </div>
+          <div class="column4">
+            <img src="assets/images/aboutus/distributionship/norbar.png" alt="">
+            <img src="assets/images/aboutus/distributionship/geobit.png" alt="">
+            <img src="assets/images/aboutus/distributionship/amos.png" alt="">
+            <img src="assets/images/aboutus/distributionship/american.png" alt="">
+          </div>
+          <div class="column5">
+            <img src="assets/images/aboutus/distributionship/chicago.png" alt="">
+            <img src="assets/images/aboutus/distributionship/abb.png" alt="">
+            <img src="assets/images/aboutus/distributionship/utest.png" alt="">
+            <img src="assets/images/aboutus/distributionship/hypertherm.png" alt="">
+          </div>
+          <div class="column6">
+            <img src="assets/images/aboutus/distributionship/aamc.png" alt="">
+            <img src="assets/images/aboutus/distributionship/wartsila.png" alt="">
+            <img src="assets/images/aboutus/distributionship/anylogic.png" alt="">
+            <img src="assets/images/aboutus/distributionship/ewm.png" alt="">
           </div>
         </div>
+      </div>
       }
 
 
       @if (tab() == 1) {
-        <div class="title-badge ldisplay">
-          <p class="ldisplay">awards and achievements</p>
-          <div class="red-bar"></div>
-        </div>
-        <p class="mediumTitle white">Our significant excellence in industry and academe fields.</p>
-        <div class="awards-container">
-          <div class="main-container">
-            <div class="image-container">
-              <img src="assets/images/aboutus/awards/philippine-social-award.png" alt="">
-              <img src="assets/images/aboutus/awards/mosliv-award.png" alt="">
-            </div>
-            <div class="image-container">
-              <img src="assets/images/aboutus/awards/world-class-philippines.png" alt="">
-              <img src="assets/images/aboutus/awards/global-award.png" alt="">
-            </div>
-            <div class="image-container">
-              <img src="assets/images/aboutus/awards/best-choice-award.png" alt="">
-              <img src="assets/images/aboutus/awards/golden-global-award.png" alt="">
-            </div>
-            <div class="image-container">
-              <img src="assets/images/aboutus/awards/asia-ceo-award.png" alt="">
-              <img src="assets/images/aboutus/awards/legacy-award.png" alt="">
-            </div>
-            <div class="image-container">
-              <img src="assets/images/aboutus/awards/nb&mosliv-award.png" alt="">
-              <img src="assets/images/aboutus/awards/top-3000.png" alt="">
-            </div>
+      <title-badge title="awards and achievements"></title-badge>
+      <p class="mediumTitle white">Our significant excellence in industry and academe fields.</p>
+      <div class="awards-container">
+        <div class="main-container">
+          <div class="image-container">
+            <img src="assets/images/aboutus/awards/philippine-social-award.png" alt="">
+            <img src="assets/images/aboutus/awards/mosliv-award.png" alt="">
           </div>
-          <p class="mediumTitle">
-            Hytec Power Incorporated has been recognized as a "Top Innovative Brand" by the Premiere Brand Asia Awards. The company also received<br>
-            the "Top Brand Builder & Entrepreneur of the Year" award for its President and CEO, Engr. Eric Jude S. Soliman, in the same awards<br>
-            ceremony. These awards were conferred in recognition of Hytec Power's achievements as a<br>
-            leading industrial and educational solutions provider in the Philippines.
-          </p>
-        </div>
-        <div class="appearance">
-          <p class="smallHeadline">TY Appearances</p>
-          <p class="largeBody">Appearances at Umagang Kay Ganda, AHA!, Good Morning Dub and Suit Up!</p>
-          <div class="image-section">
-            <img src="assets/images/aboutus/awards/image-1.png" alt="">
-            <div class="image-container">
-              <img src="assets/images/aboutus/awards/image-2.png" alt="">
-              <img src="assets/images/aboutus/awards/image-4.png" alt="">
-            </div>
-            <div class="image-container">
-              <img src="assets/images/aboutus/awards/image-3.png" alt="">
-              <img src="assets/images/aboutus/awards/image-5.png" alt="">
-            </div>
+          <div class="image-container">
+            <img src="assets/images/aboutus/awards/world-class-philippines.png" alt="">
+            <img src="assets/images/aboutus/awards/global-award.png" alt="">
+          </div>
+          <div class="image-container">
+            <img src="assets/images/aboutus/awards/best-choice-award.png" alt="">
+            <img src="assets/images/aboutus/awards/golden-global-award.png" alt="">
+          </div>
+          <div class="image-container">
+            <img src="assets/images/aboutus/awards/asia-ceo-award.png" alt="">
+            <img src="assets/images/aboutus/awards/legacy-award.png" alt="">
+          </div>
+          <div class="image-container">
+            <img src="assets/images/aboutus/awards/nb&mosliv-award.png" alt="">
+            <img src="assets/images/aboutus/awards/top-3000.png" alt="">
           </div>
         </div>
+        <p class="mediumTitle">
+          Hytec Power Incorporated has been recognized as a "Top Innovative Brand" by the Premiere Brand Asia
+          Awards. The company also received<br>
+          the "Top Brand Builder & Entrepreneur of the Year" award for its President and CEO, Engr. Eric Jude S.
+          Soliman, in the same awards<br>
+          ceremony. These awards were conferred in recognition of Hytec Power's achievements as a<br>
+          leading industrial and educational solutions provider in the Philippines.
+        </p>
+      </div>
+      <div class="appearance">
+        <p class="smallHeadline">TY Appearances</p>
+        <p class="largeBody">Appearances at Umagang Kay Ganda, AHA!, Good Morning Dub and Suit Up!</p>
+        <div class="image-section">
+          <img src="assets/images/aboutus/awards/image-1.png" alt="">
+          <div class="image-container">
+            <img src="assets/images/aboutus/awards/image-2.png" alt="">
+            <img src="assets/images/aboutus/awards/image-4.png" alt="">
+          </div>
+          <div class="image-container">
+            <img src="assets/images/aboutus/awards/image-3.png" alt="">
+            <img src="assets/images/aboutus/awards/image-5.png" alt="">
+          </div>
+        </div>
+      </div>
       }
 
 
       @if (tab() == 2) {
-        <div class="title-badge ldisplay">
-          <p class="ldisplay">our president and ceo</p>
-          <div class="red-bar"></div>
+      <title-badge title="our president and ceo"></title-badge>
+      <p class="mediumTitle white">The man behind the HPI success.</p>
+      <div class="content">
+        <div class="quote xxldisplay">“</div>
+        <div class="ceo">
+          <img src="assets/images/aboutus/ceo/CEO.svg" alt="">
         </div>
-        <p class="mediumTitle white">The man behind the HPI success.</p>
-        <div class="content">
-          <div class="quote xxldisplay">“</div>
-          <div class="ceo">
-            <img src="assets/images/aboutus/ceo/CEO.svg" alt="">
-          </div>
-          <div class="message-container mediumTitle white">
-            Engr. Eric Jude S. Soliman or EJSS is the Founder, President, and CEO of Hytec Power Incorporated, one of the leadingproviders of educational and industrial solutions in the country. A visionary man, EJSS founded the company from scratch in 1994 and lead its stimulating growth for more than 27 years. the venues that were fully enjoyed by the under privileged children. <br><br>
-            He devoted his life serving the needs of his clients, both internal and external. With his powerful dedication to the company's vision and mis-sion, EJSS guided HPI to being dependable in providing industrial solutions in order to achieve safety, productivity and efficiency. Eventually, HPI expanded its services to industry by try-ing to solve the roots of skills mismatch HPI engaged into educational innovations in learning and training, to help our country prepare job-ready 21st century workers and professionals.
-            <div class="achievements">
-              <div class="container">
-                <div class="achievement-container"><div class="red-dot"></div>Licensed Mechanical Engineer</div>
-                <div class="achievement-container"><div class="red-dot"></div>Leadership, Legacy Icon, and CEO of the Year Awardee</div>
+        <div class="message-container mediumTitle white">
+          Engr. Eric Jude S. Soliman or EJSS is the Founder, President, and CEO of Hytec Power Incorporated, one of the
+          leadingproviders of educational and industrial solutions in the country. A visionary man, EJSS founded the
+          company from scratch in 1994 and lead its stimulating growth for more than 27 years. the venues that were
+          fully enjoyed by the under privileged children. <br><br>
+          He devoted his life serving the needs of his clients, both internal and external. With his powerful dedication
+          to the company's vision and mis-sion, EJSS guided HPI to being dependable in providing industrial solutions in
+          order to achieve safety, productivity and efficiency. Eventually, HPI expanded its services to industry by
+          try-ing to solve the roots of skills mismatch HPI engaged into educational innovations in learning and
+          training, to help our country prepare job-ready 21st century workers and professionals.
+          <div class="achievements">
+            <div class="container">
+              <div class="achievement-container">
+                <div class="red-dot"></div>Licensed Mechanical Engineer
               </div>
-              <div class="container">
-                <div class="achievement-container"><div class="red-dot"></div>Conferred as Asean Engineer last 2015</div>
-                <div class="achievement-container"><div class="red-dot"></div>Former Chairman of MRSP Convention </div>
+              <div class="achievement-container">
+                <div class="red-dot"></div>Leadership, Legacy Icon, and CEO of the Year Awardee
+              </div>
+            </div>
+            <div class="container">
+              <div class="achievement-container">
+                <div class="red-dot"></div>Conferred as Asean Engineer last 2015
+              </div>
+              <div class="achievement-container">
+                <div class="red-dot"></div>Former Chairman of MRSP Convention
               </div>
             </div>
           </div>
         </div>
-        <div class="attributes">
-          <div class="contents">
-            <img src="assets/images/aboutus/ceo/goal.png" alt="">
-            <div class="message">
-              <p class="smallHeadline">Personal Goals</p>
-              <p class="largeBody">To believe that everyone has the potential to be a <br>
-                trailblazer & innovator and help achieve their dreams.
-              </p>
-              </div>
-          </div>
-          <div class="contents">
-            <img src="assets/images/aboutus/ceo/desire.png" alt="">
-            <div class="message">
-              <p class="smallHeadline">Burning Desire</p>
-              <p class="largeBody">Align Education and Industry-bridge the SKILLS GAP to <br>
-                have readily available jobs for everyone.
-              </p>
-              </div>
-          </div>
-          <div class="contents">
-            <img src="assets/images/aboutus/ceo/key.png" alt="">
-            <div class="message">
-              <p class="smallHeadline">Key to Success</p>
-              <p class="largeBody">Be in love of with what you do. <br>
-                When you love what you do "working is not working".
-              </p>
-            </div>
+      </div>
+      <div class="attributes">
+        <div class="contents">
+          <img src="assets/images/aboutus/ceo/goal.png" alt="">
+          <div class="message">
+            <p class="smallHeadline">Personal Goals</p>
+            <p class="largeBody">To believe that everyone has the potential to be a <br>
+              trailblazer & innovator and help achieve their dreams.
+            </p>
           </div>
         </div>
+        <div class="contents">
+          <img src="assets/images/aboutus/ceo/desire.png" alt="">
+          <div class="message">
+            <p class="smallHeadline">Burning Desire</p>
+            <p class="largeBody">Align Education and Industry-bridge the SKILLS GAP to <br>
+              have readily available jobs for everyone.
+            </p>
+          </div>
+        </div>
+        <div class="contents">
+          <img src="assets/images/aboutus/ceo/key.png" alt="">
+          <div class="message">
+            <p class="smallHeadline">Key to Success</p>
+            <p class="largeBody">Be in love of with what you do. <br>
+              When you love what you do "working is not working".
+            </p>
+          </div>
+        </div>
+      </div>
       }
 
 
       @if (tab() == 3) {
-        <div class="title-badge ldisplay">
-          <p class="ldisplay">programs</p>
-          <div class="red-bar"></div>
-        </div>
-        <p class="mediumTitle white">From humble beginnings to becoming the Philippines' leading provider of industrial and educational solutions</p>
+      <title-badge title="programs"></title-badge>
+      <p class="mediumTitle white">From humble beginnings to becoming the Philippines' leading provider of industrial
+        and educational solutions</p>
       }
 
 
       @if (tab() == 4) {
-        <div class="title-badge ldisplay">
-          <p class="ldisplay">partneships</p>
-          <div class="red-bar"></div>
-        </div>
-        <p class="mediumTitle white">From humble beginnings to becoming the Philippines' leading provider of industrial and educational solutions</p>
+      <title-badge title="partnerships"></title-badge>
+      <p class="mediumTitle white">From humble beginnings to becoming the Philippines' leading provider of industrial
+        and educational solutions</p>
       }
 
 
       @if (tab() == 5) {
-        <div class="title-badge ldisplay">
-          <p class="ldisplay">mission and vision</p>
-          <div class="red-bar"></div>
-        </div>
-        <p class="mediumTitle white">From humble beginnings to becoming the Philippines' leading provider of industrial and educational solutions</p>
+      <title-badge title="mission and vision"></title-badge>
+      <p class="mediumTitle white">From humble beginnings to becoming the Philippines' leading provider of industrial
+        and educational solutions</p>
       }
     </div>
   </div>

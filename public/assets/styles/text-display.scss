@@ -2,66 +2,76 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet');
 
 //Display
-.xxldisplay{
+.xxldisplay {
   font-size: 100px;
   line-height: 80px;
   font-family: 'Bebas Neue', sans-serif;
 }
-.xldisplay{
+
+.xldisplay {
   font-size: 80px;
   line-height: 64px;
   font-family: 'Bebas Neue', sans-serif;
 }
-.ldisplay{
+
+.ldisplay {
   font-size: 56px;
   line-height: 64px;
   font-family: 'Bebas Neue', sans-serif;
 }
-.mdisplay{
+
+.mdisplay {
   font-size: 42px;
   line-height: 52px;
   font-family: 'Bebas Neue', sans-serif;
 }
-.sdisplay{
+
+.sdisplay {
   font-size: 32px;
   line-height: 44px;
   font-family: 'Bebas Neue', sans-serif;
 }
-.xsdisplay{
+
+.xsdisplay {
   font-size: 28px;
   line-height: 36px;
   font-family: 'Bebas Neue', sans-serif;
 }
 
 //Headline
-.largeHeadline{
+.largeHeadline {
   font-size: 32px;
   line-height: 40px;
   font-family: 'Poppins', sans-serif;
 }
-.largeEmphasizedHealine{
+
+.largeEmphasizedHealine {
   font-size: 32px;
   line-height: 40px;
   font-weight: 600;
   font-family: 'Poppins', sans-serif;
 }
-.mediumHealine{
+
+.mediumHealine {
   font-size: 28px;
   line-height: 36px;
   font-family: 'Poppins', sans-serif;
 }
-.mediumEmphasizedHeadline{
+
+.mediumEmphasizedHeadline {
   font-size: 28px;
   line-height: 36px;
   font-weight: 600;
   font-family: 'Poppins', sans-serif;
 }
-.smallHeadline{
+
+.smallHeadline {
   font-size: 24px;
   line-height: 32px;
   font-family: 'Poppins', sans-serif;
 }
-.smallEmphasizedHeadline{
+
+.smallEmphasizedHeadline {
   font-size: 24px;
   line-height: 32px;
   font-weight: 600;
@@ -69,36 +79,41 @@
 }
 
 //Title
-.largeTitle{
+.largeTitle {
   font-size: 22px;
   line-height: 26px;
   font-family: 'Poppins', sans-serif;
 }
-.largeEmphasizedTitle{
+
+.largeEmphasizedTitle {
   font-size: 22px;
   line-height: 26px;
   font-weight: 600;
   font-family: 'Poppins', sans-serif;
 }
-.mediumTitle{
+
+.mediumTitle {
   font-size: 16px;
   line-height: 24px;
   font-family: 'Poppins', sans-serif;
   text-wrap: nowrap;
 }
-.mediumEmphasizedTitle{
+
+.mediumEmphasizedTitle {
   font-size: 16px;
   line-height: 24px;
   font-weight: 600;
   font-family: 'Poppins', sans-serif;
   text-wrap: nowrap;
 }
-.smallTitle{
+
+.smallTitle {
   font-size: 14px;
   line-height: 20px;
   font-family: 'Poppins', sans-serif;
 }
-.smallEmphasizedTitle{
+
+.smallEmphasizedTitle {
   font-size: 14px;
   line-height: 20px;
   font-weight: 600;
@@ -106,34 +121,39 @@
 }
 
 //Body
-.largeBody{
+.largeBody {
   font-size: 16px;
   line-height: 24px;
   font-family: 'Poppins', sans-serif;
 }
-.largeEmphasizedBody{
+
+.largeEmphasizedBody {
   font-size: 16px;
   line-height: 24px;
   font-weight: 600;
   font-family: 'Poppins', sans-serif;
 }
-.mediumBody{
+
+.mediumBody {
   font-size: 14px;
   line-height: 20px;
   font-family: 'Poppins', sans-serif;
 }
-.mediumEmphasizedBody{
+
+.mediumEmphasizedBody {
   font-size: 14px;
   line-height: 20px;
   font-weight: 600;
   font-family: 'Poppins', sans-serif;
 }
-.smallBody{
+
+.smallBody {
   font-size: 12px;
   line-height: 16px;
   font-family: 'Poppins', sans-serif;
 }
-.smallEmphasizedBody{
+
+.smallEmphasizedBody {
   font-size: 12px;
   line-height: 16px;
   font-weight: 600;
@@ -141,36 +161,114 @@
 }
 
 //Title-Inter
-.largeTitleInter{
+.largeTitleInter {
   font-size: 22px;
   line-height: 26px;
   font-family: 'Inter', sans-serif;
 }
-.largeEmphasizedTitleInter{
+
+.largeEmphasizedTitleInter {
   font-size: 22px;
   line-height: 26px;
   font-weight: 600;
   font-family: 'Inter', sans-serif;
 }
-.mediumTitleInter{
+
+.mediumTitleInter {
   font-size: 16px;
   line-height: 24px;
   font-family: 'Inter', sans-serif;
 }
-.mediumEmphasizedTitleInter{
+
+.mediumEmphasizedTitleInter {
   font-size: 16px;
   line-height: 24px;
   font-weight: 600;
   font-family: 'Inter', sans-serif;
 }
-.smallTitlInter{
+
+.smallTitlInter {
   font-size: 14px;
   line-height: 20px;
   font-family: 'Inter', sans-serif;
 }
-.smallEmphasizedTitleInter{
+
+.smallEmphasizedTitleInter {
   font-size: 14px;
   line-height: 20px;
   font-weight: 600;
   font-family: 'Inter', sans-serif;
+}
+
+// ============================================
+// ⋆｡˚ ୨୧ ˚｡⋆ Utility ⋆｡˚ ୨୧ ˚｡⋆
+// ============================================
+.text-bold {
+  font-weight: 600 !important;
+}
+
+.accent-text {
+  color: #ED1C24;
+}
+
+.white-text {
+  color: white;
+}
+
+.gray-text {
+  color: #666;
+}
+
+// ============================================
+// ⋆｡˚ ୨୧ ˚｡⋆ Header (Bebas Neue) ⋆｡˚ ୨୧ ˚｡⋆
+// ============================================
+
+// Large Header (Hero)
+.header-lg {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(40px, 8vw, 100px);
+  line-height: 1;
+  margin: 0;
+}
+
+// Medium Header (Section Titles)
+.header-md {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(32px, 5vw, 56px);
+  line-height: 1.1;
+  margin: 0;
+}
+
+// Small Header (Card Titles, Badges)
+.header-sm {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(24px, 3vw, 32px);
+  line-height: 1.2;
+  margin: 0;
+}
+
+
+// ============================================
+// ⋆｡˚ ୨୧ ˚｡⋆ Body (Poppins) ⋆｡˚ ୨୧ ˚｡⋆
+// ============================================
+
+// Large Text (Subtitles, Lead)
+.text-lg {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.4;
+}
+
+// Medium Text (Standard Body)
+.text-md {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(14px, 1.5vw, 16px);
+  line-height: 1.6;
+}
+
+// Small Text (Captions, Details)
+.text-sm {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(12px, 1.2vw, 14px);
+  line-height: 1.5;
 }

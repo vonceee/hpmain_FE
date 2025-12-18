@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { MainHeader } from "src/app/components/main-header/main-header";
 import { MainFooter } from "src/app/components/main-footer/main-footer";
+import { TitleBadge } from 'src/app/components/title-badge/title-badge';
 import { CommonModule } from '@angular/common';
 
 interface TimelineEvent {
@@ -12,14 +13,14 @@ interface TimelineEvent {
 
 @Component({
   selector: 'about-us',
-  imports: [MainHeader, MainFooter, CommonModule],
+  imports: [MainHeader, MainFooter, CommonModule, TitleBadge],
   templateUrl: './about-us.html',
   styleUrl: './about-us.scss',
 })
 export class aboutUs {
   tab = signal<number>(0)
 
-    events: TimelineEvent[] = [
+  events: TimelineEvent[] = [
     {
       year: '1994',
       title: 'The Beginning',
