@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
 // ============================================
@@ -83,4 +85,177 @@ $breakpoint-mobile: 768px;
   font-family: 'Poppins', sans-serif;
   font-size: clamp(12px, 1.2vw, 14px);
   line-height: 1.5;
+}
+//Display
+.xxldisplay{
+  font-size: 100px;
+  line-height: 80px;
+  font-family: 'Bebas Neue', sans-serif;
+}
+.xldisplay{
+  font-size: 80px;
+  line-height: 64px;
+  font-family: 'Bebas Neue', sans-serif;
+}
+.ldisplay{
+  font-size: 56px;
+  line-height: 64px;
+  font-family: 'Bebas Neue', sans-serif;
+}
+.mdisplay{
+  font-size: 42px;
+  line-height: 52px;
+  font-family: 'Bebas Neue', sans-serif;
+}
+.sdisplay{
+  font-size: 32px;
+  line-height: 44px;
+  font-family: 'Bebas Neue', sans-serif;
+}
+.xsdisplay{
+  font-size: 28px;
+  line-height: 36px;
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+//Headline
+.largeHeadline{
+  font-size: 32px;
+  line-height: 40px;
+  font-family: 'Poppins', sans-serif;
+}
+.largeEmphasizedHealine{
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+}
+.mediumHealine{
+  font-size: 28px;
+  line-height: 36px;
+  font-family: 'Poppins', sans-serif;
+}
+.mediumEmphasizedHeadline{
+  font-size: 28px;
+  line-height: 36px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+}
+.smallHeadline{
+  font-size: 24px;
+  line-height: 32px;
+  font-family: 'Poppins', sans-serif;
+}
+.smallEmphasizedHeadline{
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+}
+
+//Title
+.largeTitle{
+  font-size: 22px;
+  line-height: 26px;
+  font-family: 'Poppins', sans-serif;
+}
+.largeEmphasizedTitle{
+  font-size: 22px;
+  line-height: 26px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+}
+.mediumTitle{
+  font-size: 16px;
+  line-height: 24px;
+  font-family: 'Poppins', sans-serif;
+  text-wrap: nowrap;
+}
+.mediumEmphasizedTitle{
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  text-wrap: nowrap;
+}
+.smallTitle{
+  font-size: 14px;
+  line-height: 20px;
+  font-family: 'Poppins', sans-serif;
+}
+.smallEmphasizedTitle{
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+}
+
+//Body
+.largeBody{
+  font-size: 16px;
+  line-height: 24px;
+  font-family: 'Poppins', sans-serif;
+}
+.largeEmphasizedBody{
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+}
+.mediumBody{
+  font-size: 14px;
+  line-height: 20px;
+  font-family: 'Poppins', sans-serif;
+}
+.mediumEmphasizedBody{
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+}
+.smallBody{
+  font-size: 12px;
+  line-height: 16px;
+  font-family: 'Poppins', sans-serif;
+}
+.smallEmphasizedBody{
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+}
+
+//Title-Inter
+.largeTitleInter{
+  font-size: 22px;
+  line-height: 26px;
+  font-family: 'Inter', sans-serif;
+}
+.largeEmphasizedTitleInter{
+  font-size: 22px;
+  line-height: 26px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+}
+.mediumTitleInter{
+  font-size: 16px;
+  line-height: 24px;
+  font-family: 'Inter', sans-serif;
+}
+.mediumEmphasizedTitleInter{
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+}
+.smallTitlInter{
+  font-size: 14px;
+  line-height: 20px;
+  font-family: 'Inter', sans-serif;
+}
+.smallEmphasizedTitleInter{
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
 }
