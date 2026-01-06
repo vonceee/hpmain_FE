@@ -1,0 +1,23 @@
+<div class="side-buttons-container">
+
+    <a href="https://e-hytec.com/" target="_blank" class="side-btn" (mouseenter)="setActive('cart')"
+        (mouseleave)="clearActive()">
+        <div class="side-btn-inner" [class.is-active]="active === 'cart'">
+            <div class="icon-wrapper">
+                <i class="bi bi-cart-fill"></i>
+            </div>
+            <span class="btn-text">E-HYTEC</span>
+        </div>
+    </a>
+
+    <a href="https://optimizationworkplan.com/" class="side-btn" (mouseenter)="setActive('chart')"
+        (mouseleave)="clearActive()">
+        <div class="side-btn-inner" [class.is-active]="active === 'chart'">
+            <div class="icon-wrapper">
+                <i class="bi bi-bar-chart-fill"></i>
+            </div>
+            <span class="btn-text">OWP</span>
+        </div>
+    </a>
+
+</div>

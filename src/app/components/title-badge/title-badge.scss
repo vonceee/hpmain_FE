@@ -1,0 +1,30 @@
+@use "text-display";
+
+.title-badge-wrapper {
+    // Use wrapper class to avoid conflicts with host selector spacing
+    width: max-content;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    border: 1px solid transparent; // Helps with box sizing if needed
+    z-index: 0;
+}
+
+.ldisplay {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    z-index: 2; // Text above bar
+}
+
+.red-bar {
+    width: 105%;
+    height: 55%;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    border-radius: 4px;
+    z-index: -1; // Bar below text
+    background: linear-gradient(to right, #ED1C24, #871015);
+}

@@ -1,0 +1,35 @@
+@use "colors" as color;
+
+:host {
+    display: block;
+    width: 100%;
+}
+
+.container-box {
+    position: relative;
+    border-radius: 12px;
+    padding: 24px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid color.$secondaryAlpha10;
+    background-color: color.$secondaryAlpha5; // Default (Glass Like)
+
+    // ensure content fits
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+
+    // Variant: Red
+    &.red {
+        border-color: rgba(237, 28, 35, 0.35);
+        background: linear-gradient(135deg, rgba(237, 28, 36, 0.15), rgba(237, 28, 36, 0.05));
+        backdrop-filter: blur(20px) saturate(120%);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    // Variant: Dark
+    &.dark {
+        background-color: color.$container;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+}
