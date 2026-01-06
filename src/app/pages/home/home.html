@@ -1,25 +1,49 @@
 <main-header></main-header>
-<main style="width: 100%; margin: 0; padding: 0; position: absolute; top: 0; left: 0;">
-  <!-- Background -->
-  <div style="width: 100%; padding: 0; margin: 0">
-    <img src="assets/images/home/TopBG.png" style="width:100%; display: block;" draggable="false">
-    <div class="headline">
-      <p class="xxldisplay" style="margin:0 0 2vh 0; text-wrap:inherit;">RELIABLE PARTNER AND SOLUTION PROVIDER</p>
-      <p class="largeEmphasizedTitle"  style="margin:0;">The leading industrial and educational solutions provider in the Philippines</p>
-    </div>
-  </div>
 
-  <div style="height:max-content; width:100%; display:flex; justify-content:center; position:relative;padding: 0 0 10vh 0;">
-    <div style="position:absolute; z-index:0; top:0;">
-      <img src="assets/images/home/2ndBG.png" style="width: 100%;" draggable="false">
+<main>
+  <!-- ============================================ -->
+  <!-- HERO SECTION -->
+  <!-- ============================================ -->
+  <section class="hero-section">
+    <img
+      src="/assets/images/home/home-top-bg.png"
+      alt="Hero Background"
+      class="hero-bg"
+      draggable="false"
+    />
+    <div class="headline">
+      <p class="header-lg" style="margin: 0">RELIABLE PARTNER AND SOLUTION PROVIDER</p>
+      <p class="text-lg text-bold icon-text" style="margin: 0; text-align: center">
+        The leading industrial and educational solutions provider in the Philippines
+      </p>
     </div>
-      <div class="centermain">
-        <div class="center">
-          <div class="centervideo video-container">
-            <video id="myVideo" preload="none" poster="assets/images/home/tumbnail.png">
-              <source src="assets/videos/HytecMainVideo.mp4" type="video/mp4">
-            </video>
-            <div class="circle-play" id="playButton">
+  </section>
+
+  <!-- ============================================ -->
+  <!-- WHO WE ARE SECTION -->
+  <!-- ============================================ -->
+  <section class="who_we_are-section">
+    <img
+      src="/assets/images/home/home-body-bg.png"
+      class="section-bg"
+      draggable="false"
+      alt="Background"
+    />
+
+    <div class="who_we_are-container">
+      <div class="who_we_are-box">
+        <!-- Company Logo with Looping Video -->
+        <div class="company-logo-container">
+          <div class="logo-circle" id="videoThumbnail">
+            <!-- Video Thumbnail/Poster -->
+            <img
+              src="/assets/images/home/thumbnail.png"
+              alt="Video Thumbnail"
+              class="video-thumbnail"
+            />
+
+            <!-- Play Button Overlay -->
+            <div class="play-button-overlay">
               <svg viewBox="0 0 512 512" class="play-icon">
                 <circle cx="256" cy="256" r="240" fill="url(#grad)" />
                 <polygon points="200,150 380,256 200,362" fill="white" opacity="0.9" />
@@ -32,250 +56,290 @@
               </svg>
             </div>
           </div>
-
-          <div class="centerdesc">
-            <div style="width:min-content; height:min-content; ">
-              <div class="title-badge">
-                <p class="ldisplay">WHO WE ARE</p>
-                <div class="red-bar">
-                </div>
-              </div>
-            </div>
-            <p class="mediumTitle" style="white-space: pre-line;">
-              We started this journey with only the desire to build a better industry and future. Now, the responsibility we have on our hands is more than what we have ever imagined and we are prepared to face the challenges no matter how heavy or difficult it may be.
-              <br><br>The company's own endeavors are not the only ideals held important. Hytec Power Inc wants to ensure that the help provided serves to inspire Filipino to strive for their own goals in developing a prosperous and globally competitive society.
-              <br><br>We took the opportunity to provide further assistance to educational institutions in making their programs relevant with industry needs. Providing new technologies, pioneering new industrial processes, and 21st didactic practices.
-            </p>
-            <button class="mediumEmphasizedTitle readmore">
-              Read More
-            </button>
-          </div>
-          <img src="assets/images/home/Subtract.png" style="z-index:0; position:absolute; right:-3vw; top:-0.8vh; width:14vw;" draggable="false">
         </div>
-        <img src="assets/images/home/Container.png" style="z-index:0; position:absolute; left:-4vw; top:-9.5vh; width:13vw;" draggable="false">
-        <img src="assets/images/home/Large.png" style="z-index:0; position:absolute; left:-7vw; bottom:0vh; width:38.6vw;" draggable="false">
+
+        <div class="title-badge-container">
+          <title-badge title="Who We Are"></title-badge>
+
+          <p class="text-md">
+            We started this journey with only the desire to build a better industry and future. Now,
+            the responsibility we have on our hands is more than what we have ever imagined and we
+            are prepared to face the challenges no matter how heavy or difficult it may be.
+          </p>
+
+          <p class="who_we_are-description">
+            The company's own endeavors are not the only ideals held important. Hytec Power Inc
+            wants to ensure that the help provided serves to inspire Filipino to strive for their
+            own goals in developing a prosperous and globally competitive society.
+          </p>
+
+          <p class="who_we_are-description">
+            We took the opportunity to provide further assistance to educational institutions in
+            making their programs relevant with industry needs. Providing new technologies,
+            pioneering new industrial processes, and 21st didactic practices.
+          </p>
+          <div>
+            <button class="btn btn-md btn-outline-red-fill">READ MORE</button>
+          </div>
+        </div>
+
+        <!-- Decorative Images -->
+        <img src="/assets/images/home/Subtract.png" class="decor-img-1" draggable="false" alt="" />
       </div>
+
+      <img src="/assets/images/home/Container.png" class="decor-img-2" draggable="false" alt="" />
+      <img src="/assets/images/home/Large.png" class="decor-img-3" draggable="false" alt="" />
     </div>
+  </section>
 
-  <div class="achievement">
-    <div class="achievementMain">
-
-      <!-- Loop through the list -->
+  <!-- ============================================ -->
+  <!-- ACHIEVEMENT SECTION -->
+  <!-- ============================================ -->
+  <section class="achievement-section">
+    <div class="achievement-container">
       <div *ngFor="let item of achievementList">
-        <!-- Bind the value (e.g., 30+) -->
-        <p class="xxldisplay accent-text">{{ item.value }}</p>
-
-        <!-- Bind the label (e.g., Years of Excellence) -->
-        <p class="smallEmphasizedHeadline">{{ item.label }}</p>
+        <p class="header-lg accent-text">{{ item.value }}</p>
+        <p class="text-lg text-bold text-center">{{ item.label }}</p>
       </div>
-
     </div>
-  </div>
+  </section>
 
-  <div style="width:100%; height:max-content; display: flex; justify-content: center; align-items: center;padding: 10vh 0; position: relative;">
+  <!-- ============================================ -->
+  <!-- NEWS SECTION -->
+  <!-- ============================================ -->
+  <section class="news-section">
+    <div class="news-container">
+      <div class="news-header">
+        <div class="title-badge-container">
+          <title-badge title="News & Updates"></title-badge>
+        </div>
+        <button class="view-all-btn">VIEW ALL</button>
+      </div>
 
-    <img src="assets/images/home/Ray.png" style="opacity:50%; position:absolute; width:60vw; top: -35vh; left:-25vw; z-index:-2;">
-    <div class="content">
+      <div class="news-grid">
+        <div class="featured-news">
+          <div class="featured-image-wrapper">
+            <img
+              [src]="featuredNews.image"
+              [alt]="featuredNews.title"
+              class="featured-img"
+              draggable="false"
+            />
+            <div class="news-tag">FEATURED</div>
+          </div>
 
-      <!-- HEADER SECTION -->
-      <div class="contentTitle">
-        <div class="title-badge">
-          <p class="ldisplay">LATEST HPI NEWS</p>
-          <div class="red-bar"></div>
+          <div class="featured-content">
+            <span class="text-md accent-text">{{ featuredNews.date }}</span>
+            <h3 class="header-md news-title">{{ featuredNews.title }}</h3>
+            <p class="text-md news-desc">{{ featuredNews.description }}</p>
+            <button class="readmore-text-btn">READ MORE &rarr;</button>
+          </div>
+        </div>
+
+        <div class="latest-news-list">
+          <div class="news-item" *ngFor="let item of latestNewsList">
+            <div class="news-item-image">
+              <img [src]="item.image" [alt]="item.title" draggable="false" />
+            </div>
+            <div class="news-item-content">
+              <span class="text-sm accent-text">{{ item.date }}</span>
+              <h4 class="news-item-title text-lg text-bold">{{ item.title }}</h4>
+              <p class="news-item-desc text-sm">{{ item.description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonial-section" [style.background]="currentBackgroundStyle">
+    <div class="testimonial-container">
+      <div class="testimonial-header">
+        <div class="title-badge-container centered">
+          <title-badge title="Testimonials"></title-badge>
         </div>
       </div>
 
-      <!-- NEWS GRID -->
-      <div class="news-container">
+      <div class="carousel-section">
+        <div class="carousel-container">
+          <div class="testimonialTitle">colleges and universities testimonials</div>
 
-        <!-- LEFT COLUMN: Featured News -->
-        <div class="featured-column">
-          <img [src]="featuredNews.image" class="featured-img" alt="Featured News">
-
-          <p class="largeEmphasizedTitle mt-1">{{ featuredNews.title }}</p>
-          <p class="mediumBody mt-1">{{ featuredNews.date }}</p>
-          <hr>
-          <br>
-          <div class="largeBody mainNews">
-            {{ featuredNews.description }}
-          </div>
-
-          <div class="btn-container">
-            <button class="mediumEmphasizedTitle readmore">
-              Read More
-            </button>
-          </div>
-        </div>
-
-        <!-- RIGHT COLUMN: News List -->
-        <div class="list-column">
-
-          <!-- LOOP: This creates a block for every item in your .ts list -->
-          <div class="list-item" *ngFor="let news of latestNewsList">
-
-            <div class="list-img-wrapper">
-              <img [src]="news.image" class="full-img" alt="News Image">
+          <div
+            class="card"
+            *ngFor="let item of cardData; let i = index"
+            [ngClass]="getCardClass(i)"
+            (click)="getCardClass(i) !== 'active' ? goToCard(i) : null"
+          >
+            <div class="card-logo">
+              <img [src]="item.logo" alt="Partner Logo" draggable="false" />
             </div>
 
-            <div class="list-text-wrapper">
-              <div class="list-header">
-                <p class="mediumEmphasizedTitle title-spacing text-wrap">{{ news.title }}</p>
-                <p class="mediumBody date-spacing">{{ news.date }}</p>
+            <div class="quote-icon">“</div>
+
+            <div class="card-text">
+              <div class="card-main-text">
+                {{ item.text }}
+              </div>
+            </div>
+
+            <div class="card-company">
+              <div class="card-main-company">
+                {{ item.company }}
+              </div>
+            </div>
+          </div>
+
+          <button class="nav-btn prev-btn" (click)="prev()">&#10094;</button>
+          <button class="nav-btn next-btn" (click)="next()">&#10095;</button>
+
+          <div class="indicators">
+            <div
+              class="dot"
+              *ngFor="let item of cardData; let i = index"
+              [class.active]="i === activeIndex"
+              (click)="goToCard(i)"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="social-section">
+    <div class="social-bg-decor"></div>
+    <div class="social-container">
+      <div class="social-header">
+        <div class="title-badge-container centered">
+          <title-badge title="Stay Connected"></title-badge>
+        </div>
+        <p class="social-description text-md">
+          Follow us on our social media platforms for the latest updates, industrial news, and
+          upcoming events.
+        </p>
+      </div>
+
+      <div class="social-grid-mixed">
+        <div class="social-embed-card main-card">
+          <div class="embed-header">
+            <fa-icon [icon]="faFacebookF" class="fb-icon"></fa-icon>
+            <span>Official Page</span>
+          </div>
+          <div class="iframe-wrapper facebook-wrapper">
+            <iframe
+              src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fhytecpowerincorporated&tabs=timeline&width=500&height=800&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
+              width="100%"
+              height="100%"
+              style="border: none; overflow: hidden"
+              scrolling="no"
+              frameborder="0"
+              allowfullscreen="true"
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+            >
+            </iframe>
+          </div>
+        </div>
+
+        <div class="social-right-stack">
+          <div class="social-embed-card sub-card">
+            <div class="embed-header">
+              <fa-icon [icon]="faYoutube" class="yt-icon"></fa-icon>
+              <span>YouTube Channel</span>
+            </div>
+            <div class="iframe-wrapper">
+              <iframe
+                src="https://www.youtube.com/embed/cTTRrq_NlUs"
+                width="100%"
+                height="100%"
+                style="border: none; overflow: hidden"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen="true"
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+              >
+              </iframe>
+            </div>
+          </div>
+
+          <div class="social-embed-card sub-card linkedin-card">
+            <div class="embed-header">
+              <fa-icon [icon]="faLinkedinIn" class="li-icon"></fa-icon>
+              <span>Official LinkedIn</span>
+            </div>
+
+            <div class="linkedin-content">
+              <div class="li-logo-wrapper">
+                <img
+                  src="/assets/images/home/HytecLogo.png"
+                  alt="Hytec Power Inc"
+                  class="li-company-logo"
+                />
               </div>
 
-              <hr class="full-hr">
-
-          <br>
-              <div class="mediumBody news">
-                  {{ news.description }}
+              <div class="li-text-info">
+                <h4 class="li-name">Hytec Power Inc.</h4>
+                <p class="li-desc">
+                  Leading industrial and educational solutions provider in the Philippines.
+                </p>
               </div>
 
-              <div class="btn-container">
-                <button class="smallEmphasizedTitle smallreadmore">
-                  Read More
-                </button>
-              </div>
-            </div>
-
-          </div>
-          <!-- End Loop -->
-
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="carousel-section" [style.background-image]="currentBackgroundStyle">
-    <div class="carousel-container">
-
-      <div class="testimonialTitle">
-        colleges and universities testimonials
-      </div>
-      <!-- Looping through cardData -->
-      <div
-        class="card"
-        *ngFor="let item of cardData; let i = index"
-        [ngClass]="cardPositions[i]">
-
-        <!-- LOGO SECTION -->
-        <div class="card-logo">
-          <!-- Siguraduhing tama ang path sa assets folder mo -->
-          <img [src]="item.logo" alt="Partner Logo">
-        </div>
-
-        <!-- QUOTE ICON (Galing sa HTML mo) -->
-        <div class="xldisplay">“</div>
-
-        <!-- TEXT CONTENT -->
-        <div class="card-text largeTitle">
-          <div class="card-main-text">
-            {{ item.text }}
-          </div>
-        </div>
-
-        <div class="card-company largeEmphasizedTitle">
-          <div class="card-main-company">
-            {{ item.company }}
-          </div>
-        </div>
-      </div>
-
-      <!-- BUTTONS -->
-      <button class="nav-btn prev-btn" (click)="prev()">&#10094;</button>
-      <button class="nav-btn next-btn" (click)="next()">&#10095;</button>
-
-      <!-- INDICATORS -->
-      <div class="indicators">
-        <div
-          class="dot"
-          *ngFor="let item of cardData; let i = index"
-          [class.active]="cardPositions[i] === 'active'"
-          (click)="goToCard(i)">
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="beMore">
-    <div class="beMore-container">
-      <div class="beMore-main">
-        <div class="title-badge ldisplay">
-          <p class="ldisplay">BE MORE UPDATED</p>
-          <div class="red-bar"></div>
-        </div>
-        <div class="beMore-content">
-
-          <div class="facebook-mobile">
-            <div class="fb-wrapper">
-              <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fhytecpowerincorporated&tabs=timeline&width=500&height=1500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="500" height="1500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-            </div>
-          </div>
-
-          <div class="other-socmed">
-            <div class="youtube">
-              <iframe width="100%" height="100%" src="https://www.youtube.com/embed/cTTRrq_NlUs?si=IZbqa1s4ZGwFFUtH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            </div>
-            <div class="instagram">
-              <a href="https://www.instagram.com/hytecpowerinc_official" target="_blank" rel="noopener noreferrer" class="cursor"><img style="width:100%; height:auto;" src="assets/images/home/instagram.png"></a>
-              <!-- <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a style="border: 1px solid white;" href="https://www.instagram.com/hytecpowerinc_official/" data-iframely-url="https://iframely.net/UED2rJFN?theme=dark">asfdghm,.mnbg</a></div></div><script async src="https://iframely.net/embed.js"></script> -->
-            </div>
-            <div class="linkedin">
-              <a style="margin:0; padding:0;" href="https://www.linkedin.com/company/hytec-power" target="_blank" rel="noopener noreferrer" class="cursor"><img style="width:100%; height:auto;" src="assets/images/home/linkedin-social1.png" alt=""></a>
+              <a
+                href="https://ph.linkedin.com/company/hytec-power"
+                target="_blank"
+                class="li-follow-btn"
+              >
+                View Profile &rarr;
+              </a>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
+</main>
 
 <main-footer></main-footer>
-  <script>
-      const video = document.getElementById('myVideo');
-      const playButton = document.getElementById('playButton');
 
-      playButton.addEventListener('click', () => {
-        video.setAttribute('controls', '');
-        video.play();
-        playButton.style.display = 'none';
+<script>
+  // Video Modal Functionality
+  document.addEventListener('DOMContentLoaded', function () {
+    const videoThumbnail = document.getElementById('videoThumbnail');
+    const videoModal = document.getElementById('videoModal');
+    const modalOverlay = document.getElementById('modalOverlay');
+    const closeVideoBtn = document.getElementById('closeVideoBtn');
+    const modalVideo = document.getElementById('modalVideo');
+
+    // open video modal
+    if (videoThumbnail) {
+      videoThumbnail.addEventListener('click', function () {
+        videoModal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // prevent background scrolling
+        modalVideo.play();
       });
+    }
 
-      video.addEventListener('pause', () => {
-        playButton.style.display = 'block';
-      });
+    // close video modal function
+    function closeModal() {
+      videoModal.classList.remove('active');
+      document.body.style.overflow = ''; // restore scrolling
+      modalVideo.pause();
+      modalVideo.currentTime = 0; // reset video to beginning
+    }
 
+    // close on X button click
+    if (closeVideoBtn) {
+      closeVideoBtn.addEventListener('click', closeModal);
+    }
 
-      let currentSlide = 0;
-      const track = document.querySelector('.carousel-track');
-      const indicators = document.querySelectorAll('.indicator');
-      const totalSlides = 3;
-      let autoplayInterval;
+    // close on overlay click
+    if (modalOverlay) {
+      modalOverlay.addEventListener('click', closeModal);
+    }
 
-      function updateCarousel() {
-          const offset = -currentSlide * 100;
-          track.style.transform = `translateX(${offset}%)`;
-
-          indicators.forEach((indicator, index) => {
-              indicator.classList.toggle('active', index === currentSlide);
-          });
+    // close on ESC key
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && videoModal.classList.contains('active')) {
+        closeModal();
       }
-      function nextSlide() {
-          currentSlide = (currentSlide + 1) % totalSlides;
-          updateCarousel();
-          resetAutoplay();
-      }
-
-      function previousSlide() {
-          currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-          updateCarousel();
-          resetAutoplay();
-      }
-
-      function goToSlide(index) {
-          currentSlide = index;
-          updateCarousel();
-          resetAutoplay();
-      }
-  </script>
-</main>
+    });
+  });
+</script>

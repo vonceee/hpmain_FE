@@ -1,6 +1,93 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet');
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+// ============================================
+// BREAKPOINTS
+// ============================================
+$breakpoint-mobile: 768px;
+
+@mixin respond-to($breakpoint) {
+  @media (max-width: $breakpoint) {
+    @content;
+  }
+}
+
+// ============================================
+// UTILITY CLASSES
+// ============================================
+.text-bold {
+  font-weight: 600 !important;
+}
+
+.accent-text {
+  color: #ED1C24;
+}
+
+.white-text {
+  color: white;
+}
+
+.gray-text {
+  color: #666;
+}
+
+// ============================================
+// HEADER STYLES (Bebas Neue)
+// ============================================
+
+// Large Header (Hero)
+.header-lg {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(40px, 8vw, 100px);
+  line-height: 1;
+  margin: 0;
+}
+
+// Medium Header (Section Titles)
+.header-md {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(32px, 5vw, 56px);
+  line-height: 1.1;
+  margin: 0;
+}
+
+// Small Header (Card Titles, Badges)
+.header-sm {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(24px, 3vw, 32px);
+  line-height: 1.2;
+  margin: 0;
+}
+
+
+// ============================================
+// BODY TEXT STYLES (Poppins)
+// ============================================
+
+// Large Text (Subtitles, Lead)
+.text-lg {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.4;
+}
+
+// Medium Text (Standard Body)
+.text-md {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(14px, 1.5vw, 16px);
+  line-height: 1.6;
+}
+
+// Small Text (Captions, Details)
+.text-sm {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(12px, 1.2vw, 14px);
+  line-height: 1.5;
+}
+
 //Display
 .xxldisplay{
   font-size: 100px;

@@ -1,0 +1,148 @@
+@use "colors" as color;
+
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+    box-sizing: border-box;
+    line-height: 1.5;
+    text-decoration: none;
+
+    &:active {
+        transform: scale(0.98);
+    }
+}
+
+.btn-full {
+    width: 100%;
+}
+
+// ============================================
+// SIZES
+// ============================================
+
+// Extra Small
+.btn-xs {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem; // 12px
+    border-radius: 0.25rem; // 4px
+}
+
+// Small
+.btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    border-radius: 0.375rem;
+}
+
+// Medium (Default)
+.btn-md {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 0.375rem;
+}
+
+// Large
+.btn-lg {
+    padding: 1rem 2rem;
+    font-size: 1.25rem;
+    border-radius: 0.5rem;
+}
+
+
+// ============================================
+// COLORS
+// ============================================
+
+/* Primary Red */
+.btn-primary {
+    background-color: color.$primary;
+    color: color.$white;
+
+    &:hover {
+        background-color: color.$primary400;
+        border-color: color.$primary400;
+    }
+}
+
+/* Dark Red */
+.btn-primary-dark {
+    background-color: color.$primarydark;
+    color: color.$white;
+
+    &:hover {
+        background-color: color.$primary500;
+    }
+}
+
+/* Grey (Disabled look) */
+.btn-secondary {
+    background-color: color.$secondary;
+    color: color.$white;
+
+    &:hover {
+        background-color: color.$secondary400;
+    }
+}
+
+/* Dark Grey */
+.btn-neutral {
+    background-color: color.$neutral;
+    color: color.$white;
+
+    &:hover {
+        background-color: color.$neutral700;
+    }
+}
+
+/* White Outline */
+.btn-outline-white {
+    background-color: transparent;
+    border: 1px solid color.$white;
+    color: color.$white;
+
+    &:hover {
+        background-color: color.$white;
+        color: color.$primary;
+    }
+}
+
+/* White Filled (Inverted) */
+.btn-white {
+    background-color: color.$white;
+    color: color.$primary;
+
+    &:hover {
+        background-color: color.$secondary100;
+    }
+}
+
+/* Dark Fill / Red Border / White Text */
+.btn-outline-red-fill {
+    background-color: color.$container;
+    border: 1px solid color.$primary;
+    color: color.$white;
+
+    &:hover {
+        background-color: color.$primary;
+        color: color.$white;
+    }
+}
+
+/*Dark Fill / Red Border / Red Text */
+.btn-outline-red-ghost {
+    background-color: color.$container;
+    border: 1px solid color.$primary;
+    color: color.$primary;
+    opacity: 0.8;
+
+    &:hover {
+        background-color: color.$primary;
+        color: color.$white;
+        opacity: 1;
+    }
+}
