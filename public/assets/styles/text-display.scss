@@ -1,176 +1,86 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Bebas+Neue&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
-//Display
-.xxldisplay{
-  font-size: 100px;
-  line-height: 80px;
-  font-family: 'Bebas Neue', sans-serif;
-}
-.xldisplay{
-  font-size: 80px;
-  line-height: 64px;
-  font-family: 'Bebas Neue', sans-serif;
-}
-.ldisplay{
-  font-size: 56px;
-  line-height: 64px;
-  font-family: 'Bebas Neue', sans-serif;
-}
-.mdisplay{
-  font-size: 42px;
-  line-height: 52px;
-  font-family: 'Bebas Neue', sans-serif;
-}
-.sdisplay{
-  font-size: 32px;
-  line-height: 44px;
-  font-family: 'Bebas Neue', sans-serif;
-}
-.xsdisplay{
-  font-size: 28px;
-  line-height: 36px;
-  font-family: 'Bebas Neue', sans-serif;
+// ============================================
+// BREAKPOINTS
+// ============================================
+$breakpoint-mobile: 768px;
+
+@mixin respond-to($breakpoint) {
+  @media (max-width: $breakpoint) {
+    @content;
+  }
 }
 
-//Headline
-.largeHeadline{
-  font-size: 32px;
-  line-height: 40px;
-  font-family: 'Poppins', sans-serif;
-}
-.largeEmphasizedHealine{
-  font-size: 32px;
-  line-height: 40px;
-  font-weight: 600;
-  font-family: 'Poppins', sans-serif;
-}
-.mediumHealine{
-  font-size: 28px;
-  line-height: 36px;
-  font-family: 'Poppins', sans-serif;
-}
-.mediumEmphasizedHeadline{
-  font-size: 28px;
-  line-height: 36px;
-  font-weight: 600;
-  font-family: 'Poppins', sans-serif;
-}
-.smallHeadline{
-  font-size: 24px;
-  line-height: 32px;
-  font-family: 'Poppins', sans-serif;
-}
-.smallEmphasizedHeadline{
-  font-size: 24px;
-  line-height: 32px;
-  font-weight: 600;
-  font-family: 'Poppins', sans-serif;
+// ============================================
+// UTILITY CLASSES
+// ============================================
+.text-bold {
+  font-weight: 600 !important;
 }
 
-//Title
-.largeTitle{
-  font-size: 22px;
-  line-height: 26px;
-  font-family: 'Poppins', sans-serif;
-}
-.largeEmphasizedTitle{
-  font-size: 22px;
-  line-height: 26px;
-  font-weight: 600;
-  font-family: 'Poppins', sans-serif;
-}
-.mediumTitle{
-  font-size: 16px;
-  line-height: 24px;
-  font-family: 'Poppins', sans-serif;
-  text-wrap: nowrap;
-}
-.mediumEmphasizedTitle{
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 600;
-  font-family: 'Poppins', sans-serif;
-  text-wrap: nowrap;
-}
-.smallTitle{
-  font-size: 14px;
-  line-height: 20px;
-  font-family: 'Poppins', sans-serif;
-}
-.smallEmphasizedTitle{
-  font-size: 14px;
-  line-height: 20px;
-  font-weight: 600;
-  font-family: 'Poppins', sans-serif;
+.accent-text {
+  color: #ED1C24;
 }
 
-//Body
-.largeBody{
-  font-size: 16px;
-  line-height: 24px;
-  font-family: 'Poppins', sans-serif;
-}
-.largeEmphasizedBody{
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 600;
-  font-family: 'Poppins', sans-serif;
-}
-.mediumBody{
-  font-size: 14px;
-  line-height: 20px;
-  font-family: 'Poppins', sans-serif;
-}
-.mediumEmphasizedBody{
-  font-size: 14px;
-  line-height: 20px;
-  font-weight: 600;
-  font-family: 'Poppins', sans-serif;
-}
-.smallBody{
-  font-size: 12px;
-  line-height: 16px;
-  font-family: 'Poppins', sans-serif;
-}
-.smallEmphasizedBody{
-  font-size: 12px;
-  line-height: 16px;
-  font-weight: 600;
-  font-family: 'Poppins', sans-serif;
+.white-text {
+  color: white;
 }
 
-//Title-Inter
-.largeTitleInter{
-  font-size: 22px;
-  line-height: 26px;
-  font-family: 'Inter', sans-serif;
+.gray-text {
+  color: #666;
 }
-.largeEmphasizedTitleInter{
-  font-size: 22px;
-  line-height: 26px;
-  font-weight: 600;
-  font-family: 'Inter', sans-serif;
+
+// ============================================
+// HEADER STYLES (Bebas Neue)
+// ============================================
+
+// Large Header (Hero)
+.header-lg {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(40px, 8vw, 100px);
+  line-height: 1;
+  margin: 0;
 }
-.mediumTitleInter{
-  font-size: 16px;
-  line-height: 24px;
-  font-family: 'Inter', sans-serif;
+
+// Medium Header (Section Titles)
+.header-md {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(32px, 5vw, 56px);
+  line-height: 1.1;
+  margin: 0;
 }
-.mediumEmphasizedTitleInter{
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 600;
-  font-family: 'Inter', sans-serif;
+
+// Small Header (Card Titles, Badges)
+.header-sm {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(24px, 3vw, 32px);
+  line-height: 1.2;
+  margin: 0;
 }
-.smallTitlInter{
-  font-size: 14px;
-  line-height: 20px;
-  font-family: 'Inter', sans-serif;
+
+
+// ============================================
+// BODY TEXT STYLES (Poppins)
+// ============================================
+
+// Large Text (Subtitles, Lead)
+.text-lg {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.4;
 }
-.smallEmphasizedTitleInter{
-  font-size: 14px;
-  line-height: 20px;
-  font-weight: 600;
-  font-family: 'Inter', sans-serif;
+
+// Medium Text (Standard Body)
+.text-md {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(14px, 1.5vw, 16px);
+  line-height: 1.6;
+}
+
+// Small Text (Captions, Details)
+.text-sm {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(12px, 1.2vw, 14px);
+  line-height: 1.5;
 }

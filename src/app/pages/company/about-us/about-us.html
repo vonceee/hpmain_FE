@@ -1,273 +1,608 @@
 <main-header></main-header>
-<div style="width:100%; position:relative;">
-  <img style="width:100%; height:auto; z-index:-1;" src="assets/images/aboutus/aboutusBG.png" draggable="false" alt="">
-  <img style="opacity:23%; width:60vw; position: absolute; top:-35vh; left:-20vw; z-index:0;" src="assets/images/aboutus/spot2.png" draggable="false" alt="">
-  <img style="opacity:13%; width:50vw; position: absolute; top:1vh; right:8vw; z-index:0;" src="assets/images/aboutus/spot2.png" draggable="false" alt="">
-  <div style="gap:3vh; position:absolute; color:white; left:50%; top:50%; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center;">
-    <div class="since">
-      <p class="largeBody">Since 1994</p>
+
+<main class="main-container">
+  <section class="hero-section">
+    <div class="hero-content">
+      <span class="text date-pill">Since 1994</span>
+      <h1>HYTEC POWER INCORPORATED</h1>
+      <p class="subtitle">Empowering Industrial and Educational Solutions for Over 30 years</p>
     </div>
-    <div class="headline" style="display: flex; flex-direction: column; align-items: center; z-index: 100;">
-      <p class="xxldisplay hero-title" style="margin:0 0 2vh 0; text-wrap:inherit;">HYTEC POWER INCORPORATED</p>
-      <p class="largeEmphasizedTitle"  style="margin:0;">Empowering Industrial and Educational Solutions for Over 30 years</p>
+  </section>
+</main>
+
+<section class="nav-tabs-container">
+  <div class="tabs-wrapper">
+    <div class="nav-pill" [style.left]="indicatorLeft()" [style.width]="indicatorWidth()"></div>
+
+    @for (item of navTabs; track item.id) {
+    <button #navBtn [class.active]="tab() == item.id" (click)="setTab(item.id)">
+      <i [class]="item.icon" style="color: white"></i>
+      <span>{{ item.label }}</span>
+    </button>
+    }
+  </div>
+</section>
+
+<section class="content-container">
+  @if (tab() == 0) {
+  <title-badge title="Our Journey"></title-badge>
+  <p class="text-md about_us-subtitle">
+    From humble beginnings to becoming the Philippines' leading provider of industrial and
+    educational solutions
+  </p>
+  <div class="timeline-container">
+    <div class="timeline-line"></div>
+
+    <div class="timeline-events">
+      <div
+        *ngFor="let event of events; let i = index"
+        class="timeline-item"
+        [ngClass]="event.position"
+      >
+        <container-box variant="dark">
+          <div class="timeline-content-layout">
+            <div class="text-md timeline-year">{{ event.year }}</div>
+            <div class="text-lg">{{ event.title }}</div>
+            <div class="text-md timeline-description">{{ event.description }}</div>
+          </div>
+        </container-box>
+
+        <div class="timeline-dot"></div>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="aboutus-content">
-  <div class="about-main">
-    <div class="body-nav">
-      <button
-        class="journey-btn"
-        [class.active]="tab() == 0"
-        (click)="tab.set(0)">
-        <img src="assets/images/aboutus/journey-icon.svg" alt="">
-        <span class="mediumEmphasizedTitle">Our Journey</span>
-      </button>
-      <button
-        class="award-btn"
-        [class.active]="tab() == 1"
-        (click)="tab.set(1)">
-        <img src="assets/images/aboutus/award-icon.svg" alt="">
-        <span class="mediumEmphasizedTitle">Awards and Achievements</span>
-      </button>
-      <button
-        class="ceo-btn"
-        [class.active]="tab() == 2"
-        (click)="tab.set(2)">
-        <img src="assets/images/aboutus/ceo-icon.svg" alt="">
-        <span class="mediumEmphasizedTitle">President & CEO</span>
-      </button>
-      <button
-        class="program-btn"
-        [class.active]="tab() == 3"
-        (click)="tab.set(3)">
-        <img src="assets/images/aboutus/program-icon.svg" alt="">
-        <span class="mediumEmphasizedTitle">Programs</span>
-      </button>
-      <button
-        class="partner-btn"
-        [class.active]="tab() == 4"
-        (click)="tab.set(4)">
-        <img src="assets/images/aboutus/partner-icon.svg" alt="">
-        <span class="mediumEmphasizedTitle">Partnerships</span>
-      </button>
-      <button
-        class="mission-btn"
-        [class.active]="tab() == 5"
-        (click)="tab.set(5)">
-        <img src="assets/images/aboutus/mission-icon.svg" alt="">
-        <span class="mediumEmphasizedTitle">Mission and Vision</span>
-      </button>
+  <section class="distributorship-container">
+    <title-badge title="Gain Exclusive Distributorship"></title-badge>
+    <p class="text-md about_us-subtitle">
+      Continuing to shape the future of technical education with cutting-edge technology and
+      strategic partnerships.
+    </p>
+    <div class="distributorship-logos">
+      <div class="column1">
+        <a href="https://amatrol.com" target="_blank">
+          <img src="assets/images/aboutus/distributionship/amatrol.png" alt="Amatrol" />
+        </a>
+        <a href="https://www.milwaukeetool.com" target="_blank">
+          <img src="assets/images/aboutus/distributionship/milwaukee.png" alt="Milwaukee Tool" />
+        </a>
+        <a href="https://www.snapon.com" target="_blank">
+          <img src="assets/images/aboutus/distributionship/snapon.png" alt="Snap-on" />
+        </a>
+      </div>
+      <div class="column2">
+        <a href="https://www.tagheuer.com" target="_blank">
+          <img src="assets/images/aboutus/distributionship/tag.png" alt="TAG Heuer" />
+        </a>
+        <a href="https://www.chestermachinetools.com" target="_blank">
+          <img
+            src="assets/images/aboutus/distributionship/chester.png"
+            alt="Chester Machine Tools"
+          />
+        </a>
+        <a href="https://www.unisonindustries.com" target="_blank">
+          <img src="assets/images/aboutus/distributionship/unison.png" alt="Unison Industries" />
+        </a>
+        <a href="https://laerdal.com" target="_blank">
+          <img src="assets/images/aboutus/distributionship/laerdal.png" alt="Laerdal Medical" />
+        </a>
+      </div>
+      <div class="column3">
+        <a href="https://www.nord-lock.com" target="_blank">
+          <img src="assets/images/aboutus/distributionship/nordlock.png" alt="Nord-Lock Group" />
+        </a>
+        <a href="https://www.doriantool.com" target="_blank">
+          <img src="assets/images/aboutus/distributionship/dorian.png" alt="Dorian Tool" />
+        </a>
+        <a href="https://www.simlog.com" target="_blank">
+          <img src="assets/images/aboutus/distributionship/simlog.png" alt="Simlog" />
+        </a>
+        <a href="https://seaberyat.com/en/soldamatic" target="_blank">
+          <img src="assets/images/aboutus/distributionship/soldamatic.png" alt="Soldamatic" />
+        </a>
+      </div>
+      <div class="column4">
+        <a href="https://www.norbar.com" target="_blank">
+          <img src="assets/images/aboutus/distributionship/norbar.png" alt="Norbar" />
+        </a>
+        <a href="https://geobit-instruments.com" target="_blank">
+          <img src="assets/images/aboutus/distributionship/geobit.png" alt="Geobit Instruments" />
+        </a>
+        <a href="https://www.aamc.org" target="_blank">
+          <img src="assets/images/aboutus/distributionship/amos.png" alt="AAMC" />
+        </a>
+        <a href="https://www.americansaw.com" target="_blank">
+          <img src="assets/images/aboutus/distributionship/american.png" alt="American Saw" />
+        </a>
+      </div>
+      <div class="column5">
+        <a href="https://www.chicago-pneumatic.com" target="_blank">
+          <img src="assets/images/aboutus/distributionship/chicago.png" alt="Chicago Pneumatic" />
+        </a>
+        <a href="https://new.abb.com" target="_blank">
+          <img src="assets/images/aboutus/distributionship/abb.png" alt="ABB" />
+        </a>
+        <a href="https://www.utest.com.tr/en" target="_blank">
+          <img src="assets/images/aboutus/distributionship/utest.png" alt="Utest" />
+        </a>
+        <a href="https://www.hypertherm.com" target="_blank">
+          <img src="assets/images/aboutus/distributionship/hypertherm.png" alt="Hypertherm" />
+        </a>
+      </div>
+      <div class="column6">
+        <a href="https://www.aamc.org" target="_blank">
+          <img src="assets/images/aboutus/distributionship/aamc.png" alt="AAMC" />
+        </a>
+        <a href="https://www.wartsila.com" target="_blank">
+          <img src="assets/images/aboutus/distributionship/wartsila.png" alt="Wärtsilä" />
+        </a>
+        <a href="https://www.anylogic.com" target="_blank">
+          <img src="assets/images/aboutus/distributionship/anylogic.png" alt="AnyLogic" />
+        </a>
+        <a href="https://www.ewm-group.com" target="_blank">
+          <img src="assets/images/aboutus/distributionship/ewm.png" alt="EWM" />
+        </a>
+      </div>
     </div>
-    <div class="journey-content">
-      @if (tab() == 0) {
-        <div class="title-badge ldisplay">
-          <p class="ldisplay">our journey</p>
-          <div class="red-bar"></div>
+  </section>
+  } @if (tab() == 1) {
+  <title-badge title="Awards and Achievements"></title-badge>
+  <p class="text-md about_us-subtitle">
+    Our significant excellence in industry and academe fields.
+  </p>
+  <container-box variant="dark" class="awards-container">
+    <div class="awards-content-layout">
+      <div class="main-container">
+        <div class="image-container">
+          <img src="assets/images/aboutus/awards/philippine-social-award.png" alt="" />
+          <img src="assets/images/aboutus/awards/mosliv-award.png" alt="" />
         </div>
-        <p class="mediumTitle white">From humble beginnings to becoming the Philippines' leading provider of industrial and educational solutions</p>
-        <div class="timeline-container">
-          <div class="timeline-line"></div>
+        <div class="image-container">
+          <img src="assets/images/aboutus/awards/world-class-philippines.png" alt="" />
+          <img src="assets/images/aboutus/awards/global-award.png" alt="" />
+        </div>
+        <div class="image-container">
+          <img src="assets/images/aboutus/awards/best-choice-award.png" alt="" />
+          <img src="assets/images/aboutus/awards/golden-global-award.png" alt="" />
+        </div>
+        <div class="image-container">
+          <img src="assets/images/aboutus/awards/asia-ceo-award.png" alt="" />
+          <img src="assets/images/aboutus/awards/legacy-award.png" alt="" />
+        </div>
+        <div class="image-container">
+          <img src="assets/images/aboutus/awards/nb&mosliv-award.png" alt="" />
+          <img src="assets/images/aboutus/awards/top-3000.png" alt="" />
+        </div>
+      </div>
+      <p class="text-md">
+        Hytec Power Incorporated was recognized as a "Top Innovative Brand" by the Premiere Brand
+        Asia Awards. Additionally, President and CEO Engr. Eric Jude S. Soliman received the "Top
+        Brand Builder & Entrepreneur of the Year" award. These distinctions honor Hytec Power's
+        success as the Philippines' leading provider of industrial and educational solutions.
+      </p>
+    </div>
+  </container-box>
 
-          <div class="timeline-events">
-            <div
-              *ngFor="let event of events; let i = index"
-              class="timeline-item"
-              [ngClass]="event.position">
+  <title-badge title="TY Appearances"></title-badge>
+  <p class="text-md about_us-subtitle">
+    Appearances at Umagang Kay Ganda, AHA!, Good Morning Dub and Suit Up!
+  </p>
 
-              <div class="timeline-content">
-                <div class="mediumTitle year">{{ event.year }}</div>
-                <div class="smallHeadline title">{{ event.title }}</div>
-                <div class="largeBody description">{{ event.description }}</div>
-              </div>
+  <div class="appearance">
+    <div class="image-section">
+      <img src="assets/images/aboutus/awards/image-1.png" alt="" />
+      <div class="image-container">
+        <img src="assets/images/aboutus/awards/image-2.png" alt="" />
+        <img src="assets/images/aboutus/awards/image-4.png" alt="" />
+      </div>
+      <div class="image-container">
+        <img src="assets/images/aboutus/awards/image-3.png" alt="" />
+        <img src="assets/images/aboutus/awards/image-5.png" alt="" />
+      </div>
+    </div>
+  </div>
+  } @if (tab() == 2) {
+  <title-badge title="Our President and CEO"></title-badge>
 
-              <div class="timeline-dot"></div>
-            </div>
+  <p class="text-md about_us-subtitle">The man behind the HPI success.</p>
+  <container-box variant="dark" class="our-president-ceo-container">
+    <div class="president-content-wrapper">
+      <div class="decor-quote header-lg">“</div>
+      <div class="president-layout">
+        <div class="left-side text-md">
+          Engr. Eric Jude S. Soliman or EJSS is the Founder, President, and CEO of Hytec Power
+          Incorporated, one of the leadingproviders of educational and industrial solutions in the
+          country. A visionary man, EJSS founded the company from scratch in 1994 and lead its
+          stimulating growth for more than 27 years. the venues that were fully enjoyed by the under
+          privileged children. <br /><br />
+          He devoted his life serving the needs of his clients, both internal and external. With his
+          powerful dedication to the company's vision and mis-sion, EJSS guided HPI to being
+          dependable in providing industrial solutions in order to achieve safety, productivity and
+          efficiency. Eventually, HPI expanded its services to industry by try-ing to solve the
+          roots of skills mismatch HPI engaged into educational innovations in learning and
+          training, to help our country prepare job-ready 21st century workers and professionals.
+        </div>
+
+        <div class="right-side">
+          <div class="ceo">
+            <img src="assets/images/aboutus/ceo/CEO.svg" alt="" />
           </div>
         </div>
-        <div class="distributorship">
-          <p class="smallHeadline">Gain Exclusive Distributorship</p>
-          <p class="largeBody">Continuing to shape the future of technical education with cutting-edge technology and strategic partnerships.</p>
-          <div class="distributorship-logos">
-            <div class="column1">
-              <img src="assets/images/aboutus/distributionship/amatrol.png" alt="">
-              <img src="assets/images/aboutus/distributionship/milwaukee.png" alt="">
-              <img src="assets/images/aboutus/distributionship/snapon.png" alt="">
-            </div>
-            <div class="column2">
-              <img src="assets/images/aboutus/distributionship/tag.png" alt="">
-              <img src="assets/images/aboutus/distributionship/chester.png" alt="">
-              <img src="assets/images/aboutus/distributionship/unison.png" alt="">
-              <img src="assets/images/aboutus/distributionship/laerdal.png" alt="">
-            </div>
-            <div class="column3">
-              <img src="assets/images/aboutus/distributionship/nordlock.png" alt="">
-              <img src="assets/images/aboutus/distributionship/dorian.png" alt="">
-              <img src="assets/images/aboutus/distributionship/simlog.png" alt="">
-              <img src="assets/images/aboutus/distributionship/soldamatic.png" alt="">
-            </div>
-            <div class="column4">
-              <img src="assets/images/aboutus/distributionship/norbar.png" alt="">
-              <img src="assets/images/aboutus/distributionship/geobit.png" alt="">
-              <img src="assets/images/aboutus/distributionship/amos.png" alt="">
-              <img src="assets/images/aboutus/distributionship/american.png" alt="">
-            </div>
-            <div class="column5">
-              <img src="assets/images/aboutus/distributionship/chicago.png" alt="">
-              <img src="assets/images/aboutus/distributionship/abb.png" alt="">
-              <img src="assets/images/aboutus/distributionship/utest.png" alt="">
-              <img src="assets/images/aboutus/distributionship/hypertherm.png" alt="">
-            </div>
-            <div class="column6">
-              <img src="assets/images/aboutus/distributionship/aamc.png" alt="">
-              <img src="assets/images/aboutus/distributionship/wartsila.png" alt="">
-              <img src="assets/images/aboutus/distributionship/anylogic.png" alt="">
-              <img src="assets/images/aboutus/distributionship/ewm.png"alt="">
-            </div>
-          </div>
-        </div>
-      }
+      </div>
 
+      <div class="achievements-grid">
+        <div class="achievement-box">Licensed Mechanical Engineer</div>
+        <div class="achievement-box">Leadership, Legacy Icon, and CEO of the Year Awardee</div>
+        <div class="achievement-box">Conferred as ASEAN Engineer in 2015</div>
+        <div class="achievement-box">Former Chairman of MRSP Convention</div>
+      </div>
+    </div>
+  </container-box>
 
-      @if (tab() == 1) {
-        <div class="title-badge ldisplay">
-          <p class="ldisplay">awards and achievements</p>
-          <div class="red-bar"></div>
-        </div>
-        <p class="mediumTitle white">Our significant excellence in industry and academe fields.</p>
-        <div class="awards-container">
-          <div class="main-container">
-            <div class="image-container">
-              <img src="assets/images/aboutus/awards/philippine-social-award.png" alt="">
-              <img src="assets/images/aboutus/awards/mosliv-award.png" alt="">
-            </div>
-            <div class="image-container">
-              <img src="assets/images/aboutus/awards/world-class-philippines.png" alt="">
-              <img src="assets/images/aboutus/awards/global-award.png" alt="">
-            </div>
-            <div class="image-container">
-              <img src="assets/images/aboutus/awards/best-choice-award.png" alt="">
-              <img src="assets/images/aboutus/awards/golden-global-award.png" alt="">
-            </div>
-            <div class="image-container">
-              <img src="assets/images/aboutus/awards/asia-ceo-award.png" alt="">
-              <img src="assets/images/aboutus/awards/legacy-award.png" alt="">
-            </div>
-            <div class="image-container">
-              <img src="assets/images/aboutus/awards/nb&mosliv-award.png" alt="">
-              <img src="assets/images/aboutus/awards/top-3000.png" alt="">
-            </div>
-          </div>
-          <p class="mediumTitle">
-            Hytec Power Incorporated has been recognized as a "Top Innovative Brand" by the Premiere Brand Asia Awards. The company also received<br>
-            the "Top Brand Builder & Entrepreneur of the Year" award for its President and CEO, Engr. Eric Jude S. Soliman, in the same awards<br>
-            ceremony. These awards were conferred in recognition of Hytec Power's achievements as a<br>
-            leading industrial and educational solutions provider in the Philippines.
+  <container-box class="attributes-container">
+    <div class="attributes-content">
+      <div class="attribute-item">
+        <img src="assets/images/aboutus/ceo/goal.png" alt="" />
+        <div class="message">
+          <p class="header-sm">Personal Goals</p>
+          <p class="text-sm about_us-subtitle">
+            To believe that everyone has the potential to be a trailblazer & innovator and help
+            achieve their dreams.
           </p>
         </div>
-        <div class="appearance">
-          <p class="smallHeadline">TY Appearances</p>
-          <p class="largeBody">Appearances at Umagang Kay Ganda, AHA!, Good Morning Dub and Suit Up!</p>
-          <div class="image-section">
-            <img src="assets/images/aboutus/awards/image-1.png" alt="">
-            <div class="image-container">
-              <img src="assets/images/aboutus/awards/image-2.png" alt="">
-              <img src="assets/images/aboutus/awards/image-4.png" alt="">
-            </div>
-            <div class="image-container">
-              <img src="assets/images/aboutus/awards/image-3.png" alt="">
-              <img src="assets/images/aboutus/awards/image-5.png" alt="">
-            </div>
-          </div>
+      </div>
+      <div class="attribute-item">
+        <img src="assets/images/aboutus/ceo/desire.png" alt="" />
+        <div class="message">
+          <p class="header-sm">Burning Desire</p>
+          <p class="text-sm about_us-subtitle">
+            Align Education and Industry-bridge the SKILLS GAP to have readily available jobs for
+            everyone.
+          </p>
         </div>
-      }
-
-
-      @if (tab() == 2) {
-        <div class="title-badge ldisplay">
-          <p class="ldisplay">our president and ceo</p>
-          <div class="red-bar"></div>
+      </div>
+      <div class="attribute-item">
+        <img src="assets/images/aboutus/ceo/key.png" alt="" />
+        <div class="message">
+          <p class="header-sm">Key to Success</p>
+          <p class="text-sm about_us-subtitle">
+            Be in love of with what you do. When you love what you do "working is not working".
+          </p>
         </div>
-        <p class="mediumTitle white">The man behind the HPI success.</p>
-        <div class="content">
-          <div class="quote xxldisplay">“</div>
-          <div class="ceo">
-            <img src="assets/images/aboutus/ceo/CEO.svg" alt="">
-          </div>
-          <div class="message-container mediumTitle white">
-            Engr. Eric Jude S. Soliman or EJSS is the Founder, President, and CEO of Hytec Power Incorporated, one of the leadingproviders of educational and industrial solutions in the country. A visionary man, EJSS founded the company from scratch in 1994 and lead its stimulating growth for more than 27 years. the venues that were fully enjoyed by the under privileged children. <br><br>
-            He devoted his life serving the needs of his clients, both internal and external. With his powerful dedication to the company's vision and mis-sion, EJSS guided HPI to being dependable in providing industrial solutions in order to achieve safety, productivity and efficiency. Eventually, HPI expanded its services to industry by try-ing to solve the roots of skills mismatch HPI engaged into educational innovations in learning and training, to help our country prepare job-ready 21st century workers and professionals.
-            <div class="achievements">
-              <div class="container">
-                <div class="achievement-container"><div class="red-dot"></div>Licensed Mechanical Engineer</div>
-                <div class="achievement-container"><div class="red-dot"></div>Leadership, Legacy Icon, and CEO of the Year Awardee</div>
-              </div>
-              <div class="container">
-                <div class="achievement-container"><div class="red-dot"></div>Conferred as Asean Engineer last 2015</div>
-                <div class="achievement-container"><div class="red-dot"></div>Former Chairman of MRSP Convention </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="attributes">
-          <div class="contents">
-            <img src="assets/images/aboutus/ceo/goal.png" alt="">
-            <div class="message">
-              <p class="smallHeadline">Personal Goals</p>
-              <p class="largeBody">To believe that everyone has the potential to be a <br>
-                trailblazer & innovator and help achieve their dreams.
-              </p>
-              </div>
-          </div>
-          <div class="contents">
-            <img src="assets/images/aboutus/ceo/desire.png" alt="">
-            <div class="message">
-              <p class="smallHeadline">Burning Desire</p>
-              <p class="largeBody">Align Education and Industry-bridge the SKILLS GAP to <br>
-                have readily available jobs for everyone.
-              </p>
-              </div>
-          </div>
-          <div class="contents">
-            <img src="assets/images/aboutus/ceo/key.png" alt="">
-            <div class="message">
-              <p class="smallHeadline">Key to Success</p>
-              <p class="largeBody">Be in love of with what you do. <br>
-                When you love what you do "working is not working".
-              </p>
-            </div>
-          </div>
-        </div>
-      }
-
-
-      @if (tab() == 3) {
-        <div class="title-badge ldisplay">
-          <p class="ldisplay">programs</p>
-          <div class="red-bar"></div>
-        </div>
-        <p class="mediumTitle white">From humble beginnings to becoming the Philippines' leading provider of industrial and educational solutions</p>
-      }
-
-
-      @if (tab() == 4) {
-        <div class="title-badge ldisplay">
-          <p class="ldisplay">partneships</p>
-          <div class="red-bar"></div>
-        </div>
-        <p class="mediumTitle white">From humble beginnings to becoming the Philippines' leading provider of industrial and educational solutions</p>
-      }
-
-
-      @if (tab() == 5) {
-        <div class="title-badge ldisplay">
-          <p class="ldisplay">mission and vision</p>
-          <div class="red-bar"></div>
-        </div>
-        <p class="mediumTitle white">From humble beginnings to becoming the Philippines' leading provider of industrial and educational solutions</p>
-      }
+      </div>
     </div>
+  </container-box>
+  } @if (tab() == 3) {
+  <title-badge title="Programs"></title-badge>
+
+  <p class="mediumTitle white">
+    From humble beginnings to becoming the Philippines' leading provider of industrial and
+    educational solutions
+  </p>
+  <div class="container">
+    <header class="main-header">
+      <h1>Internship Programs</h1>
+      <p class="subtitle">
+        Continuing to shape the future of technical education with cutting-edge technology and
+        strategic partnerships.
+      </p>
+    </header>
+
+    <section class="programs-grid">
+      <div class="program-column">
+        <p class="top-desc">
+          True in fulfilling its Corporate Social Responsibility (CSR), Hytec Power Inc. continues
+          to support its academic partners by accepting internship training to students. HPI has
+          given training slots coming from different school partners nationwide.
+        </p>
+        <div class="image-card">
+          <img
+            src="/assets/images/aboutus/programs/0393a22d4146e76a99015e10e110102e0ae8cfcd.png"
+            alt="Group Photo 2014"
+          />
+          <div class="red-banner">
+            <div class="date-box">
+              <span class="month">SEPT</span>
+              <span class="program-section-year">2014</span>
+            </div>
+            <div class="banner-text">
+              This is the biggest group that HPI has accommodated since it started the program in
+              2011.
+            </div>
+          </div>
+        </div>
+        <p class="bottom-desc">
+          Student interns from Pamantasan ng Lungsod ng Valenzuela, Polytechnic University of the
+          Philippines, University of Southeastern Philippines, Bicol University - Polangui Campus,
+          Surigao Del Sur State University, University of Immaculate Conception, Technological
+          Institute of the Philippines, Pangasinan State University and Mariano Marcos State
+          University, are enjoined by HPI President and CEO Engr. Eric Jude S. Soliman in their
+          group picture at the entrance of the main building.
+        </p>
+      </div>
+
+      <div class="program-column">
+        <p class="top-desc">
+          The Hytec Power, Inc. continue to fulfill its main social responsibility to integrate,
+          align, and bridge every academe with the industries by building partnerships with
+          different colleges and universities nationwide.
+        </p>
+        <div class="image-card">
+          <img
+            src="/assets/images/aboutus/programs/025c2db3557e93602f01eaa4110fc2fbac79a388.png"
+            alt="Certificate of Partnership"
+          />
+          <div class="red-banner">
+            <div class="date-box">
+              <span class="month">FROM</span>
+              <span class="program-section-year">2011</span>
+            </div>
+            <div class="banner-text">
+              The HPI has partnered to a total of 300 Colleges and Universities in the Philippines.
+            </div>
+          </div>
+        </div>
+        <p class="bottom-desc">
+          Over ___ Colleges and Universities in the Philippines has forged partnership to jointly
+          conduct Training programs for various courses and qualifications. This collaboration
+          recognizes the vital contributions of both institutions to promote mutual interest and
+          benefits. This proves that Hytec Power Inc., share a common vision and goal of improving
+          the training of young individuals to enhance their qualification for employment in the
+          industry.
+        </p>
+      </div>
+
+      <div class="program-column">
+        <p class="top-desc">
+          Hytec Power Inc. are reaching to all the schools in the country. Let us partner in
+          providing quality education to our youth who will be the future engineers, teachers,
+          scientists, workers, and even leaders of this country.
+        </p>
+        <div class="image-card">
+          <img
+            src="/assets/images/aboutus/programs/3683fe0c78f3e53441b7d335258932ada87a621d.png"
+            alt="Group Photo 2025"
+          />
+          <div class="red-banner">
+            <div class="date-box">
+              <span class="month">IN</span>
+              <span class="program-section-year">2025</span>
+            </div>
+            <div class="banner-text">
+              The HPI is now accomodating 100 students for their Intership Program.
+            </div>
+          </div>
+        </div>
+        <p class="bottom-desc">
+          From accommodating of only 40 students in 2014, the Hytec Power Inc. now have a 100
+          training slots for students in different colleges and university partners. This shows that
+          Hytec Power Inc. has the requisite experience, expertise, manpower, and capital to perform
+          as obligations under the Agreement since 2011.
+        </p>
+      </div>
+    </section>
+
+    <section class="testimonials-section">
+      <h2>Interns Testimonials</h2>
+
+      <div class="interns_testimonials-container">
+        <div class="timeline-line"></div>
+
+        <div class="testimonial-row">
+          <div class="testimonial-item left">
+            <div class="logo-wrapper">
+              <img
+                src="/assets/images/aboutus/programs/c7720f534e7a9a49fcdc430ac51d0795e5061ad1.png"
+                alt="Bicol University Logo"
+                class="uni-logo"
+              />
+            </div>
+            <p class="quote">
+              The experience/learning I had are very interesting. Being with Hytec family is one of
+              most amazing part of my life. The tasks given to me will surely be helpful in my
+              future.
+            </p>
+            <div class="author">
+              <strong>Abegail Ada C. Montemayor</strong><br />
+              BSEE - Bicol University-Polangui Campus
+            </div>
+          </div>
+
+          <div class="testimonial-item right">
+            <div class="logo-wrapper">
+              <img
+                src="/assets/images/aboutus/programs/bd09b743d973af3a8563cd1dcf74f17a12426607.png"
+                alt="PLV Logo"
+                class="uni-logo"
+              />
+            </div>
+            <p class="quote">
+              I can honestly say that my time spent in Hytec proved to be enjoyable, rewarding and
+              downright fun. I knew I was meant to be an engineer.
+            </p>
+            <div class="author">
+              <strong>Belen E. Casin</strong><br />
+              BSEE - Pamantasan ng Lungsod ng Valenzuela
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-row">
+          <div class="testimonial-item left">
+            <div class="logo-wrapper">
+              <img
+                src="/assets/images/aboutus/programs/b6a4ffd5a66fd74e7c74a42ce6e23cc06c7367d1.png"
+                alt="UIC Logo"
+                class="uni-logo"
+              />
+            </div>
+            <p class="quote">
+              My stay here was fruitful and joyful. I learned a lot about the different tasks in the
+              company and had fun while learning. Hytec Power Inc. gives the OJT tasks which are
+              useful in the work place.
+            </p>
+            <div class="author">
+              <strong>Ismail Memdouh Ibrahin</strong><br />
+              BSCPE - University of the Immaculate Concepcion
+            </div>
+          </div>
+
+          <div class="testimonial-item right">
+            <div class="logo-wrapper">
+              <img
+                src="/assets/images/aboutus/programs/3ce842428f32fcd88eb1a4939212dea344c3957c.png"
+                alt="QCU Logo"
+                class="uni-logo"
+              />
+            </div>
+            <p class="quote">
+              Hytec Power Inc. provided me with significant growth and exposure to industry-standard
+              tools. HPI boosted my confidence and reinforce my desire to pursue a career in the
+              field.
+            </p>
+            <div class="author">
+              <strong>Edward C. Taligatos</strong><br />
+              BSIT - Quezon City University
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
-</div>
+  <section class="testimonials-section">
+    <h2>College and Universities Testimonials</h2>
+    <div class="programs-grid">
+      <div>
+        <div class="logo-wrapper">
+          <img
+            class="uni-logo"
+            src="/assets/images/aboutus/programs/4b56f92e4559e332a39e0ac1ff981720b37eb4ef.png"
+            alt="Asian Institute of Computer Studies Logo"
+          />
+        </div>
+        <p><strong>Asian Institute of Computer Studies</strong></p>
+        <p>
+          We extend our heartfelt gratitude to HYTEC Inc. for their trust and support in this
+          partnership. Together, we look forward to unlocking new possibilities and shaping the
+          future of technical education, a productive, and countless opportunities for growth and
+          innovation.
+        </p>
+      </div>
+      <div>
+        <div class="logo-wrapper">
+          <img
+            class="uni-logo"
+            src="/assets/images/aboutus/programs/b6a4ffd5a66fd74e7c74a42ce6e23cc06c7367d1.png"
+            alt="Manuel S. Enverga University Foundation Logo"
+          />
+        </div>
+        <p><strong>Manuel S. Enverga University Foundation</strong></p>
+        <p>
+          These young minds, representing the future of the workforce, served as a stimulating
+          reminder of the purpose and significance of the partnership between HPI and MSEUF
+        </p>
+      </div>
+      <div>
+        <div class="logo-wrapper">
+          <img
+            class="uni-logo"
+            src="/assets/images/aboutus/programs/3ce842428f32fcd88eb1a4939212dea344c3957c.png"
+            alt="Quezon City University Logo"
+          />
+        </div>
+        <p><strong>Quezon City University</strong></p>
+        <p>
+          We are grateful to Engr. Soliman and Hytec Power Inc. for choosing QCU to become their
+          partners. We are very happy that we have a common vision to ensure that our students have
+          the skills necessary to be employed.
+        </p>
+      </div>
+    </div>
+    <div class="container">
+      <h2>Outreach Programs</h2>
+      <p class="subtitle" style="max-width: 66%; margin: 0 auto; text-align: center">
+        Our Corporate Social Responsibility aims at contributing to a happy, peaceful, productive
+        and prosperous Filipino society. Industry-academe-community partnership is one commendable
+        way to achieve it.
+      </p>
+
+      <section class="outreach">
+        <div class="outreach-grid">
+          <div class="outreach-content">
+            <div class="text-body">
+              <p>
+                <span class="drop-cap">&ldquo;T</span>he company aims to meet the needs of Academe
+                and Industry, focusing on creating a competitive workforce for a prosperous Filipino
+                society. Outreach to underprivileged members is also vital. During Christmas, Hytec
+                Power Incorporated (HPI) partnered with a rotary club for community service
+                projects. HPI donated an LCD TV to the SPED Department of Commonwealth Elementary
+                School, featured on ABS-CBN's "Mutya Ng Masa."
+              </p>
+              <br />
+              <p>
+                At the Christmas Party, HPI showcased a robot presentation with NAO, entertaining
+                special children. HPI also provided Fischer Tips educational materials. The Rotary
+                Club offered snacks, while ABS-CBN sponsored meals, toys, and clowns for
+                entertainment. HPI collaborated with the Rotary Club for toy and gift-giving events
+                in December, benefiting over 2,000 children across three venues.
+              </p>
+
+              <p class="author-byline">By Engr. Augie C. Soliman</p>
+            </div>
+          </div>
+
+          <div class="outreach-gallery">
+            <div class="main-gallery-img">
+              @for (item of [galleryItems[currentGalleryIndex()]]; track item.src) {
+              <img [src]="item.src" [alt]="item.caption" class="slide-in-right" />
+
+              <div class="gallery-caption slide-in-right delay-1">
+                {{ item.caption }}
+              </div>
+              }
+            </div>
+
+            <div class="gallery-dots">
+              <span
+                *ngFor="let item of galleryItems; let i = index"
+                class="dot"
+                [class.active]="i === currentGalleryIndex()"
+                (click)="setGalleryIndex(i)"
+              >
+              </span>
+            </div>
+
+            <div class="gallery-thumbs">
+              <img
+                *ngFor="let item of galleryItems; let i = index"
+                [src]="item.src"
+                [alt]="item.caption"
+                [style.opacity]="i === currentGalleryIndex() ? '1' : '0.6'"
+                [style.border]="i === currentGalleryIndex() ? '2px solid red' : 'none'"
+                style="cursor: pointer; transition: 0.3s"
+                (click)="setGalleryIndex(i)"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </section>
+  } @if (tab() == 4) {
+  <title-badge title="Partnerships"></title-badge>
+
+  <p class="mediumTitle white">
+    From humble beginnings to becoming the Philippines' leading provider of industrial and
+    educational solutions
+  </p>
+  } @if (tab() == 5) {
+  <title-badge title="Mission and Vision"></title-badge>
+
+  <p class="mediumTitle white">
+    From humble beginnings to becoming the Philippines' leading provider of industrial and
+    educational solutions
+  </p>
+  }
+</section>
+
 <main-footer></main-footer>
