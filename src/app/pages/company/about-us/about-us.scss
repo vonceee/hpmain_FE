@@ -850,7 +850,7 @@
       position: absolute;
       bottom: -4vh;
       right: -2vw;
-      width: 90%; // adjusted to prevents massive overlap now that col is 40%
+      width: 20rem; // adjusted to prevents massive overlap now that col is 40%
       margin: 0;
 
       img {
@@ -1139,6 +1139,7 @@
   object-fit: contain;
   transition: all 0.3s ease;
   cursor: pointer;
+  filter: grayscale(100%);
 }
 
 .logo-wrapper:hover .uni-logo {
@@ -1148,7 +1149,7 @@
 }
 
 .logo-wrapper:hover .uni-logo {
-  transform: rotate(360deg);
+  filter: grayscale(0%);
   border-color: #d32f2f;
 }
 
