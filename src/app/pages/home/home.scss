@@ -989,8 +989,8 @@ $breakpoint-desktop: 1440px;
   position: relative;
   width: 100%;
   padding: 10vh 0;
+  padding-bottom: 10vh;
   background: #000;
-  overflow: hidden;
 }
 
 .social-bg-decor {
@@ -1157,18 +1157,33 @@ $breakpoint-desktop: 1440px;
 // ============================================
 
 .linkedin-card {
+  
+  .li-info-card-wrapper {
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle depth */
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    max-width: 90%; /* Keeps it from hitting the edges of the parent */
+    transition: transform 0.3s ease;
+  }
+
+  /* Optional: Slight lift effect when hovering */
+  .li-info-card-wrapper:hover {
+    transform: translateY(-5px);
+  }
+
   .linkedin-content {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
     text-align: center;
     gap: 1.5rem;
 
     /*light overlay */
-    background: linear-gradient(rgba(250, 250, 250, 0.85), rgba(240, 240, 240, 0.85)), url('public/assets/images/home/linkedin_home_ss.png');
+    background: linear-gradient(rgba(138, 138, 138, 0.5), rgba(109, 109, 109, 0.5)), url('public/assets/images/home/linkedin_home_ss.png');
     background-size: cover;
     background-position: left center; 
     background-repeat: no-repeat;
