@@ -1,12 +1,12 @@
 @use "text-display";
 
 .title-badge-wrapper {
-    // Use wrapper class to avoid conflicts with host selector spacing
+    // use wrapper class to avoid conflicts with host selector spacing
     width: max-content;
     padding: 0;
     margin: 0;
     position: relative;
-    border: 1px solid transparent; // Helps with box sizing if needed
+    border: 1px solid transparent;
     z-index: 0;
 }
 
@@ -14,7 +14,7 @@
     margin: 0;
     padding: 0;
     position: relative;
-    z-index: 2; // Text above bar
+    z-index: 2; // text above bar
 }
 
 .red-bar {
@@ -25,6 +25,6 @@
     transform: translateX(-50%);
     position: absolute;
     border-radius: 4px;
-    z-index: -1; // Bar below text
+    z-index: -1; // bar below text
     background: linear-gradient(to right, #ED1C24, #871015);
 }
