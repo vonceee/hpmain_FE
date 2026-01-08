@@ -20,21 +20,30 @@
 
 .hero-section {
   position: relative;
-  height: 85vh;
+  height: 67vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   overflow: hidden;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 
   background:
-    linear-gradient(180deg,
-      rgba(80, 0, 0, 0.55) 0%,
-      rgba(20, 0, 0, 0.95) 80%,
-      #000000 100%),
-    url('/assets/images/home/234acacc5e5bd069189972b51d9bfeeade704003.jpg') center/cover no-repeat;
-  background-attachment: fixed;
+    linear-gradient(
+      rgba(0, 0, 0, 0.8),
+      rgba(0, 0, 0, 0.8)
+    ),
+    url('/assets/images/home/234acacc5e5bd069189972b51d9bfeeade704003.jpg')
+    center / cover no-repeat;
+
+  background-attachment: initial;
+
+.hero-section-cover{
+  background: linear-gradient( 150deg, rgba(237, 28, 35, 0.5) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.5) 100%);
+  width: 100%;
+  height: 100%;
+  border: 1px solid white;
+  position: absolute;
+}
 
   .hero-content {
     z-index: 2;
@@ -338,7 +347,7 @@
 }
 
 .distributorship-container {
-  width: 75vw;
+  width: auto;
   height: max-content;
   color: color.$neutral100;
   display: flex;
@@ -357,17 +366,21 @@
   position: relative;
   justify-content: space-between;
   align-content: space-between;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
   flex-direction: row;
   height: 40vh;
   margin: 0;
+  width: 100%;
+
 
   div {
-    width: 15.0%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 
     a,
     img {
@@ -1080,19 +1093,6 @@
   background-color: #d32f2f;
   transform: translateX(-50%);
   z-index: 0;
-}
-
-/* dots on the line */
-.timeline-line::before,
-.timeline-line::after {
-  content: '';
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  background-color: #d32f2f;
-  border-radius: 50%;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 .timeline-line::before {
