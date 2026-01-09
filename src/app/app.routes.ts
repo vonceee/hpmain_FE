@@ -4,6 +4,7 @@ import { Industrial } from './pages/solutions/industrial/industrial';
 import { aboutUs } from './pages/company/about-us/about-us';
 import { Educational } from './pages/solutions/educational/educational';
 import { News } from './pages/news/news';
+import { Sponsorship } from './pages/company/sponsorship/sponsorship';
 
 export const routes: Routes = [
   {
@@ -26,6 +27,10 @@ export const routes: Routes = [
   {
     path: 'about-us',
     component: aboutUs,
+  },
+  {
+    path: 'company/sponsorship',
+    component: Sponsorship,
   },
   {
     path: 'news-and-updates',
