@@ -1,4 +1,4 @@
-@import "colors";
+@use "colors" as c;
 
 .side-buttons-container {
     position: fixed;
@@ -29,7 +29,7 @@
             transparent 10px,
             rgba(0, 0, 0, 0.1) 10px,
             rgba(0, 0, 0, 0.1) 20px),
-        $primarydark;
+        c.$primarydark;
 
     border-radius: 999px 0 0 999px;
     border: 2px solid rgba(0, 0, 0, 0.4);

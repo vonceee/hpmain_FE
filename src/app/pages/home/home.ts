@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, AfterViewInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MainFooter } from 'src/app/components/main-footer/main-footer';
 import { MainHeader } from 'src/app/components/main-header/main-header';
@@ -26,7 +26,7 @@ import { TitleBadge } from 'src/app/components/title-badge/title-badge';
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
-export class Home implements OnInit {
+export class Home implements OnInit, AfterViewInit {
   protected readonly title = signal('hytec_fe');
 
   faFacebookF = faFacebookF;
@@ -99,6 +99,22 @@ export class Home implements OnInit {
 
   ngOnInit(): void {
     this.updateBackground();
+  }
+
+  ngAfterViewInit(): void {
+    if ((window as any).instgrm) {
+      (window as any).instgrm.Embeds.process();
+    } else {
+      const script = document.createElement('script');
+      script.src = '//www.instagram.com/embed.js';
+      script.async = true;
+      script.onload = () => {
+        if ((window as any).instgrm) {
+          (window as any).instgrm.Embeds.process();
+        }
+      };
+      document.body.appendChild(script);
+    }
   }
 
   // --- NAVIGATION LOGIC ---

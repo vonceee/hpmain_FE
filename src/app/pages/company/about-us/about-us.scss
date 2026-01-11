@@ -230,11 +230,8 @@
   }
 }
 
-
-
-
 .content-container {
-  width: 75vw;
+  width: 85vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -246,6 +243,11 @@
 
 .about_us-subtitle {
   color: rgba(255, 255, 255, 0.7);
+  font-size: 0.8rem;
+  text-align: center;  /* centers text inside */
+  max-width: 90%;      /* limit width */
+  margin: 0 auto;      /* center the block element */
+  margin-bottom: 4vh;
 }
 
 .tab-header {
@@ -848,7 +850,7 @@
       position: absolute;
       bottom: -4vh;
       right: -2vw;
-      width: 90%; // adjusted to prevents massive overlap now that col is 40%
+      width: 20rem; // adjusted to prevents massive overlap now that col is 40%
       margin: 0;
 
       img {
@@ -961,14 +963,11 @@
 
 .main-header {
   text-align: center;
-  margin-bottom: 50px;
-  padding-top: 20px;
 }
 
 .main-header h1 {
-  font-size: 2.5rem;
+  font-size: 1.2rem;
   font-weight: normal;
-  margin-bottom: 10px;
   color: #ffffff;
 }
 
@@ -1140,6 +1139,7 @@
   object-fit: contain;
   transition: all 0.3s ease;
   cursor: pointer;
+  filter: grayscale(100%);
 }
 
 .logo-wrapper:hover .uni-logo {
@@ -1149,7 +1149,7 @@
 }
 
 .logo-wrapper:hover .uni-logo {
-  transform: rotate(360deg);
+  filter: grayscale(0%);
   border-color: #d32f2f;
 }
 
@@ -1383,4 +1383,149 @@
 
 .delay-2 {
   animation-delay: 0.2s;
+}
+
+
+/* ˚◡˚ Partnership Section ˚◡˚ */
+
+.grid-3x3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.cell {
+  padding: 20px;
+  text-align: center;
+  border: 0.5px solid rgba(244, 244, 244, 0.1);
+  border-radius: 0.5rem;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  filter: grayscale(100%);
+}
+
+.cell:hover {
+  transform: scale(1.05);
+  background-color: rgba(255, 255, 255, 0.1);
+  filter: grayscale(0%);
+}
+
+.cell img {
+  width: 6rem;         /* uniform width */
+  height: 6rem;        /* uniform height */
+  object-fit: contain; /* preserves aspect ratio, fits inside the box */
+  margin-bottom: 0.5rem;
+  transition: filter 0.3s ease;
+}
+
+.cell p {
+  font-size: 0.8rem;
+}
+
+
+/* ˚◡˚ Mission & Vision Section ˚◡˚ */
+
+.mv-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  margin: 0 auto;
+  gap: 2rem;
+  position: relative;
+}
+
+.mv-divider {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 2rem; /* give it space */
+  flex-shrink: 0; /* prevent shrinking */
+}
+
+.mv-divider .line {
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to bottom, #ED1C24, rgba(237, 28, 36, 0.3), transparent);
+}
+
+.mv-divider .dot {
+  position: absolute;
+  top: 50%;
+  left: 38%;
+  transform: translate(-50%, -50%);
+  width: 14px;
+  height: 14px;
+  background-color: #ff0000;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(255, 0, 0, 0.2);
+}
+
+.mv-card {
+  flex: 1;
+  background: color.$secondaryAlpha5;
+  border: 1px solid color.$secondaryAlpha10;
+  border-radius: 1.5rem;
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    transform: translateY(-5px);
+  }
+}
+
+.icon-wrapper {
+  background-color: rgba(255, 255, 255, 0.1);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+
+  i {
+    font-size: 2.5rem;
+    color: white;
+  }
+}
+
+.mv-card h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: white;
+  margin: 0;
+}
+
+.mv-card p {
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  font-size: 0.95rem;
+  margin: 0;
+  max-width: 90%;
+
+  strong {
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+}
+
+@media (max-width: 768px) {
+  .mv-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .mv-divider {
+    display: none;
+  }
 }
