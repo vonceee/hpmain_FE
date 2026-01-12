@@ -12,18 +12,18 @@ import { MainFooter } from 'src/app/components/main-footer/main-footer';
 })
 export class Sponsorship {
   partners = [
-    { name: 'Felta', logo: 'assets/images/sponsorship/felta-logo.png' },
-    { name: 'VEX Robotics', logo: 'assets/images/sponsorship/vex-logo.png' },
-    { name: 'ElectroVex', logo: 'assets/images/sponsorship/electrovex-logo.png' },
-    { name: 'VEX U', logo: 'assets/images/sponsorship/vexu-logo.png' },
-    { name: 'World Skills', logo: 'assets/images/sponsorship/worldskills-logo.png' },
+    { name: 'Cybertech', logo: 'assets/images/aboutus/sponsorship/logocybertech.png' },
+    { name: 'VEX Robotics', logo: 'assets/images/aboutus/sponsorship/logovex.png' },
+    { name: 'ElectroVex', logo: 'assets/images/aboutus/sponsorship/logophilippinerobot.png' },
+    { name: 'VEX U', logo: 'assets/images/aboutus/sponsorship/logovexUrobcom.png' },
+    { name: 'World Skills', logo: 'assets/images/aboutus/sponsorship/logoworldskills.png' },
   ];
 
   competitionLevels = [
     {
       title: 'Primary and Pre-school Level',
       description: 'The mission of the REC Foundation is to...',
-      image: 'assets/images/sponsorship/primary-level.png',
+      image: 'assets/images/aboutus/sponsorship/ewh9g7er7qere9723r.png',
     },
     {
       title: 'Secondary Level',
