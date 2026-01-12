@@ -737,34 +737,42 @@
   }
 
   .main-container {
+  display: flex;
+  flex-direction: row; // Horizontal on desktop
+  flex-wrap: wrap;    // Allows items to wrap if they run out of space
+  justify-content: space-evenly;
+  gap: 20px;          // Adds spacing between items when they stack
+
+  .image-container {
+    width: 16.5%;     // Desktop width
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3vh;
 
-    .image-container {
-      width: 16.5%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      gap: 3vh;
+    img {
+      width: 100%;    // Changed to 100% to scale with the container
+      height: auto;
+      filter: grayscale(100%);
+      transition: filter 0.5s ease;
 
-      img {
-        width: auto;
-        height: auto;
-        max-width: none;
-        max-height: none;
-        object-fit: none;
-        margin: 0;
-        filter: grayscale(100%);
-        transition: filter 0.5s ease;
-
-        &:hover {
-          filter: none;
-        }
+      &:hover {
+        filter: none;
       }
     }
   }
+
+  // --- Responsive Adjustment ---
+  @media (max-width: 768px) {
+    flex-direction: column; // Stack vertically on tablets/phones
+    align-items: center;
+
+    .image-container {
+      width: 80%;           // Make containers wider on mobile
+    }
+  }
+}
 }
 
 .appearance {
@@ -1137,20 +1145,12 @@
   padding: 5px;
   background-color: #222;
   object-fit: contain;
-  transition: all 0.3s ease;
   cursor: pointer;
   filter: grayscale(100%);
 }
 
 .logo-wrapper:hover .uni-logo {
-  transform: scale(1.1);
-  border-color: #d32f2f;
-  box-shadow: 0 0 20px rgba(211, 47, 47, 0.6);
-}
-
-.logo-wrapper:hover .uni-logo {
   filter: grayscale(0%);
-  border-color: #d32f2f;
 }
 
 .quote {
