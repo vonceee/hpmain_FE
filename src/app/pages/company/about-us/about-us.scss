@@ -1035,11 +1035,29 @@
 }
 
 /* Programs Grid Section */
+/* 1. Internship Programs Grid */
 .programs-grid {
   display: grid;
+  // Desktop: 3 columns
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
-  margin-bottom: 80px;
+  margin-top: 40px;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr); // Tablet: 2 columns
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr; // Mobile: 1 column
+    gap: 40px;
+  }
+
+  .image-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+  }
 }
 
 .program-column {
@@ -1131,12 +1149,32 @@
   color: #fff;
 }
 
+/* 2. Interns Testimonials Section */
 .interns_testimonials-container {
   position: relative;
-  width: 100%;
-  margin: 0 auto;
-  background-color: rgb(19, 13, 13);
-  min-height: max-content;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  .testimonial-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+
+    @media (max-width: 768px) {
+      flex-direction: column; // Stack on mobile
+      gap: 30px;
+    }
+  }
+
+  .testimonial-item {
+    flex: 1;
+    // Fix for the cursor issue
+    .uni-logo {
+      cursor: default !important; 
+      pointer-events: none; // Ensures no interaction on the image
+    }
+  }
 }
 
 /* the vertical red line */
@@ -1186,6 +1224,13 @@
   margin-bottom: 20px;
 }
 
+/* 3. Global fix for all testimonial logos */
+.logo-wrapper img.uni-logo {
+  cursor: default !important;
+  max-width: 100px;
+  height: auto;
+}
+
 .uni-logo {
   width: 150px;
   height: 150px;
@@ -1225,11 +1270,21 @@
   color: #ccc;
 }
 
+/* 4. Outreach Section Adjustments */
 .outreach-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 50px;
-  align-items: start;
+  gap: 40px;
+
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr; // Stack outreach content above gallery
+    
+    .outreach-gallery {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
 }
 
 .drop-cap {
