@@ -273,6 +273,55 @@
 
 /* ˚◡˚ Our Journey Section ˚◡˚ */
 
+.logo-grid {
+  display: grid !important; /* Force grid behavior */
+
+  // Large Desktop: 7 Columns
+  grid-template-columns: repeat(7, minmax(100px, 1fr));
+
+  // Laptops/Tablets (up to 1200px): 5 Columns
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(5, minmax(100px, 1fr));
+  }
+
+  // Small Tablets (up to 900px): 3 Columns
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(3, minmax(100px, 1fr));
+  }
+
+  // Mobile Phones (up to 500px): 2 Columns
+  @media (max-width: 500px) {
+    grid-template-columns: repeat(2, minmax(80px, 1fr));
+    gap: 10px;
+  }
+  
+  gap: 30px;           /* Space between rows and columns */
+  width: 100%;         /* Ensure it takes full width of the section */
+  align-items: center; /* Centers logos vertically in their cell */
+  justify-items: center; /* Centers logos horizontally in their cell */
+  padding: 20px;
+}
+
+.logo-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  filter: grayscale(100%);
+
+  img {
+    max-width: 100%;    /* Prevents logo from being wider than the grid cell */
+    height: auto;       /* Keeps aspect ratio */
+    max-height: 80px;   /* Prevents tall logos from taking too much space */
+    object-fit: contain;
+  }
+}
+
+.logo-item:hover {
+  filter: grayscale(0%);
+  transition: filter 0.1s ease;
+}
+
 .timeline-container {
   position: relative;
   width: 75vw;
@@ -359,7 +408,7 @@
   background: color.$container;
   border: 1px solid color.$secondaryAlpha10;
   gap: 2vh;
-  padding: 2.5vh 0 4.5vh;
+  padding: 30px;
   border-radius: 15px;
   margin-top: 2.5vh;
 }

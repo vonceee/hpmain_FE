@@ -42,6 +42,33 @@ interface TimelineEvent {
 export class aboutUs implements OnInit, OnDestroy {
   tab = signal<number>(0);
 
+  /* -- Distributionship Logos -- */
+  logos = [
+    { name: 'Amatrol', url: 'https://amatrol.com', src: 'assets/images/aboutus/distributionship/amatrol.png' },
+    { name: 'Milwaukee Tool', url: 'https://www.milwaukeetool.com', src: 'assets/images/aboutus/distributionship/milwaukee.png' },
+    { name: 'Snap-on', url: 'https://www.snapon.com', src: 'assets/images/aboutus/distributionship/snapon.png' },
+    { name: 'TAG Heuer', url: 'https://www.tagheuer.com', src: 'assets/images/aboutus/distributionship/tag.png' },
+    { name: 'Chester Machine Tools', url: 'https://www.chestermachinetools.com', src: 'assets/images/aboutus/distributionship/chester.png' },
+    { name: 'Unison Industries', url: 'https://www.unisonindustries.com', src: 'assets/images/aboutus/distributionship/unison.png' },
+    { name: 'Laerdal Medical', url: 'https://laerdal.com', src: 'assets/images/aboutus/distributionship/laerdal.png' },
+    { name: 'Nord-Lock Group', url: 'https://www.nord-lock.com', src: 'assets/images/aboutus/distributionship/nordlock.png' },
+    { name: 'Dorian Tool', url: 'https://www.doriantool.com', src: 'assets/images/aboutus/distributionship/dorian.png' },
+    { name: 'Simlog', url: 'https://www.simlog.com', src: 'assets/images/aboutus/distributionship/simlog.png' },
+    { name: 'Soldamatic', url: 'https://seaberyat.com/en/soldamatic', src: 'assets/images/aboutus/distributionship/soldamatic.png' },
+    { name: 'Norbar', url: 'https://www.norbar.com', src: 'assets/images/aboutus/distributionship/norbar.png' },
+    { name: 'Geobit Instruments', url: 'https://geobit-instruments.com', src: 'assets/images/aboutus/distributionship/geobit.png' },
+    { name: 'Amos/AAMC', url: 'https://www.aamc.org', src: 'assets/images/aboutus/distributionship/amos.png' },
+    { name: 'American Saw', url: 'https://www.americansaw.com', src: 'assets/images/aboutus/distributionship/american.png' },
+    { name: 'Chicago Pneumatic', url: 'https://www.chicago-pneumatic.com', src: 'assets/images/aboutus/distributionship/chicago.png' },
+    { name: 'ABB', url: 'https://new.abb.com', src: 'assets/images/aboutus/distributionship/abb.png' },
+    { name: 'Utest', url: 'https://www.utest.com.tr/en', src: 'assets/images/aboutus/distributionship/utest.png' },
+    { name: 'Hypertherm', url: 'https://www.hypertherm.com', src: 'assets/images/aboutus/distributionship/hypertherm.png' },
+    { name: 'AAMC', url: 'https://www.aamc.org', src: 'assets/images/aboutus/distributionship/aamc.png' },
+    { name: 'Wärtsilä', url: 'https://www.wartsila.com', src: 'assets/images/aboutus/distributionship/wartsila.png' },
+    { name: 'AnyLogic', url: 'https://www.anylogic.com', src: 'assets/images/aboutus/distributionship/anylogic.png' },
+    { name: 'EWM', url: 'https://www.ewm-group.com', src: 'assets/images/aboutus/distributionship/ewm.png' }
+  ];
+
   /* -- NavTabs Variables -- */
   @ViewChildren('navBtn') navButtons!: QueryList<ElementRef>;
   indicatorLeft = signal<string>('0px');
@@ -197,3 +224,4 @@ export class aboutUs implements OnInit, OnDestroy {
     },
   ];
 }
+
