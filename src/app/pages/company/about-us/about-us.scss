@@ -179,6 +179,55 @@
 
 /* ˚◡˚ Our Journey Section ˚◡˚ */
 
+.logo-grid {
+  display: grid !important; /* Force grid behavior */
+
+  // Large Desktop: 7 Columns
+  grid-template-columns: repeat(7, minmax(100px, 1fr));
+
+  // Laptops/Tablets (up to 1200px): 5 Columns
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(5, minmax(100px, 1fr));
+  }
+
+  // Small Tablets (up to 900px): 3 Columns
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(3, minmax(100px, 1fr));
+  }
+
+  // Mobile Phones (up to 500px): 2 Columns
+  @media (max-width: 500px) {
+    grid-template-columns: repeat(2, minmax(80px, 1fr));
+    gap: 10px;
+  }
+  
+  gap: 30px;           /* Space between rows and columns */
+  width: 100%;         /* Ensure it takes full width of the section */
+  align-items: center; /* Centers logos vertically in their cell */
+  justify-items: center; /* Centers logos horizontally in their cell */
+  padding: 20px;
+}
+
+.logo-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  filter: grayscale(100%);
+
+  img {
+    max-width: 100%;    /* Prevents logo from being wider than the grid cell */
+    height: auto;       /* Keeps aspect ratio */
+    max-height: 80px;   /* Prevents tall logos from taking too much space */
+    object-fit: contain;
+  }
+}
+
+.logo-item:hover {
+  filter: grayscale(0%);
+  transition: filter 0.1s ease;
+}
+
 .timeline-container {
   position: relative;
   width: 75vw;
@@ -265,7 +314,7 @@
   background: color.$container;
   border: 1px solid color.$secondaryAlpha10;
   gap: 2vh;
-  padding: 2.5vh 0 4.5vh;
+  padding: 30px;
   border-radius: 15px;
   margin-top: 2.5vh;
 }
@@ -635,34 +684,42 @@
   }
 
   .main-container {
+  display: flex;
+  flex-direction: row; // Horizontal on desktop
+  flex-wrap: wrap;    // Allows items to wrap if they run out of space
+  justify-content: space-evenly;
+  gap: 20px;          // Adds spacing between items when they stack
+
+  .image-container {
+    width: 16.5%;     // Desktop width
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3vh;
 
-    .image-container {
-      width: 16.5%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      gap: 3vh;
+    img {
+      width: 100%;    // Changed to 100% to scale with the container
+      height: auto;
+      filter: grayscale(100%);
+      transition: filter 0.5s ease;
 
-      img {
-        width: auto;
-        height: auto;
-        max-width: none;
-        max-height: none;
-        object-fit: none;
-        margin: 0;
-        filter: grayscale(100%);
-        transition: filter 0.5s ease;
-
-        &:hover {
-          filter: none;
-        }
+      &:hover {
+        filter: none;
       }
     }
   }
+
+  // --- Responsive Adjustment ---
+  @media (max-width: 768px) {
+    flex-direction: column; // Stack vertically on tablets/phones
+    align-items: center;
+
+    .image-container {
+      width: 80%;           // Make containers wider on mobile
+    }
+  }
+}
 }
 
 .appearance {
@@ -874,11 +931,29 @@
 }
 
 /* Programs Grid Section */
+/* 1. Internship Programs Grid */
 .programs-grid {
   display: grid;
+  // Desktop: 3 columns
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
-  margin-bottom: 80px;
+  margin-top: 40px;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr); // Tablet: 2 columns
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr; // Mobile: 1 column
+    gap: 40px;
+  }
+
+  .image-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+  }
 }
 
 .program-column {
@@ -970,12 +1045,32 @@
   color: #fff;
 }
 
+/* 2. Interns Testimonials Section */
 .interns_testimonials-container {
   position: relative;
-  width: 100%;
-  margin: 0 auto;
-  background-color: rgb(19, 13, 13);
-  min-height: max-content;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  .testimonial-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+
+    @media (max-width: 768px) {
+      flex-direction: column; // Stack on mobile
+      gap: 30px;
+    }
+  }
+
+  .testimonial-item {
+    flex: 1;
+    // Fix for the cursor issue
+    .uni-logo {
+      cursor: default !important; 
+      pointer-events: none; // Ensures no interaction on the image
+    }
+  }
 }
 
 /* the vertical red line */
@@ -1025,6 +1120,13 @@
   margin-bottom: 20px;
 }
 
+/* 3. Global fix for all testimonial logos */
+.logo-wrapper img.uni-logo {
+  cursor: default !important;
+  max-width: 100px;
+  height: auto;
+}
+
 .uni-logo {
   width: 150px;
   height: 150px;
@@ -1033,20 +1135,12 @@
   padding: 5px;
   background-color: #222;
   object-fit: contain;
-  transition: all 0.3s ease;
   cursor: pointer;
   filter: grayscale(100%);
 }
 
 .logo-wrapper:hover .uni-logo {
-  transform: scale(1.1);
-  border-color: #d32f2f;
-  box-shadow: 0 0 20px rgba(211, 47, 47, 0.6);
-}
-
-.logo-wrapper:hover .uni-logo {
   filter: grayscale(0%);
-  border-color: #d32f2f;
 }
 
 .quote {
@@ -1072,11 +1166,21 @@
   color: #ccc;
 }
 
+/* 4. Outreach Section Adjustments */
 .outreach-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 50px;
-  align-items: start;
+  gap: 40px;
+
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr; // Stack outreach content above gallery
+    
+    .outreach-gallery {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
 }
 
 .drop-cap {

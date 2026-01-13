@@ -47,8 +47,15 @@ export class MainHeader {
     }
   }
 
-  // close mobile menu when clicking on navigation links
+  // UPDATED METHOD
   onNavLinkClick(): void {
+    // 1. Scroll to top immediately or smoothly
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth' // Change to 'auto' if you want it to jump instantly
+    });
+
+    // 2. Handle mobile menu closing logic
     if (!this.isDesktop && this.isMobileMenuOpen) {
       this.closeMobileMenu();
     }

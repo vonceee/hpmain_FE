@@ -20,10 +20,12 @@
 <section class="content-container">
   @if (tab() == 0) {
   <title-badge title="Our Journey"></title-badge>
+
   <p class="text-md about_us-subtitle">
     From humble beginnings to becoming the Philippines' leading provider of industrial and
     educational solutions
   </p>
+
   <div class="timeline-container">
     <div class="timeline-line"></div>
 
@@ -46,99 +48,21 @@
     </div>
   </div>
 
-  <section class="distributorship-container">
-    <title-badge title="Gain Exclusive Distributorship"></title-badge>
-    <p class="text-md about_us-subtitle">
-      Continuing to shape the future of technical education with cutting-edge technology and
-      strategic partnerships.
-    </p>
-    <div class="distributorship-logos">
-      <div class="column1">
-        <a href="https://amatrol.com" target="_blank">
-          <img src="assets/images/aboutus/distributionship/amatrol.png" alt="Amatrol" />
-        </a>
-        <a href="https://www.milwaukeetool.com" target="_blank">
-          <img src="assets/images/aboutus/distributionship/milwaukee.png" alt="Milwaukee Tool" />
-        </a>
-        <a href="https://www.snapon.com" target="_blank">
-          <img src="assets/images/aboutus/distributionship/snapon.png" alt="Snap-on" />
-        </a>
-      </div>
-      <div class="column2">
-        <a href="https://www.tagheuer.com" target="_blank">
-          <img src="assets/images/aboutus/distributionship/tag.png" alt="TAG Heuer" />
-        </a>
-        <a href="https://www.chestermachinetools.com" target="_blank">
-          <img
-            src="assets/images/aboutus/distributionship/chester.png"
-            alt="Chester Machine Tools"
-          />
-        </a>
-        <a href="https://www.unisonindustries.com" target="_blank">
-          <img src="assets/images/aboutus/distributionship/unison.png" alt="Unison Industries" />
-        </a>
-        <a href="https://laerdal.com" target="_blank">
-          <img src="assets/images/aboutus/distributionship/laerdal.png" alt="Laerdal Medical" />
-        </a>
-      </div>
-      <div class="column3">
-        <a href="https://www.nord-lock.com" target="_blank">
-          <img src="assets/images/aboutus/distributionship/nordlock.png" alt="Nord-Lock Group" />
-        </a>
-        <a href="https://www.doriantool.com" target="_blank">
-          <img src="assets/images/aboutus/distributionship/dorian.png" alt="Dorian Tool" />
-        </a>
-        <a href="https://www.simlog.com" target="_blank">
-          <img src="assets/images/aboutus/distributionship/simlog.png" alt="Simlog" />
-        </a>
-        <a href="https://seaberyat.com/en/soldamatic" target="_blank">
-          <img src="assets/images/aboutus/distributionship/soldamatic.png" alt="Soldamatic" />
-        </a>
-      </div>
-      <div class="column4">
-        <a href="https://www.norbar.com" target="_blank">
-          <img src="assets/images/aboutus/distributionship/norbar.png" alt="Norbar" />
-        </a>
-        <a href="https://geobit-instruments.com" target="_blank">
-          <img src="assets/images/aboutus/distributionship/geobit.png" alt="Geobit Instruments" />
-        </a>
-        <a href="https://www.aamc.org" target="_blank">
-          <img src="assets/images/aboutus/distributionship/amos.png" alt="AAMC" />
-        </a>
-        <a href="https://www.americansaw.com" target="_blank">
-          <img src="assets/images/aboutus/distributionship/american.png" alt="American Saw" />
-        </a>
-      </div>
-      <div class="column5">
-        <a href="https://www.chicago-pneumatic.com" target="_blank">
-          <img src="assets/images/aboutus/distributionship/chicago.png" alt="Chicago Pneumatic" />
-        </a>
-        <a href="https://new.abb.com" target="_blank">
-          <img src="assets/images/aboutus/distributionship/abb.png" alt="ABB" />
-        </a>
-        <a href="https://www.utest.com.tr/en" target="_blank">
-          <img src="assets/images/aboutus/distributionship/utest.png" alt="Utest" />
-        </a>
-        <a href="https://www.hypertherm.com" target="_blank">
-          <img src="assets/images/aboutus/distributionship/hypertherm.png" alt="Hypertherm" />
-        </a>
-      </div>
-      <div class="column6">
-        <a href="https://www.aamc.org" target="_blank">
-          <img src="assets/images/aboutus/distributionship/aamc.png" alt="AAMC" />
-        </a>
-        <a href="https://www.wartsila.com" target="_blank">
-          <img src="assets/images/aboutus/distributionship/wartsila.png" alt="Wärtsilä" />
-        </a>
-        <a href="https://www.anylogic.com" target="_blank">
-          <img src="assets/images/aboutus/distributionship/anylogic.png" alt="AnyLogic" />
-        </a>
-        <a href="https://www.ewm-group.com" target="_blank">
-          <img src="assets/images/aboutus/distributionship/ewm.png" alt="EWM" />
-        </a>
-      </div>
-    </div>
-  </section>
+<section class="distributorship-container">
+  <title-badge title="Gain Exclusive Distributorship"></title-badge>
+  <p class="text-md about_us-subtitle">
+    Continuing to shape the future of technical education with cutting-edge technology and strategic partnerships.
+  </p>
+
+  <div class="logo-grid">
+    @for (logo of logos; track logo.name) {
+      <a [href]="logo.url" target="_blank" class="logo-item">
+        <img [src]="logo.src" [alt]="logo.name" />
+      </a>
+    }
+  </div>
+</section>
+  
   } @if (tab() == 1) {
   <title-badge title="Awards and Achievements"></title-badge>
   <p class="text-md about_us-subtitle">
@@ -177,7 +101,7 @@
     </div>
   </container-box>
 
-  <title-badge title="TY Appearances"></title-badge>
+  <title-badge title="TV Appearances"></title-badge>
   <p class="text-md about_us-subtitle">
     Appearances at Umagang Kay Ganda, AHA!, Good Morning Dub and Suit Up!
   </p>
@@ -269,9 +193,8 @@
   } @if (tab() == 3) {
   <title-badge title="Programs"></title-badge>
 
-  <p class="mediumTitle white">
-    From humble beginnings to becoming the Philippines' leading provider of industrial and
-    educational solutions
+  <p class="text-md about_us-subtitle">
+    Lets dive into the exciting programs ahead and make the most of every opportunity that comes our way.
   </p>
   <div class="container">
     <header class="main-header">

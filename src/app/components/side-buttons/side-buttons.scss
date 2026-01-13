@@ -47,6 +47,29 @@
         inset 0 -2px 4px rgba(0, 0, 0, 0.25);
 }
 
+@media (max-width: 768px) {
+    .side-btn-inner {
+        // Force the button to stay at 56px width (collapsed)
+        transform: translateX(calc(100% - 56px)) !important;
+        pointer-events: none; // Optional: prevents click if only text was clickable
+    }
+
+    .side-btn-inner.is-active {
+        // Override the active state so it doesn't slide out on mobile
+        transform: translateX(calc(100% - 56px)) !important;
+    }
+
+    .btn-text {
+        // Ensure text never shows up on mobile
+        display: none !important;
+    }
+    
+    // If you want the icons to be clickable but just not expand
+    .icon-wrapper {
+        pointer-events: auto;
+    }
+}
+
 .side-btn-inner.is-active {
     transform: translateX(0);
 }
