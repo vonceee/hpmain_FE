@@ -1,111 +1,17 @@
-@use "text-display";
-@use "colors" as color;
+@use 'text-display';
+@use 'colors' as color;
 
 :host {
   display: block;
   font-family: 'Bebas', sans-serif;
   color: white;
-  background: linear-gradient(180deg,
-      rgba(80, 0, 0, 0.25) 0%,
-      rgba(20, 0, 0, 0.65) 10%,
-      #000000 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(80, 0, 0, 0.25) 0%,
+    rgba(20, 0, 0, 0.65) 10%,
+    #000000 100%
+  );
   overflow-x: hidden; //para hindi mag overflow ceo picture
-}
-
-.main-container {
-  width: 100%;
-}
-
-/* ˚◡˚ Hero Section ˚◡˚ */
-
-.hero-section {
-  position: relative;
-  height: 67vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  overflow: hidden;
-
-  background:
-    linear-gradient(
-      rgba(0, 0, 0, 0.8),
-      rgba(0, 0, 0, 0.8)
-    ),
-    url('/assets/images/home/234acacc5e5bd069189972b51d9bfeeade704003.jpg')
-    center / cover no-repeat;
-
-  background-attachment: initial;
-
-.hero-section-cover{
-  background: linear-gradient( 150deg, rgba(237, 28, 35, 0.5) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.5) 100%);
-  width: 100%;
-  height: 100%;
-  border: 1px solid white;
-  position: absolute;
-}
-
-  .hero-content {
-    z-index: 2;
-    max-width: 900px;
-    padding: 0 20px;
-
-    animation: fadeUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-
-    .date-pill {
-      display: inline-block;
-      background-color: color.$primary400;
-
-      color: white;
-      padding: 8px 16px;
-      border-radius: 99px;
-
-      font-size: 1rem;
-      font-weight: 400;
-      letter-spacing: 0.05em;
-
-      margin-bottom: 24px;
-      box-shadow: 0 4px 12px rgba(237, 28, 36, 0.3);
-    }
-
-    h1 {
-      font-family: "Bebas Neue", sans-serif;
-      font-size: clamp(3.5rem, 6vw, 6rem);
-      line-height: 0.95;
-      font-weight: 400;
-      margin: 0 0 16px 0;
-      color: #ffffff;
-
-      text-transform: uppercase;
-      letter-spacing: 1px;
-
-      text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    }
-
-    .subtitle {
-      font-family: "Poppins", sans-serif;
-      font-size: 1.4rem;
-      font-weight: 600;
-      line-height: 1;
-      color: rgba(255, 255, 255, 0.85);
-      margin: 0 auto;
-
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    }
-  }
-}
-
-// Helper Animation
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 /* ˚◡˚ Navigation Tab ˚◡˚ */
@@ -158,7 +64,7 @@
       cursor: pointer;
 
       color: white;
-      font-family: "Poppins", sans-serif;
+      font-family: 'Poppins', sans-serif;
       font-size: 1rem;
       font-weight: 500;
       letter-spacing: -0.01em;
@@ -244,9 +150,9 @@
 .about_us-subtitle {
   color: rgba(255, 255, 255, 0.7);
   font-size: 0.8rem;
-  text-align: center;  /* centers text inside */
-  max-width: 90%;      /* limit width */
-  margin: 0 auto;      /* center the block element */
+  text-align: center; /* centers text inside */
+  max-width: 90%; /* limit width */
+  margin: 0 auto; /* center the block element */
   margin-bottom: 4vh;
 }
 
@@ -268,7 +174,7 @@
   position: absolute;
   border-radius: 4px;
   z-index: 1;
-  background: linear-gradient(to right, #ED1C24, #871015);
+  background: linear-gradient(to right, #ed1c24, #871015);
 }
 
 /* ˚◡˚ Our Journey Section ˚◡˚ */
@@ -286,7 +192,7 @@
   top: 0;
   bottom: 0;
   width: 2px;
-  background: linear-gradient(to bottom, #ED1C24, #FB2C36, #000000);
+  background: linear-gradient(to bottom, #ed1c24, #fb2c36, #000000);
   transform: translateX(-50%);
   z-index: 1;
   height: 100%;
@@ -297,7 +203,7 @@
   z-index: 2;
   display: flex;
   flex-direction: column;
-  gap: 4vh
+  gap: 4vh;
 }
 
 .timeline-item {
@@ -375,7 +281,6 @@
   margin: 0;
   width: 100%;
 
-
   div {
     width: 100%;
     display: flex;
@@ -405,7 +310,7 @@
 }
 
 .headline {
-  background: linear-gradient(to bottom, #DBDBDB, #A9A9A9);
+  background: linear-gradient(to bottom, #dbdbdb, #a9a9a9);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -486,9 +391,6 @@
   cursor: pointer;
 }
 
-
-
-
 .title-badge {
   width: min-content;
   height: 50px;
@@ -515,10 +417,8 @@
   position: absolute;
   border-radius: 4px;
   z-index: 1;
-  background: linear-gradient(to right, #ED1C24, #871015);
+  background: linear-gradient(to right, #ed1c24, #871015);
 }
-
-
 
 .white {
   color: white;
@@ -548,7 +448,7 @@
   top: 0;
   bottom: 0;
   width: 2px;
-  background: linear-gradient(to bottom, #ED1C24, #FB2C36, #000000);
+  background: linear-gradient(to bottom, #ed1c24, #fb2c36, #000000);
   transform: translateX(-50%);
   z-index: 1;
   height: 100%;
@@ -560,7 +460,7 @@
   z-index: 2;
   display: flex;
   flex-direction: column;
-  gap: 4vh
+  gap: 4vh;
 }
 
 /* Individual Timeline Item */
@@ -654,8 +554,6 @@
   box-shadow: 0 0 0 6px rgba(255, 0, 0, 0.3);
   transition: all 0.3s ease;
 }
-
-
 
 .smallHeadline {
   margin: 0;
@@ -788,7 +686,7 @@
     justify-content: space-between; // distribute evenly
 
     // direct image child
-    >img {
+    > img {
       width: 32%; // Approx 1/3 minus gap
       height: auto;
       object-fit: cover;
@@ -809,7 +707,6 @@
     }
   }
 }
-
 
 /* ⋆｡˚ ୨୧ ˚｡⋆ Our President & CEO ⋆｡˚ ୨୧ ˚｡⋆ */
 
@@ -902,7 +799,6 @@
       grid-template-columns: 1fr; // stack on mobile
     }
   }
-
 }
 
 .attributes-container {
@@ -944,9 +840,9 @@
     }
   }
 
-  @media (max-width: 768px) {}
+  @media (max-width: 768px) {
+  }
 }
-
 
 /* --- MOVED FROM programs-section.scss --- */
 
@@ -991,7 +887,7 @@
 }
 
 .top-desc {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 0.85rem;
   margin-bottom: 15px;
   text-align: justify;
@@ -1201,14 +1097,14 @@
 }
 
 .quote-icon {
-  color: #ED1C24;
+  color: #ed1c24;
   font-size: 2rem;
   margin-bottom: 1rem;
   line-height: 1;
 }
 
 .text-body p {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 0.95rem;
   line-height: 1.8;
   text-align: justify;
@@ -1225,12 +1121,12 @@
   float: left;
   margin-right: 8px;
   margin-top: 5px;
-  color: #ED1C24;
+  color: #ed1c24;
 }
 
 .author-byline {
   margin-top: 30px !important;
-  color: #ED1C24 !important;
+  color: #ed1c24 !important;
   font-weight: bold;
   font-size: 1rem;
 }
@@ -1385,7 +1281,6 @@
   animation-delay: 0.2s;
 }
 
-
 /* ˚◡˚ Partnership Section ˚◡˚ */
 
 .grid-3x3 {
@@ -1411,8 +1306,8 @@
 }
 
 .cell img {
-  width: 6rem;         /* uniform width */
-  height: 6rem;        /* uniform height */
+  width: 6rem; /* uniform width */
+  height: 6rem; /* uniform height */
   object-fit: contain; /* preserves aspect ratio, fits inside the box */
   margin-bottom: 0.5rem;
   transition: filter 0.3s ease;
@@ -1421,7 +1316,6 @@
 .cell p {
   font-size: 0.8rem;
 }
-
 
 /* ˚◡˚ Mission & Vision Section ˚◡˚ */
 
@@ -1446,7 +1340,7 @@
 .mv-divider .line {
   width: 2px;
   height: 100%;
-  background: linear-gradient(to bottom, #ED1C24, rgba(237, 28, 36, 0.3), transparent);
+  background: linear-gradient(to bottom, #ed1c24, rgba(237, 28, 36, 0.3), transparent);
 }
 
 .mv-divider .dot {

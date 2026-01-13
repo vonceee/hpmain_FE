@@ -14,6 +14,7 @@ import { MainFooter } from 'src/app/components/main-footer/main-footer';
 import { CommonModule } from '@angular/common';
 import { TitleBadge } from 'src/app/components/title-badge/title-badge';
 import { ContainerBox } from 'src/app/components/container-box/container-box';
+import { HeroSection } from 'src/app/components/hero-section/hero-section';
 
 interface NavTab {
   id: number;
@@ -33,9 +34,10 @@ interface TimelineEvent {
   position: 'left' | 'right';
 }
 
+// Component Definition
 @Component({
   selector: 'about-us',
-  imports: [MainHeader, MainFooter, CommonModule, TitleBadge, ContainerBox],
+  imports: [MainHeader, MainFooter, CommonModule, TitleBadge, ContainerBox, HeroSection],
   templateUrl: './about-us.html',
   styleUrls: ['./about-us.scss'],
 })
