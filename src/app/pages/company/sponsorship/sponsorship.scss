@@ -4,19 +4,47 @@
 :host {
   display: block;
   font-family: 'Poppins', sans-serif;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+
+  // Minimalist Scrollbar
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #050505;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #333;
+    border-radius: 10px;
+
+    &:hover {
+      background-color: #555;
+    }
+  }
 }
 
 .section-wrapper {
-  height: 100vh;
+  min-height: 100vh;
+  width: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  position: relative;
 }
 
-// Typography Mixins
-@mixin section-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 3rem;
-  color: #fff;
+main-header {
+  scroll-snap-align: start;
+}
+
+main-footer {
+  scroll-snap-align: end;
+  display: block; // ensure dimensions are respected
+  width: 100%;
 }
 
 .partners-section-wrapper {
@@ -29,20 +57,56 @@
   background: radial-gradient(circle at 20% 50%, rgba(139, 0, 0, 0.15) 0%, transparent 40%),
     radial-gradient(circle at 80% 50%, rgba(139, 0, 0, 0.15) 0%, transparent 40%), #000;
 
-  .partners-grid {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 3rem 2rem;
+  .marquee-wrapper {
+    width: 100%;
+    overflow: hidden;
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 10%,
+      black 90%,
+      transparent
+    ); // fade edges
+  }
+
+  .marquee-track {
+    display: flex;
+    gap: 4rem;
+    width: fit-content;
+    animation: scroll 20s linear infinite;
+
+    &:hover {
+      animation-play-state: paused;
+    }
+  }
+
+  .partner-card {
+    flex-shrink: 0;
+    display: flex;
     align-items: center;
-    justify-items: center;
+    justify-content: center;
 
     img {
       width: 10rem;
       height: 10rem;
       object-fit: contain;
+      border-radius: 20px;
+      backdrop-filter: blur(5px);
+      transition: transform 0.3s ease;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
     }
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.33%); // Move by 1/3 since we have 3 sets
   }
 }
 
@@ -51,6 +115,7 @@
   color: #fff;
 
   position: relative;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -65,7 +130,7 @@
     gap: 1rem;
 
     img {
-      height: 15rem;
+      height: 12rem;
       width: auto;
       border-radius: 199px;
     }
@@ -112,11 +177,17 @@
 
 // Competition Levels Section
 .competition-levels-section {
+  margin: 0 auto;
   padding: 5rem 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   background-color: #000;
+
+  @media (max-height: 850px) {
+    padding: 2rem 1rem;
+  }
 
   .text-lg {
     color: #fff;
@@ -146,7 +217,7 @@
     color: #fff;
 
     .level-image {
-      height: 18rem; // fixed height for alignment
+      height: 16rem; // fixed height for alignment
       display: flex;
       align-items: center;
       justify-content: center;
@@ -171,12 +242,25 @@
   padding: 6rem 2rem;
   background-color: #000;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-height: 850px) {
+    padding: 2rem 1rem;
+  }
 
   .stats-intro {
     max-width: 80vw;
     margin: 0 auto 4rem;
     color: #ddd;
     line-height: 1.6;
+
+    strong {
+      color: #ff3333;
+      font-weight: 600;
+    }
   }
 
   .stats-grid {
@@ -192,8 +276,8 @@
       align-items: center;
 
       .stat-icon {
-        width: 10rem;
-        height: 10rem;
+        width: 9rem;
+        height: 9rem;
         border: 2px solid #fff;
         border-radius: 50%;
         display: flex;
@@ -232,41 +316,101 @@
 
 // Guinness Section
 .guinness-section {
-  padding: 4rem 2rem;
-  border-top: 1px dashed #8a0005;
-  border-bottom: 1px dashed #8a0005;
-  margin: 2rem 0;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  .guinness-content {
-    max-width: 900px;
-    margin: 0 auto;
+  .content-container {
+    position: relative;
+    z-index: 2;
+    max-width: 50vw;
     text-align: center;
+    color: #fff;
 
-    h3 {
-      font-size: 1.3rem;
-      font-weight: 700;
+    .text-xl {
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
       margin-bottom: 1.5rem;
-      color: #fff;
+      line-height: 1.2;
+
+      strong {
+        color: #fff;
+        font-weight: 800;
+      }
     }
 
-    p {
-      font-size: 0.95rem;
-      color: #ccc;
-      line-height: 1.7;
+    .sub-label-wrapper {
+      max-width: 700px;
+      margin: 0 auto;
+
+      p {
+        color: #b0b0b0;
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+    }
+  }
+
+  .dots-decor {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    pointer-events: none;
+
+    .dot-grid {
+      width: 280px;
+      height: 80px;
+      /* logic: dot size (2px), space (transparent), repeat every 14px */
+      background-image: radial-gradient(circle, currentColor 3px, transparent 3px);
+      background-size: 14px 14px;
+
+      /* creates that "staircase" or skewed look from Figma */
+      mask-image: linear-gradient(135deg, black 70%, transparent 100%);
+      -webkit-mask-image: linear-gradient(135deg, black 70%, transparent 100%);
+    }
+
+    &.left-dots {
+      left: 2rem;
+      color: rgba(237, 28, 36, 0.5);
+      filter: drop-shadow(0 0 10px rgba(237, 28, 36, 0.2));
+    }
+
+    &.right-dots {
+      right: 2rem;
+      color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-50%) scaleX(-1); /* flips the mask direction */
     }
   }
 }
 
 // Contact Section
 .contact-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   padding: 6rem 2rem;
   text-align: center;
   background: linear-gradient(to bottom, #000 0%, #0a0a0a 100%);
+
+  @media (max-height: 850px) {
+    padding: 2rem 1rem;
+  }
+
+  // ensure content stays above the shapes
+  h3,
+  .contact-methods {
+    position: relative;
+    z-index: 1;
+  }
 
   h3 {
     font-size: 1.2rem;
     margin-bottom: 4rem;
     font-weight: 500;
+    color: #fff;
   }
 
   .contact-methods {
@@ -282,11 +426,7 @@
       text-align: left;
 
       i {
-        display: block;
-        width: 20px;
-        height: 20px;
-        background-color: #8a0005; // Placeholder for icon
-        border-radius: 50%;
+        color: color.$primarydark;
       }
 
       .details {
@@ -296,7 +436,7 @@
 
         span {
           font-size: 0.9rem;
-          color: #aaa;
+          color: #fff;
         }
 
         a {
@@ -312,22 +452,27 @@
       }
     }
   }
-}
 
-// Mobile Responsiveness overrides
-@media (max-width: 768px) {
-  // Hero Section
-  .hero-section {
-    height: 400px;
+  .decor-shape {
+    position: absolute;
+    top: 55%;
+    transform: translateY(-50%);
+    z-index: 0;
+    pointer-events: none; // don't block clicks/selections
+    opacity: 0.3;
 
-    .hero-content h1 {
-      font-size: 2.2rem;
+    img,
+    svg {
+      height: 25rem;
+      width: auto;
     }
-  }
 
-  .contact-methods {
-    gap: 3rem;
-    flex-direction: column;
-    align-items: center;
+    &.left {
+      left: 0;
+    }
+
+    &.right {
+      right: 0;
+    }
   }
 }

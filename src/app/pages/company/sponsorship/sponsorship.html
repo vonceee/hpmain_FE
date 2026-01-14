@@ -11,10 +11,27 @@
 
     <!-- Partners Section -->
     <div class="partners-section-wrapper">
-      <div class="partners-grid">
-        @for (partner of partners; track partner.name) {
-        <img [src]="partner.logo" [alt]="partner.name" />
-        }
+      <div class="marquee-wrapper">
+        <div class="marquee-track" #marqueeTrack>
+          <!-- First Set -->
+          @for (partner of partners; track partner.name) {
+          <div class="partner-card">
+            <img [src]="partner.logo" [alt]="partner.name" />
+          </div>
+          }
+          <!-- Duplicate Set for Seamless Scrolling -->
+          @for (partner of partners; track partner.name) {
+          <div class="partner-card">
+            <img [src]="partner.logo" [alt]="partner.name" />
+          </div>
+          }
+          <!-- Triplicate Set for wider screens if needed, usually 2 is enough if width is handled, but let's stick to 2 and css repeats -->
+          @for (partner of partners; track partner.name) {
+          <div class="partner-card">
+            <img [src]="partner.logo" [alt]="partner.name" />
+          </div>
+          }
+        </div>
       </div>
     </div>
   </section>
@@ -72,19 +89,21 @@
   <!-- Statistics Section -->
   <section class="section-wrapper stats-section">
     <p class="stats-intro text-md">
-      The VEX Robotics competitions combine the natural hook of educational robotics with the fun
-      and excitement collaborating and competing with friends and peers. While competing either in
-      primary, secondary, college or university, students will create memories and friends for a
-      lifetime. They will also learn skills and concepts that will carry with them long after they
-      are done competing.
+      The <strong>VEX Robotics competitions</strong> combine the natural hook of
+      <strong>educational robotics</strong> with the fun and excitement
+      <strong>collaborating and competing</strong> with friends and peers. While competing either in
+      primary, secondary, college or university, students will create
+      <strong>memories and friends</strong> for a lifetime. They will also learn
+      <strong>skills and concepts</strong> that will carry with them long after they are done
+      competing.
     </p>
 
     <div class="stats-grid">
       @for (stat of statistics; track stat.label; let i = $index) {
-      <div class="stat-item" (mouseenter)="onMouseEnter(i)">
+      <div class="stat-item" #statItem (mouseenter)="onMouseEnter(i)">
         <div class="stat-icon">
           <ng-lottie
-            [options]="getAnimationOptions(stat.iconPath)"
+            [options]="stat.options"
             (animationCreated)="animationCreated($event, i)"
           ></ng-lottie>
         </div>
@@ -96,36 +115,55 @@
   </section>
 
   <!-- Guinness Record Section -->
-  <section class="guinness-section">
-    <div class="guinness-content">
-      <h3>Guinness World Records® holder for the world's largest robotics competition</h3>
-      <p>
-        VEX Robotics Competitions is the ultimate STEM activity for middle and high school students.
-        Each year, an engineering challenge is presented in the form of a game. Students, with
-        guidance from their teachers and mentors, use the VEX Robotics Design System to build
-        innovative robots designed to score the most points possible in qualification matches,
-        elimination matches, and Skills Challenges.
-      </p>
+  <section class="section-wrapper guinness-section">
+    <div class="dots-decor left-dots" aria-hidden="true">
+      <div class="dot-grid"></div>
+    </div>
+
+    <div class="dots-decor right-dots" aria-hidden="true">
+      <div class="dot-grid"></div>
+    </div>
+
+    <div class="content-container">
+      <h2 class="text-xl">
+        Guinness World Records® holder for the <strong>World's Largest Robotics Competition</strong>
+      </h2>
+
+      <div class="sub-label-wrapper">
+        <p class="text-md">
+          Robotics competitions have also been known worldwide, especially on countries where
+          technological advancement is a priority. Such competitions are a chance to discover the
+          potentials and expose the skills of the students, thus developing 21st century leaders,
+          engineers and scientists.
+        </p>
+      </div>
     </div>
   </section>
 
   <!-- Contact Section -->
-  <section class="contact-section">
-    <h3>For interested host schools, please contact us:</h3>
+  <section class="section-wrapper contact-section">
+    <div class="decor-shape left">
+      <img src="assets/images/aboutus/sponsorship/decor/decor-left.svg" alt="" />
+    </div>
+    <div class="decor-shape right">
+      <img src="assets/images/aboutus/sponsorship/decor/decor-right.svg" alt="" />
+    </div>
+    <h3>For Interested Host Schools, Contact Us:</h3>
     <div class="contact-methods">
       <div class="contact-item">
-        <i class="icon-phone"></i>
+        <i class="bi bi-telephone"></i>
         <div class="details">
-          <span>Talk to one of our representatives</span>
-          <a href="tel:+63288888888">+632 8888 8888</a>
-          <span>Mon - Fri, 8:00 AM - 6:00 PM</span>
+          <span>Tel. Nos: +632 417-5435-418-7079-417-4333</span>
+          <span>419-9166419-9138</span>
+          <span>Fax: +632 419-9154-930-5499</span>
+          <span>(+63) 917 577-0025-922-806-2578 939 9243650</span>
         </div>
       </div>
       <div class="contact-item">
-        <i class="icon-email"></i>
+        <i class="bi bi-envelope"></i>
         <div class="details">
           <span>Or send us an email at</span>
-          <a href="mailto:marketing@hytecpower.com">marketing@hytecpower.com</a>
+          <a href="mailto:marketing@hytecpower.com">marketing_training@hytecpower.com</a>
         </div>
       </div>
     </div>

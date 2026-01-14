@@ -1,4 +1,11 @@
-import { Component } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  QueryList,
+  ViewChildren,
+  AfterViewInit,
+  OnDestroy,
+} from '@angular/core';
 
 import { MainHeader } from 'src/app/components/main-header/main-header';
 import { MainFooter } from 'src/app/components/main-footer/main-footer';
@@ -10,7 +17,8 @@ import { AnimationOptions, LottieComponent } from 'ngx-lottie';
 interface StatItem {
   label: string;
   value: string;
-  iconPath: string; // Path to the .json Lottie file
+  iconPath: string; // path to the .json Lottie file
+  options: AnimationOptions;
 }
 
 @Component({
@@ -20,14 +28,24 @@ interface StatItem {
   templateUrl: './sponsorship.html',
   styleUrl: './sponsorship.scss',
 })
-export class Sponsorship {
+export class Sponsorship implements AfterViewInit, OnDestroy {
+  @ViewChildren('statItem') statItemElements!: QueryList<ElementRef>;
+  @ViewChildren('marqueeTrack') marqueeTrack!: QueryList<ElementRef>; // Use QueryList or ViewChild, simpler with ViewChild typically but marqueeTrack is inside @for? No, just inside wrapper. Let's use ViewChild.
+  // Actually, ViewChild is safer if only one exists.
+  // But wait, I need to import ViewChild if I use it.
+
+  private observer: IntersectionObserver | undefined;
+  private visibleIndices = new Set<number>();
+
   partners = [
     { name: 'Cybertech', logo: 'assets/images/aboutus/sponsorship/logocybertech.png' },
     { name: 'VEX Robotics', logo: 'assets/images/aboutus/sponsorship/logovex.png' },
     { name: 'ElectroVex', logo: 'assets/images/aboutus/sponsorship/logophilippinerobot.png' },
     { name: 'VEX U', logo: 'assets/images/aboutus/sponsorship/logovexUrobcom.png' },
-    { name: 'World Skills', logo: 'assets/images/aboutus/sponsorship/logoworldskills.png' },
+    { name: 'World Skills', logo: 'assets/images/aboutus/sponsorship/world-skills-asean-logo.png' },
   ];
+
+  /* ... data ... */
 
   competitionLevels = [
     {
@@ -53,28 +71,139 @@ export class Sponsorship {
       value: '24,000',
       label: 'Participating Teams',
       iconPath: '/assets/images/aboutus/sponsorship/lottie/Partnership.json',
+      options: {
+        path: '/assets/images/aboutus/sponsorship/lottie/Partnership.json',
+        autoplay: false,
+        loop: false,
+      },
     },
     {
       value: '1,000,000',
       label: 'Students Reached Globally',
-      iconPath: '/assets/images/aboutus/sponsorship/lottie/Partnership.json',
+      iconPath: '/assets/images/aboutus/sponsorship/lottie/Team.json',
+      options: {
+        path: '/assets/images/aboutus/sponsorship/lottie/Team.json',
+        autoplay: false,
+        loop: false,
+      },
     },
     {
       value: '60+',
       label: 'Countries Represented',
-      iconPath: '/assets/images/aboutus/sponsorship/lottie/Partnership.json',
+      iconPath: '/assets/images/aboutus/sponsorship/lottie/Globe.json',
+      options: {
+        path: '/assets/images/aboutus/sponsorship/lottie/Globe.json',
+        autoplay: false,
+        loop: false,
+      },
     },
     {
       value: '22,000',
       label: 'Participating Schools',
-      iconPath: '/assets/images/aboutus/sponsorship/lottie/Partnership.json',
+      iconPath: '/assets/images/aboutus/sponsorship/lottie/AcademicBackground.json',
+      options: {
+        path: '/assets/images/aboutus/sponsorship/lottie/AcademicBackground.json',
+        autoplay: false,
+        loop: false,
+      },
     },
   ];
 
   private animationItems = new Map<number, AnimationItem>();
 
+  ngAfterViewInit() {
+    this.setupIntersectionObserver();
+    this.setupMarqueeAnimation();
+  }
+
+  private setupMarqueeAnimation() {
+    // The marquee track element
+    const track = this.marqueeTrack.first?.nativeElement;
+    if (!track) return;
+
+    // Wait a tick to ensure animations are ready
+    setTimeout(() => {
+      const animations = track.getAnimations();
+      if (animations.length > 0) {
+        const anim = animations[0]; // The scroll animation
+
+        let currentRate = 8; // Start very fast
+        const targetRate = 1;
+        const duration = 2500; // Time to slow down in ms
+        const startTime = performance.now();
+
+        // Set initial rate
+        anim.updatePlaybackRate(currentRate);
+
+        const step = (currentTime: number) => {
+          const elapsed = currentTime - startTime;
+
+          if (elapsed >= duration) {
+            anim.updatePlaybackRate(targetRate);
+            return; // Done
+          }
+
+          // Ease out exponential decay-ish via linear interpolation for simplicity or ease-out
+          // Simple linear:
+          currentRate = 8 - 7 * (elapsed / duration);
+          // Or using ease-out cubic for better feel: 1 - (1-t)^3
+          const t = elapsed / duration;
+          const easeOut = 1 - Math.pow(1 - t, 3);
+
+          // Interpolate
+          currentRate = 8 - 7 * easeOut;
+
+          anim.updatePlaybackRate(currentRate);
+          requestAnimationFrame(step);
+        };
+
+        requestAnimationFrame(step);
+      }
+    }, 100);
+  }
+
+  ngOnDestroy() {
+    if (this.observer) {
+      this.observer.disconnect();
+    }
+  }
+
+  private setupIntersectionObserver() {
+    this.observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const index = this.statItemElements
+            .toArray()
+            .findIndex((el) => el.nativeElement === entry.target);
+
+          if (index !== -1) {
+            if (entry.isIntersecting) {
+              this.visibleIndices.add(index);
+              const item = this.animationItems.get(index);
+              if (item) {
+                item.stop();
+                item.play();
+              }
+            } else {
+              this.visibleIndices.delete(index);
+            }
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    this.statItemElements.forEach((el) => this.observer?.observe(el.nativeElement));
+  }
+
   animationCreated(animationItem: AnimationItem, index: number): void {
+    console.log('Animation created for index', index);
     this.animationItems.set(index, animationItem);
+
+    // If already visible, play immediately
+    if (this.visibleIndices.has(index)) {
+      animationItem.play();
+    }
   }
 
   onMouseEnter(index: number): void {
@@ -83,14 +212,6 @@ export class Sponsorship {
       item.stop(); // Ensure it starts from the beginning
       item.play();
     }
-  }
-
-  getAnimationOptions(path: string): AnimationOptions {
-    return {
-      path,
-      autoplay: false,
-      loop: false,
-    };
   }
 
   contactInfo = {
