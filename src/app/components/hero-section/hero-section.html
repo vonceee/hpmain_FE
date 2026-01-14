@@ -8,8 +8,10 @@
 >
   <div class="hero-section-cover"></div>
   <div class="hero-content">
-    <span class="text date-pill">Since 1994</span>
-    <h1>HYTEC POWER INCORPORATED</h1>
-    <p class="subtitle">Empowering Industrial and Educational Solutions for Over 30 years</p>
+    <span class="text date-pill" [style.visibility]="heroDatePill ? 'visible' : 'hidden'">
+      {{ heroDatePill ? heroDatePill : 'Placeholder' }}
+    </span>
+    <h1>{{ heroTitle }}</h1>
+    <p>{{ heroSubtitle }}</p>
   </div>
 </section>

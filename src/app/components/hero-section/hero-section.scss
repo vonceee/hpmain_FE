@@ -1,10 +1,8 @@
 @use 'colors' as color;
 
-/* ˚◡˚ Hero Section ˚◡˚ */
-
 .hero-section {
   position: relative;
-  height: 80vh;
+  height: 70vh;
   width: 100%;
 
   display: flex;
@@ -12,6 +10,8 @@
   justify-content: center;
   text-align: center;
   overflow: hidden;
+
+  border-bottom: 0.5px solid color.$primarydark;
 
   .hero-section-cover {
     background: linear-gradient(
@@ -22,62 +22,94 @@
     );
     width: 100%;
     height: 100%;
-    border: 1px solid white;
     position: absolute;
+    top: 0;
+    left: 0;
   }
 
   .hero-content {
+    position: relative;
     z-index: 2;
     max-width: 900px;
-    padding: 0 20px;
+    padding: 0 32px;
 
     animation: fadeUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 
     .date-pill {
       display: inline-block;
       background-color: color.$primary400;
-
       color: white;
-      padding: 8px 16px;
+      padding: 10px 20px;
       border-radius: 99px;
 
-      font-size: 1rem;
-      font-weight: 400;
-      letter-spacing: 0.05em;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.025em;
+      text-transform: uppercase;
 
-      margin-bottom: 24px;
-      box-shadow: 0 4px 12px rgba(237, 28, 36, 0.3);
+      margin-bottom: 32px;
+      box-shadow: 0 4px 16px rgba(237, 28, 36, 0.25);
     }
 
     h1 {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(3.5rem, 6vw, 6rem);
-      line-height: 0.95;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      line-height: 1.1;
       font-weight: 400;
-      margin: 0 0 16px 0;
-      color: white;
-      letter-spacing: 1px;
+      margin: 0 0 32px 0;
+      letter-spacing: 0.02em;
+
+      // gradient text
+      background: linear-gradient(180deg, #f5f5f5 0%, #a9a9a9 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
-    .subtitle {
+    p {
       font-family: 'Poppins', sans-serif;
-      font-size: 1.4rem;
-      font-weight: 600;
-      line-height: 1;
-      color: rgba(255, 255, 255, 0.85);
+      font-size: 1.125rem;
+      font-weight: 400;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 80vw;
+      margin: 0 auto;
     }
   }
 }
 
-// Helper Animation
 @keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+// Responsive Adjustments
+@media (max-width: 768px) {
+  .hero-section {
+    height: 60vh;
+
+    .hero-content {
+      padding: 0 24px;
+
+      .date-pill {
+        font-size: 0.8125rem;
+        padding: 8px 16px;
+        margin-bottom: 24px;
+      }
+
+      h1 {
+        margin-bottom: 24px;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+    }
   }
 }

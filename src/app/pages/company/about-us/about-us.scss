@@ -185,6 +185,12 @@
   // Large Desktop: 7 Columns
   grid-template-columns: repeat(7, minmax(100px, 1fr));
 
+  gap: 30px; /* Space between rows and columns */
+  width: 100%; /* Ensure it takes full width of the section */
+  align-items: center; /* Centers logos vertically in their cell */
+  justify-items: center; /* Centers logos horizontally in their cell */
+  padding: 20px;
+
   // Laptops/Tablets (up to 1200px): 5 Columns
   @media (max-width: 1200px) {
     grid-template-columns: repeat(5, minmax(100px, 1fr));
@@ -200,12 +206,6 @@
     grid-template-columns: repeat(2, minmax(80px, 1fr));
     gap: 10px;
   }
-  
-  gap: 30px;           /* Space between rows and columns */
-  width: 100%;         /* Ensure it takes full width of the section */
-  align-items: center; /* Centers logos vertically in their cell */
-  justify-items: center; /* Centers logos horizontally in their cell */
-  padding: 20px;
 }
 
 .logo-item {
@@ -216,9 +216,9 @@
   filter: grayscale(100%);
 
   img {
-    max-width: 100%;    /* Prevents logo from being wider than the grid cell */
-    height: auto;       /* Keeps aspect ratio */
-    max-height: 80px;   /* Prevents tall logos from taking too much space */
+    max-width: 100%; /* Prevents logo from being wider than the grid cell */
+    height: auto; /* Keeps aspect ratio */
+    max-height: 80px; /* Prevents tall logos from taking too much space */
     object-fit: contain;
   }
 }
@@ -684,42 +684,42 @@
   }
 
   .main-container {
-  display: flex;
-  flex-direction: row; // Horizontal on desktop
-  flex-wrap: wrap;    // Allows items to wrap if they run out of space
-  justify-content: space-evenly;
-  gap: 20px;          // Adds spacing between items when they stack
-
-  .image-container {
-    width: 16.5%;     // Desktop width
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    gap: 3vh;
+    flex-direction: row; // Horizontal on desktop
+    flex-wrap: wrap; // Allows items to wrap if they run out of space
+    justify-content: space-evenly;
+    gap: 20px; // Adds spacing between items when they stack
 
-    img {
-      width: 100%;    // Changed to 100% to scale with the container
-      height: auto;
-      filter: grayscale(100%);
-      transition: filter 0.5s ease;
+    .image-container {
+      width: 16.5%; // Desktop width
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      gap: 3vh;
 
-      &:hover {
-        filter: none;
+      img {
+        width: 100%; // Changed to 100% to scale with the container
+        height: auto;
+        filter: grayscale(100%);
+        transition: filter 0.5s ease;
+
+        &:hover {
+          filter: none;
+        }
+      }
+    }
+
+    // --- Responsive Adjustment ---
+    @media (max-width: 768px) {
+      flex-direction: column; // Stack vertically on tablets/phones
+      align-items: center;
+
+      .image-container {
+        width: 80%; // Make containers wider on mobile
       }
     }
   }
-
-  // --- Responsive Adjustment ---
-  @media (max-width: 768px) {
-    flex-direction: column; // Stack vertically on tablets/phones
-    align-items: center;
-
-    .image-container {
-      width: 80%;           // Make containers wider on mobile
-    }
-  }
-}
 }
 
 .appearance {
@@ -1067,7 +1067,7 @@
     flex: 1;
     // Fix for the cursor issue
     .uni-logo {
-      cursor: default !important; 
+      cursor: default !important;
       pointer-events: none; // Ensures no interaction on the image
     }
   }
@@ -1174,7 +1174,7 @@
 
   @media (max-width: 992px) {
     grid-template-columns: 1fr; // Stack outreach content above gallery
-    
+
     .outreach-gallery {
       width: 100%;
       max-width: 600px;

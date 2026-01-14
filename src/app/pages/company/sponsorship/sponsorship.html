@@ -1,38 +1,37 @@
 <main-header></main-header>
 
 <main>
-  <!-- Hero Section -->
-  <section class="hero-section">
-    <div class="hero-content">
-      <h1>SPONSORSHIP VISIBILITY</h1>
-      <p>
-        HPI finds essential to engage into sponsorship of robotics competitions across the nation.
-        It has partnered with different schools in the country in designing their own battle of the
-        robotics geniuses.
-      </p>
-    </div>
-    <img
-      class="leftsidedecor2"
-      src="assets/images/aboutus/sponsorship/decor/redglow.png"
-      alt="Hero Section2"
-    />
-    <img
-      class="rightsidedecor1"
-      src="assets/images/aboutus/sponsorship/decor/redglow.png"
-      alt="Hero Section1"
-    />
-  </section>
+  <section class="section-wrapper">
+    <!-- Hero Section -->
+    <hero-section
+      heroImage="/assets/images/aboutus/sponsorship/logoherosec.png"
+      heroTitle="SPONSORSHIP VISIBILITY"
+      heroSubtitle="HPI finds essential to engage into sponsorship of robotics competitions across the nation. It has partnered with different schools in the country in designing their own battle of the robotics geniuses."
+    ></hero-section>
 
-  <!-- Partners Section -->
-  <section class="partners-section">
-    <div class="partners-grid">
-      <img *ngFor="let partner of partners" [src]="partner.logo" [alt]="partner.name" />
+    <!-- Partners Section -->
+    <div class="partners-section-wrapper">
+      <div class="partners-grid">
+        @for (partner of partners; track partner.name) {
+        <img [src]="partner.logo" [alt]="partner.name" />
+        }
+      </div>
     </div>
   </section>
 
   <!-- Intro Text Section -->
-  <section class="intro-text-section">
-    <h2>Hytec Power supported 'Team Philippines' in the World's Largest Robotics Competition</h2>
+  <section class="section-wrapper intro-text-section">
+    <div class="decor-shape left">
+      <img src="assets/images/aboutus/sponsorship/decor/decor-left.svg" alt="" />
+    </div>
+    <div class="decor-shape right">
+      <img src="assets/images/aboutus/sponsorship/decor/decor-right.svg" alt="" />
+    </div>
+
+    <p class="text-lg">
+      Hytec Power supported 'Team Philippines' in the
+      <strong>World's Largest Robotics Competition</strong>
+    </p>
     <div class="rec-foundation">
       <span class="sub-label">Supported By:</span>
       <img
@@ -40,48 +39,59 @@
         alt="REC Foundation"
       />
     </div>
+    <div class="sub-label-wrapper">
+      <p class="text-md">
+        The Robotics Education & Competition (REC) Foundation’s mission is to increase student
+        interest and involvement in science, technology, engineering, and mathematics (STEM) by
+        engaging students in hands-on, affordable, and sustainable robotics engineering programs.
+      </p>
+    </div>
   </section>
 
   <!-- Competition Levels Section -->
-  <section class="competition-levels-section">
-    <img
-      class="leftsidedecor3"
-      src="assets/images/aboutus/sponsorship/decor/redglow.png"
-      alt="Hero Section3"
-    />
-    <img
-      class="rightsidedecor4"
-      src="assets/images/aboutus/sponsorship/decor/redglow.png"
-      alt="Hero Section4"
-    />
-    <h2>Hytec Power is also sponsoring Robotics Competition for:</h2>
+  <section class="section-wrapper competition-levels-section">
+    <p class="text-lg">Hytec Power is also sponsoring <strong>Robotics Competition</strong> for:</p>
 
-    <div class="levels-grid">
-      <div class="level-card" *ngFor="let level of competitionLevels">
-        <div class="level-image">
-          <img [src]="level.image" [alt]="level.title" />
+    <div class="levels-wrapper">
+      <div class="levels-grid">
+        @for (level of competitionLevels; track level.title) {
+        <div class="level-card">
+          <div class="level-image">
+            <img [src]="level.image" [alt]="level.title" />
+          </div>
+          <p class="text-xl">
+            <strong>{{ level.title }}</strong>
+          </p>
+          <p class="text-sm sub-label">{{ level.description }}</p>
         </div>
-        <h3>{{ level.title }}</h3>
-        <p>{{ level.description }}</p>
+        }
       </div>
     </div>
   </section>
 
   <!-- Statistics Section -->
-  <section class="stats-section">
-    <p class="stats-intro">
-      The REC Foundation stands as a driving force in the global STEM movement, dedicated to
-      inspiring young people to become the STEM leaders of tomorrow.
+  <section class="section-wrapper stats-section">
+    <p class="stats-intro text-md">
+      The VEX Robotics competitions combine the natural hook of educational robotics with the fun
+      and excitement collaborating and competing with friends and peers. While competing either in
+      primary, secondary, college or university, students will create memories and friends for a
+      lifetime. They will also learn skills and concepts that will carry with them long after they
+      are done competing.
     </p>
 
     <div class="stats-grid">
-      <div class="stat-item" *ngFor="let stat of statistics">
+      @for (stat of statistics; track stat.label; let i = $index) {
+      <div class="stat-item" (mouseenter)="onMouseEnter(i)">
         <div class="stat-icon">
-          <img [src]="stat.icon" alt="" />
+          <ng-lottie
+            [options]="getAnimationOptions(stat.iconPath)"
+            (animationCreated)="animationCreated($event, i)"
+          ></ng-lottie>
         </div>
         <h3>{{ stat.value }}</h3>
         <p>{{ stat.label }}</p>
       </div>
+      }
     </div>
   </section>
 

@@ -1,12 +1,22 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { MainHeader } from 'src/app/components/main-header/main-header';
 import { MainFooter } from 'src/app/components/main-footer/main-footer';
+import { HeroSection } from 'src/app/components/hero-section/hero-section';
+
+import { AnimationItem } from 'lottie-web';
+import { AnimationOptions, LottieComponent } from 'ngx-lottie';
+
+interface StatItem {
+  label: string;
+  value: string;
+  iconPath: string; // Path to the .json Lottie file
+}
 
 @Component({
   selector: 'app-sponsorship',
   standalone: true,
-  imports: [CommonModule, MainHeader, MainFooter],
+  imports: [MainHeader, MainFooter, HeroSection, LottieComponent],
   templateUrl: './sponsorship.html',
   styleUrl: './sponsorship.scss',
 })
@@ -22,43 +32,66 @@ export class Sponsorship {
   competitionLevels = [
     {
       title: 'Primary and Pre-school Level',
-      description: 'The mission of the REC Foundation is to...',
+      description: 'These includes Robo Kids 1 & 2 and Animal Bot 1 & 2.',
       image: 'assets/images/aboutus/sponsorship/ewh9g7er7qere9723r.png',
     },
     {
       title: 'Secondary Level',
-      description: 'The mission of the REC Foundation is to...',
-      image: 'assets/images/sponsorship/secondary-level.png',
+      description:
+        'These includes Robo Kit 3, VEX Classroom Competition Team Kit, and Fishertechnik ROBO TX Explorer',
+      image: 'assets/images/aboutus/sponsorship/hdsbvaibaidsbvo.png',
     },
     {
       title: 'Tertiary Level',
-      description: 'The mission of the REC Foundation is to...',
-      image: 'assets/images/sponsorship/tertiary-level.png',
+      description: 'These includes Robo Kit 5, VEX Competition Robot, and ROBO TX Training Lab',
+      image: 'assets/images/aboutus/sponsorship/lbkjablkjavnlapvknapva.png',
     },
   ];
 
-  statistics = [
+  statistics: StatItem[] = [
     {
       value: '24,000',
       label: 'Participating Teams',
-      icon: 'assets/icons/sponsorship/teams-icon.svg',
+      iconPath: '/assets/images/aboutus/sponsorship/lottie/Partnership.json',
     },
     {
       value: '1,000,000',
       label: 'Students Reached Globally',
-      icon: 'assets/icons/sponsorship/students-icon.svg',
+      iconPath: '/assets/images/aboutus/sponsorship/lottie/Partnership.json',
     },
     {
       value: '60+',
       label: 'Countries Represented',
-      icon: 'assets/icons/sponsorship/countries-icon.svg',
+      iconPath: '/assets/images/aboutus/sponsorship/lottie/Partnership.json',
     },
     {
       value: '22,000',
       label: 'Participating Schools',
-      icon: 'assets/icons/sponsorship/schools-icon.svg',
+      iconPath: '/assets/images/aboutus/sponsorship/lottie/Partnership.json',
     },
   ];
+
+  private animationItems = new Map<number, AnimationItem>();
+
+  animationCreated(animationItem: AnimationItem, index: number): void {
+    this.animationItems.set(index, animationItem);
+  }
+
+  onMouseEnter(index: number): void {
+    const item = this.animationItems.get(index);
+    if (item) {
+      item.stop(); // Ensure it starts from the beginning
+      item.play();
+    }
+  }
+
+  getAnimationOptions(path: string): AnimationOptions {
+    return {
+      path,
+      autoplay: false,
+      loop: false,
+    };
+  }
 
   contactInfo = {
     phone: '+63 917 123 4567',
