@@ -1,11 +1,8 @@
 <main-header></main-header>
 
-<hero-section
-  heroImage="assets/images/home/234acacc5e5bd069189972b51d9bfeeade704003.jpg"
-  heroTitle="Hytec Power Incorporated"
-  heroSubtitle="Empowering Industrial and Educational Solutions for Over 30 Years"
-  heroDatePill="Since 1994"
-></hero-section>
+<hero-section heroImage="assets/images/home/234acacc5e5bd069189972b51d9bfeeade704003.jpg"
+  heroTitle="Hytec Power Incorporated" heroSubtitle="Empowering Industrial and Educational Solutions for Over 30 Years"
+  heroDatePill="Since 1994"></hero-section>
 
 <section class="nav-tabs-container">
   <div class="tabs-wrapper">
@@ -27,119 +24,40 @@
     From humble beginnings to becoming the Philippines' leading provider of industrial and
     educational solutions
   </p>
+  
   <div class="timeline-container">
+    
     <div class="timeline-line"></div>
 
     <div class="timeline-events">
-      <div
-        *ngFor="let event of events; let i = index"
-        class="timeline-item"
-        [ngClass]="event.position"
-      >
-        <container-box variant="dark">
-          <div class="timeline-content-layout">
-            <div class="text-md timeline-year">{{ event.year }}</div>
-            <div class="text-lg">{{ event.title }}</div>
-            <div class="text-md timeline-description">{{ event.description }}</div>
-          </div>
-        </container-box>
+      <div *ngFor="let event of events; let i = index" 
+          class="timeline-item" 
+          [ngClass]="i % 2 === 0 ? 'left' : 'right'">
+        
+        <div class="timeline-content">
+          <div class="timeline-year">{{ event.year }}</div>
+          <div class="timeline-title">{{ event.title }}</div> <div class="timeline-description">{{ event.description }}</div>
+        </div>
 
         <div class="timeline-dot"></div>
+        
       </div>
     </div>
+
   </div>
 
   <section class="distributorship-container">
     <title-badge title="Gain Exclusive Distributorship"></title-badge>
     <p class="text-md about_us-subtitle">
-      Continuing to shape the future of technical education with cutting-edge technology and
-      strategic partnerships.
+      Continuing to shape the future of technical education with cutting-edge technology and strategic partnerships.
     </p>
-    <div class="distributorship-logos">
-      <div class="column1">
-        <a href="https://amatrol.com" target="_blank">
-          <img src="assets/images/aboutus/distributionship/amatrol.png" alt="Amatrol" />
-        </a>
-        <a href="https://www.milwaukeetool.com" target="_blank">
-          <img src="assets/images/aboutus/distributionship/milwaukee.png" alt="Milwaukee Tool" />
-        </a>
-        <a href="https://www.snapon.com" target="_blank">
-          <img src="assets/images/aboutus/distributionship/snapon.png" alt="Snap-on" />
-        </a>
-      </div>
-      <div class="column2">
-        <a href="https://www.tagheuer.com" target="_blank">
-          <img src="assets/images/aboutus/distributionship/tag.png" alt="TAG Heuer" />
-        </a>
-        <a href="https://www.chestermachinetools.com" target="_blank">
-          <img
-            src="assets/images/aboutus/distributionship/chester.png"
-            alt="Chester Machine Tools"
-          />
-        </a>
-        <a href="https://www.unisonindustries.com" target="_blank">
-          <img src="assets/images/aboutus/distributionship/unison.png" alt="Unison Industries" />
-        </a>
-        <a href="https://laerdal.com" target="_blank">
-          <img src="assets/images/aboutus/distributionship/laerdal.png" alt="Laerdal Medical" />
-        </a>
-      </div>
-      <div class="column3">
-        <a href="https://www.nord-lock.com" target="_blank">
-          <img src="assets/images/aboutus/distributionship/nordlock.png" alt="Nord-Lock Group" />
-        </a>
-        <a href="https://www.doriantool.com" target="_blank">
-          <img src="assets/images/aboutus/distributionship/dorian.png" alt="Dorian Tool" />
-        </a>
-        <a href="https://www.simlog.com" target="_blank">
-          <img src="assets/images/aboutus/distributionship/simlog.png" alt="Simlog" />
-        </a>
-        <a href="https://seaberyat.com/en/soldamatic" target="_blank">
-          <img src="assets/images/aboutus/distributionship/soldamatic.png" alt="Soldamatic" />
-        </a>
-      </div>
-      <div class="column4">
-        <a href="https://www.norbar.com" target="_blank">
-          <img src="assets/images/aboutus/distributionship/norbar.png" alt="Norbar" />
-        </a>
-        <a href="https://geobit-instruments.com" target="_blank">
-          <img src="assets/images/aboutus/distributionship/geobit.png" alt="Geobit Instruments" />
-        </a>
-        <a href="https://www.aamc.org" target="_blank">
-          <img src="assets/images/aboutus/distributionship/amos.png" alt="AAMC" />
-        </a>
-        <a href="https://www.americansaw.com" target="_blank">
-          <img src="assets/images/aboutus/distributionship/american.png" alt="American Saw" />
-        </a>
-      </div>
-      <div class="column5">
-        <a href="https://www.chicago-pneumatic.com" target="_blank">
-          <img src="assets/images/aboutus/distributionship/chicago.png" alt="Chicago Pneumatic" />
-        </a>
-        <a href="https://new.abb.com" target="_blank">
-          <img src="assets/images/aboutus/distributionship/abb.png" alt="ABB" />
-        </a>
-        <a href="https://www.utest.com.tr/en" target="_blank">
-          <img src="assets/images/aboutus/distributionship/utest.png" alt="Utest" />
-        </a>
-        <a href="https://www.hypertherm.com" target="_blank">
-          <img src="assets/images/aboutus/distributionship/hypertherm.png" alt="Hypertherm" />
-        </a>
-      </div>
-      <div class="column6">
-        <a href="https://www.aamc.org" target="_blank">
-          <img src="assets/images/aboutus/distributionship/aamc.png" alt="AAMC" />
-        </a>
-        <a href="https://www.wartsila.com" target="_blank">
-          <img src="assets/images/aboutus/distributionship/wartsila.png" alt="Wärtsilä" />
-        </a>
-        <a href="https://www.anylogic.com" target="_blank">
-          <img src="assets/images/aboutus/distributionship/anylogic.png" alt="AnyLogic" />
-        </a>
-        <a href="https://www.ewm-group.com" target="_blank">
-          <img src="assets/images/aboutus/distributionship/ewm.png" alt="EWM" />
-        </a>
-      </div>
+
+    <div class="logo-grid">
+      @for (logo of logos; track logo.name) {
+      <a [href]="logo.url" target="_blank" class="logo-item">
+        <img [src]="logo.src" [alt]="logo.name" />
+      </a>
+      }
     </div>
   </section>
   } @if (tab() == 1) {
@@ -293,10 +211,8 @@
           given training slots coming from different school partners nationwide.
         </p>
         <div class="image-card">
-          <img
-            src="/assets/images/aboutus/programs/0393a22d4146e76a99015e10e110102e0ae8cfcd.png"
-            alt="Group Photo 2014"
-          />
+          <img src="/assets/images/aboutus/programs/0393a22d4146e76a99015e10e110102e0ae8cfcd.png"
+            alt="Group Photo 2014" />
           <div class="red-banner">
             <div class="date-box">
               <span class="month">SEPT</span>
@@ -325,10 +241,8 @@
           different colleges and universities nationwide.
         </p>
         <div class="image-card">
-          <img
-            src="/assets/images/aboutus/programs/025c2db3557e93602f01eaa4110fc2fbac79a388.png"
-            alt="Certificate of Partnership"
-          />
+          <img src="/assets/images/aboutus/programs/025c2db3557e93602f01eaa4110fc2fbac79a388.png"
+            alt="Certificate of Partnership" />
           <div class="red-banner">
             <div class="date-box">
               <span class="month">FROM</span>
@@ -356,10 +270,8 @@
           scientists, workers, and even leaders of this country.
         </p>
         <div class="image-card">
-          <img
-            src="/assets/images/aboutus/programs/3683fe0c78f3e53441b7d335258932ada87a621d.png"
-            alt="Group Photo 2025"
-          />
+          <img src="/assets/images/aboutus/programs/3683fe0c78f3e53441b7d335258932ada87a621d.png"
+            alt="Group Photo 2025" />
           <div class="red-banner">
             <div class="date-box">
               <span class="month">IN</span>
@@ -388,11 +300,8 @@
         <div class="testimonial-row">
           <div class="testimonial-item left">
             <div class="logo-wrapper">
-              <img
-                src="/assets/images/aboutus/programs/c7720f534e7a9a49fcdc430ac51d0795e5061ad1.png"
-                alt="Bicol University Logo"
-                class="uni-logo"
-              />
+              <img src="/assets/images/aboutus/programs/c7720f534e7a9a49fcdc430ac51d0795e5061ad1.png"
+                alt="Bicol University Logo" class="uni-logo" />
             </div>
             <p class="quote">
               The experience/learning I had are very interesting. Being with Hytec family is one of
@@ -407,11 +316,8 @@
 
           <div class="testimonial-item right">
             <div class="logo-wrapper">
-              <img
-                src="/assets/images/aboutus/programs/bd09b743d973af3a8563cd1dcf74f17a12426607.png"
-                alt="PLV Logo"
-                class="uni-logo"
-              />
+              <img src="/assets/images/aboutus/programs/bd09b743d973af3a8563cd1dcf74f17a12426607.png" alt="PLV Logo"
+                class="uni-logo" />
             </div>
             <p class="quote">
               I can honestly say that my time spent in Hytec proved to be enjoyable, rewarding and
@@ -427,11 +333,8 @@
         <div class="testimonial-row">
           <div class="testimonial-item left">
             <div class="logo-wrapper">
-              <img
-                src="/assets/images/aboutus/programs/b6a4ffd5a66fd74e7c74a42ce6e23cc06c7367d1.png"
-                alt="UIC Logo"
-                class="uni-logo"
-              />
+              <img src="/assets/images/aboutus/programs/b6a4ffd5a66fd74e7c74a42ce6e23cc06c7367d1.png" alt="UIC Logo"
+                class="uni-logo" />
             </div>
             <p class="quote">
               My stay here was fruitful and joyful. I learned a lot about the different tasks in the
@@ -446,11 +349,8 @@
 
           <div class="testimonial-item right">
             <div class="logo-wrapper">
-              <img
-                src="/assets/images/aboutus/programs/3ce842428f32fcd88eb1a4939212dea344c3957c.png"
-                alt="QCU Logo"
-                class="uni-logo"
-              />
+              <img src="/assets/images/aboutus/programs/3ce842428f32fcd88eb1a4939212dea344c3957c.png" alt="QCU Logo"
+                class="uni-logo" />
             </div>
             <p class="quote">
               Hytec Power Inc. provided me with significant growth and exposure to industry-standard
@@ -471,11 +371,8 @@
     <div class="programs-grid">
       <div>
         <div class="logo-wrapper">
-          <img
-            class="uni-logo"
-            src="/assets/images/aboutus/programs/4b56f92e4559e332a39e0ac1ff981720b37eb4ef.png"
-            alt="Asian Institute of Computer Studies Logo"
-          />
+          <img class="uni-logo" src="/assets/images/aboutus/programs/4b56f92e4559e332a39e0ac1ff981720b37eb4ef.png"
+            alt="Asian Institute of Computer Studies Logo" />
         </div>
         <p><strong>Asian Institute of Computer Studies</strong></p>
         <p>
@@ -487,11 +384,8 @@
       </div>
       <div>
         <div class="logo-wrapper">
-          <img
-            class="uni-logo"
-            src="/assets/images/aboutus/programs/b6a4ffd5a66fd74e7c74a42ce6e23cc06c7367d1.png"
-            alt="Manuel S. Enverga University Foundation Logo"
-          />
+          <img class="uni-logo" src="/assets/images/aboutus/programs/b6a4ffd5a66fd74e7c74a42ce6e23cc06c7367d1.png"
+            alt="Manuel S. Enverga University Foundation Logo" />
         </div>
         <p><strong>Manuel S. Enverga University Foundation</strong></p>
         <p>
@@ -501,11 +395,8 @@
       </div>
       <div>
         <div class="logo-wrapper">
-          <img
-            class="uni-logo"
-            src="/assets/images/aboutus/programs/3ce842428f32fcd88eb1a4939212dea344c3957c.png"
-            alt="Quezon City University Logo"
-          />
+          <img class="uni-logo" src="/assets/images/aboutus/programs/3ce842428f32fcd88eb1a4939212dea344c3957c.png"
+            alt="Quezon City University Logo" />
         </div>
         <p><strong>Quezon City University</strong></p>
         <p>
@@ -560,25 +451,16 @@
             </div>
 
             <div class="gallery-dots">
-              <span
-                *ngFor="let item of galleryItems; let i = index"
-                class="dot"
-                [class.active]="i === currentGalleryIndex()"
-                (click)="setGalleryIndex(i)"
-              >
+              <span *ngFor="let item of galleryItems; let i = index" class="dot"
+                [class.active]="i === currentGalleryIndex()" (click)="setGalleryIndex(i)">
               </span>
             </div>
 
             <div class="gallery-thumbs">
-              <img
-                *ngFor="let item of galleryItems; let i = index"
-                [src]="item.src"
-                [alt]="item.caption"
+              <img *ngFor="let item of galleryItems; let i = index" [src]="item.src" [alt]="item.caption"
                 [style.opacity]="i === currentGalleryIndex() ? '1' : '0.6'"
                 [style.border]="i === currentGalleryIndex() ? '2px solid red' : 'none'"
-                style="cursor: pointer; transition: 0.3s"
-                (click)="setGalleryIndex(i)"
-              />
+                style="cursor: pointer; transition: 0.3s" (click)="setGalleryIndex(i)" />
             </div>
           </div>
         </div>
@@ -609,59 +491,35 @@
     <!-- 3x3 Section-->
     <section class="grid-3x3">
       <div class="cell">
-        <img
-          src="assets/images/aboutus/partnership/8aa5acd9fbcb346a6a38b183b1f0baaf18b912f0.png"
-          alt=""
-        />
+        <img src="assets/images/aboutus/partnership/8aa5acd9fbcb346a6a38b183b1f0baaf18b912f0.png" alt="" />
         <p>Mechatronics Robotics Society of the Philippines</p>
       </div>
       <div class="cell">
-        <img
-          src="assets/images/aboutus/partnership/494ab21801a824be50e0962bceb841e3736018a2.png"
-          alt=""
-        />
+        <img src="assets/images/aboutus/partnership/494ab21801a824be50e0962bceb841e3736018a2.png" alt="" />
         <p>Pambansang Samahan ng Inhinyerong Mekanikal</p>
       </div>
       <div class="cell">
-        <img
-          src="assets/images/aboutus/partnership/83ce2ff6eac1c4c0f64278e6ce4be980eb06ff6c.png"
-          alt=""
-        />
+        <img src="assets/images/aboutus/partnership/83ce2ff6eac1c4c0f64278e6ce4be980eb06ff6c.png" alt="" />
         <p>Accrediting Agency of Chartered Colleges and Universities in the Philippines</p>
       </div>
       <div class="cell">
-        <img
-          src="assets/images/aboutus/partnership/39b50b59b1a653744e9ba8b26efbe32b7bc84fa3.png"
-          alt=""
-        />
+        <img src="assets/images/aboutus/partnership/39b50b59b1a653744e9ba8b26efbe32b7bc84fa3.png" alt="" />
         <p>Philippine Society of Mechanical Engineer</p>
       </div>
       <div class="cell">
-        <img
-          src="assets/images/aboutus/partnership/fb7761e99dab98b30323e2b6a94b3306b496f72a.png"
-          alt=""
-        />
+        <img src="assets/images/aboutus/partnership/fb7761e99dab98b30323e2b6a94b3306b496f72a.png" alt="" />
         <p>Philippine Society of Mechanical Engineer</p>
       </div>
       <div class="cell">
-        <img
-          src="assets/images/aboutus/partnership/ce04c72f88b9ed1e9e091697124d0d67953a40ee.png"
-          alt=""
-        />
+        <img src="assets/images/aboutus/partnership/ce04c72f88b9ed1e9e091697124d0d67953a40ee.png" alt="" />
         <p>TESDA - Regional Technical Education and Skills Development Committee</p>
       </div>
       <div class="cell">
-        <img
-          src="assets/images/aboutus/partnership/04d84da5e2a8c92f27aff6c33d81a08db2156afb.png"
-          alt=""
-        />
+        <img src="assets/images/aboutus/partnership/04d84da5e2a8c92f27aff6c33d81a08db2156afb.png" alt="" />
         <p>Philippine Instrumentation and Control Society</p>
       </div>
       <div class="cell">
-        <img
-          src="assets/images/aboutus/partnership/18d3b2ec68a194e8f7d3fb64b7f5ecc29ce3c2b2.png"
-          alt=""
-        />
+        <img src="assets/images/aboutus/partnership/18d3b2ec68a194e8f7d3fb64b7f5ecc29ce3c2b2.png" alt="" />
         <p>Philippine Association of State Universities and Colleges</p>
       </div>
     </section>

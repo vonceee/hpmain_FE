@@ -11,7 +11,7 @@
     rgba(20, 0, 0, 0.65) 10%,
     #000000 100%
   );
-  overflow-x: hidden; //para hindi mag overflow ceo picture
+  overflow-x: hidden;
 }
 
 /* ˚◡˚ Navigation Tab ˚◡˚ */
@@ -29,11 +29,9 @@
     position: relative;
     display: flex;
     align-items: center;
-
     background-color: rgba(118, 118, 128, 0.24);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
-
     padding: 4px;
     border-radius: 99px;
     border: 0.5px solid rgba(255, 255, 255, 0.1);
@@ -45,7 +43,6 @@
       bottom: 4px;
       border-radius: 99px;
       z-index: 1;
-
       background-color: color.$primary400;
       transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
       pointer-events: none;
@@ -57,23 +54,19 @@
       padding: 10px 24px;
       min-width: 120px;
       height: 100%;
-
       border: none;
       background: transparent;
       border-radius: 99px;
       cursor: pointer;
-
       color: white;
       font-family: 'Poppins', sans-serif;
       font-size: 1rem;
       font-weight: 500;
       letter-spacing: -0.01em;
-
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-
       transition: color 0.2s ease, transform 0.1s ease;
     }
   }
@@ -88,7 +81,6 @@
       padding: 6px;
       gap: 4px;
       overflow-x: auto;
-
       scrollbar-width: none;
 
       &::-webkit-scrollbar {
@@ -102,13 +94,11 @@
 
       button {
         min-width: 44px;
-        /* touch target */
         padding: 10px;
         justify-content: center;
 
         span {
           display: none;
-          /* icon-only */
         }
 
         i {
@@ -136,6 +126,8 @@
   }
 }
 
+/* ˚◡˚ Shared Layouts ˚◡˚ */
+
 .content-container {
   width: 85vw;
   display: flex;
@@ -150,13 +142,13 @@
 .about_us-subtitle {
   color: rgba(255, 255, 255, 0.7);
   font-size: 0.8rem;
-  text-align: center; /* centers text inside */
-  max-width: 90%; /* limit width */
-  margin: 0 auto; /* center the block element */
+  text-align: center;
+  max-width: 90%;
+  margin: 0 auto;
   margin-bottom: 4vh;
 }
 
-.tab-header {
+.tab-header, .ldisplay {
   color: white;
   margin: 0;
   padding: 0;
@@ -177,31 +169,25 @@
   background: linear-gradient(to right, #ed1c24, #871015);
 }
 
-/* ˚◡˚ Our Journey Section ˚◡˚ */
+/* ˚◡˚ Our Journey - Logo Grid ˚◡˚ */
 
 .logo-grid {
-  display: grid !important; /* Force grid behavior */
-
-  // Large Desktop: 7 Columns
+  display: grid !important;
   grid-template-columns: repeat(7, minmax(100px, 1fr));
-
-  gap: 30px; /* Space between rows and columns */
-  width: 100%; /* Ensure it takes full width of the section */
-  align-items: center; /* Centers logos vertically in their cell */
-  justify-items: center; /* Centers logos horizontally in their cell */
+  gap: 30px;
+  width: 100%;
+  align-items: center;
+  justify-items: center;
   padding: 20px;
 
-  // Laptops/Tablets (up to 1200px): 5 Columns
   @media (max-width: 1200px) {
     grid-template-columns: repeat(5, minmax(100px, 1fr));
   }
 
-  // Small Tablets (up to 900px): 3 Columns
   @media (max-width: 900px) {
     grid-template-columns: repeat(3, minmax(100px, 1fr));
   }
 
-  // Mobile Phones (up to 500px): 2 Columns
   @media (max-width: 500px) {
     grid-template-columns: repeat(2, minmax(80px, 1fr));
     gap: 10px;
@@ -216,9 +202,9 @@
   filter: grayscale(100%);
 
   img {
-    max-width: 100%; /* Prevents logo from being wider than the grid cell */
-    height: auto; /* Keeps aspect ratio */
-    max-height: 80px; /* Prevents tall logos from taking too much space */
+    max-width: 100%;
+    height: auto;
+    max-height: 80px;
     object-fit: contain;
   }
 }
@@ -228,23 +214,40 @@
   transition: filter 0.1s ease;
 }
 
-.timeline-container {
-  position: relative;
-  width: 75vw;
-  margin: 0 auto;
-  min-height: max-content;
+.journey-content {
+  width: 85vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5vh;
+  margin-bottom: 4vh;
 }
 
+/* ---------------------------------------------------- */
+/* ˚◡˚ TIMELINE SECTION (FIXED) ˚◡˚ */
+/* ---------------------------------------------------- */
+
+.timeline-container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: max-content;
+  background-color: transparent;
+  padding: 40px 0;
+}
+
+/* The Continuous Central Line */
 .timeline-line {
   position: absolute;
   left: 50%;
   top: 0;
   bottom: 0;
-  width: 2px;
-  background: linear-gradient(to bottom, #ed1c24, #fb2c36, #000000);
+  width: 4px;
+  background: linear-gradient(to bottom, #ed1c24 0%, #871015 50%, rgba(0, 0, 0, 0) 100%);
   transform: translateX(-50%);
-  z-index: 1;
-  height: 100%;
+  z-index: 0;
+  border-radius: 4px;
 }
 
 .timeline-events {
@@ -252,56 +255,148 @@
   z-index: 2;
   display: flex;
   flex-direction: column;
-  gap: 4vh;
+  gap: 0;
 }
 
+/* --- THE PARENT ITEM HANDLES THE GAP --- */
 .timeline-item {
   position: relative;
   display: flex;
-  align-items: center;
-}
-
-.timeline-item.left {
-  justify-content: flex-end;
-  padding-right: calc(50% + 40px);
-}
-
-.timeline-item.right {
-  justify-content: flex-end;
-  padding-left: calc(50% + 40px);
-}
-
-.timeline-content-layout {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: space-around;
-  gap: 1vh;
+  margin-bottom: 60px;
+  /* Ensure box-sizing includes padding in width calculations */
+  box-sizing: border-box; 
+}
+
+/* Left Aligned Items */
+/* Logic: Pad the RIGHT side by 50% of screen + 40px gap. 
+   This forces content into the left side with a precise gap. */
+.timeline-item.left {
+  flex-direction: row;
+  justify-content: flex-end; /* Push content against the padding wall */
+  padding-right: calc(50% + 40px); 
   text-align: right;
 }
 
+/* Right Aligned Items */
+/* Logic: Pad the LEFT side by 50% of screen + 40px gap. */
+.timeline-item.right {
+  flex-direction: row;
+  justify-content: flex-start; /* Push content against the padding wall */
+  padding-left: calc(50% + 40px);
+  text-align: left;
+}
+
+/* --- THE CONTENT BOX --- */
+.timeline-content {
+  width: 100%; /* Fill the remaining space defined by the parent padding */
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 24px 28px;
+  position: relative;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+  transition: all 0.3s ease;
+}
+
+/* Text alignment adjustments */
+.timeline-item.left .timeline-content {
+  align-items: flex-end; /* Right align text inside box */
+}
+.timeline-item.right .timeline-content {
+  align-items: flex-start; /* Left align text inside box */
+}
+
+.timeline-content:hover {
+  transform: translateY(-5px);
+  border-color: rgba(237, 28, 36, 0.5);
+}
+
 .timeline-year {
-  color: #ff0000;
+  color: #ed1c24;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+}
+
+.timeline-title {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.1rem;
 }
 
 .timeline-description {
   color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
 }
 
+/* --- THE DOT --- */
 .timeline-dot {
   position: absolute;
   left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 14px;
-  height: 14px;
-  background-color: #ff0000;
+  top: 24px; 
+  transform: translateX(-50%);
+  width: 16px;
+  height: 16px;
+  background-color: #ed1c24;
   border: 3px solid #000;
   border-radius: 50%;
   z-index: 10;
   box-shadow: 0 0 0 4px rgba(255, 0, 0, 0.2);
+  transition: all 0.3s ease;
 }
+
+.timeline-dot:hover {
+  box-shadow: 0 0 0 6px rgba(255, 0, 0, 0.3);
+  transform: translateX(-50%) scale(1.2);
+}
+
+/* --- MOBILE RESPONSIVE --- */
+@media (max-width: 768px) {
+  .timeline-line {
+    left: 20px;
+  }
+  
+  .timeline-item {
+    justify-content: flex-start !important;
+  }
+  
+  /* Reset the Desktop Gap Logic */
+  .timeline-item.left,
+  .timeline-item.right {
+    padding-left: 0;
+    padding-right: 0;
+    text-align: left;
+  }
+  
+  /* Mobile Spacing */
+  .timeline-item.left .timeline-content,
+  .timeline-item.right .timeline-content {
+    width: 100%;
+    margin-left: 60px; /* Push content 60px from the left edge */
+    margin-right: 0;
+    align-items: flex-start;
+  }
+  
+  .timeline-dot {
+    left: 20px;
+  }
+}
+
+/* ---------------------------------------------------- */
+/* ˚◡˚ END TIMELINE SECTION ˚◡˚ */
+/* ---------------------------------------------------- */
+
+
+/* ˚◡˚ Distributorship ˚◡˚ */
 
 .distributorship-container {
   width: auto;
@@ -321,38 +416,49 @@
 
 .distributorship-logos {
   position: relative;
-  justify-content: space-between;
-  align-content: space-between;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  flex-direction: row;
-  height: 40vh;
-  margin: 0;
+  gap: 20px;
   width: 100%;
+  margin: 0;
+  height: auto;
+  padding: 40px 0;
+
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 576px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
   div {
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
-    position: relative;
+    gap: 30px;
 
-    a,
+    a {
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+
     img {
       width: auto;
-      max-width: 100%; // Ensure it fits in the 15% container
+      max-width: 100%;
       height: auto;
-      max-height: 80px; // Reasonable limit for logo height
+      max-height: 70px;
       object-fit: contain;
-      display: inline-block;
-      margin: 0;
       filter: grayscale(100%);
-      transition: all 0.5s ease;
+      opacity: 0.7;
+      transition: filter 0.3s ease, opacity 0.3s ease;
 
       &:hover {
         filter: grayscale(0%);
-        transform: scale(1.1); // Slight pop effect
+        opacity: 1;
       }
     }
   }
@@ -448,160 +554,8 @@
   position: relative;
 }
 
-.ldisplay {
-  color: white;
-  margin: 0;
-  padding: 0;
-  text-wrap: nowrap;
-  z-index: 2;
-  position: relative;
-}
-
-.red-bar {
-  width: 103%;
-  height: 55%;
-  bottom: -0.2vh;
-  left: 50%;
-  transform: translateX(-50%);
-  position: absolute;
-  border-radius: 4px;
-  z-index: 1;
-  background: linear-gradient(to right, #ed1c24, #871015);
-}
-
 .white {
   color: white;
-}
-
-.journey-content {
-  width: 85vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2.5vh;
-  margin-bottom: 4vh;
-}
-
-.timeline-container {
-  position: relative;
-  width: 100%;
-  margin: 0 auto;
-  background-color: #000;
-  min-height: max-content;
-}
-
-/* Central Timeline Line */
-.timeline-line {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: linear-gradient(to bottom, #ed1c24, #fb2c36, #000000);
-  transform: translateX(-50%);
-  z-index: 1;
-  height: 100%;
-}
-
-/* Timeline Events Container */
-.timeline-events {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  gap: 4vh;
-}
-
-/* Individual Timeline Item */
-.timeline-item {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-/* Left-aligned Items */
-.timeline-item.left {
-  justify-content: flex-end;
-  padding-right: calc(50% + 40px);
-}
-
-/* Right-aligned Items */
-.timeline-item.right {
-  justify-content: flex-end;
-  padding-left: calc(50% + 40px);
-}
-
-/* Text Alignment for Left Items */
-.timeline-item.left .timeline-content {
-  text-align: right;
-}
-
-/* Text Alignment for Right Items */
-.timeline-item.right .timeline-content {
-  text-align: right;
-}
-
-/* Content Card/Box */
-.timeline-content {
-  background: color.$secondaryAlpha5;
-  border: 1px solid color.$secondaryAlpha10;
-  border-radius: 12px;
-  padding: 24px 28px 0;
-  width: 100%;
-  position: relative;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  display: flex;
-  flex-direction: column;
-  align-items: end;
-  justify-content: space-around;
-  gap: 1vh;
-}
-
-/* Year Label */
-.year {
-  color: #ff0000;
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-/* Title/Heading */
-.title {
-  color: #ffffff;
-  font-weight: 700;
-}
-
-/* Description Text */
-.description {
-  color: rgba(255, 255, 255, 0.7);
-  margin: 0;
-}
-
-/* Timeline Dot/Marker */
-.timeline-dot {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 14px;
-  height: 14px;
-  background-color: #ff0000;
-  border: 3px solid #000;
-  border-radius: 50%;
-  z-index: 10;
-  box-shadow: 0 0 0 4px rgba(255, 0, 0, 0.2);
-}
-
-/* Hover Effects */
-.timeline-content:hover {
-  border-color: rgba(255, 0, 0, 0.3);
-  transition: all 0.3s ease;
-}
-
-.timeline-dot:hover {
-  box-shadow: 0 0 0 6px rgba(255, 0, 0, 0.3);
-  transition: all 0.3s ease;
 }
 
 .smallHeadline {
@@ -628,44 +582,7 @@
   margin-top: 2.5vh;
 }
 
-.distributorship-logos {
-  position: relative;
-  justify-content: space-between;
-  align-content: space-between;
-  display: flex;
-  flex-direction: row;
-  width: 79vw;
-  height: 40vh;
-  margin: 0;
-
-  div {
-    width: 16.5%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-
-    img {
-      width: auto;
-      /* don't scale width */
-      height: auto;
-      /* don't scale height */
-      max-width: none;
-      /* prevent responsive shrinking */
-      max-height: none;
-      object-fit: none;
-      /* no resizing behavior */
-      display: inline-block;
-      margin: 0;
-      filter: grayscale(100%);
-      transition: filter 0.5s ease;
-
-      &:hover {
-        filter: grayscale(0%);
-      }
-    }
-  }
-}
+/* ˚◡˚ Awards ˚◡˚ */
 
 .awards-container {
   width: 75vw;
@@ -685,13 +602,13 @@
 
   .main-container {
     display: flex;
-    flex-direction: row; // Horizontal on desktop
-    flex-wrap: wrap; // Allows items to wrap if they run out of space
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-evenly;
-    gap: 20px; // Adds spacing between items when they stack
+    gap: 20px;
 
     .image-container {
-      width: 16.5%; // Desktop width
+      width: 16.5%;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -699,7 +616,7 @@
       gap: 3vh;
 
       img {
-        width: 100%; // Changed to 100% to scale with the container
+        width: 100%;
         height: auto;
         filter: grayscale(100%);
         transition: filter 0.5s ease;
@@ -710,13 +627,12 @@
       }
     }
 
-    // --- Responsive Adjustment ---
     @media (max-width: 768px) {
-      flex-direction: column; // Stack vertically on tablets/phones
+      flex-direction: column;
       align-items: center;
 
       .image-container {
-        width: 80%; // Make containers wider on mobile
+        width: 80%;
       }
     }
   }
@@ -740,11 +656,10 @@
     gap: 1vw;
     margin-top: 3vh;
     width: 100%;
-    justify-content: space-between; // distribute evenly
+    justify-content: space-between;
 
-    // direct image child
     > img {
-      width: 32%; // Approx 1/3 minus gap
+      width: 32%;
       height: auto;
       object-fit: cover;
     }
@@ -753,7 +668,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      width: 32%; // Approx 1/3 minus gap
+      width: 32%;
       gap: 1vw;
 
       img {
@@ -765,7 +680,7 @@
   }
 }
 
-/* ⋆｡˚ ୨୧ ˚｡⋆ Our President & CEO ⋆｡˚ ୨୧ ˚｡⋆ */
+/* ˚◡˚ Our President & CEO ˚◡˚ */
 
 .our-president-ceo-container {
   width: 75vw;
@@ -798,25 +713,23 @@
   .right-side {
     flex: 0 0 40%;
     position: relative;
-    // .ceo needs to be absolute to overflow cleanly without affecting layout flow
 
     .ceo {
       position: absolute;
       bottom: -4vh;
       right: -2vw;
-      width: 20rem; // adjusted to prevents massive overlap now that col is 40%
+      width: 20rem;
       margin: 0;
 
       img {
         width: 100%;
         height: auto;
         display: block;
-        filter: drop-shadow(5px 10px 15px rgba(0, 0, 0, 0.4)); // strong shadow to detach from box
+        filter: drop-shadow(5px 10px 15px rgba(0, 0, 0, 0.4));
       }
     }
   }
 
-  /* hide on mobile */
   @media (max-width: 768px) {
     .president-layout {
       flex-direction: column;
@@ -833,13 +746,13 @@
 
   .achievements-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); // 4 columns full width
+    grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
     padding-top: 3rem;
     width: 100%;
 
     .achievement-box {
-      background: rgba(255, 255, 255, 0.05); // subtle box styling due to "boxes" request
+      background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 8px;
       padding: 1rem;
@@ -853,7 +766,7 @@
     }
 
     @media (max-width: 768px) {
-      grid-template-columns: 1fr; // stack on mobile
+      grid-template-columns: 1fr;
     }
   }
 }
@@ -861,14 +774,13 @@
 .attributes-container {
   width: 75vw;
   margin-top: 3vh;
-  // container-box handles bg, border, radius
 
   .attributes-content {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     padding: 2vh 0;
-    gap: 2vw; // spacing between items if screen shrinks
+    gap: 2vw;
   }
 
   .attribute-item {
@@ -876,13 +788,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3vh; // spacing between img and text
+    gap: 3vh;
     flex: 1;
-    max-width: 300px; // Prevent them from getting too wide
+    max-width: 300px;
 
     img {
       width: 5.5vw;
-      min-width: 60px; // Ensure visibility on small screens
+      min-width: 60px;
     }
 
     .message {
@@ -896,14 +808,9 @@
       }
     }
   }
-
-  @media (max-width: 768px) {
-  }
 }
 
-/* --- MOVED FROM programs-section.scss --- */
-
-/* Program Section */
+/* ˚◡˚ Program Section ˚◡˚ */
 
 .container {
   margin: 0 auto;
@@ -930,21 +837,18 @@
   font-weight: 300;
 }
 
-/* Programs Grid Section */
-/* 1. Internship Programs Grid */
 .programs-grid {
   display: grid;
-  // Desktop: 3 columns
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
   margin-top: 40px;
 
   @media (max-width: 1024px) {
-    grid-template-columns: repeat(2, 1fr); // Tablet: 2 columns
+    grid-template-columns: repeat(2, 1fr);
   }
 
   @media (max-width: 768px) {
-    grid-template-columns: 1fr; // Mobile: 1 column
+    grid-template-columns: 1fr;
     gap: 40px;
   }
 
@@ -1031,7 +935,8 @@
   color: #cccccc;
 }
 
-/* Testimonials Section */
+/* ˚◡˚ Testimonials Section ˚◡˚ */
+
 .testimonials-section {
   text-align: center;
   position: relative;
@@ -1045,7 +950,6 @@
   color: #fff;
 }
 
-/* 2. Interns Testimonials Section */
 .interns_testimonials-container {
   position: relative;
   display: flex;
@@ -1058,23 +962,22 @@
     gap: 40px;
 
     @media (max-width: 768px) {
-      flex-direction: column; // Stack on mobile
+      flex-direction: column;
       gap: 30px;
     }
   }
 
   .testimonial-item {
     flex: 1;
-    // Fix for the cursor issue
     .uni-logo {
       cursor: default !important;
-      pointer-events: none; // Ensures no interaction on the image
+      pointer-events: none;
     }
   }
 }
 
-/* the vertical red line */
-.timeline-line {
+/* NOTE: This specifically handles the Testimonials vertical line, separate from the main timeline */
+.testimonials-section .timeline-line {
   position: absolute;
   left: 50%;
   top: 0;
@@ -1085,16 +988,6 @@
   z-index: 0;
 }
 
-.timeline-line::before {
-  top: 20%;
-}
-
-/* adjust to align with first row text block */
-.timeline-line::after {
-  bottom: 20%;
-}
-
-/* adjust to align with second row text block */
 .testimonial-row {
   display: flex;
   justify-content: space-between;
@@ -1120,7 +1013,6 @@
   margin-bottom: 20px;
 }
 
-/* 3. Global fix for all testimonial logos */
 .logo-wrapper img.uni-logo {
   cursor: default !important;
   max-width: 100px;
@@ -1160,21 +1052,20 @@
   font-size: 0.9rem;
 }
 
-/* --- Community Outreach Section --- */
+/* ˚◡˚ Community Outreach Section ˚◡˚ */
+
 .outreach {
   padding: 80px 0;
   color: #ccc;
 }
 
-/* 4. Outreach Section Adjustments */
 .outreach-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
 
   @media (max-width: 992px) {
-    grid-template-columns: 1fr; // Stack outreach content above gallery
-
+    grid-template-columns: 1fr;
     .outreach-gallery {
       width: 100%;
       max-width: 600px;
@@ -1182,17 +1073,6 @@
     }
   }
 }
-
-.drop-cap {
-  color: var(--primary-red);
-  font-size: 3rem;
-  float: left;
-  line-height: 0.8;
-  margin-right: 8px;
-  font-weight: bold;
-}
-
-/* --- Outreach Text Section --- */
 
 .outreach-content {
   position: relative;
@@ -1216,7 +1096,6 @@
   margin: 0;
 }
 
-/* The Styled Drop Cap "T" */
 .drop-cap {
   font-family: 'Bebas Neue', sans-serif;
   font-weight: 400;
@@ -1235,7 +1114,7 @@
   font-size: 1rem;
 }
 
-/* --- Outreach Gallery Section --- */
+/* Gallery */
 
 .main-gallery-img {
   position: relative;
@@ -1294,20 +1173,6 @@
   transform: scale(1.2);
 }
 
-.dot {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  background-color: #000;
-  border-radius: 50%;
-  margin: 0 5px;
-}
-
-.dot.active {
-  background-color: #f00;
-}
-
-/* Thumbnails */
 .gallery-thumbs {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
@@ -1332,20 +1197,6 @@
   cursor: pointer;
 }
 
-.fade-in {
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
 .gallery-thumbs img.active-thumb {
   opacity: 1;
   border-color: #d32f2f;
@@ -1354,11 +1205,19 @@
   z-index: 1;
 }
 
-/* --- Animations --- */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Animations */
 
 .slide-in-right {
   opacity: 0;
-  /* start hidden */
   animation: slideInRight 0.5s ease-out forwards;
 }
 
@@ -1366,24 +1225,15 @@
   0% {
     opacity: 0;
     transform: translateX(50px);
-    /* start 50px to the right */
   }
-
   100% {
     opacity: 1;
     transform: translateX(0);
-    /* end at natural position */
   }
 }
 
-/* stagger the text animation slightly */
-.delay-1 {
-  animation-delay: 0.1s;
-}
-
-.delay-2 {
-  animation-delay: 0.2s;
-}
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
 
 /* ˚◡˚ Partnership Section ˚◡˚ */
 
@@ -1410,9 +1260,9 @@
 }
 
 .cell img {
-  width: 6rem; /* uniform width */
-  height: 6rem; /* uniform height */
-  object-fit: contain; /* preserves aspect ratio, fits inside the box */
+  width: 6rem;
+  height: 6rem;
+  object-fit: contain;
   margin-bottom: 0.5rem;
   transition: filter 0.3s ease;
 }
@@ -1437,8 +1287,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 2rem; /* give it space */
-  flex-shrink: 0; /* prevent shrinking */
+  width: 2rem;
+  flex-shrink: 0;
 }
 
 .mv-divider .line {
