@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, signal } from '@angular/core';
+import { Component, OnInit, AfterViewInit, signal, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MainFooter } from 'src/app/components/main-footer/main-footer';
 import { MainHeader } from 'src/app/components/main-header/main-header';
@@ -27,6 +27,8 @@ import { TitleBadge } from 'src/app/components/title-badge/title-badge';
   styleUrl: './home.scss',
 })
 export class Home implements OnInit, AfterViewInit {
+  @ViewChild('achievementSection') achievementSection!: ElementRef;
+
   protected readonly title = signal('hytec_fe');
 
   faFacebookF = faFacebookF;
@@ -35,10 +37,10 @@ export class Home implements OnInit, AfterViewInit {
   faLinkedinIn = faLinkedinIn;
 
   achievementList = [
-    { value: '30+', label: 'Years of Excellence' },
-    { value: '150+', label: 'Industrial Partners' },
-    { value: '150+', label: 'Academe Partners' },
-    { value: '100%', label: 'Commitment to service' },
+    { target: 30, current: 0, suffix: '+', label: 'Years of Excellence', value: '30+' },
+    { target: 150, current: 0, suffix: '+', label: 'Industrial Partners', value: '150+' },
+    { target: 150, current: 0, suffix: '+', label: 'Academe Partners', value: '150+' },
+    { target: 100, current: 0, suffix: '%', label: 'Commitment to Service', value: '100%' },
   ];
 
   featuredNews = {
@@ -96,6 +98,12 @@ export class Home implements OnInit, AfterViewInit {
 
   activeIndex = 1; // start with the middle card (QCU)
   currentBackgroundStyle: string = '';
+  isReadMoreOpen = false;
+  private hasAnimated = false;
+
+  toggleReadMore(): void {
+    this.isReadMoreOpen = !this.isReadMoreOpen;
+  }
 
   ngOnInit(): void {
     this.updateBackground();
@@ -115,6 +123,58 @@ export class Home implements OnInit, AfterViewInit {
       };
       document.body.appendChild(script);
     }
+
+    this.setupIntersectionObserver();
+  }
+
+  private setupIntersectionObserver() {
+    if (!this.achievementSection) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !this.hasAnimated) {
+            this.startCounting();
+            this.hasAnimated = true;
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.2 } // Trigger when 20% visible
+    );
+
+    observer.observe(this.achievementSection.nativeElement);
+  }
+
+  private startCounting() {
+    const duration = 2000; // 2 seconds
+    const fps = 60;
+    const interval = 1000 / fps;
+    const totalFrames = (duration / 1000) * fps;
+
+    let frame = 0;
+
+    const timer = setInterval(() => {
+      frame++;
+      const progress = this.easeOutExpo(frame / totalFrames);
+
+      this.achievementList.forEach((item) => {
+        if (frame <= totalFrames) {
+          item.current = Math.floor(item.target * progress);
+        } else {
+          item.current = item.target;
+        }
+      });
+
+      if (frame >= totalFrames) {
+        clearInterval(timer);
+      }
+    }, interval);
+  }
+
+  // Easing function for smooth animation
+  private easeOutExpo(x: number): number {
+    return x === 1 ? 1 : 1 - Math.pow(2, -10 * x);
   }
 
   // --- NAVIGATION LOGIC ---

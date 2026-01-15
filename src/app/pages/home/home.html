@@ -4,7 +4,7 @@
   <!-- ============================================ -->
   <!-- HERO SECTION -->
   <!-- ============================================ -->
-  <section class="hero-section">
+  <section class="section-wrapper hero-section">
     <img
       src="/assets/images/home/home-top-bg.png"
       alt="Hero Background"
@@ -22,84 +22,118 @@
   <!-- ============================================ -->
   <!-- WHO WE ARE SECTION -->
   <!-- ============================================ -->
-  <section class="who_we_are-section">
-    <img
-      src="/assets/images/home/home-body-bg.png"
-      class="section-bg"
-      draggable="false"
-      alt="Background"
-    />
-
+  <section class="section-wrapper introduction-section">
     <div class="who_we_are-container">
-      <div class="who_we_are-box">
-        <!-- Company Logo with Looping Video -->
-        <div class="company-logo-container">
-          <div class="logo-circle" id="videoThumbnail">
-            <!-- Video Thumbnail/Poster -->
+      <div class="content-grid">
+        <!-- Spinning Company Logo -->
+        <div class="logo-column">
+          <div class="logo-3d-wrapper" id="videoThumbnail">
             <img
-              src="/assets/images/home/thumbnail.png"
-              alt="Video Thumbnail"
-              class="video-thumbnail"
+              src="assets/icons/hytecpowerinc-logo.png"
+              class="logo-layer"
+              style="--z: -4px"
+              alt=""
             />
+            <img
+              src="assets/icons/hytecpowerinc-logo.png"
+              class="logo-layer"
+              style="--z: -3px"
+              alt=""
+            />
+            <img
+              src="assets/icons/hytecpowerinc-logo.png"
+              class="logo-layer"
+              style="--z: -2px"
+              alt=""
+            />
+            <img
+              src="assets/icons/hytecpowerinc-logo.png"
+              class="logo-layer"
+              style="--z: -1px"
+              alt=""
+            />
+            <img
+              src="assets/icons/hytecpowerinc-logo.png"
+              class="logo-layer"
+              style="--z: 0px"
+              alt="Company Logo"
+            />
+            <img
+              src="assets/icons/hytecpowerinc-logo.png"
+              class="logo-layer"
+              style="--z: 1px"
+              alt=""
+            />
+            <img
+              src="assets/icons/hytecpowerinc-logo.png"
+              class="logo-layer"
+              style="--z: 2px"
+              alt=""
+            />
+            <img
+              src="assets/icons/hytecpowerinc-logo.png"
+              class="logo-layer"
+              style="--z: 3px"
+              alt=""
+            />
+            <img
+              src="assets/icons/hytecpowerinc-logo.png"
+              class="logo-layer"
+              style="--z: 4px"
+              alt=""
+            />
+          </div>
+        </div>
 
-            <!-- Play Button Overlay -->
-            <div class="play-button-overlay">
-              <svg viewBox="0 0 512 512" class="play-icon">
-                <circle cx="256" cy="256" r="240" fill="url(#grad)" />
-                <polygon points="200,150 380,256 200,362" fill="white" opacity="0.9" />
-                <defs>
-                  <radialGradient id="grad" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stop-color="rgba(255,255,255,0.6)" />
-                    <stop offset="100%" stop-color="rgba(255,0,0,0.4)" />
-                  </radialGradient>
-                </defs>
-              </svg>
+        <div class="text-column">
+          <div class="headings">
+            <h2 class="minimal-title">WHO WE ARE</h2>
+            <div class="divider"></div>
+          </div>
+
+          <div class="text-content">
+            <p class="text-md leading-relaxed">
+              We started this journey with only the desire to
+              <b>build a better industry and future</b>. Now, the <b>responsibility</b> we have on
+              our hands is more than what we have ever imagined and we are prepared to face the
+              challenges.
+            </p>
+
+            <div class="expandable-text" [class.expanded]="isReadMoreOpen">
+              <p class="text-md leading-relaxed">
+                The company's own endeavors are not the only ideals held important.
+                <b>Hytec Power Inc</b> wants to ensure that the help provided serves to
+                <b>inspire Filipino</b> to strive for their own goals in developing a
+                <b>prosperous and globally competitive society</b>.
+              </p>
+
+              <p class="text-md leading-relaxed">
+                We took the opportunity to provide further assistance to
+                <b>educational institutions</b> in making their programs relevant with
+                <b>industry needs</b>. Providing <b>new technologies</b>, pioneering
+                <b>new industrial processes</b>, and <b>21st didactic practices</b>.
+              </p>
+            </div>
+
+            <div class="action-area">
+              <button class="minimal-btn" (click)="toggleReadMore()">
+                {{ isReadMoreOpen ? 'READ LESS' : 'READ MORE' }}
+              </button>
             </div>
           </div>
         </div>
-
-        <div class="title-badge-container">
-          <title-badge title="Who We Are"></title-badge>
-
-          <p class="text-md">
-            We started this journey with only the desire to build a better industry and future. Now,
-            the responsibility we have on our hands is more than what we have ever imagined and we
-            are prepared to face the challenges no matter how heavy or difficult it may be.
-          </p>
-
-          <p class="who_we_are-description">
-            The company's own endeavors are not the only ideals held important. Hytec Power Inc
-            wants to ensure that the help provided serves to inspire Filipino to strive for their
-            own goals in developing a prosperous and globally competitive society.
-          </p>
-
-          <p class="who_we_are-description">
-            We took the opportunity to provide further assistance to educational institutions in
-            making their programs relevant with industry needs. Providing new technologies,
-            pioneering new industrial processes, and 21st didactic practices.
-          </p>
-          <div>
-            <button class="btn btn-md btn-outline-red-fill">READ MORE</button>
-          </div>
-        </div>
-
-        <!-- Decorative Images -->
-        <img src="/assets/images/home/Subtract.png" class="decor-img-1" draggable="false" alt="" />
       </div>
-
-      <img src="/assets/images/home/Container.png" class="decor-img-2" draggable="false" alt="" />
-      <img src="/assets/images/home/Large.png" class="decor-img-3" draggable="false" alt="" />
     </div>
   </section>
 
   <!-- ============================================ -->
   <!-- ACHIEVEMENT SECTION -->
   <!-- ============================================ -->
-  <section class="achievement-section">
+  <section class="section-wrapper achievement-section">
     <div class="achievement-container">
       <div *ngFor="let item of achievementList">
         <p class="header-lg accent-text">{{ item.value }}</p>
-        <p class="text-lg text-bold text-center">{{ item.label }}</p>
+        <p class="text-lg">{{ item.label }}</p>
       </div>
     </div>
   </section>

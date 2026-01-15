@@ -30,9 +30,7 @@ interface StatItem {
 })
 export class Sponsorship implements AfterViewInit, OnDestroy {
   @ViewChildren('statItem') statItemElements!: QueryList<ElementRef>;
-  @ViewChildren('marqueeTrack') marqueeTrack!: QueryList<ElementRef>; // Use QueryList or ViewChild, simpler with ViewChild typically but marqueeTrack is inside @for? No, just inside wrapper. Let's use ViewChild.
-  // Actually, ViewChild is safer if only one exists.
-  // But wait, I need to import ViewChild if I use it.
+  @ViewChildren('marqueeTrack') marqueeTrack!: QueryList<ElementRef>;
 
   private observer: IntersectionObserver | undefined;
   private visibleIndices = new Set<number>();
@@ -111,13 +109,15 @@ export class Sponsorship implements AfterViewInit, OnDestroy {
 
   private animationItems = new Map<number, AnimationItem>();
 
+  constructor(private el: ElementRef) {}
+
   ngAfterViewInit() {
     this.setupIntersectionObserver();
     this.setupMarqueeAnimation();
   }
 
   private setupMarqueeAnimation() {
-    // The marquee track element
+    // the marquee track element
     const track = this.marqueeTrack.first?.nativeElement;
     if (!track) return;
 
@@ -172,6 +172,12 @@ export class Sponsorship implements AfterViewInit, OnDestroy {
     this.observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
+          // General Scroll Animation
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+
+          // Existing Lottie Logic
           const index = this.statItemElements
             .toArray()
             .findIndex((el) => el.nativeElement === entry.target);
@@ -190,10 +196,17 @@ export class Sponsorship implements AfterViewInit, OnDestroy {
           }
         });
       },
-      { threshold: 0.5 }
+      { threshold: 0.2 }
     );
 
+    // Observe specific stat items
     this.statItemElements.forEach((el) => this.observer?.observe(el.nativeElement));
+
+    // Observe generic animated elements
+    const animatedElements = this.el.nativeElement.querySelectorAll(
+      '.animate-on-scroll, .slide-in-left, .slide-in-right, .animate-fade-in'
+    );
+    animatedElements.forEach((el: Element) => this.observer?.observe(el));
   }
 
   animationCreated(animationItem: AnimationItem, index: number): void {

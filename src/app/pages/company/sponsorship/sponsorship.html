@@ -38,25 +38,25 @@
 
   <!-- Intro Text Section -->
   <section class="section-wrapper intro-text-section">
-    <div class="decor-shape left">
+    <div class="decor-shape left slide-in-left">
       <img src="assets/images/aboutus/sponsorship/decor/decor-left.svg" alt="" />
     </div>
-    <div class="decor-shape right">
+    <div class="decor-shape right slide-in-right">
       <img src="assets/images/aboutus/sponsorship/decor/decor-right.svg" alt="" />
     </div>
 
-    <p class="text-lg">
+    <p class="text-lg animate-on-scroll">
       Hytec Power supported 'Team Philippines' in the
       <strong>World's Largest Robotics Competition</strong>
     </p>
-    <div class="rec-foundation">
+    <div class="rec-foundation animate-on-scroll delay-1">
       <span class="sub-label">Supported By:</span>
       <img
         src="assets/images/aboutus/sponsorship/acbf07d6fb82f70e6bc4e924c00ef69719b32cb2.png"
         alt="REC Foundation"
       />
     </div>
-    <div class="sub-label-wrapper">
+    <div class="sub-label-wrapper animate-on-scroll delay-2">
       <p class="text-md">
         The Robotics Education & Competition (REC) Foundation’s mission is to increase student
         interest and involvement in science, technology, engineering, and mathematics (STEM) by
@@ -67,12 +67,14 @@
 
   <!-- Competition Levels Section -->
   <section class="section-wrapper competition-levels-section">
-    <p class="text-lg">Hytec Power is also sponsoring <strong>Robotics Competition</strong> for:</p>
+    <p class="text-lg animate-on-scroll">
+      Hytec Power is also sponsoring <strong>Robotics Competition</strong> for:
+    </p>
 
-    <div class="levels-wrapper">
+    <div class="levels-wrapper animate-on-scroll" style="transition-delay: 0.2s">
       <div class="levels-grid">
-        @for (level of competitionLevels; track level.title) {
-        <div class="level-card">
+        @for (level of competitionLevels; track level.title; let i = $index) {
+        <div class="level-card animate-on-scroll delay-{{ i + 1 }}">
           <div class="level-image">
             <img [src]="level.image" [alt]="level.title" />
           </div>
@@ -88,7 +90,7 @@
 
   <!-- Statistics Section -->
   <section class="section-wrapper stats-section">
-    <p class="stats-intro text-md">
+    <p class="stats-intro text-md animate-on-scroll">
       The <strong>VEX Robotics competitions</strong> combine the natural hook of
       <strong>educational robotics</strong> with the fun and excitement
       <strong>collaborating and competing</strong> with friends and peers. While competing either in
@@ -100,7 +102,11 @@
 
     <div class="stats-grid">
       @for (stat of statistics; track stat.label; let i = $index) {
-      <div class="stat-item" #statItem (mouseenter)="onMouseEnter(i)">
+      <div
+        class="stat-item animate-on-scroll delay-{{ i + 1 }}"
+        #statItem
+        (mouseenter)="onMouseEnter(i)"
+      >
         <div class="stat-icon">
           <ng-lottie
             [options]="stat.options"
@@ -116,15 +122,15 @@
 
   <!-- Guinness Record Section -->
   <section class="section-wrapper guinness-section">
-    <div class="dots-decor left-dots" aria-hidden="true">
+    <div class="dots-decor left-dots slide-in-left" aria-hidden="true">
       <div class="dot-grid"></div>
     </div>
 
-    <div class="dots-decor right-dots" aria-hidden="true">
+    <div class="dots-decor right-dots slide-in-right" aria-hidden="true">
       <div class="dot-grid"></div>
     </div>
 
-    <div class="content-container">
+    <div class="content-container animate-on-scroll">
       <h2 class="text-xl">
         Guinness World Records® holder for the <strong>World's Largest Robotics Competition</strong>
       </h2>
@@ -142,14 +148,14 @@
 
   <!-- Contact Section -->
   <section class="section-wrapper contact-section">
-    <div class="decor-shape left">
+    <div class="decor-shape left slide-in-left">
       <img src="assets/images/aboutus/sponsorship/decor/decor-left.svg" alt="" />
     </div>
-    <div class="decor-shape right">
+    <div class="decor-shape right slide-in-right">
       <img src="assets/images/aboutus/sponsorship/decor/decor-right.svg" alt="" />
     </div>
-    <h3>For Interested Host Schools, Contact Us:</h3>
-    <div class="contact-methods">
+    <h3 class="animate-on-scroll">For Interested Host Schools, Contact Us:</h3>
+    <div class="contact-methods animate-on-scroll delay-1">
       <div class="contact-item">
         <i class="bi bi-telephone"></i>
         <div class="details">
