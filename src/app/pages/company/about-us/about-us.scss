@@ -143,7 +143,7 @@
   color: rgba(255, 255, 255, 0.7);
   font-size: 0.8rem;
   text-align: center;
-  max-width: 90%;
+  max-width: 100%;
   margin: 0 auto;
   margin-bottom: 4vh;
 }
@@ -915,17 +915,20 @@
   font-weight: bold;
   text-transform: uppercase;
   line-height: 1;
+  font-family: 'Poppins', sans-serif;
 }
 
 .date-box .program-section-year {
   font-size: 1.2rem;
   font-weight: bold;
   line-height: 1;
+  font-family: 'Poppins', sans-serif;
 }
 
 .banner-text {
   font-size: 0.6rem;
   line-height: 1.2;
+  font-family: 'Poppins', sans-serif;
 }
 
 .bottom-desc {
@@ -1205,16 +1208,17 @@
   z-index: 1;
 }
 
+/* Animations */
+
 .fade-in {
-  animation: fadeIn 0.5s ease-in-out;
+  opacity: 0;
+  animation: fadeIn 0.5s ease-in-out forwards;
 }
 
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
-
-/* Animations */
 
 .slide-in-right {
   opacity: 0;
@@ -1233,7 +1237,7 @@
 }
 
 .delay-1 { animation-delay: 0.1s; }
-.delay-2 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 2.5s; }
 
 /* ˚◡˚ Partnership Section ˚◡˚ */
 

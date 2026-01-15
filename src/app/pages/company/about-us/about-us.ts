@@ -166,7 +166,7 @@ export class aboutUs implements OnInit, OnDestroy {
     // change image every 5 seconds (5000ms)
     this.autoPlayInterval = setInterval(() => {
       this.nextGalleryItem();
-    }, 5000);
+    }, 12000);
   }
 
   stopAutoPlay() {

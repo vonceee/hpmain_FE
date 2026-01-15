@@ -24,7 +24,7 @@
     From humble beginnings to becoming the Philippines' leading provider of industrial and
     educational solutions
   </p>
-  
+
   <div class="timeline-container">
     
     <div class="timeline-line"></div>
@@ -36,7 +36,8 @@
         
         <div class="timeline-content">
           <div class="timeline-year">{{ event.year }}</div>
-          <div class="timeline-title">{{ event.title }}</div> <div class="timeline-description">{{ event.description }}</div>
+          <div class="timeline-title">{{ event.title }}</div>
+          <div class="timeline-description">{{ event.description }}</div>
         </div>
 
         <div class="timeline-dot"></div>
@@ -98,7 +99,7 @@
     </div>
   </container-box>
 
-  <title-badge title="TY Appearances"></title-badge>
+  <title-badge title="TV Appearances"></title-badge>
   <p class="text-md about_us-subtitle">
     Appearances at Umagang Kay Ganda, AHA!, Good Morning Dub and Suit Up!
   </p>
@@ -444,7 +445,7 @@
               @for (item of [galleryItems[currentGalleryIndex()]]; track item.src) {
               <img [src]="item.src" [alt]="item.caption" class="slide-in-right" />
 
-              <div class="gallery-caption slide-in-right delay-1">
+              <div class="gallery-caption fade-in delay-2">
                 {{ item.caption }}
               </div>
               }
