@@ -27,6 +27,7 @@ $breakpoint-desktop: 1440px;
   scroll-snap-type: y proximity;
   width: 100%;
   color: #fff;
+  background: #090000;
 
   // Minimalist Scrollbar
   &::-webkit-scrollbar {
@@ -188,12 +189,55 @@ main-footer {
 }
 
 .introduction-container-box {
-  max-width: 75vw; // increased width slightly for bento cards
+  // max-width moved to wrapper or handled by fit-content
+  width: 100%;
   border: 1px solid rgba(237, 28, 36, 0.5);
   border-radius: 16px;
+  position: relative;
+  z-index: 2; // Ensure box is above decor
+  background: rgba(0, 0, 0, 0.4); // Optional: ensure content is readable if decor overlaps
+  backdrop-filter: blur(10px); // Premium glass effect
+}
+
+.intro-wrapper {
+  position: relative;
+  width: 75vw; // Match previous container width
+  max-width: 1440px;
 
   @include respond-to($breakpoint-tablet) {
-    max-width: 90vw;
+    width: 90vw;
+  }
+}
+
+.intro-decor-bottom-left {
+  position: absolute;
+  bottom: -80px;
+  left: -80px;
+  z-index: 1; // Behind box (if box is z-2)
+  pointer-events: none;
+  width: 400px;
+  height: auto;
+
+  @include respond-to($breakpoint-mobile) {
+    width: 200px;
+    bottom: -40px;
+    left: -40px;
+  }
+}
+
+.intro-decor-top-right {
+  position: absolute;
+  top: -60px;
+  right: -90px;
+  z-index: 3;
+  pointer-events: none;
+  width: 300px;
+  height: auto;
+
+  @include respond-to($breakpoint-mobile) {
+    width: 150px;
+    top: -50px;
+    right: -40px;
   }
 }
 
@@ -449,13 +493,41 @@ main-footer {
   width: 100%;
 
   display: flex;
-  justify-content: center;
-  align-items: center;
   padding: 0;
   padding-top: 4vh;
+
+  // decor styles
+  .news-decor-left,
+  .news-decor-right {
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.6;
+  }
+
+  .news-decor-left {
+    top: -100px;
+    left: 0;
+    width: clamp(200px, 30vw, 500px);
+    height: auto;
+  }
+
+  .news-decor-right {
+    top: 0;
+    right: 0;
+    width: clamp(200px, 30vw, 500px);
+    height: auto;
+  }
+
+  // ensure content is above decor
+  .news-container {
+    position: relative;
+    z-index: 1;
+  }
 }
 
 .news-container {
+  margin: auto;
   width: 80vw;
   display: flex;
   flex-direction: column;
@@ -525,7 +597,7 @@ main-footer {
 .featured-image-wrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 16/9;
+  aspect-ratio: 2.4/1;
   border-radius: 16px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -572,6 +644,10 @@ main-footer {
     line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+
+    @include respond-to($breakpoint-desktop) {
+      font-size: 2.5rem; // adjust for laptop/desktop limits
+    }
   }
 
   .news-desc {
@@ -612,6 +688,7 @@ main-footer {
 
 .news-item {
   display: flex;
+  align-items: center;
   gap: 1.5vw;
   padding: 2vh;
   background: rgba(255, 255, 255, 0.03);
@@ -646,7 +723,6 @@ main-footer {
     object-fit: cover;
   }
 
-  // Responsive adjustment for laptops
   @media (max-height: 900px) {
     width: 6rem;
     height: 6rem;
@@ -669,10 +745,14 @@ main-footer {
     margin: 0;
     line-height: 1.2;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
+
+    @include respond-to($breakpoint-desktop) {
+      font-size: 1.1rem;
+    }
   }
 
   .news-item-desc {
@@ -970,7 +1050,6 @@ main-footer {
   width: 100%;
   padding: 10vh 0;
   padding-bottom: 10vh;
-  background: #000;
 }
 
 .social-bg-decor {
