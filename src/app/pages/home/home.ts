@@ -1,7 +1,10 @@
 import { Component, OnInit, AfterViewInit, signal, ViewChild, ElementRef } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MainFooter } from 'src/app/components/main-footer/main-footer';
 import { MainHeader } from 'src/app/components/main-header/main-header';
+import { TitleBadge } from 'src/app/components/title-badge/title-badge';
+import { ContainerBox } from 'src/app/components/container-box/container-box';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
   faFacebookF,
@@ -10,6 +13,9 @@ import {
   faLinkedinIn,
 } from '@fortawesome/free-brands-svg-icons';
 
+import { AnimationItem } from 'lottie-web';
+import { AnimationOptions, LottieComponent } from 'ngx-lottie';
+
 interface Testimonial {
   logo: string;
   text: string;
@@ -17,17 +23,26 @@ interface Testimonial {
   company: string;
 }
 
-import { TitleBadge } from 'src/app/components/title-badge/title-badge';
-
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, MainFooter, MainHeader, FontAwesomeModule, TitleBadge],
+  imports: [
+    CommonModule,
+    MainFooter,
+    MainHeader,
+    FontAwesomeModule,
+    TitleBadge,
+    ContainerBox,
+    RouterLink,
+    LottieComponent,
+  ],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
 export class Home implements OnInit, AfterViewInit {
   @ViewChild('achievementSection') achievementSection!: ElementRef;
+
+  constructor(private el: ElementRef) {}
 
   protected readonly title = signal('hytec_fe');
 
@@ -36,11 +51,61 @@ export class Home implements OnInit, AfterViewInit {
   faYoutube = faYoutube;
   faLinkedinIn = faLinkedinIn;
 
-  achievementList = [
-    { target: 30, current: 0, suffix: '+', label: 'Years of Excellence', value: '30+' },
-    { target: 150, current: 0, suffix: '+', label: 'Industrial Partners', value: '150+' },
-    { target: 150, current: 0, suffix: '+', label: 'Academe Partners', value: '150+' },
-    { target: 100, current: 0, suffix: '%', label: 'Commitment to Service', value: '100%' },
+  private animationItems = new Map<number, AnimationItem>();
+
+  achievementList: any[] = [
+    {
+      target: 30,
+      current: 0,
+      suffix: '+',
+      label: 'Years of Excellence',
+      value: '30+',
+      iconPath: '/assets/images/aboutus/sponsorship/lottie/Warranty.json',
+      options: {
+        path: '/assets/images/aboutus/sponsorship/lottie/Warranty.json',
+        autoplay: false,
+        loop: false,
+      } as AnimationOptions,
+    },
+    {
+      target: 150,
+      current: 0,
+      suffix: '+',
+      label: 'Industrial Partners',
+      value: '150+',
+      iconPath: '/assets/images/aboutus/sponsorship/lottie/Community.json',
+      options: {
+        path: '/assets/images/aboutus/sponsorship/lottie/Community.json',
+        autoplay: false,
+        loop: false,
+      } as AnimationOptions,
+    },
+    {
+      target: 150,
+      current: 0,
+      suffix: '+',
+      label: 'Academe Partners',
+      value: '150+',
+      iconPath: '/assets/images/aboutus/sponsorship/lottie/Learned.json',
+      options: {
+        path: '/assets/images/aboutus/sponsorship/lottie/Learned.json',
+        autoplay: false,
+        loop: false,
+      } as AnimationOptions,
+    },
+    {
+      target: 100,
+      current: 0,
+      suffix: '%',
+      label: 'Commitment to Service',
+      value: '100%',
+      iconPath: '/assets/images/aboutus/sponsorship/lottie/Heart.json',
+      options: {
+        path: '/assets/images/aboutus/sponsorship/lottie/Heart.json',
+        autoplay: false,
+        loop: false,
+      } as AnimationOptions,
+    },
   ];
 
   featuredNews = {
@@ -101,10 +166,6 @@ export class Home implements OnInit, AfterViewInit {
   isReadMoreOpen = false;
   private hasAnimated = false;
 
-  toggleReadMore(): void {
-    this.isReadMoreOpen = !this.isReadMoreOpen;
-  }
-
   ngOnInit(): void {
     this.updateBackground();
   }
@@ -125,6 +186,27 @@ export class Home implements OnInit, AfterViewInit {
     }
 
     this.setupIntersectionObserver();
+    this.setupScrollAnimations();
+  }
+
+  private setupScrollAnimations() {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target); // Animate once
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px',
+      },
+    );
+
+    const elements = this.el.nativeElement.querySelectorAll('.reveal-on-scroll');
+    elements.forEach((el: HTMLElement) => observer.observe(el));
   }
 
   private setupIntersectionObserver() {
@@ -135,12 +217,13 @@ export class Home implements OnInit, AfterViewInit {
         entries.forEach((entry) => {
           if (entry.isIntersecting && !this.hasAnimated) {
             this.startCounting();
+            this.playAnimations();
             this.hasAnimated = true;
             observer.disconnect();
           }
         });
       },
-      { threshold: 0.2 } // Trigger when 20% visible
+      { threshold: 0.2 }, // trigger when 20% visible
     );
 
     observer.observe(this.achievementSection.nativeElement);
@@ -172,7 +255,7 @@ export class Home implements OnInit, AfterViewInit {
     }, interval);
   }
 
-  // Easing function for smooth animation
+  // easing function for smooth animation
   private easeOutExpo(x: number): number {
     return x === 1 ? 1 : 1 - Math.pow(2, -10 * x);
   }
@@ -212,5 +295,26 @@ export class Home implements OnInit, AfterViewInit {
       linear-gradient(to right, #8a0005e0 15%, #d18b8bc5 50%, #8a0005e0 85%),
       url('${imgPath}')
     `;
+  }
+  animationCreated(animationItem: AnimationItem, index: number): void {
+    this.animationItems.set(index, animationItem);
+    // If we've already scrolled past the trigger point, play immediately (optional constraint)
+    if (this.hasAnimated) {
+      animationItem.play();
+    }
+  }
+
+  onMouseEnter(index: number): void {
+    const item = this.animationItems.get(index);
+    if (item) {
+      item.stop();
+      item.play();
+    }
+  }
+
+  private playAnimations(): void {
+    this.animationItems.forEach((item) => {
+      item.play();
+    });
   }
 }

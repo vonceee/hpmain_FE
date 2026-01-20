@@ -15,11 +15,12 @@
 
   .hero-section-cover {
     background: linear-gradient(
-      150deg,
-      rgba(237, 28, 35, 0.5) 0%,
+      135deg,
+      rgba(237, 28, 36, 0.5) 0%,
       rgba(0, 0, 0, 0) 50%,
       rgba(0, 0, 0, 0.5) 100%
     );
+
     width: 100%;
     height: 100%;
     position: absolute;
@@ -56,7 +57,7 @@
       font-size: clamp(3rem, 6vw, 5.5rem);
       line-height: 1.1;
       font-weight: 400;
-      margin: 0 0 32px 0;
+      margin: 0 0 0.5rem 0;
       letter-spacing: 0.02em;
 
       // gradient text
@@ -75,6 +76,36 @@
       max-width: 80vw;
       margin: 0 auto;
     }
+  }
+
+  .decor-blur-right {
+    position: absolute;
+    width: 759.75px;
+    height: 759.75px;
+    left: 960px;
+    top: 125px;
+
+    background: #ed1c24;
+    opacity: 0.1;
+    filter: blur(120px);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .decor-blur-left {
+    position: absolute;
+    width: 959.44px;
+    height: 959.44px;
+    left: -264px;
+    top: -150px;
+
+    background: #ed1c24;
+    opacity: 0.1;
+    filter: blur(150px);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
   }
 }
 
@@ -100,10 +131,6 @@
       .date-pill {
         font-size: 0.8125rem;
         padding: 8px 16px;
-        margin-bottom: 24px;
-      }
-
-      h1 {
         margin-bottom: 24px;
       }
 

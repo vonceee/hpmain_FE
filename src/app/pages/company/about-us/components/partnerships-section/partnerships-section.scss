@@ -1,0 +1,66 @@
+@use 'colors' as color;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* ˚◡˚ Shared Layouts ˚◡˚ */
+.about_us-subtitle {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.8rem;
+  text-align: center;
+  max-width: 100%;
+  margin: 0 auto;
+  margin-bottom: 4vh;
+}
+
+.main-header {
+  text-align: center;
+}
+
+.main-header h1 {
+  font-size: 1.2rem;
+  font-weight: normal;
+  color: #ffffff;
+}
+
+/* ˚◡˚ Partnership Section ˚◡˚ */
+
+.grid-3x3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.cell {
+  padding: 20px;
+  text-align: center;
+  border: 0.5px solid rgba(244, 244, 244, 0.1);
+  border-radius: 0.5rem;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  filter: grayscale(100%);
+}
+
+.cell:hover {
+  transform: scale(1.05);
+  background-color: rgba(255, 255, 255, 0.1);
+  filter: grayscale(0%);
+}
+
+.cell img {
+  width: 6rem;
+  height: 6rem;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+  transition: filter 0.3s ease;
+}
+
+.cell p {
+  font-size: 0.8rem;
+  margin: 0;
+  color: #fff;
+}

@@ -1,0 +1,44 @@
+<section class="section-wrapper">
+  <title-badge title="Our Journey"></title-badge>
+  <p class="text-md subtitle">
+    From humble beginnings to becoming the Philippines' leading provider of industrial and
+    educational solutions
+  </p>
+  <div class="timeline-container">
+    <div class="timeline-line"></div>
+
+    <div class="timeline-events">
+      <div
+        *ngFor="let event of events; let i = index"
+        class="timeline-item"
+        [ngClass]="event.position"
+      >
+        <container-box variant="dark">
+          <div class="timeline-content-layout">
+            <div class="text-md timeline-year">{{ event.year }}</div>
+            <div class="text-lg">{{ event.title }}</div>
+            <div class="text-md timeline-description">{{ event.description }}</div>
+          </div>
+        </container-box>
+
+        <div class="timeline-dot"></div>
+      </div>
+    </div>
+  </div>
+
+  <section class="distributorship-container">
+    <p class="text-lg">Gain Exclusive Distributorship</p>
+    <p class="text-md about_us-subtitle">
+      Continuing to shape the future of technical education with cutting-edge technology and
+      strategic partnerships.
+    </p>
+
+    <div class="logo-grid">
+      @for (logo of logos; track logo.name) {
+      <a [href]="logo.url" target="_blank" class="logo-item">
+        <img [src]="logo.src" [alt]="logo.name" />
+      </a>
+      }
+    </div>
+  </section>
+</section>

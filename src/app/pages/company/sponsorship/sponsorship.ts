@@ -121,18 +121,18 @@ export class Sponsorship implements AfterViewInit, OnDestroy {
     const track = this.marqueeTrack.first?.nativeElement;
     if (!track) return;
 
-    // Wait a tick to ensure animations are ready
+    // wait a tick to ensure animations are ready
     setTimeout(() => {
       const animations = track.getAnimations();
       if (animations.length > 0) {
-        const anim = animations[0]; // The scroll animation
+        const anim = animations[0]; // the scroll animation
 
-        let currentRate = 8; // Start very fast
+        let currentRate = 8; // start very fast
         const targetRate = 1;
-        const duration = 2500; // Time to slow down in ms
+        const duration = 2500; // time to slow down in ms
         const startTime = performance.now();
 
-        // Set initial rate
+        // set initial rate
         anim.updatePlaybackRate(currentRate);
 
         const step = (currentTime: number) => {
@@ -140,17 +140,16 @@ export class Sponsorship implements AfterViewInit, OnDestroy {
 
           if (elapsed >= duration) {
             anim.updatePlaybackRate(targetRate);
-            return; // Done
+            return; // done
           }
 
-          // Ease out exponential decay-ish via linear interpolation for simplicity or ease-out
-          // Simple linear:
+          // ease out exponential decay-ish via linear interpolation for simplicity or ease-out
+          // simple linear:
           currentRate = 8 - 7 * (elapsed / duration);
-          // Or using ease-out cubic for better feel: 1 - (1-t)^3
           const t = elapsed / duration;
           const easeOut = 1 - Math.pow(1 - t, 3);
 
-          // Interpolate
+          // interpolate
           currentRate = 8 - 7 * easeOut;
 
           anim.updatePlaybackRate(currentRate);

@@ -1,0 +1,157 @@
+@use 'colors' as color;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* ˚◡˚ Shared Layouts ˚◡˚ */
+.about_us-subtitle {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.8rem;
+  text-align: center;
+  max-width: 100%;
+  margin: 0 auto;
+  margin-bottom: 4vh;
+}
+
+/* ˚◡˚ Our President & CEO ˚◡˚ */
+
+.our-president-ceo-container {
+  width: 75vw;
+
+  .president-content-wrapper {
+    position: relative;
+    padding: 4rem 2vw 2vw;
+  }
+
+  .decor-quote {
+    color: color.$primary;
+    position: absolute;
+    top: 1rem;
+    left: 2vw;
+    line-height: 1;
+    margin: 0;
+  }
+
+  .president-layout {
+    display: flex;
+    gap: 2vw;
+    align-items: flex-end;
+  }
+
+  .left-side {
+    flex: 1;
+    text-align: justify;
+  }
+
+  .right-side {
+    flex: 0 0 40%;
+    position: relative;
+    z-index: 10;
+
+    .ceo {
+      position: absolute;
+      bottom: -4vh;
+      right: -2vw;
+      width: 20rem;
+      margin: 0;
+
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
+        filter: drop-shadow(5px 10px 15px rgba(0, 0, 0, 0.4));
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .president-layout {
+      flex-direction: column;
+    }
+
+    .right-side {
+      display: none;
+    }
+
+    .president-content-wrapper {
+      padding-top: 4rem;
+    }
+  }
+
+  .achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    padding-top: 3rem;
+    width: 100%;
+
+    .achievement-box {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.attributes-container {
+  width: 75vw;
+  margin-top: 3vh;
+
+  .attributes-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 2vh 0;
+    gap: 2vw;
+  }
+
+  .attribute-item {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3vh;
+    flex: 1;
+    max-width: 300px;
+
+    img {
+      width: 5.5vw;
+      min-width: 60px;
+    }
+
+    .message {
+      text-align: center;
+      .header-sm {
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+      .about_us-subtitle {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .attributes-content {
+      flex-direction: column;
+      align-items: center;
+      gap: 5vh;
+    }
+  }
+}
