@@ -1,21 +1,9 @@
+@use '../../about-us.scss' as *;
 @use 'colors' as color;
 
-:host {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
+/* ˚◡˚ Awards ˚◡˚ */
 
-/* ˚◡˚ Shared Layouts ˚◡˚ */
-.about_us-subtitle {
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.8rem;
-  text-align: center;
-  max-width: 100%;
-  margin: 0 auto;
-  margin-bottom: 4vh;
-}
+/* Shared Layouts and Subtitles are now imported from about-us.scss */
 
 /* ˚◡˚ Awards ˚◡˚ */
 

@@ -1,6 +1,6 @@
 <section class="section-wrapper">
-  <title-badge title="Our Journey"></title-badge>
-  <p class="text-md subtitle">
+  <title-badge title="Our Journey" class="fade-up-element"></title-badge>
+  <p class="text-md subtitle fade-up-element">
     From humble beginnings to becoming the Philippines' leading provider of industrial and
     educational solutions
   </p>
@@ -28,16 +28,16 @@
 
   <section class="distributorship-container">
     <p class="text-lg">Gain Exclusive Distributorship</p>
-    <p class="text-md about_us-subtitle">
+    <p class="text-md timeline-description">
       Continuing to shape the future of technical education with cutting-edge technology and
       strategic partnerships.
     </p>
 
     <div class="logo-grid">
       @for (logo of logos; track logo.name) {
-      <a [href]="logo.url" target="_blank" class="logo-item">
-        <img [src]="logo.src" [alt]="logo.name" />
-      </a>
+        <a [href]="logo.url" target="_blank" class="logo-item">
+          <img [src]="logo.src" [alt]="logo.name" />
+        </a>
       }
     </div>
   </section>

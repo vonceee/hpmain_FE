@@ -1,19 +1,8 @@
 @use '../../about-us.scss' as *;
 @use 'colors' as color;
 
-.section-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-
 /* ˚◡˚ Shared Layouts ˚◡˚ */
-.subtitle {
-  color: rgba(255, 255, 255, 0.7);
-  text-align: center;
-  margin-bottom: 4vh;
-}
+/* Imported from about-us.scss */
 
 /* ˚◡˚ Our Journey - Logo Grid ˚◡˚ */
 
@@ -110,25 +99,30 @@
   display: flex;
   width: 100%;
   margin-bottom: 60px;
-  /* Ensure box-sizing includes padding in width calculations */
   box-sizing: border-box;
+
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.6s ease-out;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Left Aligned Items */
-/* Logic: Pad the RIGHT side by 50% of screen + 40px gap. 
-   This forces content into the left side with a precise gap. */
 .timeline-item.left {
   flex-direction: row;
-  justify-content: flex-end; /* Push content against the padding wall */
+  justify-content: flex-end;
   padding-right: calc(50% + 40px);
   text-align: right;
 }
 
 /* Right Aligned Items */
-/* Logic: Pad the LEFT side by 50% of screen + 40px gap. */
 .timeline-item.right {
   flex-direction: row;
-  justify-content: flex-start; /* Push content against the padding wall */
+  justify-content: flex-start;
   padding-left: calc(50% + 40px);
   text-align: left;
 }
@@ -142,18 +136,12 @@
   transition: all 0.3s ease;
 }
 
-/* Text alignment adjustments */
 .timeline-item.left .timeline-content-layout {
-  align-items: flex-end; /* Right align text inside box */
+  align-items: flex-end;
 }
 .timeline-item.right .timeline-content-layout {
-  align-items: flex-start; /* Left align text inside box */
+  align-items: flex-start;
 }
-
-/* .timeline-content:hover {
-  transform: translateY(-5px);
-  border-color: rgba(237, 28, 36, 0.5);
-} */
 
 .timeline-year {
   color: #ed1c24;
@@ -219,7 +207,7 @@
   .timeline-item.left .timeline-content-layout,
   .timeline-item.right .timeline-content-layout {
     width: 100%;
-    margin-left: 60px; /* Push content 60px from the left edge */
+    margin-left: 60px;
     margin-right: 0;
     align-items: flex-start;
   }
@@ -241,8 +229,18 @@
   align-items: center;
   background: color.$container;
   border: 1px solid color.$secondaryAlpha10;
-  gap: 2vh;
   padding: 30px;
   border-radius: 15px;
-  margin-top: 2.5vh;
+
+  /* Animation Initial State */
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.8s ease-out,
+    transform 0.8s ease-out;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

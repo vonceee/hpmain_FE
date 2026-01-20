@@ -1,5 +1,14 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {
+  Component,
+  ElementRef,
+  AfterViewInit,
+  OnDestroy,
+  Inject,
+  PLATFORM_ID,
+  ViewChildren,
+  QueryList,
+} from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { TitleBadge } from 'src/app/components/title-badge/title-badge';
 import { ContainerBox } from 'src/app/components/container-box/container-box';
 
@@ -16,7 +25,11 @@ interface TimelineEvent {
   templateUrl: './journey-section.html',
   styleUrls: ['./journey-section.scss'],
 })
-export class JourneySection {
+export class JourneySection implements AfterViewInit, OnDestroy {
+  @ViewChildren('timelineItem') timelineItems!: QueryList<ElementRef>;
+
+  observer: IntersectionObserver | null = null;
+
   events: TimelineEvent[] = [
     {
       year: '1994',
@@ -172,4 +185,57 @@ export class JourneySection {
       src: 'assets/images/aboutus/distributionship/ewm.png',
     },
   ];
+
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private el: ElementRef,
+  ) {}
+
+  ngAfterViewInit() {
+    if (isPlatformBrowser(this.platformId)) {
+      this.setupObserver();
+    }
+  }
+
+  ngOnDestroy() {
+    if (this.observer) {
+      this.observer.disconnect();
+    }
+  }
+
+  private setupObserver() {
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.2, // Trigger when 20% of the element is visible
+    };
+
+    this.observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          // Optional: stop observing once visible
+          // this.observer?.unobserve(entry.target);
+        }
+      });
+    }, options);
+
+    // Observe timeline items
+    const timelineItems = this.el.nativeElement.querySelectorAll('.timeline-item');
+    timelineItems.forEach((item: HTMLElement) => {
+      this.observer?.observe(item);
+    });
+
+    // Observe title and subtitle
+    const title = this.el.nativeElement.querySelector('title-badge');
+    const subtitle = this.el.nativeElement.querySelector('.subtitle');
+    if (title) this.observer?.observe(title);
+    if (subtitle) this.observer?.observe(subtitle);
+
+    // Observe distributorship container
+    const distributorship = this.el.nativeElement.querySelector('.distributorship-container');
+    if (distributorship) {
+      this.observer?.observe(distributorship);
+    }
+  }
 }
