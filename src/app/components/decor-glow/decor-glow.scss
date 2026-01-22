@@ -1,0 +1,38 @@
+.decor-glow-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden; // Ensure blurs don't overflow the container if it's smaller
+  z-index: 1; // Default z-index, can be overridden by parent
+}
+
+.decor-blur-right {
+  position: absolute;
+  width: 759.75px;
+  height: 759.75px;
+  left: 960px;
+  top: 125px;
+
+  background: #cc181e; // Darkened red
+  opacity: 0.1;
+  filter: blur(120px);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.decor-blur-left {
+  position: absolute;
+  width: 959.44px;
+  height: 959.44px;
+  left: -264px;
+  top: -150px;
+
+  background: #cc181e; // Darkened red
+  opacity: 0.1;
+  filter: blur(150px);
+  border-radius: 50%;
+  pointer-events: none;
+}

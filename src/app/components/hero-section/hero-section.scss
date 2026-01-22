@@ -13,10 +13,23 @@
 
   border-bottom: 0.5px solid color.$primarydark;
 
+  .hero-bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.1;
+    z-index: 0;
+  }
+
   .hero-section-cover {
     background: linear-gradient(
       135deg,
-      rgba(237, 28, 36, 0.5) 0%,
+      rgba(204, 24, 30, 0.5) 0%,
       rgba(0, 0, 0, 0) 50%,
       rgba(0, 0, 0, 0.5) 100%
     );
@@ -26,6 +39,7 @@
     position: absolute;
     top: 0;
     left: 0;
+    z-index: 1;
   }
 
   .hero-content {
@@ -36,35 +50,54 @@
 
     animation: fadeUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 
-    .date-pill {
-      display: inline-block;
-      background-color: color.$primary400;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 99px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-      font-size: 0.875rem;
-      font-weight: 500;
-      letter-spacing: 0.025em;
-      text-transform: uppercase;
+    .date-pill {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding: 1px 8px;
+      gap: 10px;
+
+      background: #cc181e;
+      border-radius: 16px;
+
+      // Text styles
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+      color: #ffffff;
+      text-transform: none;
 
       margin-bottom: 32px;
-      box-shadow: 0 4px 16px rgba(237, 28, 36, 0.25);
     }
 
     h1 {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(3rem, 6vw, 5.5rem);
-      line-height: 1.1;
+      font-style: normal;
       font-weight: 400;
-      margin: 0 0 0.5rem 0;
-      letter-spacing: 0.02em;
+      font-size: 100px;
+      line-height: 1.1; // 80px line-height in Figma is 0.8, but 1.1 is safer for implementation unless fixed height.
+      // Figma said line-height: 80px vs font-size: 100px. That's very tight.
+      // I will trust the visual intent but keep it readable or slightly larger.
+      // Let's try 0.9 or 1 first if it's all caps.
+      line-height: 0.8;
+
+      margin: 0 0 1rem 0;
+      letter-spacing: 0;
+      text-align: center;
 
       // gradient text
-      background: linear-gradient(180deg, #f5f5f5 0%, #a9a9a9 100%);
+      background: linear-gradient(180deg, #dbdbdb 32.76%, #a9a9a9 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      color: transparent; // Fallback
     }
 
     p {
@@ -76,36 +109,6 @@
       max-width: 80vw;
       margin: 0 auto;
     }
-  }
-
-  .decor-blur-right {
-    position: absolute;
-    width: 759.75px;
-    height: 759.75px;
-    left: 960px;
-    top: 125px;
-
-    background: #ed1c24;
-    opacity: 0.1;
-    filter: blur(120px);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  .decor-blur-left {
-    position: absolute;
-    width: 959.44px;
-    height: 959.44px;
-    left: -264px;
-    top: -150px;
-
-    background: #ed1c24;
-    opacity: 0.1;
-    filter: blur(150px);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 1;
   }
 }
 
@@ -136,6 +139,11 @@
 
       p {
         font-size: 1rem;
+      }
+
+      h1 {
+        font-size: 3rem; // Fallback for mobile
+        line-height: 1;
       }
     }
   }

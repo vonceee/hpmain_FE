@@ -5,6 +5,7 @@ import { MainFooter } from 'src/app/components/main-footer/main-footer';
 import { MainHeader } from 'src/app/components/main-header/main-header';
 import { TitleBadge } from 'src/app/components/title-badge/title-badge';
 import { ContainerBox } from 'src/app/components/container-box/container-box';
+import { DecorGlowComponent } from 'src/app/components/decor-glow/decor-glow';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
   faFacebookF,
@@ -35,6 +36,7 @@ interface Testimonial {
     ContainerBox,
     RouterLink,
     LottieComponent,
+    DecorGlowComponent,
   ],
   templateUrl: './home.html',
   styleUrl: './home.scss',

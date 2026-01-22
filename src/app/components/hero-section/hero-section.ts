@@ -1,8 +1,9 @@
 import { Component, Input } from '@angular/core';
+import { DecorGlowComponent } from '../decor-glow/decor-glow';
 
 @Component({
   selector: 'hero-section',
-  imports: [],
+  imports: [DecorGlowComponent],
   templateUrl: './hero-section.html',
   styleUrls: ['./hero-section.scss'],
 })
