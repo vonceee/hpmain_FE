@@ -227,10 +227,11 @@ export class JourneySection implements AfterViewInit, OnDestroy {
     });
 
     // Observe title and subtitle
-    const title = this.el.nativeElement.querySelector('title-badge');
-    const subtitle = this.el.nativeElement.querySelector('.subtitle');
-    if (title) this.observer?.observe(title);
-    if (subtitle) this.observer?.observe(subtitle);
+    // Observe title and subtitle
+    const titles = this.el.nativeElement.querySelectorAll('title-badge');
+    const subtitles = this.el.nativeElement.querySelectorAll('.subtitle');
+    titles.forEach((t: Element) => this.observer?.observe(t));
+    subtitles.forEach((s: Element) => this.observer?.observe(s));
 
     // Observe distributorship container
     const distributorship = this.el.nativeElement.querySelector('.distributorship-container');

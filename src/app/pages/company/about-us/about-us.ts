@@ -7,11 +7,16 @@ import {
   AfterViewInit,
   HostListener,
   OnInit,
+  OnDestroy,
+  Inject,
+  Renderer2,
 } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 import { MainHeader } from 'src/app/components/main-header/main-header';
 import { MainFooter } from 'src/app/components/main-footer/main-footer';
 import { CommonModule } from '@angular/common';
 import { HeroSection } from 'src/app/components/hero-section/hero-section';
+import { DecorGlowComponent } from 'src/app/components/decor-glow/decor-glow';
 import { JourneySection } from './components/journey-section/journey-section';
 import { AwardsSection } from './components/awards-section/awards-section';
 import { PresidentSection } from './components/president-section/president-section';
@@ -33,6 +38,7 @@ interface NavTab {
     MainFooter,
     CommonModule,
     HeroSection,
+    DecorGlowComponent,
     JourneySection,
     AwardsSection,
     PresidentSection,
@@ -43,8 +49,25 @@ interface NavTab {
   templateUrl: './about-us.html',
   styleUrls: ['./about-us.scss'],
 })
-export class aboutUs implements AfterViewInit {
+export class aboutUs implements AfterViewInit, OnInit, OnDestroy {
   tab = signal<number>(0);
+
+  constructor(
+    @Inject(DOCUMENT) private document: Document,
+    private renderer: Renderer2,
+  ) {}
+
+  ngOnInit() {
+    this.renderer.setStyle(this.document.documentElement, 'scroll-snap-type', 'y mandatory');
+    this.renderer.setStyle(this.document.documentElement, 'scroll-behavior', 'smooth');
+    this.renderer.setStyle(this.document.documentElement, 'scroll-padding-top', '5rem');
+  }
+
+  ngOnDestroy() {
+    this.renderer.removeStyle(this.document.documentElement, 'scroll-snap-type');
+    this.renderer.removeStyle(this.document.documentElement, 'scroll-behavior');
+    this.renderer.removeStyle(this.document.documentElement, 'scroll-padding-top');
+  }
 
   /* -- NavTabs Variables -- */
   @ViewChildren('navBtn') navButtons!: QueryList<ElementRef>;
@@ -53,11 +76,11 @@ export class aboutUs implements AfterViewInit {
 
   navTabs: NavTab[] = [
     { id: 0, label: 'Our Journey', icon: 'bi bi-building' },
-    { id: 1, label: 'Awards and Achievements', icon: 'bi bi-award' },
+    { id: 1, label: 'Awards & Achievements', icon: 'bi bi-award' },
     { id: 2, label: 'President & CEO', icon: 'bi bi-person' },
     { id: 3, label: 'Programs', icon: 'bi bi-award' },
     { id: 4, label: 'Partnerships', icon: 'bi bi-briefcase' },
-    { id: 5, label: 'Mission and Vision', icon: 'bi bi-rocket-takeoff' },
+    { id: 5, label: 'Mission & Vision', icon: 'bi bi-rocket-takeoff' },
   ];
 
   /* -- NavTabs Functions -- */

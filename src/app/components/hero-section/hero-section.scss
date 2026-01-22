@@ -28,7 +28,7 @@
 
   .hero-section-cover {
     background: linear-gradient(
-      135deg,
+      160deg,
       rgba(204, 24, 30, 0.5) 0%,
       rgba(0, 0, 0, 0) 50%,
       rgba(0, 0, 0, 0.5) 100%
@@ -65,7 +65,6 @@
       background: #cc181e;
       border-radius: 16px;
 
-      // Text styles
       font-family: 'Poppins', sans-serif;
       font-style: normal;
       font-weight: 400;
@@ -82,22 +81,18 @@
       font-style: normal;
       font-weight: 400;
       font-size: 100px;
-      line-height: 1.1; // 80px line-height in Figma is 0.8, but 1.1 is safer for implementation unless fixed height.
-      // Figma said line-height: 80px vs font-size: 100px. That's very tight.
-      // I will trust the visual intent but keep it readable or slightly larger.
-      // Let's try 0.9 or 1 first if it's all caps.
+      line-height: 1.1;
       line-height: 0.8;
 
       margin: 0 0 1rem 0;
       letter-spacing: 0;
       text-align: center;
 
-      // gradient text
       background: linear-gradient(180deg, #dbdbdb 32.76%, #a9a9a9 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      color: transparent; // Fallback
+      color: transparent;
     }
 
     p {
@@ -142,7 +137,7 @@
       }
 
       h1 {
-        font-size: 3rem; // Fallback for mobile
+        font-size: 3rem;
         line-height: 1;
       }
     }

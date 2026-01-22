@@ -26,19 +26,21 @@
     </div>
   </div>
 
-  <section class="distributorship-container">
-    <p class="text-lg">Gain Exclusive Distributorship</p>
-    <p class="text-md timeline-description">
+  <section class="section-wrapper">
+    <title-badge title="Gain Exclusive Distributorship" class="fade-up-element"></title-badge>
+    <p class="text-md subtitle fade-up-element">
       Continuing to shape the future of technical education with cutting-edge technology and
       strategic partnerships.
     </p>
 
-    <div class="logo-grid">
-      @for (logo of logos; track logo.name) {
-        <a [href]="logo.url" target="_blank" class="logo-item">
-          <img [src]="logo.src" [alt]="logo.name" />
-        </a>
-      }
+    <div class="distributorship-container">
+      <div class="logo-grid">
+        @for (logo of logos; track logo.name) {
+          <a [href]="logo.url" target="_blank" class="logo-item">
+            <img [src]="logo.src" [alt]="logo.name" />
+          </a>
+        }
+      </div>
     </div>
   </section>
 </section>

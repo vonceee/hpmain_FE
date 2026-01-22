@@ -1,38 +1,40 @@
 .decor-glow-container {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   pointer-events: none;
-  overflow: hidden; // Ensure blurs don't overflow the container if it's smaller
-  z-index: 1; // Default z-index, can be overridden by parent
+  z-index: 1;
 }
 
+/* RIGHT GLOW */
 .decor-blur-right {
   position: absolute;
-  width: 759.75px;
-  height: 759.75px;
-  left: 960px;
-  top: 125px;
+  width: clamp(280px, 40vw, 760px);
+  aspect-ratio: 1 / 1;
 
-  background: #cc181e; // Darkened red
-  opacity: 0.1;
-  filter: blur(120px);
+  right: 50%;
+  top: 20%;
+  transform: translateX(100%);
+
+  background: #cc181e;
+  opacity: 0.2;
+  filter: blur(clamp(60px, 8vw, 120px));
   border-radius: 50%;
   pointer-events: none;
 }
 
+/* LEFT GLOW */
 .decor-blur-left {
   position: absolute;
-  width: 959.44px;
-  height: 959.44px;
-  left: -264px;
-  top: -150px;
+  width: clamp(360px, 50vw, 960px);
+  aspect-ratio: 1 / 1;
 
-  background: #cc181e; // Darkened red
-  opacity: 0.1;
-  filter: blur(150px);
+  left: 60%;
+  top: -5%;
+  transform: translateX(-145%);
+
+  background: #cc181e;
+  opacity: 0.2;
+  filter: blur(clamp(80px, 10vw, 150px));
   border-radius: 50%;
   pointer-events: none;
 }

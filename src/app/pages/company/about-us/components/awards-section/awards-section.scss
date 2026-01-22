@@ -3,15 +3,10 @@
 
 /* ˚◡˚ Awards ˚◡˚ */
 
-/* Shared Layouts and Subtitles are now imported from about-us.scss */
-
-/* ˚◡˚ Awards ˚◡˚ */
-
 .awards-container {
   width: 75vw;
   height: max-content;
   position: relative;
-  padding: 3vh 0 1vh;
   gap: 3vh;
   border-radius: 12px;
   display: flex;
@@ -21,7 +16,7 @@
   p {
     text-align: center;
     text-wrap: wrap;
-    color: white;
+    color: #ddd;
   }
 
   .main-container {
@@ -60,6 +55,15 @@
         width: 80%;
       }
     }
+  }
+}
+
+.awards-text {
+  max-width: 75vw;
+
+  strong {
+    color: #ff3333;
+    font-weight: 600;
   }
 }
 
