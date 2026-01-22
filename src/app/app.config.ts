@@ -6,6 +6,7 @@ import {
 import { provideRouter } from '@angular/router';
 import { provideLottieOptions } from 'ngx-lottie';
 import player from 'lottie-web';
+import { provideHttpClient } from '@angular/common/http';
 
 import { routes } from './app.routes';
 
@@ -14,6 +15,7 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
     provideRouter(routes),
+    provideHttpClient(),
     provideLottieOptions({
       player: () => player,
     }),
