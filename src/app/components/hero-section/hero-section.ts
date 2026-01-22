@@ -12,4 +12,5 @@ export class HeroSection {
   @Input() heroTitle: string = 'HYTEC POWER INCORPORATED';
   @Input() heroSubtitle: string = '';
   @Input() heroDatePill: string = '';
+  @Input() variant: 'full' | 'slim' = 'full';
 }

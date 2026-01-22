@@ -1,5 +1,6 @@
-import { Component, signal, OnInit, OnDestroy } from '@angular/core';
+import { Component, signal, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HeroSection } from 'src/app/components/hero-section/hero-section';
 import { TitleBadge } from 'src/app/components/title-badge/title-badge';
 
 interface GalleryItem {
@@ -7,13 +8,69 @@ interface GalleryItem {
   caption: string;
 }
 
+interface Testimonial {
+  logo: string;
+  alt: string;
+  school: string;
+  message: string;
+}
+
 @Component({
   selector: 'programs-section',
-  imports: [CommonModule, TitleBadge],
+  imports: [CommonModule, HeroSection, TitleBadge],
   templateUrl: './programs-section.html',
   styleUrls: ['./programs-section.scss'],
 })
 export class ProgramsSection implements OnInit, OnDestroy {
+  @ViewChild('testimonialGrid') testimonialGrid!: ElementRef<HTMLDivElement>;
+
+  scrollTestimonials(direction: 'left' | 'right') {
+    const container = this.testimonialGrid.nativeElement;
+    const scrollAmount = 350; // Approx card width + gap
+
+    if (direction === 'left') {
+      container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    } else {
+      container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  }
+
+  /* -- College Testimonials Data -- */
+  collegeTestimonials: Testimonial[] = [
+    {
+      logo: '/assets/images/aboutus/programs/4b56f92e4559e332a39e0ac1ff981720b37eb4ef.png',
+      alt: 'Asian Institute of Computer Studies Logo',
+      school: 'Asian Institute of Computer Studies',
+      message:
+        'We extend our heartfelt gratitude to HYTEC Inc. for their trust and support in this partnership. Together, we look forward to unlocking new possibilities and shaping the future of technical education, a productive, and countless opportunities for growth and innovation.',
+    },
+    {
+      logo: '/assets/images/aboutus/programs/b6a4ffd5a66fd74e7c74a42ce6e23cc06c7367d1.png',
+      alt: 'Manuel S. Enverga University Foundation Logo',
+      school: 'Manuel S. Enverga University Foundation',
+      message:
+        'These young minds, representing the future of the workforce, served as a stimulating reminder of the purpose and significance of the partnership between HPI and MSEUF',
+    },
+    {
+      logo: '/assets/images/aboutus/programs/3ce842428f32fcd88eb1a4939212dea344c3957c.png',
+      alt: 'Quezon City University Logo',
+      school: 'Quezon City University',
+      message:
+        'We are grateful to Engr. Soliman and Hytec Power Inc. for choosing QCU to become their partners. We are very happy that we have a common vision to ensure that our students have the skills necessary to be employed.',
+    },
+  ];
+
+  /* -- Modal State -- */
+  selectedTestimonial = signal<Testimonial | null>(null);
+
+  openTestimonialModal(item: Testimonial) {
+    this.selectedTestimonial.set(item);
+  }
+
+  closeTestimonialModal() {
+    this.selectedTestimonial.set(null);
+  }
+
   /* -- Outreach Gallery Variables -- */
   currentGalleryIndex = signal<number>(0);
   private autoPlayInterval: any;

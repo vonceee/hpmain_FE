@@ -1,11 +1,13 @@
-<section class="hero-section">
+<section class="hero-section" [class.slim]="variant === 'slim'">
   <div class="hero-bg-image" [style.background-image]="'url(' + heroImage + ')'"></div>
   <div class="hero-section-cover"></div>
   <decor-glow></decor-glow>
   <div class="hero-content">
-    <div class="text date-pill" [style.visibility]="heroDatePill ? 'visible' : 'hidden'">
-      {{ heroDatePill ? heroDatePill : 'Placeholder' }}
-    </div>
+    @if (heroDatePill && variant !== 'slim') {
+      <div class="text date-pill">
+        {{ heroDatePill }}
+      </div>
+    }
     <h1>{{ heroTitle }}</h1>
     <p>{{ heroSubtitle }}</p>
   </div>

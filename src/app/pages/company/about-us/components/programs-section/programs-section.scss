@@ -5,27 +5,17 @@
 
 .container {
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0;
   border: 1px solid color.$secondaryAlpha10;
   border-radius: 12px;
   background: rgb(19, 13, 13);
   color: white;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
 }
 
-.main-header {
-  text-align: center;
-}
-
-.main-header h1 {
-  font-size: 1.2rem;
-  font-weight: normal;
-  color: #ffffff;
-}
-
-.sub-header-desc {
-  font-size: 1rem;
-  color: #b0b0b0;
-  font-weight: 300;
+hero-section {
+  margin-bottom: 40px;
 }
 
 .programs-grid {
@@ -33,6 +23,7 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
   margin-top: 40px;
+  padding: 0 40px;
 
   @media (max-width: 1024px) {
     grid-template-columns: repeat(2, 1fr);
@@ -134,7 +125,7 @@
 .testimonials-section {
   text-align: center;
   position: relative;
-  padding-bottom: 50px;
+  padding: 4rem;
   color: #fff;
 }
 
@@ -142,6 +133,190 @@
   font-size: 1.8rem;
   font-weight: normal;
   color: #fff;
+}
+
+/* ˚◡˚ College Testimonials Section ˚◡˚ */
+
+.college-testimonials-section {
+  text-align: center;
+  position: relative;
+  padding: 4rem; /* Increased padding */
+  color: #fff;
+}
+
+.college-testimonials-section h2 {
+  font-size: 1.8rem;
+  font-weight: normal;
+  color: #fff;
+}
+
+.college-testimonials-section .programs-grid {
+  display: flex;
+  overflow-x: auto;
+  gap: 30px;
+  margin-top: 0;
+
+  /* Hide scrollbar */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scroll-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    flex-shrink: 0; /* Prevent button shrinking */
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: scale(1.1);
+    }
+
+    i {
+      font-size: 1.2rem;
+    }
+  }
+
+  .testimonial-card {
+    min-width: 300px;
+    max-width: 350px;
+    flex: 0 0 auto;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  p.message-preview {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: #ccc;
+    margin-bottom: 0.5rem;
+
+    /* Truncation Logic */
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  strong {
+    color: white;
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 600px;
+  padding: 30px;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  animation: scaleIn 0.3s ease;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.modal-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  text-align: center;
+
+  .modal-logo {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 15px;
+    background-color: #222;
+    border-radius: 50%;
+    padding: 10px;
+    border: 2px solid #555;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+    color: #fff;
+    margin: 0;
+  }
+}
+
+.modal-body {
+  p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #ddd;
+    text-align: justify;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .interns_testimonials-container {
@@ -190,6 +365,32 @@
   z-index: 1;
 }
 
+.timeline-dot {
+  position: absolute;
+  left: 50%;
+  top: 82px; /* Aligns with the center of the 150px logo (150 + 10 + 4 = 164 total height / 2 = 82) */
+  transform: translateX(-50%);
+  width: 16px;
+  height: 16px;
+  background-color: #ed1c24;
+  border: 3px solid #000;
+  border-radius: 50%;
+  z-index: 10;
+  box-shadow: 0 0 0 4px rgba(255, 0, 0, 0.2);
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 0 0 6px rgba(255, 0, 0, 0.3);
+    transform: translateX(-50%) scale(1.2);
+  }
+}
+
+@media (max-width: 768px) {
+  .timeline-dot {
+    display: none; /* Hide on mobile since layout stacks */
+  }
+}
+
 .testimonial-item {
   width: 45%;
   text-align: center;
@@ -209,8 +410,10 @@
 
 .logo-wrapper img.uni-logo {
   cursor: default !important;
-  max-width: 100px;
-  height: auto;
+  width: 120px;
+  height: 120px;
+  max-width: none;
+  object-fit: contain;
 }
 
 .uni-logo {
@@ -248,15 +451,23 @@
 
 /* ˚◡˚ Community Outreach Section ˚◡˚ */
 
+.outreach-section {
+  text-align: center;
+  position: relative;
+  padding: 4rem 1.5rem;
+  color: #fff;
+}
+
 .outreach {
-  padding: 80px 0;
+  position: relative;
   color: #ccc;
 }
 
 .outreach-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 40px;
+  width: auto;
 
   @media (max-width: 992px) {
     grid-template-columns: 1fr;
@@ -272,6 +483,12 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  min-width: auto;
+}
+
+.outreach-gallery {
+  min-width: 0;
+  width: 100%;
 }
 
 .quote-icon {
@@ -316,7 +533,7 @@
   overflow: hidden;
   margin-bottom: 15px;
   background-color: #000;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 2 / 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -436,4 +653,13 @@
 }
 .delay-2 {
   animation-delay: 2.5s;
+}
+
+.section-wrapper-outreach {
+  padding: 4rem;
+}
+
+.outreach-content,
+.outreach-gallery {
+  min-width: 0;
 }

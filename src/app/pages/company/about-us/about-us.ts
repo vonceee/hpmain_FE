@@ -35,7 +35,6 @@ interface NavTab {
   selector: 'about-us',
   imports: [
     MainHeader,
-    MainFooter,
     CommonModule,
     HeroSection,
     DecorGlowComponent,

@@ -4,7 +4,7 @@
 /* ˚◡˚ Our President & CEO ˚◡˚ */
 
 .our-president-ceo-container {
-  width: 75vw;
+  width: 90vw;
 
   .president-content-wrapper {
     position: relative;
@@ -29,12 +29,16 @@
   .left-side {
     flex: 1;
     text-align: justify;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    position: relative;
+    z-index: 20;
   }
 
   .right-side {
-    flex: 0 0 40%;
+    flex: 0 0 25%;
     position: relative;
-    z-index: 10;
+    z-index: 5;
 
     .ceo {
       position: absolute;
@@ -47,7 +51,6 @@
         width: 100%;
         height: auto;
         display: block;
-        filter: drop-shadow(5px 10px 15px rgba(0, 0, 0, 0.4));
       }
     }
   }
@@ -66,25 +69,29 @@
     }
   }
 
-  .achievements-grid {
+  .achievements-list {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem 3rem;
     padding-top: 3rem;
-    width: 100%;
+    margin: 0;
+    padding-left: 1rem;
+    list-style: none;
 
-    .achievement-box {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 8px;
-      padding: 1rem;
-      text-align: center;
+    li {
+      position: relative;
       font-size: 0.9rem;
-      font-weight: 500;
       color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+
+      &::before {
+        content: '•';
+        color: color.$primary;
+        font-weight: bold;
+        font-size: 1rem;
+        position: absolute;
+        left: -1.2rem;
+        top: 0;
+      }
     }
 
     @media (max-width: 768px) {
@@ -94,7 +101,7 @@
 }
 
 .attributes-container {
-  width: 75vw;
+  width: 90vw;
   margin-top: 3vh;
 
   .attributes-content {
@@ -110,9 +117,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3vh;
+    gap: 1vh;
     flex: 1;
-    max-width: 300px;
+    max-width: 25vw;
 
     img {
       width: 5.5vw;
@@ -122,12 +129,14 @@
     .message {
       text-align: center;
       .header-sm {
-        margin-bottom: 5px;
-        font-weight: bold;
+        font-family: 'Poppins';
+        font-weight: 300;
+        font-size: 1.5rem;
       }
       .attribute-desc {
         color: rgba(255, 255, 255, 0.7);
         margin-bottom: 0;
+        font-size: 0.7rem;
       }
     }
   }
