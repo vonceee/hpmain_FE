@@ -39,9 +39,10 @@ export class MainHeader {
 
   private checkScreenSize(): void {
     const wasDesktop = this.isDesktop;
-    this.isDesktop = window.innerWidth >= 768;
+    // content-based breakpoint matching the SCSS variable $nav-switch-point
+    this.isDesktop = window.matchMedia('(min-width: 60rem)').matches;
 
-    // close mobile menu if resizing to desktop
+    // close mobile menu if switching to desktop view
     if (this.isDesktop && wasDesktop === false && this.isMobileMenuOpen) {
       this.closeMobileMenu();
     }
@@ -52,7 +53,7 @@ export class MainHeader {
     // 1. Scroll to top immediately or smoothly
     window.scrollTo({
       top: 0,
-      behavior: 'smooth' // Change to 'auto' if you want it to jump instantly
+      behavior: 'smooth', // Change to 'auto' if you want it to jump instantly
     });
 
     // 2. Handle mobile menu closing logic

@@ -1,16 +1,17 @@
 <header>
   <a href="/home">
-    <img src="assets/icons/main-header/hytec-logo.svg" class="header-image" alt="Hytec Power Inc">
+    <img src="assets/icons/main-header/hytec-logo.svg" class="header-image" alt="Hytec Power Inc" />
   </a>
 
   <nav [class.mobile-menu-open]="isMobileMenuOpen">
     <ul>
       <li class="nav-item">
-        <a 
-          routerLink="/home" 
-          routerLinkActive="active-link" 
+        <a
+          routerLink="/home"
+          routerLinkActive="active-link"
           class="anchor"
-          (click)="onNavLinkClick()">
+          (click)="onNavLinkClick()"
+        >
           HOME
         </a>
       </li>
@@ -24,7 +25,10 @@
         <ul class="dropdown-menu">
           <li class="dropdown-item">
             <a routerLink="/solutions/educational" (click)="onNavLinkClick()">
-              <img src="assets/icons/main-header/educational-solutions.svg" alt="Educational Solutions">
+              <img
+                src="assets/icons/main-header/educational-solutions.svg"
+                alt="Educational Solutions"
+              />
               <div class="text-group">
                 <h1>EDUCATIONAL SOLUTIONS</h1>
                 <p>Tie your education to employment.</p>
@@ -34,7 +38,10 @@
 
           <li class="dropdown-item">
             <a routerLink="/solutions/industrial" (click)="onNavLinkClick()">
-              <img src="assets/icons/main-header/industrial-solutions.svg" alt="Industrial Solutions">
+              <img
+                src="assets/icons/main-header/industrial-solutions.svg"
+                alt="Industrial Solutions"
+              />
               <div class="text-group">
                 <h1>INDUSTRIAL SOLUTIONS</h1>
                 <p>Provides skills-based industrial solutions.</p>
@@ -45,19 +52,13 @@
       </li>
 
       <li class="nav-item">
-        <a 
-          routerLink="/news-and-updates" 
-          class="anchor"
-          (click)="onNavLinkClick()">
+        <a routerLink="/news-and-updates" class="anchor" (click)="onNavLinkClick()">
           NEWS & UPDATES
         </a>
       </li>
 
       <li class="nav-item">
-        <a 
-          routerLink="/trainings-and-events" 
-          class="anchor"
-          (click)="onNavLinkClick()">
+        <a routerLink="/trainings-and-events" class="anchor" (click)="onNavLinkClick()">
           TRAININGS & EVENTS
         </a>
       </li>
@@ -117,18 +118,19 @@
   </nav>
 
   <div class="search-bar">
-    <input type="text" placeholder="Search here..." aria-label="Search">
+    <input type="text" placeholder="Search..." aria-label="Search" />
     <button class="search-button" aria-label="Search">
-      <img src="assets/icons/main-header/magnifying-glass.svg" alt="">
+      <i class="bi bi-search"></i>
     </button>
   </div>
 
-  <button 
-    class="hamburger-menu" 
+  <button
+    class="hamburger-menu"
     [class.active]="isMobileMenuOpen"
     (click)="toggleMobileMenu()"
     attr.aria-label="{{ isMobileMenuOpen ? 'Close menu' : 'Open menu' }}"
-    aria-expanded="{{ isMobileMenuOpen }}">
+    aria-expanded="{{ isMobileMenuOpen }}"
+  >
     <span class="hamburger-line"></span>
     <span class="hamburger-line"></span>
     <span class="hamburger-line"></span>
