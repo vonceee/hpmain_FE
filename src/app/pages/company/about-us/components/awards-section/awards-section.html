@@ -1,29 +1,19 @@
 <section class="section-wrapper">
-  <title-badge title="Awards & Achievements"></title-badge>
-  <p class="text-md subtitle">Our significant excellence in industry and academe fields.</p>
-  <container-box variant="dark" class="awards-container">
+  <title-badge
+    title="Awards & Achievements"
+    subtitle="Our significant excellence in industry and academe fields."
+  ></title-badge>
+
+  <container-box class="awards-container">
     <div class="awards-content-layout">
-      <div class="main-container">
-        <div class="image-container">
-          <img src="assets/images/aboutus/awards/philippine-social-award.png" alt="" />
-          <img src="assets/images/aboutus/awards/mosliv-award.png" alt="" />
-        </div>
-        <div class="image-container">
-          <img src="assets/images/aboutus/awards/world-class-philippines.png" alt="" />
-          <img src="assets/images/aboutus/awards/global-award.png" alt="" />
-        </div>
-        <div class="image-container">
-          <img src="assets/images/aboutus/awards/best-choice-award.png" alt="" />
-          <img src="assets/images/aboutus/awards/golden-global-award.png" alt="" />
-        </div>
-        <div class="image-container">
-          <img src="assets/images/aboutus/awards/asia-ceo-award.png" alt="" />
-          <img src="assets/images/aboutus/awards/legacy-award.png" alt="" />
-        </div>
-        <div class="image-container">
-          <img src="assets/images/aboutus/awards/nb&mosliv-award.png" alt="" />
-          <img src="assets/images/aboutus/awards/top-3000.png" alt="" />
-        </div>
+      <div class="main-container" role="list">
+        @for (column of awardsColumns; track $index) {
+          <div class="image-container" role="group">
+            @for (award of column; track award.id) {
+              <img [src]="award.imageUrl" [alt]="award.altText" loading="lazy" />
+            }
+          </div>
+        }
       </div>
     </div>
   </container-box>
@@ -39,10 +29,10 @@
     </p>
   </div>
 
-  <title-badge title="TV Appearances"></title-badge>
-  <p class="text-md subtitle">
-    Appearances at Umagang Kay Ganda, AHA!, Good Morning Dub and Suit Up!
-  </p>
+  <title-badge
+    title="TV Appearances"
+    subtitle="Appearances at Umagang Kay Ganda, AHA!, Good Morning Dub and Suit Up!"
+  ></title-badge>
 
   <div class="appearance">
     <div class="image-section">

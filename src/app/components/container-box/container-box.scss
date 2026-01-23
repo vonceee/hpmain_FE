@@ -8,11 +8,12 @@
 .container-box {
   position: relative;
   border-radius: 16px;
-  padding: 24px;
+  padding: 1.5rem;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+
   border: 1px solid color.$secondaryAlpha10;
-  background-color: color.$secondaryAlpha5; // Default (Glass Like)
+  background-color: color.$secondaryAlpha5;
 
   // ensure content fits
   width: 100%;

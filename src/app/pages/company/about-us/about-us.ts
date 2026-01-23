@@ -82,6 +82,18 @@ export class aboutUs implements AfterViewInit, OnInit, OnDestroy {
     { id: 5, label: 'Mission & Vision', icon: 'bi bi-rocket-takeoff' },
   ];
 
+  /* -- Scroll to Top Logic -- */
+  showScrollTop = false;
+
+  @HostListener('window:scroll')
+  onWindowScroll() {
+    this.showScrollTop = window.scrollY > 300;
+  }
+
+  scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
   /* -- NavTabs Functions -- */
   ngAfterViewInit() {
     // timeout ensures the DOM is fully rendered before measuring

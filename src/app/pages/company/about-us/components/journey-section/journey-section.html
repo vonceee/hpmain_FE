@@ -6,6 +6,7 @@
     class="fade-up-element"
   ></title-badge>
   <div class="timeline-container">
+    <!-- ˚◡˚ Decor ˚◡˚ -->
     <div class="timeline-line"></div>
 
     <div class="timeline-events">
@@ -14,7 +15,7 @@
         class="timeline-item"
         [ngClass]="event.position"
       >
-        <container-box variant="dark">
+        <container-box>
           <div class="timeline-content-layout">
             <div class="text-md timeline-year">{{ event.year }}</div>
             <div class="text-lg">{{ event.title }}</div>
@@ -22,19 +23,21 @@
           </div>
         </container-box>
 
+        <!-- ˚◡˚ Decor ˚◡˚ -->
         <div class="timeline-dot"></div>
       </div>
     </div>
   </div>
 
   <section class="section-wrapper">
-    <title-badge title="Gain Exclusive Distributorship" class="fade-up-element"></title-badge>
-    <p class="text-md subtitle fade-up-element">
-      Continuing to shape the future of technical education with cutting-edge technology and
-      strategic partnerships.
-    </p>
+    <title-badge
+      title="Gain Exclusive Distributorship"
+      subtitle="Continuing to shape the future of technical education with cutting-edge technology and
+      strategic partnerships."
+      class="fade-up-element"
+    ></title-badge>
 
-    <div class="distributorship-container">
+    <container-box class="distributorship-container">
       <div class="logo-grid">
         @for (logo of logos; track logo.name) {
           <a [href]="logo.url" target="_blank" class="logo-item">
@@ -42,6 +45,6 @@
           </a>
         }
       </div>
-    </div>
+    </container-box>
   </section>
 </section>
