@@ -1,32 +1,25 @@
 @use 'text-display';
 @use 'colors' as color;
 
-:host {
+:host.about-us-page {
   display: block;
-  font-family: 'Bebas', sans-serif;
-  color: white;
-  min-height: 100vh;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+  width: 100%;
+}
+
+main {
+  display: contents;
 }
 
 decor-glow {
+  display: block;
   position: sticky;
   top: 0;
-  display: block;
-  height: 100vh;
-  width: 100%;
-  margin-bottom: -100vh;
   z-index: 0;
-  pointer-events: none;
-}
-
-hero-section {
-  display: block;
-  scroll-snap-align: start;
-}
-
-.snap-content-wrapper {
-  scroll-snap-align: start;
-  scroll-margin-top: 4.4rem;
 }
 
 /* ˚◡˚ Navigation Tab ˚◡˚ */
@@ -85,60 +78,6 @@ hero-section {
       transition:
         color 0.2s ease,
         transform 0.1s ease;
-    }
-  }
-}
-
-@media (max-width: 768px) {
-  .nav-tabs-container {
-    padding: 1.5vh 0;
-    margin-bottom: 1rem;
-
-    .tabs-wrapper {
-      padding: 6px;
-      gap: 4px;
-      overflow-x: auto;
-      scrollbar-width: none;
-
-      &::-webkit-scrollbar {
-        display: none;
-      }
-
-      .nav-pill {
-        top: 6px;
-        bottom: 6px;
-      }
-
-      button {
-        min-width: 44px;
-        padding: 10px;
-        justify-content: center;
-
-        span {
-          display: none;
-        }
-
-        i {
-          font-size: 1.2rem;
-          line-height: 1;
-        }
-      }
-    }
-  }
-}
-
-@media (min-width: 769px) and (max-width: 1024px) {
-  .nav-tabs-container {
-    .tabs-wrapper {
-      button {
-        padding: 10px 16px;
-        min-width: 96px;
-
-        span {
-          display: inline;
-          font-size: 0.9rem;
-        }
-      }
     }
   }
 }

@@ -239,7 +239,7 @@ header nav ul .nav-item {
   }
 }
 
-/* Mobile accordion style */
+/* Mobile Accordion Style */
 .dropdown-menu {
   max-height: 0;
   overflow: hidden;
@@ -392,5 +392,9 @@ header nav ul .nav-item {
         color: color.$primary500;
       }
     }
+  }
+
+  .mobile-only-item {
+    display: none !important;
   }
 }

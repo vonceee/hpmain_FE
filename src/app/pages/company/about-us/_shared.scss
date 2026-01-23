@@ -1,0 +1,43 @@
+@use 'colors' as color;
+
+/* ˚◡˚ Shared Layouts ˚◡˚ */
+
+.content-container {
+  width: 85vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  gap: 2.5vh;
+  margin-bottom: 4vh;
+
+  height: auto !important;
+  overflow: visible !important;
+}
+
+/* ˚◡˚ Shared Component Layouts (Exported) ˚◡˚ */
+
+.section-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  height: auto !important;
+  overflow: visible !important;
+  margin-bottom: 10vh;
+}
+
+.fade-up-element {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

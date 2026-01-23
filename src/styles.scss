@@ -13,6 +13,7 @@ button,
 h1,
 p {
   font-family: var(--font-default);
+  color: white;
 }
 
 body {
@@ -27,7 +28,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #050505;
+  background: #000;
 }
 
 ::-webkit-scrollbar-thumb {

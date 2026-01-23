@@ -1,18 +1,7 @@
-@use '../../about-us.scss' as *;
+@use '../../_shared.scss' as *;
 @use 'colors' as color;
 
 /* ˚◡˚ Program Section ˚◡˚ */
-
-.container {
-  margin: 0 auto;
-  padding: 0;
-  border: 1px solid color.$secondaryAlpha10;
-  border-radius: 12px;
-  background: rgb(19, 13, 13);
-  color: white;
-  overflow: hidden;
-  font-family: 'Poppins', sans-serif;
-}
 
 hero-section {
   margin-bottom: 40px;

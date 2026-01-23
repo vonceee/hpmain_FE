@@ -1,48 +1,51 @@
 <main-header></main-header>
 
-<decor-glow></decor-glow>
-<hero-section
-  heroImage="assets/images/home/234acacc5e5bd069189972b51d9bfeeade704003.jpg"
-  heroTitle="Hytec Power Incorporated"
-  heroSubtitle="Empowering Industrial and Educational Solutions for Over 30 Years"
-  heroDatePill="Since 1994"
-></hero-section>
+<main>
+  <decor-glow></decor-glow>
 
-<div class="snap-content-wrapper">
-  <section class="nav-tabs-container">
-    <div class="tabs-wrapper">
-      <div class="nav-pill" [style.left]="indicatorLeft()" [style.width]="indicatorWidth()"></div>
+  <hero-section
+    heroImage="assets/images/home/234acacc5e5bd069189972b51d9bfeeade704003.jpg"
+    heroTitle="Hytec Power Incorporated"
+    heroSubtitle="Empowering Industrial and Educational Solutions for Over 30 Years"
+    heroDatePill="Since 1994"
+  ></hero-section>
 
-      @for (item of navTabs; track item.id) {
-        <button #navBtn [class.active]="tab() == item.id" (click)="setTab(item.id)">
-          <i [class]="item.icon" style="color: white"></i>
-          <span>{{ item.label }}</span>
-        </button>
+  <div class="snap-content-wrapper">
+    <section class="nav-tabs-container">
+      <div class="tabs-wrapper">
+        <div class="nav-pill" [style.left]="indicatorLeft()" [style.width]="indicatorWidth()"></div>
+
+        @for (item of navTabs; track item.id) {
+          <button #navBtn [class.active]="tab() == item.id" (click)="setTab(item.id)">
+            <i [class]="item.icon" style="color: white"></i>
+            <span>{{ item.label }}</span>
+          </button>
+        }
+      </div>
+    </section>
+
+    <section class="content-container">
+      @if (tab() == 0) {
+        <journey-section></journey-section>
       }
-    </div>
-  </section>
-
-  <section class="content-container">
-    @if (tab() == 0) {
-      <journey-section></journey-section>
-    }
-    @if (tab() == 1) {
-      <awards-section></awards-section>
-    }
-    @if (tab() == 2) {
-      <president-section></president-section>
-    }
-    @if (tab() == 3) {
-      <programs-section></programs-section>
-    }
-    @if (tab() == 4) {
-      <partnerships-section></partnerships-section>
-    }
-    @if (tab() == 5) {
-      <mission-vision-section></mission-vision-section>
-    }
-  </section>
-</div>
-<button class="scroll-to-top" [class.visible]="showScrollTop" (click)="scrollToTop()">
-  <i class="bi bi-arrow-up"></i>
-</button>
+      @if (tab() == 1) {
+        <awards-section></awards-section>
+      }
+      @if (tab() == 2) {
+        <president-section></president-section>
+      }
+      @if (tab() == 3) {
+        <programs-section></programs-section>
+      }
+      @if (tab() == 4) {
+        <partnerships-section></partnerships-section>
+      }
+      @if (tab() == 5) {
+        <mission-vision-section></mission-vision-section>
+      }
+    </section>
+  </div>
+  <button class="scroll-to-top" [class.visible]="showScrollTop" (click)="scrollToTop()">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+</main>

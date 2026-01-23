@@ -33,6 +33,7 @@ interface NavTab {
 // Component Definition
 @Component({
   selector: 'about-us',
+  host: { class: 'about-us-page' },
   imports: [
     MainHeader,
     CommonModule,
@@ -57,16 +58,10 @@ export class aboutUs implements AfterViewInit, OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.renderer.setStyle(this.document.documentElement, 'scroll-snap-type', 'y mandatory');
-    this.renderer.setStyle(this.document.documentElement, 'scroll-behavior', 'smooth');
-    this.renderer.setStyle(this.document.documentElement, 'scroll-padding-top', '5rem');
+    // Moved scroll styles to :host in SCSS to prevent layout shifts and double scrollbars
   }
 
-  ngOnDestroy() {
-    this.renderer.removeStyle(this.document.documentElement, 'scroll-snap-type');
-    this.renderer.removeStyle(this.document.documentElement, 'scroll-behavior');
-    this.renderer.removeStyle(this.document.documentElement, 'scroll-padding-top');
-  }
+  ngOnDestroy() {}
 
   /* -- NavTabs Variables -- */
   @ViewChildren('navBtn') navButtons!: QueryList<ElementRef>;

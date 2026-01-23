@@ -2,6 +2,7 @@ import { Component, signal, OnInit, OnDestroy, ViewChild, ElementRef } from '@an
 import { CommonModule } from '@angular/common';
 import { HeroSection } from 'src/app/components/hero-section/hero-section';
 import { TitleBadge } from 'src/app/components/title-badge/title-badge';
+import { ContainerBox } from 'src/app/components/container-box/container-box';
 
 interface GalleryItem {
   src: string;
@@ -17,7 +18,7 @@ interface Testimonial {
 
 @Component({
   selector: 'programs-section',
-  imports: [CommonModule, HeroSection, TitleBadge],
+  imports: [CommonModule, HeroSection, TitleBadge, ContainerBox],
   templateUrl: './programs-section.html',
   styleUrls: ['./programs-section.scss'],
 })
@@ -26,7 +27,7 @@ export class ProgramsSection implements OnInit, OnDestroy {
 
   scrollTestimonials(direction: 'left' | 'right') {
     const container = this.testimonialGrid.nativeElement;
-    const scrollAmount = 350; // Approx card width + gap
+    const scrollAmount = 350;
 
     if (direction === 'left') {
       container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
