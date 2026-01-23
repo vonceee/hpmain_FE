@@ -287,7 +287,6 @@ header nav ul .nav-item {
   }
 }
 
-/* --- DESKTOP / INTRINSIC SWITCH --- */
 @media screen and (min-width: $nav-switch-point) {
   .hamburger-menu {
     display: none;
@@ -296,7 +295,7 @@ header nav ul .nav-item {
   header nav {
     position: static;
     width: auto;
-    height: auto;
+    height: 100%;
     background: transparent;
     transform: none;
     opacity: 1;
@@ -310,6 +309,7 @@ header nav ul .nav-item {
     flex-direction: row;
     align-items: center;
     gap: clamp(1rem, 2vw, 2.5rem);
+    height: 100%;
   }
 
   header nav ul .nav-item {
@@ -318,6 +318,7 @@ header nav ul .nav-item {
     height: 100%;
     display: flex;
     align-items: center;
+    position: relative;
 
     .anchor {
       padding: 0;
@@ -330,12 +331,11 @@ header nav ul .nav-item {
     }
   }
 
-  // DESKTOP DROPDOWN
   .dropdown-menu {
     position: absolute;
     top: calc(100% + 0.5rem);
-    left: 50%;
-    transform: translateX(-50%) translateY(1rem);
+    left: 0;
+    transform: translateY(1rem);
     width: max-content;
     min-width: 20rem;
     max-height: none;
@@ -369,7 +369,7 @@ header nav ul .nav-item {
   .has-dropdown:focus-within .dropdown-menu {
     opacity: 1;
     visibility: visible;
-    transform: translateX(-50%) translateY(0);
+    transform: translateY(0);
     pointer-events: auto;
   }
 
@@ -380,10 +380,11 @@ header nav ul .nav-item {
 
     .text-group h1 {
       color: #1d1d1f;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
     }
     .text-group p {
       color: #86868b;
+      font-size: 0.7rem;
     }
 
     &:hover {

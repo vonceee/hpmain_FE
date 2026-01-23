@@ -55,6 +55,7 @@ export class aboutUs implements AfterViewInit, OnInit, OnDestroy {
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private renderer: Renderer2,
+    private el: ElementRef,
   ) {}
 
   ngOnInit() {
@@ -67,6 +68,8 @@ export class aboutUs implements AfterViewInit, OnInit, OnDestroy {
   @ViewChildren('navBtn') navButtons!: QueryList<ElementRef>;
   indicatorLeft = signal<string>('0px');
   indicatorWidth = signal<string>('0px');
+  indicatorTop = signal<string>('0px');
+  indicatorHeight = signal<string>('0px');
 
   navTabs: NavTab[] = [
     { id: 0, label: 'Our Journey', icon: 'bi bi-building' },
@@ -80,13 +83,14 @@ export class aboutUs implements AfterViewInit, OnInit, OnDestroy {
   /* -- Scroll to Top Logic -- */
   showScrollTop = false;
 
-  @HostListener('window:scroll')
-  onWindowScroll() {
-    this.showScrollTop = window.scrollY > 300;
+  @HostListener('scroll', ['$event'])
+  onScroll(event: Event) {
+    const target = event.target as HTMLElement;
+    this.showScrollTop = target.scrollTop > 300;
   }
 
   scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    this.el.nativeElement.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   /* -- NavTabs Functions -- */
@@ -118,6 +122,8 @@ export class aboutUs implements AfterViewInit, OnInit, OnDestroy {
       // offsetLeft gives the position relative to the .body-nav container
       this.indicatorLeft.set(`${activeBtn.offsetLeft}px`);
       this.indicatorWidth.set(`${activeBtn.offsetWidth}px`);
+      this.indicatorTop.set(`${activeBtn.offsetTop}px`);
+      this.indicatorHeight.set(`${activeBtn.offsetHeight}px`);
     }
   }
 }

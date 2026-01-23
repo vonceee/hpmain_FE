@@ -10,41 +10,45 @@
     heroDatePill="Since 1994"
   ></hero-section>
 
-  <div class="snap-content-wrapper">
-    <section class="nav-tabs-container">
-      <div class="tabs-wrapper">
-        <div class="nav-pill" [style.left]="indicatorLeft()" [style.width]="indicatorWidth()"></div>
+  <section class="nav-tabs-container">
+    <div class="tabs-wrapper">
+      <div
+        class="nav-pill"
+        [style.left]="indicatorLeft()"
+        [style.width]="indicatorWidth()"
+        [style.top]="indicatorTop()"
+        [style.height]="indicatorHeight()"
+      ></div>
 
-        @for (item of navTabs; track item.id) {
-          <button #navBtn [class.active]="tab() == item.id" (click)="setTab(item.id)">
-            <i [class]="item.icon" style="color: white"></i>
-            <span>{{ item.label }}</span>
-          </button>
-        }
-      </div>
-    </section>
+      @for (item of navTabs; track item.id) {
+        <button #navBtn [class.active]="tab() == item.id" (click)="setTab(item.id)">
+          <i [class]="item.icon" style="color: white"></i>
+          <span>{{ item.label }}</span>
+        </button>
+      }
+    </div>
+  </section>
 
-    <section class="content-container">
-      @if (tab() == 0) {
-        <journey-section></journey-section>
-      }
-      @if (tab() == 1) {
-        <awards-section></awards-section>
-      }
-      @if (tab() == 2) {
-        <president-section></president-section>
-      }
-      @if (tab() == 3) {
-        <programs-section></programs-section>
-      }
-      @if (tab() == 4) {
-        <partnerships-section></partnerships-section>
-      }
-      @if (tab() == 5) {
-        <mission-vision-section></mission-vision-section>
-      }
-    </section>
-  </div>
+  <section class="content-container">
+    @if (tab() == 0) {
+      <journey-section></journey-section>
+    }
+    @if (tab() == 1) {
+      <awards-section></awards-section>
+    }
+    @if (tab() == 2) {
+      <president-section></president-section>
+    }
+    @if (tab() == 3) {
+      <programs-section></programs-section>
+    }
+    @if (tab() == 4) {
+      <partnerships-section></partnerships-section>
+    }
+    @if (tab() == 5) {
+      <mission-vision-section></mission-vision-section>
+    }
+  </section>
   <button class="scroll-to-top" [class.visible]="showScrollTop" (click)="scrollToTop()">
     <i class="bi bi-arrow-up"></i>
   </button>

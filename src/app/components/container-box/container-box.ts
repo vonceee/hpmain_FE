@@ -11,4 +11,5 @@ import { CommonModule } from '@angular/common';
 export class ContainerBox {
   @Input() variant: 'default' | 'red' | 'dark' = 'default';
   @Input() padding: string = '1.5rem';
+  @Input() allowOverflow: boolean = false;
 }

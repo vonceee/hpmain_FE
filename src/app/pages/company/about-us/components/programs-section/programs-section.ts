@@ -25,19 +25,56 @@ interface Testimonial {
 export class ProgramsSection implements OnInit, OnDestroy {
   @ViewChild('testimonialGrid') testimonialGrid!: ElementRef<HTMLDivElement>;
 
-  scrollTestimonials(direction: 'left' | 'right') {
-    const container = this.testimonialGrid.nativeElement;
-    const scrollAmount = 350;
+  activeIndex = 0;
 
-    if (direction === 'left') {
-      container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-    } else {
-      container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    }
+  next() {
+    this.activeIndex = (this.activeIndex + 1) % this.collegeTestimonials.length;
+  }
+
+  prev() {
+    this.activeIndex =
+      (this.activeIndex - 1 + this.collegeTestimonials.length) % this.collegeTestimonials.length;
+  }
+
+  goToCard(index: number) {
+    this.activeIndex = index;
+  }
+
+  getCardClass(index: number): string {
+    if (index === this.activeIndex) return 'active';
+
+    const len = this.collegeTestimonials.length;
+    // check if it's the previous item (handling wrap-around)
+    if (index === (this.activeIndex - 1 + len) % len) return 'left';
+    // check if it's the next item (handling wrap-around)
+    if (index === (this.activeIndex + 1) % len) return 'right';
+
+    return 'hidden'; // for lists longer than 3 items
   }
 
   /* -- College Testimonials Data -- */
   collegeTestimonials: Testimonial[] = [
+    {
+      logo: '/assets/images/aboutus/programs/4b56f92e4559e332a39e0ac1ff981720b37eb4ef.png',
+      alt: 'Asian Institute of Computer Studies Logo',
+      school: 'Asian Institute of Computer Studies',
+      message:
+        'We extend our heartfelt gratitude to HYTEC Inc. for their trust and support in this partnership. Together, we look forward to unlocking new possibilities and shaping the future of technical education, a productive, and countless opportunities for growth and innovation.',
+    },
+    {
+      logo: '/assets/images/aboutus/programs/b6a4ffd5a66fd74e7c74a42ce6e23cc06c7367d1.png',
+      alt: 'Manuel S. Enverga University Foundation Logo',
+      school: 'Manuel S. Enverga University Foundation',
+      message:
+        'These young minds, representing the future of the workforce, served as a stimulating reminder of the purpose and significance of the partnership between HPI and MSEUF',
+    },
+    {
+      logo: '/assets/images/aboutus/programs/3ce842428f32fcd88eb1a4939212dea344c3957c.png',
+      alt: 'Quezon City University Logo',
+      school: 'Quezon City University',
+      message:
+        'We are grateful to Engr. Soliman and Hytec Power Inc. for choosing QCU to become their partners. We are very happy that we have a common vision to ensure that our students have the skills necessary to be employed.',
+    },
     {
       logo: '/assets/images/aboutus/programs/4b56f92e4559e332a39e0ac1ff981720b37eb4ef.png',
       alt: 'Asian Institute of Computer Studies Logo',

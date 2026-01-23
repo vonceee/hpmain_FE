@@ -200,21 +200,35 @@
   </container-box>
   <section class="section-wrapper college-testimonials-section">
     <h2>College and Universities Testimonials</h2>
-    <div class="scroll-container">
-      <div class="programs-grid" #testimonialGrid>
-        @for (item of collegeTestimonials; track item.school) {
-          <div class="testimonial-card" (click)="openTestimonialModal(item)">
+    <div class="carousel-section">
+      <div class="carousel-container">
+        @for (item of collegeTestimonials; track item.school; let i = $index) {
+          <div
+            class="testimonial-card"
+            [ngClass]="getCardClass(i)"
+            (click)="getCardClass(i) === 'active' ? openTestimonialModal(item) : goToCard(i)"
+          >
             <div class="logo-wrapper">
               <img [src]="item.logo" [alt]="item.alt" class="uni-logo" />
             </div>
             <p>
               <strong>{{ item.school }}</strong>
             </p>
-            <p class="message-preview">
-              {{ item.message }}
-            </p>
+            <p class="message-preview"><span class="quote-start">“</span>{{ item.message }}</p>
           </div>
         }
+
+        <button class="nav-btn prev-btn" (click)="prev()">&#10094;</button>
+        <button class="nav-btn next-btn" (click)="next()">&#10095;</button>
+
+        <div class="indicators">
+          <div
+            class="dot"
+            *ngFor="let item of collegeTestimonials; let i = index"
+            [class.active]="i === activeIndex"
+            (click)="goToCard(i)"
+          ></div>
+        </div>
       </div>
     </div>
 
@@ -242,16 +256,13 @@
       </div>
     }
 
-    <section class="section-wrapper outreach-section">
+    <section class="outreach-section">
+      <title-badge
+        title="Outreach Programs"
+        subtitle="Our Corporate Social Responsibility aims at contributing to a happy, peaceful, productive and prosperous Filipino society."
+      ></title-badge>
       <container-box>
-        <h2>Outreach Programs</h2>
-        <p class="subtitle" style="max-width: 66%; margin: 0 auto; text-align: center">
-          Our Corporate Social Responsibility aims at contributing to a happy, peaceful, productive
-          and prosperous Filipino society. Industry-academe-community partnership is one commendable
-          way to achieve it.
-        </p>
-
-        <section class="section-wrapper outreach">
+        <section class="outreach">
           <div class="outreach-grid">
             <div class="outreach-content">
               <div class="text-body">

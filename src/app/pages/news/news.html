@@ -1,3 +1,114 @@
 <main-header></main-header>
 
+<hero-section
+  [heroTitle]="'NEWS AND UPDATES'"
+  [heroSubtitle]="
+    'Stay informed with our latest news, innovation, and success stories at Hytec Power Inc.'
+  "
+  [variant]="'slim'"
+></hero-section>
+
+<div class="news-container">
+  <!-- Featured News -->
+  <section class="featured-news-section">
+    <div class="section-header">
+      <h2>HPI FEATURED NEWS</h2>
+      <p>Latest Updates: Stay current with the top stories and essential highlights.</p>
+    </div>
+
+    <div class="featured-card">
+      <div
+        class="featured-image"
+        [style.background-image]="'url(' + featuredNews.image + ')'"
+      ></div>
+      <div class="featured-content">
+        <div class="meta">
+          <span class="category"><i class="ph ph-newspaper"></i> {{ featuredNews.category }}</span>
+          <span class="date"><i class="ph ph-calendar"></i> {{ featuredNews.date }}</span>
+        </div>
+        <h3>{{ featuredNews.title }}</h3>
+        <button class="read-more-btn">Read More <i class="ph ph-arrow-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Educational News -->
+  <section class="news-grid-section">
+    <div class="section-header flex-header">
+      <h2>EDUCATIONAL NEWS</h2>
+      <a href="#" class="view-all">View All <i class="ph ph-arrow-right"></i></a>
+    </div>
+
+    <div class="news-grid">
+      @for (item of educationalNews; track item.title) {
+        <div class="news-card">
+          <div class="card-image" [style.background-image]="'url(' + item.image + ')'"></div>
+          <div class="card-content">
+            <div class="date"><i class="ph ph-calendar"></i> {{ item.date }}</div>
+            <h4>{{ item.title }}</h4>
+            <p>{{ item.description }}</p>
+            <a href="#" class="read-more">Read Article <i class="ph ph-arrow-right"></i></a>
+          </div>
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- Industrial News -->
+  <section class="news-grid-section">
+    <div class="section-header flex-header">
+      <h2>INDUSTRIAL NEWS</h2>
+      <a href="#" class="view-all">View All <i class="ph ph-arrow-right"></i></a>
+    </div>
+
+    <div class="news-grid">
+      @for (item of industrialNews; track item.title) {
+        <div class="news-card">
+          <div class="card-image" [style.background-image]="'url(' + item.image + ')'"></div>
+          <div class="card-content">
+            <div class="date"><i class="ph ph-calendar"></i> {{ item.date }}</div>
+            <h4>{{ item.title }}</h4>
+            <p>{{ item.description }}</p>
+            <a href="#" class="read-more">Read Article <i class="ph ph-arrow-right"></i></a>
+          </div>
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- HPI Shorts -->
+  <section class="shorts-section">
+    <div class="section-header flex-header">
+      <h2>HPI SHORTS</h2>
+      <a href="#" class="view-all">View All <i class="ph ph-arrow-right"></i></a>
+    </div>
+    <div class="shorts-grid">
+      @for (video of shorts; track video) {
+        <div class="short-card" [style.background-image]="'url(' + video + ')'">
+          <div class="play-overlay">
+            <i class="ph-fill ph-play-circle"></i>
+          </div>
+          <div class="short-info">
+            <p>Sample Short Title Here</p>
+            <span><i class="ph ph-eye"></i> 1.2k views</span>
+          </div>
+        </div>
+      }
+    </div>
+  </section>
+</div>
+
+<!-- Newsletter Section -->
+<section class="newsletter-section">
+  <div class="newsletter-content">
+    <i class="ph ph-envelope-open icon"></i>
+    <h3>Subscribe to our newsletter</h3>
+    <p>Get the latest news and updates delivered straight to your inbox.</p>
+    <div class="input-group">
+      <input type="email" placeholder="Enter your email address" />
+      <button>Subscribe Now</button>
+    </div>
+  </div>
+</section>
+
 <main-footer></main-footer>

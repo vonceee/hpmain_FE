@@ -2,7 +2,7 @@
 
 .hero-section {
   position: relative;
-  height: 70vh;
+  min-height: clamp(60vh, 70svh, 800px);
   width: 100%;
 
   display: flex;
@@ -13,8 +13,10 @@
 
   border-bottom: 0.5px solid color.$primarydark;
 
+  container-type: inline-size;
+
   &.slim {
-    height: 20vh;
+    min-height: clamp(20vh, 25svh, 300px);
     justify-content: flex-start;
     text-align: left;
 
@@ -22,17 +24,18 @@
       align-items: flex-start;
       text-align: left;
       width: 100%;
-      padding-left: 2vw;
+      padding-left: clamp(1rem, 5vw, 4rem);
 
       h1 {
         font-family: 'Poppins', sans-serif;
-        font-size: 1.8rem;
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
         background: none;
         -webkit-text-fill-color: initial;
         color: white;
         text-transform: capitalize;
         margin-bottom: 0.5rem;
         text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        margin: 0 0 clamp(0.5rem, 2vw, 1rem) 0;
       }
 
       .date-pill {
@@ -41,9 +44,10 @@
 
       p {
         margin: 0;
-        max-width: 40vw;
+        max-width: min(90%, 600px);
         text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-        font-size: 0.8rem;
+        font-size: clamp(0.75rem, 2vw, 0.9rem);
+        font-weight: 400;
       }
     }
   }
@@ -80,8 +84,9 @@
   .hero-content {
     position: relative;
     z-index: 2;
-    max-width: 900px;
-    padding: 0 32px;
+    width: min(100% - 2rem, 1100px);
+    margin-inline: auto;
+    padding: clamp(1rem, 5vw, 2rem);
 
     animation: fadeUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 
@@ -94,7 +99,7 @@
       flex-direction: row;
       justify-content: center;
       align-items: center;
-      padding: 1px 8px;
+      padding: clamp(0.25rem, 1vw, 0.5rem) clamp(0.5rem, 2vw, 1rem);
       gap: 10px;
 
       background: #cc181e;
@@ -103,23 +108,21 @@
       font-family: 'Poppins', sans-serif;
       font-style: normal;
       font-weight: 400;
-      font-size: 16px;
-      line-height: 24px;
+      font-size: clamp(0.75rem, 2vw, 1rem);
+      line-height: 1.5;
       color: #ffffff;
       text-transform: none;
-
-      margin-bottom: 32px;
+      margin-bottom: clamp(1rem, 3vw, 2rem);
     }
 
     h1 {
       font-family: 'Bebas Neue', sans-serif;
       font-style: normal;
       font-weight: 400;
-      font-size: 100px;
-      line-height: 1.1;
-      line-height: 0.8;
+      font-size: clamp(3rem, 10vw + 1rem, 7.5rem);
+      line-height: 0.9;
 
-      margin: 0 0 1rem 0;
+      margin: 0 0 clamp(0.5rem, 2vw, 1rem) 0;
       letter-spacing: 0;
       text-align: center;
 
@@ -132,11 +135,11 @@
 
     p {
       font-family: 'Poppins', sans-serif;
-      font-size: 1.125rem;
-      font-weight: 400;
+      font-size: clamp(1rem, 1.5vw, 1.25rem);
+      font-weight: bold;
       line-height: 1.6;
       color: rgba(255, 255, 255, 0.9);
-      max-width: 80vw;
+      max-width: min(90%, 70ch);
       margin: 0 auto;
     }
   }
@@ -150,31 +153,5 @@
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-// Responsive Adjustments
-@media (max-width: 768px) {
-  .hero-section {
-    height: 60vh;
-
-    .hero-content {
-      padding: 0 24px;
-
-      .date-pill {
-        font-size: 0.8125rem;
-        padding: 8px 16px;
-        margin-bottom: 24px;
-      }
-
-      p {
-        font-size: 1rem;
-      }
-
-      h1 {
-        font-size: 3rem;
-        line-height: 1;
-      }
-    }
   }
 }

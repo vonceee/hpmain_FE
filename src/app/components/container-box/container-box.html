@@ -1,3 +1,8 @@
-<div class="container-box" [ngClass]="variant" [style.padding]="padding">
+<div
+  class="container-box"
+  [ngClass]="variant"
+  [style.padding]="padding"
+  [style.overflow]="allowOverflow ? 'visible' : 'hidden'"
+>
   <ng-content></ng-content>
 </div>
