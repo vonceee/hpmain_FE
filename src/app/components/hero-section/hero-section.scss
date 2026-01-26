@@ -47,7 +47,6 @@
         max-width: min(90%, 600px);
         text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
         font-size: clamp(0.75rem, 2vw, 0.9rem);
-        font-weight: 400;
       }
     }
   }
@@ -61,18 +60,10 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    opacity: 0.1;
     z-index: 0;
   }
 
   .hero-section-cover {
-    background: linear-gradient(
-      160deg,
-      rgba(204, 24, 30, 0.5) 0%,
-      rgba(0, 0, 0, 0) 50%,
-      rgba(0, 0, 0, 0.5) 100%
-    );
-
     width: 100%;
     height: 100%;
     position: absolute;
@@ -136,9 +127,12 @@
     p {
       font-family: 'Poppins', sans-serif;
       font-size: clamp(1rem, 1.5vw, 1.25rem);
-      font-weight: bold;
       line-height: 1.6;
-      color: rgba(255, 255, 255, 0.9);
+      font-weight: 600;
+      background: linear-gradient(180deg, #dbdbdb 32.76%, #a9a9a9 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
       max-width: min(90%, 70ch);
       margin: 0 auto;
     }
