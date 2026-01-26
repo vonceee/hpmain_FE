@@ -16,15 +16,13 @@ import { ContainerBox } from 'src/app/components/container-box/container-box';
 import { DecorGlowComponent } from 'src/app/components/decor-glow/decor-glow';
 import { CtaButton } from 'src/app/components/cta-button/cta-button';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { StatsGridComponent } from 'src/app/components/stats-grid/stats-grid.component';
 import {
   faFacebookF,
   faInstagram,
   faYoutube,
   faLinkedinIn,
 } from '@fortawesome/free-brands-svg-icons';
-
-import { AnimationItem } from 'lottie-web';
-import { AnimationOptions, LottieComponent } from 'ngx-lottie';
 
 interface Testimonial {
   logo: string;
@@ -44,9 +42,9 @@ interface Testimonial {
     TitleBadge,
     ContainerBox,
     RouterLink,
-    LottieComponent,
     DecorGlowComponent,
     CtaButton,
+    StatsGridComponent,
   ],
   templateUrl: './home.html',
   styleUrl: './home.scss',
@@ -69,13 +67,8 @@ export class Home implements OnInit, AfterViewInit {
   faYoutube = faYoutube;
   faLinkedinIn = faLinkedinIn;
 
-  private animationItems = new Map<number, AnimationItem>();
-
-  achievementList: any[] = [
+  achievementList = [
     {
-      target: 30,
-      current: 0,
-      suffix: '+',
       label: 'Years of Excellence',
       value: '30+',
       iconPath: '/assets/images/aboutus/sponsorship/lottie/Warranty.json',
@@ -83,12 +76,9 @@ export class Home implements OnInit, AfterViewInit {
         path: '/assets/images/aboutus/sponsorship/lottie/Warranty.json',
         autoplay: false,
         loop: false,
-      } as AnimationOptions,
+      },
     },
     {
-      target: 150,
-      current: 0,
-      suffix: '+',
       label: 'Industrial Partners',
       value: '150+',
       iconPath: '/assets/images/aboutus/sponsorship/lottie/Community.json',
@@ -96,12 +86,9 @@ export class Home implements OnInit, AfterViewInit {
         path: '/assets/images/aboutus/sponsorship/lottie/Community.json',
         autoplay: false,
         loop: false,
-      } as AnimationOptions,
+      },
     },
     {
-      target: 150,
-      current: 0,
-      suffix: '+',
       label: 'Academe Partners',
       value: '150+',
       iconPath: '/assets/images/aboutus/sponsorship/lottie/Learned.json',
@@ -109,12 +96,9 @@ export class Home implements OnInit, AfterViewInit {
         path: '/assets/images/aboutus/sponsorship/lottie/Learned.json',
         autoplay: false,
         loop: false,
-      } as AnimationOptions,
+      },
     },
     {
-      target: 100,
-      current: 0,
-      suffix: '%',
       label: 'Commitment to Service',
       value: '100%',
       iconPath: '/assets/images/aboutus/sponsorship/lottie/Heart.json',
@@ -122,7 +106,7 @@ export class Home implements OnInit, AfterViewInit {
         path: '/assets/images/aboutus/sponsorship/lottie/Heart.json',
         autoplay: false,
         loop: false,
-      } as AnimationOptions,
+      },
     },
   ];
 
@@ -182,7 +166,6 @@ export class Home implements OnInit, AfterViewInit {
   activeIndex = 1; // start with the middle card (QCU)
   currentBackgroundStyle: string = '';
   isReadMoreOpen = false;
-  private hasAnimated = false;
 
   ngOnInit(): void {
     this.updateBackground();
@@ -228,24 +211,6 @@ export class Home implements OnInit, AfterViewInit {
   }
 
   private setupIntersectionObserver() {
-    if (!this.achievementSection) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !this.hasAnimated) {
-            this.startCounting();
-            this.playAnimations();
-            this.hasAnimated = true;
-            observer.disconnect();
-          }
-        });
-      },
-      { threshold: 0.2 }, // trigger when 20% visible
-    );
-
-    observer.observe(this.achievementSection.nativeElement);
-
     if (this.logoSection) {
       const logoObserver = new IntersectionObserver(
         (entries) => {
@@ -258,37 +223,6 @@ export class Home implements OnInit, AfterViewInit {
       );
       logoObserver.observe(this.logoSection.nativeElement);
     }
-  }
-
-  private startCounting() {
-    const duration = 2000; // 2 seconds
-    const fps = 60;
-    const interval = 1000 / fps;
-    const totalFrames = (duration / 1000) * fps;
-
-    let frame = 0;
-
-    const timer = setInterval(() => {
-      frame++;
-      const progress = this.easeOutExpo(frame / totalFrames);
-
-      this.achievementList.forEach((item) => {
-        if (frame <= totalFrames) {
-          item.current = Math.floor(item.target * progress);
-        } else {
-          item.current = item.target;
-        }
-      });
-
-      if (frame >= totalFrames) {
-        clearInterval(timer);
-      }
-    }, interval);
-  }
-
-  // easing function for smooth animation
-  private easeOutExpo(x: number): number {
-    return x === 1 ? 1 : 1 - Math.pow(2, -10 * x);
   }
 
   // --- NAVIGATION LOGIC ---
@@ -326,26 +260,5 @@ export class Home implements OnInit, AfterViewInit {
       linear-gradient(to right, #8a0005e0 15%, #d18b8bc5 50%, #8a0005e0 85%),
       url('${imgPath}')
     `;
-  }
-  animationCreated(animationItem: AnimationItem, index: number): void {
-    this.animationItems.set(index, animationItem);
-    // If we've already scrolled past the trigger point, play immediately (optional constraint)
-    if (this.hasAnimated) {
-      animationItem.play();
-    }
-  }
-
-  onMouseEnter(index: number): void {
-    const item = this.animationItems.get(index);
-    if (item) {
-      item.stop();
-      item.play();
-    }
-  }
-
-  private playAnimations(): void {
-    this.animationItems.forEach((item) => {
-      item.play();
-    });
   }
 }

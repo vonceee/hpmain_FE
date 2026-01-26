@@ -384,18 +384,7 @@
   <!-- ACHIEVEMENT SECTION -->
   <!-- ============================================ -->
   <section class="section-wrapper achievement-section" #achievementSection>
-    <div class="achievement-container reveal-on-scroll">
-      <div *ngFor="let item of achievementList; let i = index">
-        <div class="stat-icon" (mouseenter)="onMouseEnter(i)">
-          <ng-lottie
-            [options]="item.options"
-            (animationCreated)="animationCreated($event, i)"
-          ></ng-lottie>
-        </div>
-        <p class="text-label text-bold label">{{ item.label }}</p>
-        <p class="header-lg accent-text">{{ item.value }}</p>
-      </div>
-    </div>
+    <stats-grid [items]="achievementList"></stats-grid>
   </section>
 
   <!-- ============================================ -->
@@ -545,7 +534,7 @@
         <div class="title-badge-container">
           <title-badge title="Latest HPI News"></title-badge>
         </div>
-        <button class="view-all-btn">VIEW ALL</button>
+        <a href="#" class="view-all">View All <i class="bi bi-arrow-right"></i></a>
       </div>
 
       <div class="news-grid">

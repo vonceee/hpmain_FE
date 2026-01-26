@@ -1,0 +1,78 @@
+@use 'colors' as color;
+
+:host {
+  display: block;
+}
+
+.stats-grid {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 3rem;
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .stat-icon {
+      width: 9rem;
+      height: 9rem;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+
+      ng-lottie {
+        width: 8rem;
+        height: 8rem;
+        display: block;
+
+        ::ng-deep div {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+
+    h3 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+
+    p {
+      font-size: 0.9rem;
+      color: #aaa;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+  }
+}
+
+// Animation Animations moved here as they are used by the component
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: opacity, transform;
+
+  &.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Staggered delays for children
+@for $i from 1 through 5 {
+  .delay-#{$i} {
+    transition-delay: #{$i * 0.15}s;
+  }
+}

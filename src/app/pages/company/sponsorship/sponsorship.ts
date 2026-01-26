@@ -10,30 +10,19 @@ import {
 import { MainHeader } from 'src/app/components/main-header/main-header';
 import { MainFooter } from 'src/app/components/main-footer/main-footer';
 import { HeroSection } from 'src/app/components/hero-section/hero-section';
-
-import { AnimationItem } from 'lottie-web';
-import { AnimationOptions, LottieComponent } from 'ngx-lottie';
-
-interface StatItem {
-  label: string;
-  value: string;
-  iconPath: string; // path to the .json Lottie file
-  options: AnimationOptions;
-}
+import { StatsGridComponent } from 'src/app/components/stats-grid/stats-grid.component';
 
 @Component({
   selector: 'app-sponsorship',
   standalone: true,
-  imports: [MainHeader, MainFooter, HeroSection, LottieComponent],
+  imports: [MainHeader, MainFooter, HeroSection, StatsGridComponent],
   templateUrl: './sponsorship.html',
   styleUrl: './sponsorship.scss',
 })
 export class Sponsorship implements AfterViewInit, OnDestroy {
-  @ViewChildren('statItem') statItemElements!: QueryList<ElementRef>;
   @ViewChildren('marqueeTrack') marqueeTrack!: QueryList<ElementRef>;
 
   private observer: IntersectionObserver | undefined;
-  private visibleIndices = new Set<number>();
 
   partners = [
     { name: 'Cybertech', logo: 'assets/images/aboutus/sponsorship/logocybertech.png' },
@@ -64,7 +53,7 @@ export class Sponsorship implements AfterViewInit, OnDestroy {
     },
   ];
 
-  statistics: StatItem[] = [
+  statistics = [
     {
       value: '24,000',
       label: 'Participating Teams',
@@ -106,8 +95,6 @@ export class Sponsorship implements AfterViewInit, OnDestroy {
       },
     },
   ];
-
-  private animationItems = new Map<number, AnimationItem>();
 
   constructor(private el: ElementRef) {}
 
@@ -175,55 +162,16 @@ export class Sponsorship implements AfterViewInit, OnDestroy {
           if (entry.isIntersecting) {
             entry.target.classList.add('is-visible');
           }
-
-          // Existing Lottie Logic
-          const index = this.statItemElements
-            .toArray()
-            .findIndex((el) => el.nativeElement === entry.target);
-
-          if (index !== -1) {
-            if (entry.isIntersecting) {
-              this.visibleIndices.add(index);
-              const item = this.animationItems.get(index);
-              if (item) {
-                item.stop();
-                item.play();
-              }
-            } else {
-              this.visibleIndices.delete(index);
-            }
-          }
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
-
-    // Observe specific stat items
-    this.statItemElements.forEach((el) => this.observer?.observe(el.nativeElement));
 
     // Observe generic animated elements
     const animatedElements = this.el.nativeElement.querySelectorAll(
-      '.animate-on-scroll, .slide-in-left, .slide-in-right, .animate-fade-in'
+      '.animate-on-scroll, .slide-in-left, .slide-in-right, .animate-fade-in',
     );
     animatedElements.forEach((el: Element) => this.observer?.observe(el));
-  }
-
-  animationCreated(animationItem: AnimationItem, index: number): void {
-    console.log('Animation created for index', index);
-    this.animationItems.set(index, animationItem);
-
-    // If already visible, play immediately
-    if (this.visibleIndices.has(index)) {
-      animationItem.play();
-    }
-  }
-
-  onMouseEnter(index: number): void {
-    const item = this.animationItems.get(index);
-    if (item) {
-      item.stop(); // Ensure it starts from the beginning
-      item.play();
-    }
   }
 
   contactInfo = {

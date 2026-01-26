@@ -1,0 +1,17 @@
+<div class="stats-grid">
+  <div
+    class="stat-item animate-on-scroll delay-{{ i + 1 }}"
+    *ngFor="let stat of items; let i = index"
+    #statItem
+    (mouseenter)="onMouseEnter(i)"
+  >
+    <div class="stat-icon">
+      <ng-lottie
+        [options]="stat.options"
+        (animationCreated)="animationCreated($event, i)"
+      ></ng-lottie>
+    </div>
+    <h3>{{ stat.value }}</h3>
+    <p>{{ stat.label }}</p>
+  </div>
+</div>

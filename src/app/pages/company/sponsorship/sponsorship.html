@@ -15,21 +15,21 @@
         <div class="marquee-track" #marqueeTrack>
           <!-- First Set -->
           @for (partner of partners; track partner.name) {
-          <div class="partner-card">
-            <img [src]="partner.logo" [alt]="partner.name" />
-          </div>
+            <div class="partner-card">
+              <img [src]="partner.logo" [alt]="partner.name" />
+            </div>
           }
           <!-- Duplicate Set for Seamless Scrolling -->
           @for (partner of partners; track partner.name) {
-          <div class="partner-card">
-            <img [src]="partner.logo" [alt]="partner.name" />
-          </div>
+            <div class="partner-card">
+              <img [src]="partner.logo" [alt]="partner.name" />
+            </div>
           }
           <!-- Triplicate Set for wider screens if needed, usually 2 is enough if width is handled, but let's stick to 2 and css repeats -->
           @for (partner of partners; track partner.name) {
-          <div class="partner-card">
-            <img [src]="partner.logo" [alt]="partner.name" />
-          </div>
+            <div class="partner-card">
+              <img [src]="partner.logo" [alt]="partner.name" />
+            </div>
           }
         </div>
       </div>
@@ -74,15 +74,15 @@
     <div class="levels-wrapper animate-on-scroll" style="transition-delay: 0.2s">
       <div class="levels-grid">
         @for (level of competitionLevels; track level.title; let i = $index) {
-        <div class="level-card animate-on-scroll delay-{{ i + 1 }}">
-          <div class="level-image">
-            <img [src]="level.image" [alt]="level.title" />
+          <div class="level-card animate-on-scroll delay-{{ i + 1 }}">
+            <div class="level-image">
+              <img [src]="level.image" [alt]="level.title" />
+            </div>
+            <p class="text-xl">
+              <strong>{{ level.title }}</strong>
+            </p>
+            <p class="text-sm sub-label">{{ level.description }}</p>
           </div>
-          <p class="text-xl">
-            <strong>{{ level.title }}</strong>
-          </p>
-          <p class="text-sm sub-label">{{ level.description }}</p>
-        </div>
         }
       </div>
     </div>
@@ -100,24 +100,7 @@
       competing.
     </p>
 
-    <div class="stats-grid">
-      @for (stat of statistics; track stat.label; let i = $index) {
-      <div
-        class="stat-item animate-on-scroll delay-{{ i + 1 }}"
-        #statItem
-        (mouseenter)="onMouseEnter(i)"
-      >
-        <div class="stat-icon">
-          <ng-lottie
-            [options]="stat.options"
-            (animationCreated)="animationCreated($event, i)"
-          ></ng-lottie>
-        </div>
-        <h3>{{ stat.value }}</h3>
-        <p>{{ stat.label }}</p>
-      </div>
-      }
-    </div>
+    <stats-grid [items]="statistics"></stats-grid>
   </section>
 
   <!-- Guinness Record Section -->
@@ -169,7 +152,9 @@
         <i class="bi bi-envelope"></i>
         <div class="details">
           <span>Or send us an email at</span>
-          <a class="email" href="mailto:marketing@hytecpower.com">marketing_training@hytecpower.com</a>
+          <a class="email" href="mailto:marketing@hytecpower.com"
+            >marketing_training@hytecpower.com</a
+          >
         </div>
       </div>
     </div>

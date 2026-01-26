@@ -16,10 +16,58 @@ p {
   color: white;
 }
 
+// Light Theme (Default)
+:root {
+  --bg-body: #ffffff;
+  --text-body: #1d1d1f;
+
+  --bg-header: rgba(255, 255, 255, 0.85);
+  --border-header: rgba(0, 0, 0, 0.1);
+  --bg-search: rgba(0, 0, 0, 0.05);
+  --text-search: #1d1d1f;
+  --text-search-placeholder: rgba(0, 0, 0, 0.5);
+
+  --bg-nav-item-hover: rgba(0, 0, 0, 0.05);
+  --text-nav: #1d1d1f;
+
+  --bg-dropdown: rgba(255, 255, 255, 0.85);
+  --text-dropdown-header: #1d1d1f;
+  --text-dropdown-desc: #86868b;
+
+  --bg-mobile-nav: rgba(255, 255, 255, 0.98);
+  --border-mobile-nav: rgba(0, 0, 0, 0.1);
+}
+
+// Dark Theme
+body.dark-theme {
+  --bg-body: #000000;
+  --text-body: #ffffff;
+
+  --bg-header: rgba(0, 0, 0, 0.5);
+  --border-header: rgba(255, 255, 255, 0.1);
+  --bg-search: rgba(255, 255, 255, 0.1);
+  --text-search: #ffffff;
+  --text-search-placeholder: rgba(255, 255, 255, 0.5);
+
+  --bg-nav-item-hover: rgba(255, 255, 255, 0.1);
+  --text-nav: #ffffff;
+
+  --bg-dropdown: rgba(22, 22, 23, 0.98);
+  --text-dropdown-header: #ffffff;
+  --text-dropdown-desc: rgba(255, 255, 255, 0.6);
+
+  --bg-mobile-nav: rgba(22, 22, 23, 0.98);
+  --border-mobile-nav: rgba(255, 255, 255, 0.1);
+}
+
 body {
   padding: 0;
   margin: 0;
-  background-color: black;
+  background-color: var(--bg-body);
+  color: var(--text-body);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 /* Minimalist Scrollbar Global */
