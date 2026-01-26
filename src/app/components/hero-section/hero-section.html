@@ -1,9 +1,25 @@
 <section class="hero-section" [class.slim]="variant === 'slim'">
-  <div class="hero-bg-image" [style.background-image]="'url(' + heroImage + ')'"></div>
+  <div
+    class="hero-bg-image"
+    [style.background-image]="'url(' + heroImage + ')'"
+    [style.opacity]="heroOpacity"
+  ></div>
   <div class="hero-section-cover"></div>
   <decor-glow></decor-glow>
   <div class="hero-content">
-    @if (heroDatePill && variant !== 'slim') {
+    @if (stats && stats.length > 0) {
+      <div class="hero-stats">
+        @for (stat of stats; track $index) {
+          <div class="stat-item">
+            <div class="stat-value">{{ stat.value }}</div>
+            <div class="stat-label">{{ stat.label }}</div>
+          </div>
+          @if (!$last) {
+            <div class="stat-divider"></div>
+          }
+        }
+      </div>
+    } @else if (heroDatePill && variant !== 'slim') {
       <div class="text date-pill">
         {{ heroDatePill }}
       </div>

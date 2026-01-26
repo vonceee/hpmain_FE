@@ -1,0 +1,23 @@
+@use 'text-display';
+
+.header-container {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem; // space between bar and text
+  margin-bottom: 1.5rem;
+}
+
+.red-bar {
+  width: 6px;
+  height: 2.4rem;
+  background: linear-gradient(to right, #ed1c24, #871015);
+  border-radius: 4px;
+}
+
+.header-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 300;
+  font-size: 2.5rem;
+  margin: 0;
+  line-height: 1;
+}

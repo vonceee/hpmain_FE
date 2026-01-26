@@ -2,6 +2,12 @@
 
 <hero-section
   heroImage="assets/images/news/news-bg.png"
+  [heroOpacity]="1"
+  [stats]="[
+    { value: '150+', label: 'ARTICLES' },
+    { value: '24/7', label: 'COVERAGE' },
+    { value: 'LIVE', label: 'UPDATES' },
+  ]"
   [heroTitle]="'NEWS AND UPDATES'"
   [heroSubtitle]="
     'Stay informed with our latest news, innovation, and success stories at Hytec Power Inc.'
@@ -9,25 +15,72 @@
 ></hero-section>
 
 <div class="news-container">
+  <decor-glow></decor-glow>
   <!-- Featured News -->
   <section class="featured-news-section">
     <div class="section-header">
-      <title-badge>HPI FEATURED NEWS</title-badge>
-      <p>Latest Updates: Stay current with the top stories and essential highlights.</p>
+      <title-badge
+        title="HPI FEATURED NEWS"
+        subtitle="From local roots to global impact, we're committed to providing cutting-edge solutions for industry and education."
+      ></title-badge>
     </div>
 
-    <div class="featured-card">
-      <div
-        class="featured-image"
-        [style.background-image]="'url(' + featuredNews.image + ')'"
-      ></div>
-      <div class="featured-content">
-        <div class="meta">
-          <span class="category"><i class="ph ph-newspaper"></i> {{ featuredNews.category }}</span>
-          <span class="date"><i class="ph ph-calendar"></i> {{ featuredNews.date }}</span>
+    <div class="featured-layout">
+      <div class="featured-card">
+        <div class="featured-image-container">
+          <div
+            class="featured-image"
+            [style.background-image]="'url(' + featuredNews.image + ')'"
+          ></div>
+          <div class="gradient-overlay"></div>
         </div>
-        <h3>{{ featuredNews.title }}</h3>
-        <button class="read-more-btn">Read More <i class="ph ph-arrow-right"></i></button>
+        <div class="featured-content">
+          <div class="top-meta">
+            <div class="author-info">
+              <img [src]="featuredNews.authorImage" alt="Author" class="author-img" />
+              <span class="author-name">{{ featuredNews.authorName }}</span>
+            </div>
+            <span class="separator">|</span>
+            <span class="read-time">{{ featuredNews.readTime }}</span>
+          </div>
+
+          <div class="bottom-content">
+            <h3>{{ featuredNews.title }}</h3>
+            <div class="bottom-meta">
+              <span class="category"><i class="bi bi-tag"></i> {{ featuredNews.category }}</span>
+              <span class="separator">|</span>
+              <span class="time-ago">{{ featuredNews.timeAgo }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="featured-sidebar">
+        <!-- Educational Column -->
+        <div class="sidebar-column">
+          @for (item of educationalNews | slice: 0 : 4; track item.title) {
+            <div class="sidebar-item">
+              <div class="item-meta">
+                <i class="bi bi-tag"></i>
+                <span class="category">Educational</span>
+              </div>
+              <h5 class="item-title">{{ item.title }}</h5>
+            </div>
+          }
+        </div>
+
+        <!-- Industrial Column -->
+        <div class="sidebar-column">
+          @for (item of industrialNews | slice: 0 : 4; track item.title) {
+            <div class="sidebar-item">
+              <div class="item-meta">
+                <i class="bi bi-tag"></i>
+                <span class="category">Industrial</span>
+              </div>
+              <h5 class="item-title">{{ item.title }}</h5>
+            </div>
+          }
+        </div>
       </div>
     </div>
   </section>
@@ -35,19 +88,23 @@
   <!-- Educational News -->
   <section class="news-grid-section">
     <div class="section-header flex-header">
-      <h2>EDUCATIONAL NEWS</h2>
-      <a href="#" class="view-all">View All <i class="ph ph-arrow-right"></i></a>
+      <section-header title="EDUCATIONAL NEWS"></section-header>
+      <a href="#" class="view-all">View All <i class="bi bi-arrow-right"></i></a>
     </div>
 
     <div class="news-grid">
-      @for (item of educationalNews; track item.title) {
+      @for (item of educationalNews; track $index) {
         <div class="news-card">
           <div class="card-image" [style.background-image]="'url(' + item.image + ')'"></div>
           <div class="card-content">
-            <div class="date"><i class="ph ph-calendar"></i> {{ item.date }}</div>
+            <div class="date">
+              <span class="category"><i class="bi bi-tag"></i> Educational</span>
+              <span class="separator">|</span>
+              <i class="bi bi-calendar"></i> {{ item.date }}
+            </div>
             <h4>{{ item.title }}</h4>
             <p>{{ item.description }}</p>
-            <a href="#" class="read-more">Read Article <i class="ph ph-arrow-right"></i></a>
+            <!-- <a href="#" class="read-more">Read Article <i class="ph ph-arrow-right"></i></a> -->
           </div>
         </div>
       }
@@ -57,19 +114,23 @@
   <!-- Industrial News -->
   <section class="news-grid-section">
     <div class="section-header flex-header">
-      <h2>INDUSTRIAL NEWS</h2>
-      <a href="#" class="view-all">View All <i class="ph ph-arrow-right"></i></a>
+      <section-header title="INDUSTRIAL NEWS"></section-header>
+      <a href="#" class="view-all">View All <i class="bi bi-arrow-right"></i></a>
     </div>
 
     <div class="news-grid">
-      @for (item of industrialNews; track item.title) {
+      @for (item of industrialNews; track $index) {
         <div class="news-card">
           <div class="card-image" [style.background-image]="'url(' + item.image + ')'"></div>
           <div class="card-content">
-            <div class="date"><i class="ph ph-calendar"></i> {{ item.date }}</div>
+            <div class="date">
+              <span class="category"><i class="bi bi-tag"></i> Industrial</span>
+              <span class="separator">|</span>
+              <i class="bi bi-calendar"></i> {{ item.date }}
+            </div>
             <h4>{{ item.title }}</h4>
             <p>{{ item.description }}</p>
-            <a href="#" class="read-more">Read Article <i class="ph ph-arrow-right"></i></a>
+            <!-- <a href="#" class="read-more">Read Article <i class="ph ph-arrow-right"></i></a> -->
           </div>
         </div>
       }
@@ -79,18 +140,40 @@
   <!-- HPI Shorts -->
   <section class="shorts-section">
     <div class="section-header flex-header">
-      <h2>HPI SHORTS</h2>
-      <a href="#" class="view-all">View All <i class="ph ph-arrow-right"></i></a>
+      <section-header title="HPI SHORTS"></section-header>
+      <a href="#" class="view-all">View All <i class="bi bi-arrow-right"></i></a>
     </div>
     <div class="shorts-grid">
-      @for (video of shorts; track video) {
-        <div class="short-card" [style.background-image]="'url(' + video + ')'">
-          <div class="play-overlay">
+      @for (video of shorts; track video.title) {
+        <div
+          class="short-card"
+          [style.background-image]="'url(' + video.thumbnail + ')'"
+          (click)="playVideo(video.videoUrl)"
+          (mouseenter)="startPreview(video.videoUrl)"
+          (mouseleave)="stopPreview()"
+        >
+          @if (activePreviewUrl === video.videoUrl && previewVideoSafeUrl) {
+            <iframe
+              [src]="previewVideoSafeUrl"
+              class="preview-iframe"
+              frameborder="0"
+              allow="
+                accelerometer;
+                autoplay;
+                clipboard-write;
+                encrypted-media;
+                gyroscope;
+                picture-in-picture;
+                web-share;
+              "
+              allowfullscreen
+            ></iframe>
+          }
+          <div class="play-overlay" [class.hidden]="activePreviewUrl === video.videoUrl">
             <i class="ph-fill ph-play-circle"></i>
           </div>
           <div class="short-info">
-            <p>Sample Short Title Here</p>
-            <span><i class="ph ph-eye"></i> 1.2k views</span>
+            <p>{{ video.title }}</p>
           </div>
         </div>
       }
@@ -98,12 +181,34 @@
   </section>
 </div>
 
+@if (selectedVideo) {
+  <div class="video-modal-overlay" (click)="closeVideo()">
+    <div class="video-container" (click)="$event.stopPropagation()">
+      <iframe
+        [src]="selectedVideo"
+        title="YouTube video player"
+        frameborder="0"
+        allow="
+          accelerometer;
+          autoplay;
+          clipboard-write;
+          encrypted-media;
+          gyroscope;
+          picture-in-picture;
+          web-share;
+        "
+        allowfullscreen
+      ></iframe>
+    </div>
+  </div>
+}
+
 <!-- Newsletter Section -->
 <section class="newsletter-section">
   <div class="newsletter-content">
-    <i class="ph ph-envelope-open icon"></i>
+    <i class="bi bi-newspaper"></i>
     <h3>Subscribe to our newsletter</h3>
-    <p>Get the latest news and updates delivered straight to your inbox.</p>
+    <p>Get the latest news and updates about industry and academe directly to your inbox!</p>
     <div class="input-group">
       <input type="email" placeholder="Enter your email address" />
       <button>Subscribe Now</button>
