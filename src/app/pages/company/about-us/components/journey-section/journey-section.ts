@@ -19,9 +19,12 @@ interface TimelineEvent {
   position: 'left' | 'right';
 }
 
+import { TimelineLineComponent } from 'src/app/components/timeline-elements/timeline-line/timeline-line';
+import { TimelineDotComponent } from 'src/app/components/timeline-elements/timeline-dot/timeline-dot';
+
 @Component({
   selector: 'journey-section',
-  imports: [CommonModule, TitleBadge, ContainerBox],
+  imports: [CommonModule, TitleBadge, ContainerBox, TimelineLineComponent, TimelineDotComponent],
   templateUrl: './journey-section.html',
   styleUrls: ['./journey-section.scss'],
 })

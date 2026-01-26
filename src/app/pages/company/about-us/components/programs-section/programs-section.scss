@@ -420,17 +420,6 @@ hero-section {
   }
 }
 
-.testimonials-section .timeline-line {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background-color: #d32f2f;
-  transform: translateX(-50%);
-  z-index: 0;
-}
-
 .testimonial-row {
   display: flex;
   justify-content: space-between;
@@ -439,51 +428,11 @@ hero-section {
   z-index: 1;
 }
 
-.timeline-dot {
-  position: absolute;
-  left: 50%;
-  top: 82px;
-  transform: translateX(-50%);
-  width: 16px;
-  height: 16px;
-  background-color: #ed1c24;
-  border: 3px solid #000;
-  border-radius: 50%;
-  z-index: 10;
-  box-shadow: 0 0 0 4px rgba(255, 0, 0, 0.2);
-  transition: all 0.3s ease;
-
-  &:hover {
-    box-shadow: 0 0 0 6px rgba(255, 0, 0, 0.3);
-    transform: translateX(-50%) scale(1.2);
-  }
-}
-
-.timeline-dot {
-  position: absolute;
-  left: 50%;
-  top: 82px;
-  transform: translateX(-50%);
-  width: 16px;
-  height: 16px;
-  background-color: #ed1c24;
-  border: 3px solid #000;
-  border-radius: 50%;
-  z-index: 10;
-  box-shadow: 0 0 0 4px rgba(255, 0, 0, 0.2);
-  transition: all 0.3s ease;
-
-  &:hover {
-    box-shadow: 0 0 0 6px rgba(255, 0, 0, 0.3);
-    transform: translateX(-50%) scale(1.2);
-  }
-}
-
 @container (max-width: 700px) {
-  .timeline-dot {
+  app-timeline-dot {
     display: none;
   }
-  .testimonials-section .timeline-line {
+  app-timeline-line {
     display: none;
   }
 }

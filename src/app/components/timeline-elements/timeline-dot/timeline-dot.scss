@@ -1,0 +1,24 @@
+.timeline-dot {
+  position: absolute;
+  left: 50%;
+  // Top is usually controlled by the parent container's spacing or explicitly set
+  transform: translateX(-50%);
+  background-color: #ed1c24;
+  border-radius: 50%;
+  z-index: 10;
+  box-shadow: 0 0 0 4px rgba(255, 0, 0, 0.2);
+  transition: all 0.3s ease;
+
+  // Default border styles
+  border: 3px solid #000;
+
+  &.no-border {
+    border: none;
+    background-color: #ff0000; // Slightly brighter for mission/vision if needed, matching usage
+  }
+
+  &:hover {
+    box-shadow: 0 0 0 6px rgba(255, 0, 0, 0.3);
+    transform: translateX(-50%) scale(1.2);
+  }
+}

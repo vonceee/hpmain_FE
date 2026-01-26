@@ -143,6 +143,24 @@
     </button>
   </div>
 
+  <div
+    class="theme-toggle"
+    (click)="themeService.toggleTheme()"
+    role="button"
+    tabindex="0"
+    [attr.aria-label]="themeService.darkMode() ? 'Switch to Light Mode' : 'Switch to Dark Mode'"
+  >
+    <div class="toggle-track">
+      <div class="active-indicator" [class.dark]="themeService.darkMode()"></div>
+      <div class="icon-wrapper">
+        <i class="bi bi-cloud-sun"></i>
+      </div>
+      <div class="icon-wrapper">
+        <i class="bi bi-cloud-moon"></i>
+      </div>
+    </div>
+  </div>
+
   <button
     class="hamburger-menu"
     [class.active]="isMobileMenuOpen"

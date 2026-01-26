@@ -11,19 +11,6 @@
   max-width: 80vw;
 }
 
-/* Decor: Continuous Central Line */
-.timeline-line {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 4px;
-  background: linear-gradient(to bottom, #ed1c24 0%, #871015 50%, rgba(0, 0, 0, 0) 100%);
-  transform: translateX(-50%);
-  z-index: 0;
-  border-radius: 4px;
-}
-
 .timeline-events {
   position: relative;
   display: flex;
@@ -101,31 +88,11 @@
   font-size: 0.9rem;
 }
 
-/* --- THE DOT --- */
-.timeline-dot {
-  position: absolute;
-  left: 50%;
-  top: 24px;
-  transform: translateX(-50%);
-  width: 16px;
-  height: 16px;
-  background-color: #ed1c24;
-  border: 3px solid #000;
-  border-radius: 50%;
-  z-index: 10;
-  box-shadow: 0 0 0 4px rgba(255, 0, 0, 0.2);
-  transition: all 0.3s ease;
-}
-
-.timeline-dot:hover {
-  box-shadow: 0 0 0 6px rgba(255, 0, 0, 0.3);
-  transform: translateX(-50%) scale(1.2);
-}
-
 /* --- MOBILE RESPONSIVE --- */
 @media (max-width: 768px) {
-  .timeline-line {
-    left: 20px;
+  ::ng-deep app-timeline-line .timeline-line,
+  ::ng-deep app-timeline-dot .timeline-dot {
+    left: 20px !important;
   }
 
   .timeline-item {
@@ -147,10 +114,6 @@
     margin-left: 60px;
     margin-right: 0;
     align-items: flex-start;
-  }
-
-  .timeline-dot {
-    left: 20px;
   }
 }
 

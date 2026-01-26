@@ -1,4 +1,12 @@
-import { Component, OnInit, AfterViewInit, signal, ViewChild, ElementRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  signal,
+  ViewChild,
+  ElementRef,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MainFooter } from 'src/app/components/main-footer/main-footer';
@@ -6,6 +14,7 @@ import { MainHeader } from 'src/app/components/main-header/main-header';
 import { TitleBadge } from 'src/app/components/title-badge/title-badge';
 import { ContainerBox } from 'src/app/components/container-box/container-box';
 import { DecorGlowComponent } from 'src/app/components/decor-glow/decor-glow';
+import { CtaButton } from 'src/app/components/cta-button/cta-button';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
   faFacebookF,
@@ -37,14 +46,21 @@ interface Testimonial {
     RouterLink,
     LottieComponent,
     DecorGlowComponent,
+    CtaButton,
   ],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
 export class Home implements OnInit, AfterViewInit {
   @ViewChild('achievementSection') achievementSection!: ElementRef;
+  @ViewChild('logoSection') logoSection!: ElementRef;
 
-  constructor(private el: ElementRef) {}
+  isLogoVisible = false;
+
+  constructor(
+    private el: ElementRef,
+    private cdr: ChangeDetectorRef,
+  ) {}
 
   protected readonly title = signal('hytec_fe');
 
@@ -229,6 +245,19 @@ export class Home implements OnInit, AfterViewInit {
     );
 
     observer.observe(this.achievementSection.nativeElement);
+
+    if (this.logoSection) {
+      const logoObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            this.isLogoVisible = entry.isIntersecting;
+            this.cdr.detectChanges();
+          });
+        },
+        { threshold: 0, rootMargin: '200px 0px 200px 0px' }, // pre-load slightly before
+      );
+      logoObserver.observe(this.logoSection.nativeElement);
+    }
   }
 
   private startCounting() {

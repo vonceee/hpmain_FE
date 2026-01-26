@@ -1,4 +1,5 @@
 import { Component, HostListener } from '@angular/core';
+import { ThemeService } from '../../services/theme.service';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -12,7 +13,7 @@ export class MainHeader {
   isMobileMenuOpen = false;
   isDesktop = false;
 
-  constructor() {
+  constructor(public themeService: ThemeService) {
     this.checkScreenSize();
   }
 

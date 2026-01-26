@@ -111,6 +111,68 @@ header .header-image {
   background-color: color.$primary500;
 }
 
+/* Theme Toggle */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  margin-left: 0.5rem;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+
+  .toggle-track {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid transparent;
+    height: 2.25rem;
+    width: 5rem;
+    border-radius: 1.125rem;
+    padding: 2px;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+  }
+
+  .icon-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1rem;
+    transition: color 0.3s ease;
+  }
+
+  .active-indicator {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    bottom: 2px;
+    width: calc(50% - 2px);
+    border-radius: 50%;
+    border-radius: 1rem;
+    background-color: color.$primary500;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transform: translateX(0);
+    &.dark {
+      transform: translateX(100%);
+    }
+  }
+
+  &:hover .icon-wrapper {
+    color: #fff;
+  }
+}
+
 /* HAMBURGER MENU - (Mobile Layout) */
 .hamburger-menu {
   display: flex;

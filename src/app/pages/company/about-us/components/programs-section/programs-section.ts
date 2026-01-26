@@ -16,9 +16,19 @@ interface Testimonial {
   message: string;
 }
 
+import { TimelineLineComponent } from 'src/app/components/timeline-elements/timeline-line/timeline-line';
+import { TimelineDotComponent } from 'src/app/components/timeline-elements/timeline-dot/timeline-dot';
+
 @Component({
   selector: 'programs-section',
-  imports: [CommonModule, HeroSection, TitleBadge, ContainerBox],
+  imports: [
+    CommonModule,
+    HeroSection,
+    TitleBadge,
+    ContainerBox,
+    TimelineLineComponent,
+    TimelineDotComponent,
+  ],
   templateUrl: './programs-section.html',
   styleUrls: ['./programs-section.scss'],
 })

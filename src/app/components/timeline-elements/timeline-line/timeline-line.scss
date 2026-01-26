@@ -1,0 +1,26 @@
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  transform: translateX(-50%);
+  z-index: 0;
+
+  &.default {
+    width: 4px;
+    background: linear-gradient(to bottom, #ed1c24 0%, #871015 50%, rgba(0, 0, 0, 0) 100%);
+    border-radius: 4px;
+  }
+
+  &.slim {
+    width: 4px;
+    background: linear-gradient(to bottom, #ed1c24 0%, #871015 50%, rgba(0, 0, 0, 0) 100%);
+    border-radius: 4px;
+  }
+
+  &.faded {
+    width: 4px;
+    background: linear-gradient(to bottom, #ed1c24 0%, #871015 50%, rgba(0, 0, 0, 0) 100%);
+    border-radius: 4px;
+  }
+}

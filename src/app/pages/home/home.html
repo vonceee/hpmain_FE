@@ -15,6 +15,11 @@
         <p class="text-lg subtitle">
           The leading industrial and educational solutions provider in the Philippines
         </p>
+
+        <div class="hero-actions">
+          <cta-button link="/solutions/industrial" variant="primary">EXPLORE SOLUTIONS</cta-button>
+          <cta-button link="/company/our-contacts" variant="outline">CONTACT US</cta-button>
+        </div>
       </div>
     </section>
 
@@ -291,8 +296,8 @@
           <div class="who_we_are-container">
             <div class="bento-grid">
               <!-- 1. Logo Card (Left, Tall) -->
-              <div class="bento-card logo-card">
-                <div class="logo-3d-wrapper" id="videoThumbnail">
+              <div class="bento-card logo-card" #logoSection>
+                <div class="logo-3d-wrapper" id="videoThumbnail" *ngIf="isLogoVisible">
                   <img
                     src="assets/icons/hytecpowerinc-logo.png"
                     class="logo-layer"
@@ -352,7 +357,9 @@
 
               <!-- 2. Intro Card (Top Right) -->
               <div class="bento-card intro-card">
-                <title-badge title="WHO WE ARE?" />
+                <div class="header-text">
+                  <title-badge title="WHO WE ARE?" align="left" />
+                </div>
                 <p class="text-sm leading-relaxed">
                   We started this journey with only the desire to
                   <b>build a better industry and future</b>. The company's own endeavors are not the
