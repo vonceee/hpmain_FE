@@ -109,6 +109,7 @@ export class aboutUs implements AfterViewInit, OnInit, OnDestroy {
   setTab(index: number) {
     this.tab.set(index);
     this.updateIndicator(index);
+    this.scrollToTop();
   }
 
   // find the active button and move the pill

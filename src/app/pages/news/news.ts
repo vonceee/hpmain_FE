@@ -4,10 +4,11 @@ import { MainHeader } from 'src/app/components/main-header/main-header';
 import { MainFooter } from 'src/app/components/main-footer/main-footer';
 import { HeroSection } from 'src/app/components/hero-section/hero-section';
 import { DecorGlowComponent } from 'src/app/components/decor-glow/decor-glow';
+import { TitleBadge } from 'src/app/components/title-badge/title-badge';
 
 @Component({
   selector: 'app-news',
-  imports: [MainHeader, MainFooter, HeroSection, DecorGlowComponent, CommonModule],
+  imports: [MainHeader, MainFooter, HeroSection, DecorGlowComponent, CommonModule, TitleBadge],
   templateUrl: './news.html',
   styleUrl: './news.scss',
 })
