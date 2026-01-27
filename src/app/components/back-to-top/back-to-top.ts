@@ -3,9 +3,9 @@ import {
   ElementRef,
   OnDestroy,
   AfterViewInit,
-  signal,
   NgZone,
   Input,
+  ChangeDetectorRef,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -17,73 +17,89 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./back-to-top.scss'],
 })
 export class BackToTopComponent implements AfterViewInit, OnDestroy {
-  @Input() scrollTarget: HTMLElement | null = null;
+  @Input() set scrollTarget(value: HTMLElement | null) {
+    if (value) {
+      console.log('[BackToTop] scrollTarget set via input:', value);
+      this._scrollTarget = value;
+      this.setupListener();
+    }
+  }
+
+  get scrollTarget() {
+    return this._scrollTarget;
+  }
+
   showScrollTop = false;
+  private _scrollTarget: HTMLElement | null = null;
   private scrollContainer: HTMLElement | Window | null = null;
   private scrollListener: (() => void) | null = null;
 
   constructor(
     private el: ElementRef,
     private zone: NgZone,
-  ) {}
+    private cdr: ChangeDetectorRef,
+  ) {
+    console.log('[BackToTop] Component initialized (Fixed Version)');
+  }
 
   ngAfterViewInit() {
-    // Simple, robust logic: explicit target OR window. No guessing.
-    this.scrollContainer = this.scrollTarget || window;
+    if (!this._scrollTarget) {
+      console.warn('[BackToTop] No scrollTarget input. Attempting fallback...');
 
-    // Small timeout to ensure inputs are bound and layout is ready
-    setTimeout(() => {
-      this.attachScrollListener();
-    }, 100);
+      const mainContent = document.querySelector('.main-content');
+      if (mainContent instanceof HTMLElement) {
+        console.log('[BackToTop] Found .main-content via querySelector');
+        this._scrollTarget = mainContent;
+      } else {
+        console.log('[BackToTop] Fallback to window');
+        this.scrollContainer = window;
+      }
+    }
+
+    this.setupListener();
   }
 
   ngOnDestroy() {
     this.removeScrollListener();
   }
 
-  private attachScrollListener() {
+  private setupListener() {
+    this.removeScrollListener();
+
+    this.scrollContainer = this._scrollTarget || window;
     const container = this.scrollContainer;
-    if (!container) {
-      console.warn('[BackToTop] No container to attach listener to');
-      return;
-    }
+
+    if (!container) return;
 
     this.zone.runOutsideAngular(() => {
       const listener = () => {
-        this.checkVisibility(container);
+        const scrollTop = this.getScrollTop(container);
+
+        this.updateVisibility(scrollTop);
       };
 
-      container.addEventListener('scroll', listener);
-      console.log('[BackToTop] Scroll listener attached to:', container);
-
+      container.addEventListener('scroll', listener, { passive: true });
       this.scrollListener = () => container.removeEventListener('scroll', listener);
 
-      // Initial check
-      this.checkVisibility(container);
+      console.log('[BackToTop] Listener attached to:', container);
+      this.updateVisibility(this.getScrollTop(container));
     });
   }
 
-  private checkVisibility(container: HTMLElement | Window) {
-    let scrollTop = 0;
-    let viewportHeight = 0;
-
+  private getScrollTop(container: HTMLElement | Window): number {
     if (container instanceof Window) {
-      scrollTop = window.scrollY || document.documentElement.scrollTop;
-      viewportHeight = window.innerHeight;
-    } else {
-      scrollTop = (container as HTMLElement).scrollTop;
-      viewportHeight = (container as HTMLElement).clientHeight;
+      return window.scrollY || document.documentElement.scrollTop;
     }
+    return (container as HTMLElement).scrollTop;
+  }
 
-    // Show after scrolling past 80% of the first section (viewport height)
-    // Fallback to 800px if viewportHeight is 0 (unlikely)
-    const threshold = (viewportHeight || 800) * 0.8;
+  private updateVisibility(scrollTop: number) {
+    const shouldShow = scrollTop > 100;
 
-    const shouldShow = scrollTop > threshold;
     if (this.showScrollTop !== shouldShow) {
       this.zone.run(() => {
-        console.log('[BackToTop] Visibility changed:', shouldShow);
         this.showScrollTop = shouldShow;
+        this.cdr.detectChanges();
       });
     }
   }
@@ -96,9 +112,15 @@ export class BackToTopComponent implements AfterViewInit, OnDestroy {
   }
 
   scrollToTop() {
-    console.log('[BackToTop] Scrolling to top...');
-    if (this.scrollContainer) {
-      this.scrollContainer.scrollTo({ top: 0, behavior: 'smooth' });
+    const container = this._scrollTarget || this.scrollContainer || window;
+    console.log('[BackToTop] Scrolling to top on:', container);
+
+    if (container.scrollTo) {
+      container.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (container instanceof Window) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      (container as HTMLElement).scrollTop = 0;
     }
   }
 }
