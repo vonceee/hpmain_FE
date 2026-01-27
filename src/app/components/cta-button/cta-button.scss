@@ -3,97 +3,10 @@
   width: auto;
 }
 
-a {
+a,
+button {
   display: inline-block;
   text-decoration: none;
-
-  font-weight: 500;
-  font-size: 14px;
-
-  padding: 12px 32px;
-  border-radius: 50px;
-
-  cursor: pointer;
-  transition: all 0.3s ease;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  min-width: 180px;
-  text-align: center;
-
-  &:hover {
-    background: #ed1c24;
-    color: white;
-    box-shadow: 0 5px 15px rgba(237, 28, 36, 0.2);
-    transform: translateY(-2px);
-  }
-
-  @media (max-width: 768px) {
-    width: 100%;
-    min-width: unset;
-  }
-}
-
-.primary-btn {
-  // Primary usually implies filled
-  background: #ed1c24;
-  color: white;
-
-  &:hover {
-    background: darken(#ed1c24, 5%);
-    box-shadow: 0 5px 15px rgba(237, 28, 36, 0.4);
-  }
-}
-
-.outline-btn {
-  // Default minimalist-btn is essentially an outline button
-  // But in the hero section (dark bg), red text might be hard to read if not careful?
-  // Actually home hero is dark.
-  // minimal-btn has color: #ed1c24. Red on Dark.
-
-  // Let's stick to the requested "minimalist-btn" style as base.
-  // But for the 'outline' variant on the dark hero, maybe they want the WHITE outline?
-  // The previous implementation was white outline.
-
-  // If I use exact minimal-btn:
-  // border: 1px solid #ed1c24;
-  // color: #ed1c24;
-
-  // On dark hero image? Red text on dark image is okay but maybe not optimal.
-  // But the user asked for it.
-
-  // However, I will preserve the "variant" logic.
-  // If variant='primary', I will make it filled red (like the hover state of minimal).
-  // If variant='outline', I will make it the default minimal style (red outline) OR white outline?
-
-  // Let's try to interpret "styling of minimalist-btn" as:
-  // Font, Padding, Border Radius, Transition, Text Transform.
-
-  // AND the specific colors:
-  // Primary: Filled Red (like hover)
-  // Outline: Red Outline (like default) OR White Outline (if context demands)
-
-  // Given the previous design had White Outline for secondary...
-  // But the user specifically pointed to `minimalist-btn`.
-  // I will use the Red Outline for the `.outline-btn` class to match `minimal-btn` exactly.
-  // And I will use the Filled Red for `.primary-btn`.
-}
-
-// Actual Implementation plan:
-// Base styles = minimal-btn properties (font, padding, radius, transition)
-// .primary-btn = Filled Red
-// .outline-btn = Red Outline (Default minimal-btn) OR White Outline (Previous)?
-// The user likely wants consistency with the "Read More" button in the intro card.
-// That buttons is `.minimal-btn`.
-// It is Red Outline, Red Text.
-// On Hover: Red Bg, White Text.
-
-// So I will make:
-// Primary: The "Hover" state of minimal-btn (Filled Red)
-// Outline: The "Default" state of minimal-btn (Red Outline)
-
-// Refined Styles:
-// Low contrast with red background, switching to white theme
-a {
   background: transparent;
   border: 1px solid #ffffff;
   color: #ffffff;
@@ -111,6 +24,10 @@ a {
   text-transform: uppercase;
   min-width: 180px;
   text-align: center;
+
+  outline: none;
+  line-height: normal;
+  -webkit-font-smoothing: antialiased;
 
   &:hover {
     background: #ffffff;
@@ -147,6 +64,20 @@ a {
     background: #ffffff;
     color: #ed1c24;
     box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+  }
+}
+
+.minimalist-btn {
+  background: transparent;
+  border: 1px solid #ed1c24;
+  color: #ed1c24;
+  min-width: unset;
+
+  &:hover {
+    background: #ed1c24;
+    color: white;
+    box-shadow: 0 5px 15px rgba(237, 28, 36, 0.2);
     transform: translateY(-2px);
   }
 }

@@ -3,19 +3,6 @@
 @use 'buttons' as button;
 
 // ============================================
-// MIXINS & VARIABLES
-// ============================================
-$breakpoint-mobile: 768px;
-$breakpoint-tablet: 1024px;
-$breakpoint-desktop: 1440px;
-
-@mixin respond-to($breakpoint) {
-  @media (max-width: $breakpoint) {
-    @content;
-  }
-}
-
-// ============================================
 // GLOBAL STYLES
 // ============================================
 :host {
@@ -27,23 +14,6 @@ $breakpoint-desktop: 1440px;
   width: 100%;
   color: #fff;
   background: #090000;
-
-  &::-webkit-scrollbar {
-    width: 6px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: #050505;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: #333;
-    border-radius: 10px;
-
-    &:hover {
-      background-color: #555;
-    }
-  }
 }
 
 main {
@@ -94,24 +64,29 @@ main-footer {
   max-width: 80vw;
   padding: 0 4rem;
 
+  .title {
+    font-size: 5rem;
+
+    background: linear-gradient(180deg, #dbdbdb 32.76%, #a9a9a9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .subtitle {
+    font-weight: 600;
+
+    background: linear-gradient(180deg, #dbdbdb 32.76%, #a9a9a9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
   .hero-actions {
     margin-top: 3rem;
     display: flex;
     justify-content: center;
     gap: 1.5rem;
-
-    @include respond-to($breakpoint-mobile) {
-      flex-direction: column;
-      gap: 1rem;
-      padding: 0 2rem;
-    }
-
-    // Styles moved to cta-button component
-    cta-button {
-      @include respond-to($breakpoint-mobile) {
-        width: 100%;
-      }
-    }
   }
 }
 
@@ -121,7 +96,6 @@ main-footer {
 .introduction-section {
   position: relative;
   width: 100%;
-  background: #000; /* black remainder */
 
   display: flex;
   justify-content: center;
@@ -146,10 +120,15 @@ main-footer {
   z-index: 0;
 }
 
-/* ensure content stays above background */
 .introduction-section > * {
   position: relative;
   z-index: 1;
+}
+
+.intro-wrapper {
+  position: relative;
+  width: 75vw;
+  max-width: 1440px;
 }
 
 .decor-wrapper {
@@ -180,32 +159,21 @@ main-footer {
   pointer-events: none;
 }
 
-.who_we_are-container {
-  position: relative;
-  z-index: 1;
-
-  padding: 1.5rem;
-  height: auto;
-}
-
 .introduction-container-box {
-  // max-width moved to wrapper or handled by fit-content
   width: 100%;
+  background: rgba(0, 0, 0, 0.4);
   border: 1px solid rgba(237, 28, 36, 0.5);
   border-radius: 16px;
+  backdrop-filter: blur(10px);
   position: relative;
   z-index: 2;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(10px);
-}
 
-.intro-wrapper {
-  position: relative;
-  width: 75vw;
-  max-width: 1440px;
+  .content-wrapper {
+    position: relative;
+    z-index: 1;
 
-  @include respond-to($breakpoint-tablet) {
-    width: 90vw;
+    padding: 1.5rem;
+    height: auto;
   }
 }
 
@@ -217,12 +185,6 @@ main-footer {
   pointer-events: none;
   width: 400px;
   height: auto;
-
-  @include respond-to($breakpoint-mobile) {
-    width: 200px;
-    bottom: -40px;
-    left: -40px;
-  }
 }
 
 .intro-decor-top-right {
@@ -233,12 +195,6 @@ main-footer {
   pointer-events: none;
   width: 300px;
   height: auto;
-
-  @include respond-to($breakpoint-mobile) {
-    width: 150px;
-    top: -50px;
-    right: -40px;
-  }
 }
 
 // Bento Layout
@@ -248,17 +204,6 @@ main-footer {
   grid-template-rows: auto 1fr;
   gap: 1.5rem;
   width: 100%;
-
-  @include respond-to($breakpoint-tablet) {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-  }
-
-  @include respond-to($breakpoint-mobile) {
-    grid-template-columns: 1fr;
-    display: flex;
-    flex-direction: column;
-  }
 }
 
 .bento-card {
@@ -299,12 +244,6 @@ main-footer {
     rgba(237, 28, 36, 0.1) 0%,
     rgba(255, 255, 255, 0.01) 70%
   );
-
-  @include respond-to($breakpoint-tablet) {
-    grid-column: 1 / 3;
-    grid-row: 1 / 2;
-    padding: 3rem 0;
-  }
 }
 
 .intro-card {
@@ -315,71 +254,6 @@ main-footer {
     margin-bottom: 1rem;
     font-weight: 700;
   }
-
-  @include respond-to($breakpoint-tablet) {
-    grid-column: 1 / 3;
-    grid-row: 2 / 3;
-  }
-}
-
-.vision-card {
-  grid-column: 2 / 3;
-  grid-row: 2 / 3;
-
-  @include respond-to($breakpoint-tablet) {
-    grid-column: 1 / 2;
-    grid-row: 3 / 4;
-  }
-}
-
-.action-card {
-  grid-column: 2 / 4;
-  grid-row: 2 / 3;
-
-  justify-content: space-between;
-  gap: 1.5rem;
-
-  @include respond-to($breakpoint-tablet) {
-    grid-column: 2 / 3;
-    grid-row: 3 / 4;
-  }
-}
-
-@keyframes spin {
-  from {
-    transform: rotateY(0deg);
-  }
-  to {
-    transform: rotateY(360deg);
-  }
-}
-
-.logo-3d-wrapper {
-  width: 100%;
-  max-width: 18rem;
-  aspect-ratio: 1;
-  position: relative;
-  transform-style: preserve-3d;
-  will-change: transform;
-  animation: spin 12s linear infinite;
-  cursor: pointer;
-
-  transition: transform 0.5s ease;
-
-  &:hover {
-    animation-play-state: paused;
-  }
-}
-
-.logo-layer {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translateZ(var(--z));
-  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
 }
 
 .leading-relaxed {
@@ -397,32 +271,6 @@ main-footer {
   b {
     font-weight: 600;
     color: #fff;
-  }
-}
-
-.minimal-btn {
-  background: transparent;
-
-  border: 1px solid #ed1c24;
-  color: #ed1c24;
-
-  font-family: 'Poppins', sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-
-  padding: 12px 32px;
-  border-radius: 50px;
-
-  cursor: pointer;
-  transition: all 0.3s ease;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-
-  &:hover {
-    background: #ed1c24;
-    color: white;
-    box-shadow: 0 5px 15px rgba(237, 28, 36, 0.2);
-    transform: translateY(-2px);
   }
 }
 
@@ -488,14 +336,6 @@ main-footer {
   @media (max-height: 900px) {
     gap: 3vh;
   }
-
-  @include respond-to($breakpoint-tablet) {
-    width: 85%;
-  }
-
-  @include respond-to($breakpoint-mobile) {
-    width: 90%;
-  }
 }
 
 .news-header {
@@ -524,11 +364,6 @@ main-footer {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr; // left is slightly larger
   gap: 4vw;
-
-  @include respond-to($breakpoint-tablet) {
-    grid-template-columns: 1fr; // stack on tablet/mobile
-    gap: 4vh;
-  }
 }
 
 // --- Featured News (Left) ---
@@ -588,10 +423,6 @@ main-footer {
     line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
-
-    @include respond-to($breakpoint-desktop) {
-      font-size: 2.5rem; // adjust for laptop/desktop limits
-    }
   }
 
   .news-desc {
@@ -647,11 +478,6 @@ main-footer {
   @media (max-height: 900px) {
     padding: 1.5vh; // reduce padding on laptops
   }
-
-  @include respond-to($breakpoint-mobile) {
-    flex-direction: column;
-    gap: 2vh;
-  }
 }
 
 .news-item-image {
@@ -671,11 +497,6 @@ main-footer {
     width: 6rem;
     height: 6rem;
   }
-
-  @include respond-to($breakpoint-mobile) {
-    width: 100%;
-    height: 180px;
-  }
 }
 
 .news-item-content {
@@ -693,10 +514,6 @@ main-footer {
     line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
-
-    @include respond-to($breakpoint-desktop) {
-      font-size: 1.1rem;
-    }
   }
 
   .news-item-desc {
@@ -717,14 +534,14 @@ main-footer {
 .testimonial-section {
   position: relative;
   width: 100%;
-  padding: 30vh 0 0 0;
+  padding: 20vh 0 0 0;
   box-sizing: border-box;
 
   background-size: cover !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
   transition: background-image 0.5s ease-in-out;
-  overflow: hidden; // prevent horizontal scrollbar from right-positioned cards
+  overflow: hidden;
 }
 
 .testimonial-container {
@@ -734,11 +551,13 @@ main-footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
 
-.testimonial-header {
-  margin-bottom: 2rem;
-  z-index: 10;
+  .testimonialTitle {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(32px, 4vw, 56px);
+    text-align: center;
+    width: 100%;
+  }
 }
 
 .carousel-section {
@@ -749,10 +568,6 @@ main-footer {
   align-items: center;
 
   height: 60vh;
-
-  @include respond-to($breakpoint-mobile) {
-    height: 550px;
-  }
 }
 
 .carousel-container {
@@ -764,21 +579,6 @@ main-footer {
   align-items: center;
   perspective: 1000px;
 }
-
-.testimonialTitle {
-  font-size: clamp(32px, 4vw, 56px);
-  line-height: 1.1;
-  font-family: 'Bebas Neue', sans-serif;
-  color: color.$secondary100;
-  position: absolute;
-  top: 0;
-  text-align: center;
-  width: 100%;
-  z-index: 0;
-  pointer-events: none;
-}
-
-// --- CARD STYLES ---
 
 .card {
   position: absolute;
@@ -800,10 +600,6 @@ main-footer {
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
   transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   border: 1px solid rgba(255, 255, 255, 0.5);
-
-  @include respond-to($breakpoint-mobile) {
-    padding: 3rem 1.5rem 1.5rem 1.5rem;
-  }
 }
 
 .card-logo {
@@ -882,12 +678,6 @@ main-footer {
   opacity: 0.7;
   filter: blur(1px);
   cursor: pointer;
-
-  @include respond-to($breakpoint-mobile) {
-    transform: translateX(0) scale(0.9); // stack behind active on mobile
-    opacity: 0;
-    pointer-events: none;
-  }
 }
 
 // Right Card (Next)
@@ -897,12 +687,6 @@ main-footer {
   opacity: 0.7;
   filter: blur(1px);
   cursor: pointer;
-
-  @include respond-to($breakpoint-mobile) {
-    transform: translateX(0) scale(0.9); // stack behind active on mobile
-    opacity: 0;
-    pointer-events: none;
-  }
 }
 
 .hidden {
@@ -941,18 +725,10 @@ main-footer {
 
   &.prev-btn {
     left: 5%;
-
-    @include respond-to($breakpoint-mobile) {
-      left: 10px;
-    }
   }
 
   &.next-btn {
     right: 5%;
-
-    @include respond-to($breakpoint-mobile) {
-      right: 10px;
-    }
   }
 }
 
@@ -992,7 +768,7 @@ main-footer {
 .social-section {
   position: relative;
   width: 100%;
-  padding: 10vh 0;
+  padding: 20vh 0;
   padding-bottom: 10vh;
 }
 
@@ -1013,10 +789,6 @@ main-footer {
   width: 90vw;
   margin: 0 auto;
   z-index: 2;
-
-  @include respond-to($breakpoint-tablet) {
-    width: 90%;
-  }
 }
 
 .social-header {
@@ -1035,12 +807,6 @@ main-footer {
   width: 100%;
   justify-content: center; // center the whole grid if screen is huge
   // height: auto;
-
-  @include respond-to($breakpoint-tablet) {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    gap: 4vh;
-  }
 }
 
 // Standard Card Sizing for All Cells
@@ -1144,10 +910,6 @@ main-footer {
       background: white;
     }
 
-    .list-wrapper {
-      height: 100%;
-    }
-
     .facebook-wrapper iframe {
       width: 100%;
       max-width: 750px;
@@ -1225,34 +987,6 @@ main-footer {
     background-repeat: no-repeat;
   }
 
-  .li-logo-wrapper {
-    width: 80px;
-    height: 80px;
-    background: white;
-    border-radius: 50%;
-    padding: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    .li-company-logo {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-  }
-
-  .li-text-info {
-    .li-name {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      font-size: 18px;
-      color: #333;
-      margin: 0 0 5px 0;
-    }
-  }
-
   .li-header-follow-btn {
     @include header-social-btn(#0a66c2, #004182);
   }
@@ -1281,23 +1015,6 @@ main-footer {
 }
 
 // ============================================
-// SHARED COMPONENTS
-// ============================================
-
-.ldisplay {
-  color: white;
-  margin: 0;
-  padding: 0;
-  white-space: nowrap;
-  z-index: 2;
-  position: relative;
-
-  @include respond-to($breakpoint-mobile) {
-    font-size: clamp(24px, 5vw, 48px);
-  }
-}
-
-// ============================================
 // SCROLL ANIMATIONS
 // ============================================
 
@@ -1315,7 +1032,6 @@ main-footer {
   }
 }
 
-// Optional: specific delays for staggered effects if needed
 .delay-100 {
   transition-delay: 0.1s;
 }

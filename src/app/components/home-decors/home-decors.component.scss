@@ -1,0 +1,9 @@
+:host {
+  display: block; // Ensure the component host behaves as a block for positioning
+}
+
+svg {
+  width: 100%;
+  height: auto;
+  display: block; // prevent whitespace
+}

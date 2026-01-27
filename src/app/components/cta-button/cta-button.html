@@ -1,3 +1,9 @@
-<a [routerLink]="link" [ngClass]="variant + '-btn'">
-  <ng-content></ng-content>
+<a *ngIf="link; else actionBtn" [routerLink]="link" [ngClass]="variant + '-btn'">
+  {{ text }}
 </a>
+
+<ng-template #actionBtn>
+  <button [ngClass]="variant + '-btn'" type="button">
+    {{ text }}
+  </button>
+</ng-template>

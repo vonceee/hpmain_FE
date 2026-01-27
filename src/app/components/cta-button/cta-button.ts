@@ -10,6 +10,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './cta-button.scss',
 })
 export class CtaButton {
-  @Input() link: string = '';
-  @Input() variant: 'primary' | 'outline' = 'primary';
+  @Input() link?: string;
+  @Input() text: string = '';
+  @Input() variant: 'primary' | 'outline' | 'minimalist' = 'primary';
 }
