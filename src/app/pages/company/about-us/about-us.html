@@ -49,7 +49,5 @@
       <mission-vision-section></mission-vision-section>
     }
   </section>
-  <button class="scroll-to-top" [class.visible]="showScrollTop" (click)="scrollToTop()">
-    <i class="bi bi-arrow-up"></i>
-  </button>
+  <back-to-top [scrollTarget]="hostElement"></back-to-top>
 </main>

@@ -7,6 +7,7 @@ import { HeroSection } from 'src/app/components/hero-section/hero-section';
 import { DecorGlowComponent } from 'src/app/components/decor-glow/decor-glow';
 import { TitleBadge } from 'src/app/components/title-badge/title-badge';
 import { SectionHeader } from 'src/app/components/section-header/section-header';
+import { BackToTopComponent } from 'src/app/components/back-to-top/back-to-top';
 
 @Component({
   selector: 'app-news',
@@ -18,6 +19,7 @@ import { SectionHeader } from 'src/app/components/section-header/section-header'
     CommonModule,
     TitleBadge,
     SectionHeader,
+    BackToTopComponent,
   ],
   templateUrl: './news.html',
   styleUrl: './news.scss',
