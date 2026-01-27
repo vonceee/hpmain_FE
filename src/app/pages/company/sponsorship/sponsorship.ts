@@ -11,11 +11,12 @@ import { MainHeader } from 'src/app/components/main-header/main-header';
 import { MainFooter } from 'src/app/components/main-footer/main-footer';
 import { HeroSection } from 'src/app/components/hero-section/hero-section';
 import { StatsGridComponent } from 'src/app/components/stats-grid/stats-grid.component';
+import { BackToTopComponent } from 'src/app/components/back-to-top/back-to-top';
 
 @Component({
   selector: 'app-sponsorship',
   standalone: true,
-  imports: [MainHeader, MainFooter, HeroSection, StatsGridComponent],
+  imports: [MainHeader, MainFooter, HeroSection, StatsGridComponent, BackToTopComponent],
   templateUrl: './sponsorship.html',
   styleUrl: './sponsorship.scss',
 })

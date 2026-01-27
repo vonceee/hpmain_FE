@@ -10,6 +10,7 @@ import {
   OnDestroy,
   Inject,
   Renderer2,
+  ViewChild,
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { MainHeader } from 'src/app/components/main-header/main-header';
@@ -23,6 +24,7 @@ import { PresidentSection } from './components/president-section/president-secti
 import { ProgramsSection } from './components/programs-section/programs-section';
 import { PartnershipsSection } from './components/partnerships-section/partnerships-section';
 import { MissionVisionSection } from './components/mission-vision-section/mission-vision-section';
+import { BackToTopComponent } from 'src/app/components/back-to-top/back-to-top';
 
 interface NavTab {
   id: number;
@@ -45,6 +47,7 @@ interface NavTab {
     ProgramsSection,
     PartnershipsSection,
     MissionVisionSection,
+    BackToTopComponent,
   ],
   templateUrl: './about-us.html',
   styleUrls: ['./about-us.scss'],
@@ -52,11 +55,17 @@ interface NavTab {
 export class aboutUs implements AfterViewInit, OnInit, OnDestroy {
   tab = signal<number>(0);
 
+  @ViewChild(BackToTopComponent) backToTopComp!: BackToTopComponent;
+
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private renderer: Renderer2,
     private el: ElementRef,
   ) {}
+
+  get hostElement(): HTMLElement {
+    return this.el.nativeElement;
+  }
 
   ngOnInit() {
     // Moved scroll styles to :host in SCSS to prevent layout shifts and double scrollbars
@@ -80,29 +89,14 @@ export class aboutUs implements AfterViewInit, OnInit, OnDestroy {
     { id: 5, label: 'Mission & Vision', icon: 'bi bi-rocket-takeoff' },
   ];
 
-  /* -- Scroll to Top Logic -- */
-  showScrollTop = false;
-
-  @HostListener('scroll', ['$event'])
-  onScroll(event: Event) {
-    const target = event.target as HTMLElement;
-    this.showScrollTop = target.scrollTop > 300;
-  }
-
   scrollToTop() {
-    this.el.nativeElement.scrollTo({ top: 0, behavior: 'smooth' });
+    this.backToTopComp?.scrollToTop();
   }
 
   /* -- NavTabs Functions -- */
   ngAfterViewInit() {
     // timeout ensures the DOM is fully rendered before measuring
     setTimeout(() => this.updateIndicator(this.tab()), 50);
-  }
-
-  // update the measurement whenever the window resizes
-  @HostListener('window:resize')
-  onResize() {
-    this.updateIndicator(this.tab());
   }
 
   // setTab method to trigger the update

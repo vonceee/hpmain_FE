@@ -41,11 +41,7 @@ main-footer {
 // HERO SECTION
 // ============================================
 .hero-section {
-  position: relative;
   width: 100%;
-  padding: 0;
-  margin: 0 auto;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -104,7 +100,6 @@ main-footer {
   padding-top: 4vh;
 
   overflow: hidden;
-  scroll-snap-align: none;
 }
 
 .introduction-section::before {
@@ -294,7 +289,7 @@ main-footer {
 
   display: flex;
   padding: 0;
-  padding-top: 4vh;
+  padding-top: 5vh;
 
   // decor styles
   .news-decor-left,
@@ -1030,16 +1025,4 @@ main-footer {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-.delay-100 {
-  transition-delay: 0.1s;
-}
-
-.delay-200 {
-  transition-delay: 0.2s;
-}
-
-.delay-300 {
-  transition-delay: 0.3s;
 }
