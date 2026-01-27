@@ -53,6 +53,9 @@
             </div>
           </div>
         </div>
+        <div class="hover-overlay">
+          <button class="read-more-btn">READ MORE</button>
+        </div>
       </div>
 
       <div class="featured-sidebar">
@@ -95,7 +98,11 @@
     <div class="news-grid">
       @for (item of educationalNews; track $index) {
         <div class="news-card">
-          <div class="card-image" [style.background-image]="'url(' + item.image + ')'"></div>
+          <div class="card-image" [style.background-image]="'url(' + item.image + ')'">
+            <div class="hover-overlay">
+              <button class="read-more-btn">READ MORE</button>
+            </div>
+          </div>
           <div class="card-content">
             <div class="date">
               <span class="category"><i class="bi bi-tag"></i> Educational</span>
@@ -121,7 +128,11 @@
     <div class="news-grid">
       @for (item of industrialNews; track $index) {
         <div class="news-card">
-          <div class="card-image" [style.background-image]="'url(' + item.image + ')'"></div>
+          <div class="card-image" [style.background-image]="'url(' + item.image + ')'">
+            <div class="hover-overlay">
+              <button class="read-more-btn">READ MORE</button>
+            </div>
+          </div>
           <div class="card-content">
             <div class="date">
               <span class="category"><i class="bi bi-tag"></i> Industrial</span>
