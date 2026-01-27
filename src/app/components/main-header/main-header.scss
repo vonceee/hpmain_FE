@@ -54,14 +54,6 @@ header .header-image {
   padding: 0 0.4rem 0 1rem;
   margin-left: auto;
 
-  transition: all 0.2s ease;
-
-  // slight expansion on focus
-  &:focus-within {
-    background-color: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.3);
-    max-width: clamp(14rem, 25vw, 20rem);
-  }
 
   input {
     flex-grow: 1;
