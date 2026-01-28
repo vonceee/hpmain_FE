@@ -4,29 +4,9 @@
 :host {
   display: block;
   font-family: 'Poppins', sans-serif;
-  height: 100vh;
-  overflow-x: hidden;
-  overflow-y: auto;
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
-
-  // Minimalist Scrollbar
-  &::-webkit-scrollbar {
-    width: 6px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: #050505;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: #333;
-    border-radius: 10px;
-
-    &:hover {
-      background-color: #555;
-    }
-  }
+  // height: 100vh; <-- Removed to prevent scroll trap
+  // overflow-x: hidden;
+  // overflow-y: auto;
 }
 
 .section-wrapper {

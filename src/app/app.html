@@ -1,1 +1,5 @@
-<router-outlet /> <side-buttons></side-buttons>
+<div #mainContent class="main-content">
+  <router-outlet></router-outlet>
+</div>
+<side-buttons></side-buttons>
+<back-to-top [scrollTarget]="mainContent"></back-to-top>

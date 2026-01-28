@@ -24,7 +24,6 @@ import {
   faYoutube,
   faLinkedinIn,
 } from '@fortawesome/free-brands-svg-icons';
-import { BackToTopComponent } from 'src/app/components/back-to-top/back-to-top';
 
 interface Testimonial {
   logo: string;
@@ -48,7 +47,6 @@ interface Testimonial {
     StatsGridComponent,
     Logo3dComponent,
     HomeDecorsComponent,
-    BackToTopComponent,
   ],
   templateUrl: './home.html',
   styleUrl: './home.scss',
