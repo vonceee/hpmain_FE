@@ -214,7 +214,7 @@
             <p>
               <strong>{{ item.school }}</strong>
             </p>
-            <p class="message-preview"><span class="quote-start">“</span>{{ item.message }}</p>
+            <p class="message-preview"><span class="quote-start">“</span>{{ item.message }}"</p>
           </div>
         }
 
@@ -261,7 +261,7 @@
         title="Outreach Programs"
         subtitle="Our Corporate Social Responsibility aims at contributing to a happy, peaceful, productive and prosperous Filipino society."
       ></title-badge>
-      <container-box>
+      <container-box padding="1.5rem 3rem">
         <section class="outreach">
           <div class="outreach-grid">
             <div class="outreach-content">
@@ -293,7 +293,7 @@
                   <img [src]="item.src" [alt]="item.caption" class="slide-in-right" />
 
                   <div class="gallery-caption fade-in delay-2">
-                    {{ item.caption }}
+                    <div class="caption-text">{{ item.caption }}</div>
                   </div>
                 }
               </div>

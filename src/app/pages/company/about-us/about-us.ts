@@ -89,10 +89,6 @@ export class aboutUs implements AfterViewInit, OnInit, OnDestroy {
     { id: 5, label: 'Mission & Vision', icon: 'bi bi-rocket-takeoff' },
   ];
 
-  scrollToTop() {
-    this.backToTopComp?.scrollToTop();
-  }
-
   /* -- NavTabs Functions -- */
   ngAfterViewInit() {
     // timeout ensures the DOM is fully rendered before measuring
@@ -103,7 +99,6 @@ export class aboutUs implements AfterViewInit, OnInit, OnDestroy {
   setTab(index: number) {
     this.tab.set(index);
     this.updateIndicator(index);
-    this.scrollToTop();
   }
 
   // find the active button and move the pill

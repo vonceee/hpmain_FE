@@ -152,8 +152,8 @@ hero-section {
 
 .testimonial-card {
   position: absolute;
-  width: 350px;
-  height: 380px;
+  width: 550px;
+  height: 270px;
 
   background-color: #222;
   border: 1px solid #444;
@@ -504,7 +504,9 @@ hero-section {
   padding: 4rem 1.5rem;
   color: #fff;
 }
-
+.padding{
+  padding: 2rem;
+}
 .outreach {
   position: relative;
   color: #ccc;
@@ -596,16 +598,21 @@ hero-section {
 .gallery-caption {
   box-sizing: border-box;
   position: absolute;
-  bottom: 0;
-  left: 0;
+
+  height: 150%;
   width: 100%;
   padding: 15px;
-  background: linear-gradient(to top, rgba(183, 28, 28, 0.9), transparent);
+  background: linear-gradient(to top, rgba(204, 41, 41, 0.7), transparent);
   color: #fff;
   font-weight: bold;
   font-size: 0.9rem;
   text-shadow: 1px 1px 2px #000;
   overflow-y: auto;
+  .caption-text{
+    position: absolute;
+    bottom: 70px;
+    right: 6px;
+  }
 }
 
 .gallery-dots {
