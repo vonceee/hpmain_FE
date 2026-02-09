@@ -1,0 +1,45 @@
+<section class="section-wrapper testimonial-section" [style.background]="currentBackgroundStyle">
+  <div class="testimonial-container">
+    <div class="testimonialTitle header-lg">Colleges and Universities Testimonials</div>
+    <div class="carousel-section reveal-on-scroll">
+      <div class="carousel-container">
+        <div
+          class="card"
+          *ngFor="let item of cardData; let i = index"
+          [ngClass]="getCardClass(i)"
+          (click)="getCardClass(i) !== 'active' ? goToCard(i) : null"
+        >
+          <div class="card-logo">
+            <img [src]="item.logo" alt="Partner Logo" draggable="false" />
+          </div>
+
+          <div class="quote-icon">“</div>
+
+          <div class="card-text">
+            <div class="card-main-text">
+              {{ item.text }}
+            </div>
+          </div>
+
+          <div class="card-company">
+            <div class="card-main-company">
+              {{ item.company }}
+            </div>
+          </div>
+        </div>
+
+        <button class="nav-btn prev-btn" (click)="prev()">&#10094;</button>
+        <button class="nav-btn next-btn" (click)="next()">&#10095;</button>
+
+        <div class="indicators">
+          <div
+            class="dot"
+            *ngFor="let item of cardData; let i = index"
+            [class.active]="i === activeIndex"
+            (click)="goToCard(i)"
+          ></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

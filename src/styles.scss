@@ -13,7 +13,6 @@ button,
 h1,
 p {
   font-family: var(--font-default);
-  color: white;
 }
 
 // Light Theme (Default)
@@ -43,7 +42,7 @@ body.dark-theme {
   --bg-body: #000000;
   --text-body: #ffffff;
 
-  --bg-header: rgba(0, 0, 0, 0.5);
+  --bg-header: rgba(0, 0, 0, 1);
   --border-header: rgba(255, 255, 255, 0.1);
   --bg-search: rgba(255, 255, 255, 0.1);
   --text-search: #ffffff;

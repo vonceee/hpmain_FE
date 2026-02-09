@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router'; // Added for routerLink
 import { MainHeader } from 'src/app/components/main-header/main-header';
 import { MainFooter } from 'src/app/components/main-footer/main-footer';
 import { HeroSection } from 'src/app/components/hero-section/hero-section';
@@ -8,9 +9,11 @@ import { DecorGlowComponent } from 'src/app/components/decor-glow/decor-glow';
 import { TitleBadge } from 'src/app/components/title-badge/title-badge';
 import { SectionHeader } from 'src/app/components/section-header/section-header';
 import { BackToTopComponent } from 'src/app/components/back-to-top/back-to-top';
+import { NewsService, NewsItem } from 'src/app/services/news.service';
 
 @Component({
   selector: 'app-news',
+  standalone: true,
   imports: [
     MainHeader,
     MainFooter,
@@ -20,17 +23,37 @@ import { BackToTopComponent } from 'src/app/components/back-to-top/back-to-top';
     TitleBadge,
     SectionHeader,
     BackToTopComponent,
+    RouterModule, // Needed for [routerLink]
   ],
   templateUrl: './news.html',
   styleUrl: './news.scss',
 })
-export class News {
+export class News implements OnInit {
   activePreviewUrl: string | null = null;
   selectedVideo: SafeResourceUrl | null = null;
   previewVideoSafeUrl: SafeResourceUrl | null = null;
   hoverTimeout: any;
 
-  constructor(private sanitizer: DomSanitizer) {}
+  featuredNews!: NewsItem;
+  educationalNews: NewsItem[] = [];
+  industrialNews: NewsItem[] = [];
+
+  constructor(
+    private sanitizer: DomSanitizer,
+    private newsService: NewsService,
+  ) {}
+
+  ngOnInit() {
+    this.newsService.getFeaturedNews().subscribe((data) => {
+      this.featuredNews = data;
+    });
+    this.newsService.getEducationalNews().subscribe((data) => {
+      this.educationalNews = data;
+    });
+    this.newsService.getIndustrialNews().subscribe((data) => {
+      this.industrialNews = data;
+    });
+  }
 
   playVideo(url: string) {
     const embedUrl = this.getEmbedUrl(url);
@@ -67,126 +90,6 @@ export class News {
     return match && match[2].length === 11 ? match[2] : '';
   }
 
-  featuredNews = {
-    title:
-      'Hytec Power Incorporated forges innovative partnership with Manual S. Enverga University foundation to drive academic growth.',
-    image: 'assets/images/news/b92d05722a0336f1cbb860895fa25279936224f7.png',
-    date: '15 Jan 2026',
-    category: 'EDUCATIONAL',
-    authorName: 'Noh Yunah',
-    authorImage: 'assets/images/news/152864596.jpg',
-    readTime: '5 minutes read',
-    timeAgo: '10 minutes ago',
-  };
-
-  educationalNews: NewsItem[] = [
-    {
-      title: 'Advanced Laboratories for College Engineering',
-      date: '17 August 2025',
-      image: '/assets/images/news/edu-1.png',
-      description:
-        'HPI provides state-of-the-art laboratory equipment to upgrade engineering programs.',
-    },
-    {
-      title: 'Revolutionizing Education with smart Classrooms',
-      date: '12 September 2025',
-      image: '/assets/images/news/edu-2.png',
-      description: 'HPI launches new smart classroom solutions to enhance learning experiences.',
-    },
-    {
-      title: 'Partnership with Top Universities',
-      date: '05 October 2025',
-      image: '/assets/images/news/edu-3.png',
-      description:
-        'Collaborating with leading universities to bridge the gap between industry and academe.',
-    },
-    {
-      title: 'New Training Modules for Instructors',
-      date: '20 November 2025',
-      image: '/assets/images/news/edu-4.png',
-      description: 'Empowering educators with the latest technology training and certifications.',
-    },
-    {
-      title: 'Advanced Laboratories for College Engineering',
-      date: '17 August 2025',
-      image: '/assets/images/news/edu-1.png',
-      description:
-        'HPI provides state-of-the-art laboratory equipment to upgrade engineering programs.',
-    },
-    {
-      title: 'Revolutionizing Education with smart Classrooms',
-      date: '12 September 2025',
-      image: '/assets/images/news/edu-2.png',
-      description: 'HPI launches new smart classroom solutions to enhance learning experiences.',
-    },
-    {
-      title: 'Partnership with Top Universities',
-      date: '05 October 2025',
-      image: '/assets/images/news/edu-3.png',
-      description:
-        'Collaborating with leading universities to bridge the gap between industry and academe.',
-    },
-    {
-      title: 'New Training Modules for Instructors',
-      date: '20 November 2025',
-      image: '/assets/images/news/edu-4.png',
-      description: 'Empowering educators with the latest technology training and certifications.',
-    },
-  ];
-
-  industrialNews: NewsItem[] = [
-    {
-      title: 'HPI Launches New Industrial Automation line',
-      date: '22 January 2026',
-      image: '/assets/images/news/ind-1.png',
-      description:
-        'Introducing the latest in industrial automation technology for manufacturing efficiently.',
-    },
-    {
-      title: 'Sustainable Energy Solutions for Factories',
-      date: '10 December 2025',
-      image: '/assets/images/news/ind-2.png',
-      description: 'Helping factories reduce carbon footprint with our new green energy systems.',
-    },
-    {
-      title: 'Robotics Integration in Logistics',
-      date: '05 January 2026',
-      image: '/assets/images/news/ind-3.png',
-      description: 'Streamlining logistics operations with advanced robotics and AI integration.',
-    },
-    {
-      title: 'IoT Solutions for Smart Manufacturing',
-      date: '28 November 2025',
-      image: '/assets/images/news/ind-4.png',
-      description: 'Connecting machines and data for smarter, data-driven manufacturing decisions.',
-    },
-    {
-      title: 'HPI Launches New Industrial Automation line',
-      date: '22 January 2026',
-      image: '/assets/images/news/ind-1.png',
-      description:
-        'Introducing the latest in industrial automation technology for manufacturing efficiently.',
-    },
-    {
-      title: 'Sustainable Energy Solutions for Factories',
-      date: '10 December 2025',
-      image: '/assets/images/news/ind-2.png',
-      description: 'Helping factories reduce carbon footprint with our new green energy systems.',
-    },
-    {
-      title: 'Robotics Integration in Logistics',
-      date: '05 January 2026',
-      image: '/assets/images/news/ind-3.png',
-      description: 'Streamlining logistics operations with advanced robotics and AI integration.',
-    },
-    {
-      title: 'IoT Solutions for Smart Manufacturing',
-      date: '28 November 2025',
-      image: '/assets/images/news/ind-4.png',
-      description: 'Connecting machines and data for smarter, data-driven manufacturing decisions.',
-    },
-  ];
-
   shorts = [
     {
       videoUrl: 'https://youtube.com/shorts/SMHBzqiR0V8?si=HbNkbMpbhOttj4xK',
@@ -213,11 +116,4 @@ export class News {
       duration: '< 1 min',
     },
   ];
-}
-
-interface NewsItem {
-  title: string;
-  date: string;
-  image: string;
-  description: string;
 }

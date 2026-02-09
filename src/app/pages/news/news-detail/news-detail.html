@@ -1,0 +1,52 @@
+<main-header></main-header>
+
+<div class="news-detail-container">
+  @if (newsItem) {
+    <article class="content-wrapper">
+      @if (newsItem.image) {
+        <img [src]="newsItem.image" [alt]="newsItem.title" class="featured-image" />
+      }
+
+      <div class="article-header">
+        <div class="meta-info">
+          @if (newsItem.category) {
+            <span class="category">{{ newsItem.category }}</span>
+            <span class="separator">|</span>
+          }
+          @if (newsItem.readTime) {
+            <span class="read-time">{{ newsItem.readTime }}</span>
+            <span class="separator">|</span>
+          }
+          <span class="date">{{ newsItem.date }}</span>
+        </div>
+
+        <h1>{{ newsItem.title }}</h1>
+
+        @if (newsItem.authorName) {
+          <div class="author-date">
+            @if (newsItem.authorImage) {
+              <img [src]="newsItem.authorImage" alt="Author" />
+            }
+            <span>By {{ newsItem.authorName }}</span>
+          </div>
+        }
+      </div>
+
+      <div class="article-content" [innerHTML]="newsItem.content"></div>
+
+      <div class="back-btn-container">
+        <a routerLink="/news-and-updates" class="back-btn">
+          <i class="bi bi-arrow-left"></i> Back to News
+        </a>
+      </div>
+    </article>
+  } @else {
+    <div class="error-wrapper content-wrapper" style="padding: 40px; text-align: center">
+      <h2>Article Not Found</h2>
+      <p>The news article you are looking for does not exist.</p>
+      <a routerLink="/news-and-updates" class="btn btn-primary">Return to News</a>
+    </div>
+  }
+</div>
+
+<main-footer></main-footer>

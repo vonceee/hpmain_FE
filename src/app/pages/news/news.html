@@ -54,7 +54,13 @@
           </div>
         </div>
         <div class="hover-overlay">
-          <button class="read-more-btn">READ MORE</button>
+          <button
+            class="read-more-btn"
+            [routerLink]="['/news-and-updates', featuredNews.slug]"
+            attr.aria-label="Read more about {{ featuredNews.title }}"
+          >
+            READ MORE
+          </button>
         </div>
       </div>
 
@@ -100,7 +106,13 @@
         <div class="news-card">
           <div class="card-image" [style.background-image]="'url(' + item.image + ')'">
             <div class="hover-overlay">
-              <button class="read-more-btn">READ MORE</button>
+              <button
+                class="read-more-btn"
+                [routerLink]="['/news-and-updates', item.slug]"
+                attr.aria-label="Read more about {{ item.title }}"
+              >
+                READ MORE
+              </button>
             </div>
           </div>
           <div class="card-content">
@@ -130,7 +142,13 @@
         <div class="news-card">
           <div class="card-image" [style.background-image]="'url(' + item.image + ')'">
             <div class="hover-overlay">
-              <button class="read-more-btn">READ MORE</button>
+              <button
+                class="read-more-btn"
+                [routerLink]="['/news-and-updates', item.slug]"
+                attr.aria-label="Read more about {{ item.title }}"
+              >
+                READ MORE
+              </button>
             </div>
           </div>
           <div class="card-content">

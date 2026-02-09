@@ -52,6 +52,8 @@
   justify-content: flex-start;
 
   overflow: hidden;
+
+  transition: all 1s ease;
 }
 
 /* Texture Overlay */
@@ -110,4 +112,13 @@
 
 .side-btn-inner.is-active .btn-text {
   opacity: 1;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-50px);
+  }
+  to {
+    transform: translateX(0px);
+  }
 }

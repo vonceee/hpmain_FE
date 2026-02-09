@@ -7,10 +7,10 @@
   width: 3.5rem;
   height: 3.5rem;
 
-  background: color.$primary400;
+  background: none;
   border: none;
   border-radius: 50%;
-  color: white;
+  color: color.$primary400;
   cursor: pointer;
 
   display: flex;
@@ -19,8 +19,6 @@
 
   font-size: 1.5rem;
 
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-
   z-index: 9999;
   opacity: 0;
   visibility: hidden;
@@ -28,11 +26,11 @@
   transform: translateY(20px) scale(0.8);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
+  animation: upDown 1s ease-in-out infinite;
+
   &:hover {
-    background: color.$primary400;
     filter: brightness(0.9);
     transform: translateY(0) scale(1.1);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
   }
 
   &.visible {
@@ -53,5 +51,14 @@
     width: 3rem;
     height: 3rem;
     font-size: 1.25rem;
+  }
+}
+@keyframes upDown {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
   }
 }
