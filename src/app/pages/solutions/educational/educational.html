@@ -1,128 +1,145 @@
 <main-header></main-header>
 
-<section class="hero">
-    <div class="hero-text">
-        <div class="heading">
-            <h1>INDUSTRIAL SOLUTIONS</h1>
-        </div>
+<hero-section heroTitle="Educational Solution" heroSubtitle="Providing skills based industrial solutions."
+    heroImage="/assets/images/aboutus/programs/0393a22d4146e76a99015e10e110102e0ae8cfcd.png"
+    [heroDatePill]="''"></hero-section>
 
-        <div class="sub-heading">
-            <h2>Providing skills-based industrial solutions</h2>
-        </div>
-    </div>
+<decor-glow></decor-glow>
 
-    <div class="wave-container">
-        <svg viewBox="0 0 1280 320" preserveAspectRatio="none">
-            <path
-                d="M0,160L80,176C160,192,320,224,480,213.3C640,203,800,149,960,138.7C1120,128,1280,160,1360,176L1440,192L1440,320L0,320Z"
-                fill="#8b0000" />
+<div class="container">
+    <educational-first-section title="..." badgeTitle="..." badgeSubtitle="...">
+    </educational-first-section>
+</div>
 
-            <path
-                d="M0,160L80,176C160,192,320,224,480,213.3C640,203,800,149,960,138.7C1120,128,1280,160,1360,176L1440,192"
-                fill="none" stroke="#ce1c1c" stroke-width="6" />
-        </svg>
-    </div>
-</section>
+<div class="container">
 
-<section class="expertise">
-    <div class="container">
-        <h1 class="section-heading">OUR EXPERTISE</h1>
+    <section class="video-carousel-section">
+        <title-badge 
+        title="Educational Videos"
+        [align]="'center'">
+        </title-badge>
+        <br><br><br>
 
-        <div class="expertise-grid">
-            <div class="expertise-card" *ngFor="let item of [1,2,3]">
-                <div class="card-image">
-                    <img src="/assets/images/expertise/training.jpg" alt="Training">
+        <div class="video-container">
+            <button class="arrow-btn prev" (click)="prevVideos()" aria-label="Previous">❮</button>
+
+            <div class="video-grid">
+                @for (video of visibleVideos; track video.id) {
+                <div class="video-card">
+                    <div class="thumbnail-wrapper">
+                        <img [src]="video.thumbnail" [alt]="video.title">
+
+                        <div class="play-overlay">
+                            <div class="youtube-play-icon"></div>
+                        </div>
+
+                        <div class="watch-on-youtube">
+                            <span class="text">WATCH ON</span>
+                            <span class="yt-logo">YouTube</span>
+                        </div>
+                    </div>
+                    <p class="video-title">{{ video.title }}</p>
                 </div>
-
-                <h3 class="card-title">TRAINING</h3>
-                <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.
-                </p>
-
-                <a href="#" class="card-btn">LEARN MORE</a>
+                }
             </div>
+
+            <button class="arrow-btn next" (click)="nextVideos()" aria-label="Next">❯</button>
+        </div>
+    </section>
+
+</div>
+
+<br><br><br><br>
+<section class="webinar-section">
+    <title-badge 
+    title="Our Trainings"
+    [align]="'center'">
+    </title-badge>
+    <br><br><br>
+
+    <div class="carousel-container">
+        <button class="nav-btn prev" (click)="prev()" aria-label="Previous slide">❮</button>
+        <button class="nav-btn next" (click)="next()" aria-label="Next slide">❯</button>
+
+        @for (slide of webinars; track $index) {
+        <div class="webinar-slide" [class.active]="currentSlide() === $index">
+            <div class="slide-content">
+                <h3>{{ slide.title }}</h3>
+                <p>{{ slide.description }}</p>
+                <a href="#" class="btn-learn">LEARN MORE &raquo;</a>
+            </div>
+            <div class="slide-image">
+                <img [src]="slide.image" [alt]="slide.title">
+            </div>
+        </div>
+        }
+
+        <div class="carousel-dots">
+            @for (dot of webinars; track $index) {
+            <span class="dot" [class.active]="currentSlide() === $index" (click)="setSlide($index)">
+            </span>
+            }
         </div>
     </div>
 </section>
 
 <section class="featured-products">
-    <h2 class="section-title">OUR FEATURED PRODUCTS</h2>
-    
+    <title-badge 
+    title="Featured Products"
+    [align]="'center'">
+    </title-badge>
+    <br><br><br>
+
     <div class="product-grid">
         <div class="product-card">
             <span class="product-number">01</span>
             <h3>NAO EDUCATOR PACK</h3>
-            <p>The latest version of NAO with 10 major areas of improvement is here! Bring STEM and Coding to life with the NAO Robot.</p>
+            <p>The latest version of NAO with 10 major areas of improvement is here! Bring STEM and Coding to life with
+                the NAO Robot.</p>
         </div>
 
         <div class="product-card">
             <span class="product-number">02</span>
             <h3>CRUZR ROBOT</h3>
-            <p>Bring AI to life with Cruzr Robot. Hands-on research and learning platform for Machine Learning, Human Robot Interaction and Navigation.</p>
+            <p>Bring AI to life with Cruzr Robot. Hands-on research and learning platform for Machine Learning, Human
+                Robot Interaction and Navigation.</p>
         </div>
 
         <div class="product-card">
             <span class="product-number">03</span>
             <h3>QT ROBOT AUTISM</h3>
-            <p>QT is a humanoid robot designed to help children with autism learn new skills and get more out of educational sessions.</p>
+            <p>QT is a humanoid robot designed to help children with autism learn new skills and get more out of
+                educational sessions.</p>
         </div>
 
         <div class="product-card">
             <span class="product-number">04</span>
             <h3>FURHAT ROBOT</h3>
-            <p>Furhat is a social robot that communicates with us humans as we do with each other - by speaking, listening, showing emotions.</p>
+            <p>Furhat is a social robot that communicates with us humans as we do with each other - by speaking,
+                listening, showing emotions.</p>
         </div>
 
         <div class="product-card">
             <span class="product-number">05</span>
             <h3>DOBOT MAGICIAN</h3>
-            <p>An all-in-one and user-friendly Robotic Arm STEAM solution to each Engineering and Coding (using Blockly).</p>
+            <p>An all-in-one and user-friendly Robotic Arm STEAM solution to each Engineering and Coding (using
+                Blockly).</p>
         </div>
 
         <div class="product-card">
             <span class="product-number">06</span>
             <h3>PEPPER ROBOT</h3>
-            <p>Bring AI to life with PEPPER ROBOT. Hands-on research and learning platform to teach Science, Programming and Robotics.</p>
+            <p>Bring AI to life with PEPPER ROBOT. Hands-on research and learning platform to teach Science, Programming
+                and Robotics.</p>
         </div>
     </div>
-</section>
-
-<section class="webinar-section">
-  <h2 class="section-title">OUR WEBINARS</h2>
-
-  <div class="carousel-container">
-    <button class="nav-btn prev" (click)="prev()" aria-label="Previous slide">❮</button>
-    <button class="nav-btn next" (click)="next()" aria-label="Next slide">❯</button>
-
-    @for (slide of webinars; track $index) {
-      <div class="webinar-slide" [class.active]="currentSlide() === $index">
-        <div class="slide-content">
-          <h3>{{ slide.title }}</h3>
-          <p>{{ slide.description }}</p>
-          <a href="#" class="btn-learn">LEARN MORE &raquo;</a>
-        </div>
-        <div class="slide-image">
-          <img [src]="slide.image" [alt]="slide.title">
-        </div>
-      </div>
-    }
-
-    <div class="carousel-dots">
-      @for (dot of webinars; track $index) {
-        <span class="dot" 
-              [class.active]="currentSlide() === $index"
-              (click)="setSlide($index)">
-        </span>
-      }
-    </div>
-  </div>
 </section>
 
 <section class="contact-cta">
     <div class="cta-content">
         <h2 class="cta-heading">INTERESTED IN WHAT YOU ARE SEEING?</h2>
         <p class="cta-subtext">Contact us today and we’ll find the proper solutions to your needs.</p>
-        
+
         <a href="mailto:contact@yourcompany.com" class="contact-btn">Contact Us</a>
     </div>
 </section>
