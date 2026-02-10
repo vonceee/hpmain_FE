@@ -25,18 +25,26 @@
 
             <div class="video-grid">
                 @for (video of visibleVideos; track video.id) {
-                <div class="video-card">
-                    <div class="thumbnail-wrapper">
-                        <img [src]="video.thumbnail" [alt]="video.title">
+                <div class="video-card" [class.short]="video.isShort">
+                    <div class="thumbnail-wrapper" [class.short]="video.isShort" (click)="playVideo(video.youtubeId, video.id)" role="button" tabindex="0" (keydown.enter)="playVideo(video.youtubeId, video.id)">
+                        <ng-container *ngIf="activeVideoId() === video.id; else thumb">
+                            <div class="iframe-wrapper" [class.short]="video.isShort">
+                                <iframe [src]="activeVideoSrc()" allow="autoplay; encrypted-media; fullscreen" frameborder="0" allowfullscreen title="{{ video.title }}"></iframe>
+                                <button class="close-video" (click)="clearActiveVideo()" aria-label="Close video">✕</button>
+                            </div>
+                        </ng-container>
+                        <ng-template #thumb>
+                            <img [src]="getThumbnailUrl(video.youtubeId)" [alt]="video.title">
 
-                        <div class="play-overlay">
-                            <div class="youtube-play-icon"></div>
-                        </div>
+                            <div class="play-overlay">
+                                <div class="youtube-play-icon"></div>
+                            </div>
 
-                        <div class="watch-on-youtube">
-                            <span class="text">WATCH ON</span>
-                            <span class="yt-logo">YouTube</span>
-                        </div>
+                            <div class="watch-on-youtube">
+                                <span class="text">WATCH ON</span>
+                                <span class="yt-logo">YouTube</span>
+                            </div>
+                        </ng-template>
                     </div>
                     <p class="video-title">{{ video.title }}</p>
                 </div>
@@ -134,6 +142,12 @@
         </div>
     </div>
 </section>
+
+<div class="container">
+    <educational-products-section title="..." badgeTitle="..." badgeSubtitle="...">
+    </educational-products-section>
+</div>
+
 
 <section class="contact-cta">
     <div class="cta-content">

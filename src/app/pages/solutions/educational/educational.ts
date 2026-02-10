@@ -1,4 +1,5 @@
 import { Component, signal, OnInit, OnDestroy, HostListener } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { BackToTopComponent } from 'src/app/components/back-to-top/back-to-top';
 import { MainHeader } from 'src/app/components/main-header/main-header';
@@ -7,11 +8,13 @@ import { HeroSection } from 'src/app/components/hero-section/hero-section';
 import { DecorGlowComponent } from 'src/app/components/decor-glow/decor-glow';
 import { EducationalFirstSection } from 'src/app/components/educational-first-section/educational-first-section';
 import { TitleBadge } from 'src/app/components/title-badge/title-badge';
+import { ContainerBox } from "src/app/components/container-box/container-box";
+import { EducationalProductsSection } from 'src/app/components/educational-products-section/educational-products-section';
 
 @Component({
   selector: 'educational',
   standalone: true,
-  imports: [CommonModule, BackToTopComponent, MainHeader, MainFooter, HeroSection, DecorGlowComponent, EducationalFirstSection, TitleBadge],
+  imports: [CommonModule, BackToTopComponent, MainHeader, MainFooter, HeroSection, DecorGlowComponent, EducationalFirstSection, EducationalProductsSection, TitleBadge, ContainerBox],
   templateUrl: './educational.html',
   styleUrl: './educational.scss',
 })
@@ -20,12 +23,16 @@ export class Educational implements OnInit, OnDestroy {
   //CAROUSEL VIDEOS
   // 1. Video Data prepared for Database Integration
   videos = signal([
-    { id: 1, title: 'What is total bolting solution?', thumbnail: '/assets/images/videos/v1.jpg', youtubeUrl: '#' },
-    { id: 2, title: 'Industrial Robotics 101', thumbnail: '/assets/images/videos/v2.jpg', youtubeUrl: '#' },
-    { id: 3, title: 'Smart Factory Integration', thumbnail: '/assets/images/videos/v3.jpg', youtubeUrl: '#' },
-    { id: 4, title: 'AI in Manufacturing', thumbnail: '/assets/images/videos/v4.jpg', youtubeUrl: '#' },
-    { id: 5, title: 'Predictive Maintenance', thumbnail: '/assets/images/videos/v5.jpg', youtubeUrl: '#' }
+    { id: 1, title: 'What is total bolting solution?', youtubeId: 'ts9QoMdE7S4', isShort: true },
+    { id: 2, title: 'Industrial Robotics 101', youtubeId: 'uxyN6MLBpvM', isShort: true },
+    { id: 3, title: 'Smart Factory Integration', youtubeId: 'L-KX2U4SEpA', isShort: true },
+    { id: 4, title: 'AI in Manufacturing', youtubeId: '2aOm6PSVE1o', isShort: true },
+    { id: 5, title: 'Predictive Maintenance', youtubeId: 'jWNQdUHDloQ', isShort: true }
   ]);
+
+  // Active inline video state (only one iframe active at a time)
+  activeVideoId = signal<number | null>(null);
+  activeVideoSrc = signal<SafeResourceUrl | null>(null);
 
   // 2. Carousel Positioning
   videoStartIndex = signal(0);
@@ -82,22 +89,49 @@ export class Educational implements OnInit, OnDestroy {
     {
       title: 'RELATIONAL DATA MODELING FOR BUSINESS OWNERS',
       description: 'Master the art of structuring data to drive business insights. Join our expert-led session on building scalable relational models.',
-      image: '/assets/images/expertise/training.jpg' 
+      image: '/assets/images/solutions/educational/reldatamodel.jpg' 
     },
     {
       title: 'ADVANCED ROBOTICS IN MODERN EDUCATION',
       description: 'Discover how AI-driven robots like Pepper and NAO are reshaping the classroom experience for students worldwide.',
-      image: '/assets/images/expertise/training.jpg' 
+      image: '/assets/images/solutions/educational/aeronautics.jpg' 
     },
     {
       title: 'INDUSTRIAL AI & AUTOMATION',
       description: 'Explore the future of factory floors and how integrated software solutions are optimizing production lines.',
-      image: '/assets/images/expertise/training.jpg'
+      image: '/assets/images/solutions/educational/Nursing.jpg'
     }
   ];
 
   ngOnInit() {
     this.startAutoPlay();
+  }
+
+  constructor(private sanitizer: DomSanitizer) {}
+
+  // --- Inline video helpers ---
+  getThumbnailUrl(youtubeId: string) {
+    return `https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg`;
+  }
+
+  
+  playVideo(youtubeId: string, id: number) {
+    // Toggle: if clicked again, stop
+    if (this.activeVideoId() === id) {
+      this.clearActiveVideo();
+      return;
+    }
+
+    // Clear previous and create new iframe src (autoplay muted)
+    this.clearActiveVideo();
+    const src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=1&rel=0&modestbranding=1&playsinline=1`;
+    this.activeVideoSrc.set(this.sanitizer.bypassSecurityTrustResourceUrl(src));
+    this.activeVideoId.set(id);
+  }
+
+  clearActiveVideo() {
+    this.activeVideoId.set(null);
+    this.activeVideoSrc.set(null);
   }
 
   // --- Carousel Logic ---
@@ -166,3 +200,4 @@ export class Educational implements OnInit, OnDestroy {
     }
   }
 }
+

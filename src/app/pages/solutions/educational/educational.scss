@@ -249,7 +249,7 @@ section {
   }
 
   .product-card {
-    background-color: #8b0000;
+    background-color: #1d1919;
     padding: 40px 30px 60px 30px;
     clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 50% 100%, 0% 85%);
     transition: transform 0.3s ease;
@@ -454,7 +454,8 @@ section {
 .video-carousel-section {
   background-color: #000;
   text-align: center;
-
+  transition: transform 2s ease;
+  
   .section-title {
     font-size: 3rem;
     color: #fff;
@@ -472,6 +473,8 @@ section {
   max-width: 1400px;
   margin: 0 auto;
   position: relative;
+  transition: transform 2s ease;
+
 
   .arrow-btn {
     background: rgba(255, 255, 255, 0.1);
@@ -507,9 +510,39 @@ section {
     position: relative;
     border-radius: 15px;
     overflow: hidden;
-    aspect-ratio: 1/1; // Matches the square-ish look in the image
-    
+    aspect-ratio: 1/1; // default (non-short)
+
     img { width: 100%; height: 100%; object-fit: cover; }
+  }
+
+  // Modifier for vertical/short videos
+  &.short, .thumbnail-wrapper.short {
+    aspect-ratio: 9/16;
+  }
+
+  .iframe-wrapper {
+    position: relative;
+    width: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+    aspect-ratio: 9/16;
+    
+
+    iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+    .close-video {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      border: none;
+      padding: 6px 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      line-height: 1;
+    }
   }
 
   // Play button overlay
