@@ -6,15 +6,14 @@ import { MainHeader } from 'src/app/components/main-header/main-header';
 import { MainFooter } from 'src/app/components/main-footer/main-footer';
 import { HeroSection } from 'src/app/components/hero-section/hero-section';
 import { DecorGlowComponent } from 'src/app/components/decor-glow/decor-glow';
-import { EducationalFirstSection } from 'src/app/components/educational-first-section/educational-first-section';
+import { IconCards } from 'src/app/components/icon-cards/icon-cards';
+import { PeopleCards } from 'src/app/components/people-cards/people-cards';
 import { TitleBadge } from 'src/app/components/title-badge/title-badge';
-import { ContainerBox } from "src/app/components/container-box/container-box";
-import { EducationalProductsSection } from 'src/app/components/educational-products-section/educational-products-section';
 
-@Component({
+@Component({ 
   selector: 'educational',
   standalone: true,
-  imports: [CommonModule, BackToTopComponent, MainHeader, MainFooter, HeroSection, DecorGlowComponent, EducationalFirstSection, EducationalProductsSection, TitleBadge, ContainerBox],
+  imports: [CommonModule, BackToTopComponent, MainHeader, MainFooter, HeroSection, DecorGlowComponent, PeopleCards, IconCards, TitleBadge],
   templateUrl: './educational.html',
   styleUrl: './educational.scss',
 })
@@ -23,7 +22,7 @@ export class Educational implements OnInit, OnDestroy {
   //CAROUSEL VIDEOS
   // 1. Video Data prepared for Database Integration
   videos = signal([
-    { id: 1, title: 'What is total bolting solution?', youtubeId: 'ts9QoMdE7S4', isShort: true },
+    { id: 1, title: 'What is total bolting solution?', youtubeId: 'ts9QoMdE7S4', isShort: true }, 
     { id: 2, title: 'Industrial Robotics 101', youtubeId: 'uxyN6MLBpvM', isShort: true },
     { id: 3, title: 'Smart Factory Integration', youtubeId: 'L-KX2U4SEpA', isShort: true },
     { id: 4, title: 'AI in Manufacturing', youtubeId: '2aOm6PSVE1o', isShort: true },
@@ -193,6 +192,87 @@ export class Educational implements OnInit, OnDestroy {
       }
     }
   }
+
+  products = 
+    [
+    {
+      title: 'Training',
+      desc: 'One-step solution for accurate bolt joint assembly eliminates over and under torqueing during maintenance activities and maximizes tool capabilities.',
+      icon: 'bi bi-person-video3',
+    },
+    {
+      title: 'After Sales',
+      desc: 'We offer the solutions and expertise to make your job faster, more accurate, and more efficient for workshops and on-site environment.',
+      icon: 'bi bi-headset',
+    },
+    {
+      title: 'Customer/Technical Support',
+      desc: 'We offer the solutions and expertise to make your job faster, more accurate, and more efficient for workshops and on-site environment.',
+      icon: 'bi bi-gear-wide',
+    },
+    {
+      title: 'Complete Lab Set-up',
+      desc: 'We provide high-performance multiple coating technologies focused on corrosion prevention, fire, cathodic protection, insulation, and sealing technology.',
+      icon: 'bi bi-flask',
+    },
+    {
+      title: 'Partnership',
+      desc: 'One-step solution for accurate bolt joint assembly eliminates over and under torqueing during maintenance activities and maximizes tool capabilities.',
+      icon: 'bi bi-people-fill',
+    },
+    {
+      title: 'Educational Tour',
+      desc: 'One-step solution for accurate bolt joint assembly eliminates over and under torqueing during maintenance activities and maximizes tool capabilities.',
+      icon: 'bi bi-mortarboard-fill',
+    },
+    {
+      title: 'Flexible Learning Solution',
+      desc: 'We provide high-performance multiple coating technologies focused on corrosion prevention, fire, cathodic protection, insulation, and sealing technology.',
+      icon: 'bi bi-pc-display',
+    },
+    {
+      title: 'E-Learning Contents',
+      desc: 'One-step solution for accurate bolt joint assembly eliminates over and under torqueing during.',
+      icon: 'bi bi-person-workspace',
+    },
+    {
+      title: 'Software Solutions',
+      desc: 'One-step solution for accurate bolt joint assembly eliminates over and under torqueing during maintenance activities and maximizes tool capabilities.',
+      icon: 'bi bi-braces',
+    },
+  ];
+  
+  specialist = 
+    [{ title: 'Paulo Borgoños',
+      desc: 'Industrial Technical Specialist',
+      // image upload thingy dito
+    },
+    {
+      title: 'Name 2',
+      desc: 'Industrial Technical Specialist',
+      // image upload thingy dito
+    },
+      {
+      title: 'Name 3',
+      desc: 'Industrial Technical Specialist',
+      // image upload thingy dito
+    },
+      {
+      title: 'Name 4',
+      desc: 'Industrial Technical Specialist',
+      // image upload thingy dito
+    },
+      {
+      title: 'Name 5',
+      desc: 'Industrial Technical Specialist',
+      // image upload thingy dito
+    },
+      {
+      title: 'Name 6',
+      desc: 'Industrial Technical Specialist',
+      // image upload thingy dito
+    },
+    ];
 
   ngOnDestroy() {
     if (this.intervalId) {

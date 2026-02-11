@@ -1,0 +1,25 @@
+<section class="section-wrapper">
+  <title-badge title="Our Product and Services"></title-badge>
+  <br><br>
+
+
+  <container-box>
+
+    <!-- 3x3 Section-->
+    <section class="grid-3x3">
+      @for (card of cards; track card.title) {
+      <div class="cell">
+        <div class="icon-wrapper">
+          <i [class]="card.icon"></i>
+        </div>
+        <p class="cell-title">{{ card.title }}</p>
+        <p class="cell-desc">{{ card.desc }}</p>
+      </div>
+      }
+    </section>
+
+
+  </container-box>
+
+  
+</section>
