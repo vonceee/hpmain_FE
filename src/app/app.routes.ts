@@ -5,6 +5,7 @@ import { aboutUs } from './pages/company/about-us/about-us';
 import { Educational } from './pages/solutions/educational/educational';
 import { News } from './pages/news/news';
 import { Sponsorship } from './pages/company/sponsorship/sponsorship';
+import { TeamPage } from './pages/company/team/team';
 
 export const routes: Routes = [
   {
@@ -31,6 +32,10 @@ export const routes: Routes = [
   {
     path: 'company/sponsorship',
     component: Sponsorship,
+  },
+  {
+    path: 'company/team',
+    component: TeamPage,
   },
   {
     path: 'news-and-updates',

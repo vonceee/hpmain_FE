@@ -1,0 +1,8 @@
+.departments-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 0;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}

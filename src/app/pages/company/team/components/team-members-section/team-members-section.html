@@ -1,0 +1,11 @@
+<container-box>
+  <title-badge title="Our Teams & Departments"></title-badge>
+
+  <div class="departments-container">
+    <team-department-carousel
+      *ngFor="let department of departments"
+      [departmentName]="department.name"
+      [members]="department.members">
+    </team-department-carousel>
+  </div>
+</container-box>

@@ -1,0 +1,61 @@
+<div class="department-carousel-wrapper">
+  <h2 class="department-title">{{ departmentName }}</h2>
+
+  <div class="carousel-container" #carousel>
+    <button class="carousel-button carousel-button-prev" (click)="prev()" aria-label="Previous team member">
+      <span class="arrow">‹</span>
+    </button>
+
+    <div class="carousel-track">
+      <div
+        *ngFor="let member of members; let i = index"
+        [ngClass]="getItemClass(i)"
+        class="team-member-card">
+
+        <div class="member-image">
+          <img [src]="member.photo" [alt]="member.name" />
+        </div>
+
+        <div class="member-info">
+          <h3 class="member-name">{{ member.name }}</h3>
+          <p class="member-role">{{ member.role }}</p>
+
+          <div class="social-links" *ngIf="member.socials">
+            <a *ngIf="member.socials.linkedin" [href]="member.socials.linkedin" target="_blank" aria-label="LinkedIn">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a *ngIf="member.socials.github" [href]="member.socials.github" target="_blank" aria-label="GitHub">
+              <i class="fab fa-github"></i>
+            </a>
+            <a *ngIf="member.socials.facebook" [href]="member.socials.facebook" target="_blank" aria-label="Facebook">
+              <i class="fab fa-facebook"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="carousel-button carousel-button-next" (click)="next()" aria-label="Next team member">
+      <span class="arrow">›</span>
+    </button>
+  </div>
+
+  <div class="carousel-indicators">
+    <ng-container *ngIf="!showCompactPager">
+      <button
+        *ngFor="let member of members; let i = index"
+        [class.active]="i === activeIndex"
+        (click)="goTo(i)"
+        [attr.aria-label]="'Go to ' + member.name">
+      </button>
+    </ng-container>
+
+    <ng-container *ngIf="showCompactPager">
+      <div class="compact-pager">
+        <button class="pager-btn" (click)="prevPage()" [disabled]="activeIndex === 0" aria-label="Previous">‹</button>
+        <div class="pager-info">Member {{ activeIndex + 1 }} of {{ members.length }}</div>
+        <button class="pager-btn" (click)="nextPage()" [disabled]="activeIndex === (members.length - 1)" aria-label="Next">›</button>
+      </div>
+    </ng-container>
+  </div>
+</div>
