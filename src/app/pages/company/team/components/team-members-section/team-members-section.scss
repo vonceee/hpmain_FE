@@ -6,3 +6,9 @@
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
 }
+
+// Override decor-glow for this section only
+::ng-deep decor-glow .decor-blur-right {
+  top: 50% !important;
+  left: 30% !important;
+}

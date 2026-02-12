@@ -40,10 +40,14 @@ export class TeamDepartmentCarousel implements OnInit, OnDestroy {
   prevTranslate = 0;
   animationID: number | null = null;
   readonly PAGINATION_DOT_LIMIT = 20; // switch to compact pager when exceeded
-
+  readonly MAX_VISIBLE_ITEMS = 5; // Maximum visible items
   readonly AUTO_SCROLL_INTERVAL = 4000; // 4 seconds
   readonly SWIPE_THRESHOLD = 50; // pixels
   readonly PEEK_WIDTH = 120; // pixels for peeking next/prev
+
+  get visibleItemCount(): number {
+    return Math.min(this.members.length, this.MAX_VISIBLE_ITEMS);
+  }
 
   get showCompactPager(): boolean {
     return this.members && this.members.length > this.PAGINATION_DOT_LIMIT;
@@ -88,12 +92,41 @@ export class TeamDepartmentCarousel implements OnInit, OnDestroy {
 
   getItemClass(index: number): string {
     const len = this.members.length;
-    const prevIndex = (this.activeIndex - 1 + len) % len;
-    const nextIndex = (this.activeIndex + 1) % len;
+    const visibleCount = this.visibleItemCount;
+    const sideCount = Math.floor(visibleCount / 2);
 
-    if (index === this.activeIndex) return 'item current';
-    if (index === prevIndex) return 'item previous';
-    if (index === nextIndex) return 'item next';
+    // For small teams, calculate relative positions
+    let currentDiff = (index - this.activeIndex + len) % len;
+    if (currentDiff > len / 2) {
+      currentDiff -= len;
+    }
+
+    if (currentDiff === 0) return 'item current';
+
+    // Map positions based on visible item count
+    if (visibleCount === 5) {
+      if (currentDiff === -2 || currentDiff === 2) {
+        return currentDiff === -2 ? 'item prev-2' : 'item next-2';
+      }
+      if (currentDiff === -1 || currentDiff === 1) {
+        return currentDiff === -1 ? 'item prev-1' : 'item next-1';
+      }
+    } else if (visibleCount === 4) {
+      if (currentDiff === -2 || currentDiff === 2) {
+        return currentDiff === -2 ? 'item prev-2' : 'item next-2';
+      }
+      if (currentDiff === -1 || currentDiff === 1) {
+        return currentDiff === -1 ? 'item prev-1' : 'item next-1';
+      }
+    } else if (visibleCount === 3) {
+      if (currentDiff === -1 || currentDiff === 1) {
+        return currentDiff === -1 ? 'item prev-1' : 'item next-1';
+      }
+    } else if (visibleCount === 2) {
+      if (currentDiff === -1 || currentDiff === 1) {
+        return currentDiff === -1 ? 'item prev-1' : 'item next-1';
+      }
+    }
 
     return 'item hidden';
   }

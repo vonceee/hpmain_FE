@@ -1,7 +1,7 @@
 <div class="department-carousel-wrapper">
   <h2 class="department-title">{{ departmentName }}</h2>
 
-  <div class="carousel-container" #carousel>
+  <div class="carousel-container" [attr.data-visible-count]="visibleItemCount" #carousel>
     <button class="carousel-button carousel-button-prev" (click)="prev()" aria-label="Previous team member">
       <span class="arrow">‹</span>
     </button>

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ContainerBox } from 'src/app/components/container-box/container-box';
 import { TitleBadge } from 'src/app/components/title-badge/title-badge';
 import { TeamDepartmentCarousel } from '../team-department-carousel/team-department-carousel';
+import { DecorGlowComponent } from 'src/app/components/decor-glow/decor-glow';
 
 export interface TeamMember {
   name: string;
@@ -22,7 +23,7 @@ export interface Department {
 
 @Component({
   selector: 'team-members-section',
-  imports: [CommonModule, ContainerBox, TitleBadge, TeamDepartmentCarousel],
+  imports: [CommonModule, ContainerBox, TitleBadge, TeamDepartmentCarousel, DecorGlowComponent],
   templateUrl: './team-members-section.html',
   styleUrls: ['./team-members-section.scss'],
 })
@@ -36,6 +37,12 @@ export class TeamMembersSection {
           role: 'Frontend Developer',
           photo: 'assets/images/employees/reze.png',
           socials: { linkedin: '#', github: '#' }
+        },
+        {
+          name: 'Sarah Chen',
+          role: 'Full Stack Developer',
+          photo: 'assets/images/employees/reze.png',
+          socials: { linkedin: '#', github: '#', facebook: '#' }
         },
         {
           name: 'Sarah Chen',
