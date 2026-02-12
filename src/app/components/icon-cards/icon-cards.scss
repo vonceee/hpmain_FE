@@ -16,19 +16,7 @@
 
 /* ˚◡˚ Partnership Section ˚◡˚ */
 
-.grid-3x3 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  gap: 2rem;
-}
 
-.grid-3x2 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 2rem;
-}
 
 .cell {
   padding: 20px 20px 5px 20px;
@@ -56,7 +44,6 @@
   width: 6rem;
   height: 6rem;
   object-fit: contain;
-  margin-bottom: 0.5rem;
   transition: filter 0.3s ease;
 }
 
@@ -89,6 +76,22 @@ i {
   justify-content: center;
   border-radius: 50%;
   border: 2px solid #555;
-  background-color: #333;
-  margin-bottom: 0.5rem;
+  background-color: #333; 
+
+  img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4.5rem;
+    height: 4.5rem; 
+    border-radius: 50%;
+    object-fit:cover;
+    
+  }
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
 }

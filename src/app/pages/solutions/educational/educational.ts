@@ -245,32 +245,32 @@ export class Educational implements OnInit, OnDestroy {
   specialist = 
     [{ title: 'Paulo Borgoños',
       desc: 'Industrial Technical Specialist',
-      // image upload thingy dito
+      img: 'assets/images/solutions/educational/aeronautics.jpg',
     },
     {
       title: 'Name 2',
       desc: 'Industrial Technical Specialist',
-      // image upload thingy dito
+      img: 'assets/images/solutions/educational/educationalpagebg.png',
     },
       {
       title: 'Name 3',
       desc: 'Industrial Technical Specialist',
-      // image upload thingy dito
+      img: 'assets/images/solutions/educational/Nursing.jpg',
     },
       {
       title: 'Name 4',
       desc: 'Industrial Technical Specialist',
-      // image upload thingy dito
+      img: 'assets/images/solutions/educational/reldatamodel.jpg',
     },
       {
       title: 'Name 5',
       desc: 'Industrial Technical Specialist',
-      // image upload thingy dito
+      img: 'assets/images/aboutus/award-icon.svg',
     },
       {
       title: 'Name 6',
       desc: 'Industrial Technical Specialist',
-      // image upload thingy dito
+      img: 'assets/images/aboutus/spot1.png',
     },
     ];
 

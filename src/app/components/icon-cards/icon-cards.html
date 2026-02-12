@@ -1,12 +1,12 @@
 <section class="section-wrapper">
-  <title-badge title="Our Product and Services"></title-badge>
+  <title-badge title={{title}}></title-badge>
   <br><br>
 
 
   <container-box>
 
     <!-- 3x3 Section-->
-    <section class="grid-3x3">
+    <section class="grid-container">
       @for (card of cards; track card.title) {
       <div class="cell">
         <div class="icon-wrapper">

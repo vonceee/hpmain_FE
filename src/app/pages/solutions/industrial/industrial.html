@@ -1,234 +1,163 @@
 <main-header></main-header>
 
-<section class="hero">
-  <div class="hero-text">
-    <div class="heading">
-      <h1>INDUSTRIAL SOLUTIONS</h1>
-    </div>
+<hero-section heroTitle="Industrial Solution" heroSubtitle="Providing skills based industrial solutions."
+    heroImage="/assets/images/aboutus/programs/0393a22d4146e76a99015e10e110102e0ae8cfcd.png"
+    [heroDatePill]="''"></hero-section>
 
-    <div class="sub-heading">
-      <h2>Providing skills-based industrial solutions</h2>
-    </div>
-  </div>
+<decor-glow></decor-glow>
+
+<section class="container " >
+    <icon-cards  [cards]= "products" title= "Our expertise" >
+    </icon-cards>
 </section>
 
-<section class="expertise">
-  <div class="container">
-    <div class="container-header">
-      <h1 class="section-heading">OUR EXPERTISE</h1>
-    </div>
+<div class="container">
 
-    <div class="expertise-tile">
-      <img src="assets/images/solutions/industrial/expertise_bolting.png" />
+    <section class="video-carousel-section">
+        <title-badge 
+        title="Industrial Videos"
+        [align]="'center'">
+        </title-badge>
+        <br><br><br>
 
-      <div class="content">
-        <h1>TOTAL BOLTING SOLUTION</h1>
-        <div class="hr"></div>
-        <p>
-          One-stop solution for accurate bolt joint assembly eliminates over and under torqueing
-          during maintenance activities and maximizes tool capabilities.
-          <br /><br />
-          Complete line of Innovative Tools for your Bolting application with a wide range of
-          capacities from 0.3Nm to 130,000 Nm.
-        </p>
-        <div class="button-container">
-          <button>
-            LEARN MORE
-            <span class="arrow-right">&#9662;</span>
-          </button>
+        <div class="video-container">
+            <button class="arrow-btn prev" (click)="prevVideos()" aria-label="Previous">❮</button>
+
+            <div class="video-grid">
+                @for (video of visibleVideos; track video.id) {
+                <div class="video-card" [class.short]="video.isShort">
+                    <div class="thumbnail-wrapper" [class.short]="video.isShort" (click)="playVideo(video.youtubeId, video.id)" role="button" tabindex="0" (keydown.enter)="playVideo(video.youtubeId, video.id)">
+                        <ng-container *ngIf="activeVideoId() === video.id; else thumb">
+                            <div class="iframe-wrapper" [class.short]="video.isShort">
+                                <iframe [src]="activeVideoSrc()" allow="autoplay; encrypted-media; fullscreen" frameborder="0" allowfullscreen title="{{ video.title }}"></iframe>
+                                <button class="close-video" (click)="clearActiveVideo()" aria-label="Close video">✕</button>
+                            </div>
+                        </ng-container>
+                        <ng-template #thumb>
+                            <img [src]="getThumbnailUrl(video.youtubeId)" [alt]="video.title">
+
+                            <div class="play-overlay">
+                                <div class="youtube-play-icon"></div>
+                            </div>
+
+                            <div class="watch-on-youtube">
+                                <span class="text">WATCH ON</span>
+                                <span class="yt-logo">YouTube</span>
+                            </div>
+                        </ng-template>
+                    </div>
+                    <p class="video-title">{{ video.title }}</p>
+                </div>
+                }
+            </div>
+
+            <button class="arrow-btn next" (click)="nextVideos()" aria-label="Next">❯</button>
         </div>
-      </div>
-    </div>
+    </section>
 
-    <div class="expertise-tile">
-      <img src="assets/images/solutions/industrial/expertise_machine-shop.png" />
+</div>
 
-      <div class="content">
-        <h1>INNOVATIVE MACHINE SHOP TECHNOLOGY</h1>
-        <div class="hr"></div>
-        <p>
-          We offer the solutions and expertise to make your job faster, more accurate, and more
-          efficient for workshops and on-site environments.
-          <br /><br />
-          We offer the solutions and expertise to make your job faster, more accurate, and more
-          efficient for workshops and on-site environments.
-        </p>
-        <div class="button-container">
-          <button>
-            LEARN MORE
-            <span class="arrow-right">&#9662;</span>
-          </button>
+<br><br><br><br>
+<section class="webinar-section">
+    <title-badge 
+    title="Our Trainings"
+    [align]="'center'">
+    </title-badge>
+    <br><br><br>
+
+    <div class="carousel-container">
+        <button class="nav-btn prev" (click)="prev()" aria-label="Previous slide">❮</button>
+        <button class="nav-btn next" (click)="next()" aria-label="Next slide">❯</button>
+
+        @for (slide of webinars; track $index) {
+        <div class="webinar-slide" [class.active]="currentSlide() === $index">
+            <div class="slide-content">
+                <h3>{{ slide.title }}</h3>
+                <p>{{ slide.description }}</p>
+                <a href="#" class="btn-learn">LEARN MORE &raquo;</a>
+            </div>
+            <div class="slide-image">
+                <img [src]="slide.image" [alt]="slide.title">
+            </div>
         </div>
-      </div>
-    </div>
+        }
 
-    <div class="expertise-tile">
-      <img src="assets/images/solutions/industrial/expertise_construction.png" />
-
-      <div class="content">
-        <h1>PROFESSIONAL CONSTRUCTION TOOLS & EQUIPMENT</h1>
-        <div class="hr"></div>
-        <p>
-          One-stop solution for accurate bolt joint assembly eliminates over and under torqueing
-          during maintenance activities and maximizes tool capabilities.
-          <br /><br />
-          Complete line of Innovative Tools for your Bolting application with a wide range of
-          capacities from 0.3Nm to 130,000 Nm.
-        </p>
-        <div class="button-container">
-          <button>
-            LEARN MORE
-            <span class="arrow-right">&#9662;</span>
-          </button>
+        <div class="carousel-dots">
+            @for (dot of webinars; track $index) {
+            <span class="dot" [class.active]="currentSlide() === $index" (click)="setSlide($index)">
+            </span>
+            }
         </div>
-      </div>
     </div>
-
-    <div class="expertise-tile">
-      <img src="assets/images/solutions/industrial/expertise_electrical-cabling.png" />
-
-      <div class="content">
-        <h1>ELECTRICAL CABLING & RENEWABLE ENERGY</h1>
-        <div class="hr"></div>
-        <p>
-          One-stop solution for accurate bolt joint assembly eliminates over and under torqueing
-          during maintenance activities and maximizes tool capabilities.
-          <br /><br />
-          Complete line of Innovative Tools for your Bolting application with a wide range of
-          capacities from 0.3Nm to 130,000 Nm.
-        </p>
-        <div class="button-container">
-          <button>
-            LEARN MORE
-            <span class="arrow-right">&#9662;</span>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div class="expertise-tile">
-      <img src="assets/images/solutions/industrial/expertise_renewable-energy.png" />
-
-      <div class="content">
-        <h1>ELECTRICAL CABLING & RENEWABLE ENERGY</h1>
-        <div class="hr"></div>
-        <p>
-          We provide high-performance multiple coating technologies focused on corrosion prevention,
-          fire, cathodic protection, insulation, and sealing technologies for energy, water,
-          renewables, infrastructure, manufacturing, and harsh environments.
-        </p>
-        <div class="button-container">
-          <button>
-            LEARN MORE
-            <span class="arrow-right">&#9662;</span>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div class="expertise-tile">
-      <img src="assets/images/solutions/industrial/expertise_skill-program.png" />
-
-      <div class="content">
-        <h1>SKILL ENHANCEMENT PROGRAM</h1>
-        <div class="hr"></div>
-        <p>
-          24/7 access to technical skill building by utilizing interactive courses for industrial
-          workforce training using different hardware and online training simulations.
-        </p>
-        <div class="button-container">
-          <button>
-            LEARN MORE
-            <span class="arrow-right">&#9662;</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>
 
-<section class="our-services">
-  <div class="container">
-    <h1 class="section-heading">OUR SERVICES</h1>
+<section class="featured-products">
+    <title-badge 
+    title="Featured Products"
+    [align]="'center'">
+    </title-badge>
+    <br><br><br>
 
-    <app-carousel-v1></app-carousel-v1>
-  </div>
+    <div class="product-grid">
+        <div class="product-card">
+            <span class="product-number">01</span>
+            <h3>NAO EDUCATOR PACK</h3>
+            <p>The latest version of NAO with 10 major areas of improvement is here! Bring STEM and Coding to life with
+                the NAO Robot.</p>
+        </div>
+
+        <div class="product-card">
+            <span class="product-number">02</span>
+            <h3>CRUZR ROBOT</h3>
+            <p>Bring AI to life with Cruzr Robot. Hands-on research and learning platform for Machine Learning, Human
+                Robot Interaction and Navigation.</p>
+        </div>
+
+        <div class="product-card">
+            <span class="product-number">03</span>
+            <h3>QT ROBOT AUTISM</h3>
+            <p>QT is a humanoid robot designed to help children with autism learn new skills and get more out of
+                educational sessions.</p>
+        </div>
+
+        <div class="product-card">
+            <span class="product-number">04</span>
+            <h3>FURHAT ROBOT</h3>
+            <p>Furhat is a social robot that communicates with us humans as we do with each other - by speaking,
+                listening, showing emotions.</p>
+        </div>
+
+        <div class="product-card">
+            <span class="product-number">05</span>
+            <h3>DOBOT MAGICIAN</h3>
+            <p>An all-in-one and user-friendly Robotic Arm STEAM solution to each Engineering and Coding (using
+                Blockly).</p>
+        </div>
+
+        <div class="product-card">
+            <span class="product-number">06</span>
+            <h3>PEPPER ROBOT</h3>
+            <p>Bring AI to life with PEPPER ROBOT. Hands-on research and learning platform to teach Science, Programming
+                and Robotics.</p>
+        </div>
+    </div>
 </section>
 
-<section class="industry-webinars">
-  <div class="container">
-    <div class="container-header">
-      <h1 class="section-heading">INDUSTRY 4.0 WEBINARS</h1>
-      <h2 class="section-sub-heading">Total Productive Maintenance</h2>
+<div class="container">
+    <news-articles [cards]= "news" title="Industrial News">
+    </news-articles>
+</div>
+
+
+<section class="contact-cta">
+    <div class="cta-content">
+        <h2 class="cta-heading">INTERESTED IN WHAT YOU ARE SEEING?</h2>
+        <p class="cta-subtext">Contact us today and we’ll find the proper solutions to your needs.</p>
+
+        <a href="mailto:contact@yourcompany.com" class="contact-btn">Contact Us</a>
     </div>
-
-    <div class="cards-container">
-      <div class="card">
-        <img src="assets/images/solutions/industrial/expertise_skill-program.png" />
-        <div class="content">
-          <h1>TOTAL BOLTING SOLUTION WEBINAR SERIES</h1>
-          <div class="hr"></div>
-          <p>
-            Be updated in our online webinar series for electrical cabling and renewable energy.
-          </p>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="assets/images/solutions/industrial/expertise_skill-program.png" />
-        <div class="content">
-          <h1>ELECTRICAL CABLING & RENEWABLE ENERGY WEBINAR SERIES</h1>
-          <div class="hr"></div>
-          <p>
-            Be updated in our online webinar series for electrical cabling and renewable energy.
-          </p>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="assets/images/solutions/industrial/expertise_skill-program.png" />
-        <div class="content">
-          <h1>ELECTRICAL CABLING & RENEWABLE ENERGY WEBINAR SERIES</h1>
-          <div class="hr"></div>
-          <p>
-            Be updated in our online webinar series for electrical cabling and renewable energy.
-          </p>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="assets/images/solutions/industrial/expertise_skill-program.png" />
-        <div class="content">
-          <h1>ELECTRICAL CABLING & RENEWABLE ENERGY WEBINAR SERIES</h1>
-          <div class="hr"></div>
-          <p>
-            Be updated in our online webinar series for electrical cabling and renewable energy.
-          </p>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="assets/images/solutions/industrial/expertise_skill-program.png" />
-        <div class="content">
-          <h1>ELECTRICAL CABLING & RENEWABLE ENERGY WEBINAR SERIES</h1>
-          <div class="hr"></div>
-          <p>
-            Be updated in our online webinar series for electrical cabling and renewable energy.
-          </p>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="assets/images/solutions/industrial/expertise_skill-program.png" />
-        <div class="content">
-          <h1>ELECTRICAL CABLING & RENEWABLE ENERGY WEBINAR SERIES</h1>
-          <div class="hr"></div>
-          <p>
-            Be updated in our online webinar series for electrical cabling and renewable energy.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>
+
 <back-to-top></back-to-top>
+
+<main-footer></main-footer>

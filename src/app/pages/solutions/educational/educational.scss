@@ -123,6 +123,7 @@ section {
   .heading h1 {
     font-size: 6.25rem;
     background: linear-gradient(to bottom, #DBDBDB, #A9A9A9);
+    background-clip:text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 300;
@@ -133,6 +134,7 @@ section {
     font-family: "Poppins", sans-serif;
     font-weight: 600;
     font-size: 1.375rem;
+    background-clip:text;
     background: linear-gradient(to bottom, #DBDBDB, #A9A9A9);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -594,4 +596,18 @@ section {
     overflow: hidden;
     text-overflow: ellipsis;
   }
+}
+
+.grid-3x3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.grid-3x2 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 2rem;
 }

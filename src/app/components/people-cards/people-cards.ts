@@ -21,7 +21,7 @@ interface Cell {
 export class PeopleCards {
   @Input() title: string = 'Name';
   @Input() desc: string = 'Role';
-  // @Input() img: string = 'Image';
+  @Input() img: string = 'Image';
 
   @Input() cards: Cell[] = []
-}
+} 
